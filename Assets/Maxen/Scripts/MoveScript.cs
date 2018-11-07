@@ -15,7 +15,9 @@ public class MoveScript : MonoBehaviour
     public bool allowJumping = true;
     public bool allowCrouching = true;
     public float moveSpeed = 5.0f;
+    [Range(0.0f, 1.0f)]
     public float groundedInertia = 0.5f;
+    [Range(0.0f, 1.0f)]
     public float aerialInertia = 0.5f;
     public float sprintMultiplier = 2.0f;
     public float crouchMultiplier = 0.5f;
@@ -244,16 +246,27 @@ public class MoveScript : MonoBehaviour
     #endregion
 
     #region Helper Functions
-    //Useful function simplifying toggling cursor locking
+
+    private void OnDrawGizmos()
+    {
+        if(!_col) { return; }
+
+        Vector3 pos1 = _col.transform.position + _col.center;
+        Vector3 pos2 = pos1 + (Vector3.down * (_col.height / 2 - _col.radius));
+        float r = _col.radius;
+        Gizmos.DrawSphere(pos1, r);
+        Gizmos.DrawWireSphere(pos2, r);
+    }
 
     protected virtual void CheckIfGrounded()
     {
         //Prepare data for use in CheckSphere()
-        Vector3 checkPos = _col.transform.position;
+        Vector3 checkPos = _col.transform.position + _col.center;
+        float checkDist = _col.height / 2 - _col.radius;
 
         //If the player's feet are touching something, player is grounded
         RaycastHit hitInfo;
-        _shouldBeGrounded = Physics.SphereCast(checkPos, _col.radius, Vector3.down, out hitInfo, _col.height / 2, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+        _shouldBeGrounded = Physics.SphereCast(checkPos, _col.radius, Vector3.down, out hitInfo, checkDist, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
         
         if (!letBeGrounded)
         {
@@ -290,14 +303,13 @@ public class MoveScript : MonoBehaviour
     protected virtual IEnumerator CoyoteTimeTimer()
     {
         _remainingCoyoteTime = coyoteTimeDuration;
-
+        
         while (!_shouldBeGrounded && _remainingCoyoteTime > 0.0f)
         {
             yield return null;
             _remainingCoyoteTime -= Time.deltaTime;
-            //Debug.Log("Coyote time: " + _remainingCoyoteTime + "\n_isGrounded = " + _isGrounded);
         }
-
+        _remainingCoyoteTime = 0.0f;
         _isGrounded = _shouldBeGrounded;
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public InputObject playerInput;
     public Pawn ControlledPawn;                 //This is the main Pawn var for this script, use this one.
     protected Pawn _previouslyControlledPawn;   //This one is used to check and update the ControlChangeEvents. DO NOT use this one.
     public bool IsControllingPawn { get { return ControlledPawn; } }
@@ -53,11 +54,11 @@ public class PlayerController : MonoBehaviour
     #region Input
     protected virtual void HandleInput()
     {
-        if(!ControlledPawn) { return; }
+        if(!(ControlledPawn && playerInput)) { return; }
 
-        PassMoveInput(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
-        PassLookInput(new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")));
-        PassJumpInput(Input.GetButton("Jump"));
+        PassMoveInput(playerInput.GetMoveVector());
+        PassLookInput(playerInput.GetLookVector());
+        PassJumpInput(playerInput.GetJumpInput());
     }
 
     protected virtual void PassMoveInput(Vector2 value)
