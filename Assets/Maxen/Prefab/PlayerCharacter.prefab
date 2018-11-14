@@ -904,6 +904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyMoveScript: {fileID: 114203699273109650}
   MyLookScript: {fileID: 114326223421563806}
+  MyCamera: {fileID: 20989462195234460}
   MyController: {fileID: 0}
 --- !u!114 &114668075503212354
 MonoBehaviour:

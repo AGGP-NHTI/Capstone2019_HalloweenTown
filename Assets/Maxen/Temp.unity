@@ -425,6 +425,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f500636859a0acf428b486f826435408, type: 2}
   m_IsPrefabAsset: 0
+--- !u!20 &288354368 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20989462195234460, guid: f500636859a0acf428b486f826435408,
+    type: 2}
+  m_PrefabInternal: {fileID: 288354367}
 --- !u!1 &358669448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1260,11 @@ Prefab:
       propertyPath: ControlledPawn
       value: 
       objectReference: {fileID: 1360726875}
+    - target: {fileID: 114180416097842496, guid: 7fd3bcb03dcd685449b27c32865a00e7,
+        type: 2}
+      propertyPath: MyCamera
+      value: 
+      objectReference: {fileID: 288354368}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0

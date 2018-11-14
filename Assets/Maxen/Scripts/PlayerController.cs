@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public InputObject playerInput;
     public Pawn ControlledPawn;                 //This is the main Pawn var for this script, use this one.
+    public Camera MyCamera;
     protected Pawn _previouslyControlledPawn;   //This one is used to check and update the ControlChangeEvents. DO NOT use this one.
     public bool IsControllingPawn { get { return ControlledPawn; } }
-
 
     protected virtual void Start ()
     {
