@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ae3d825832c3d4baba7cab12993d50, type: 3}
   m_Name: Player 2 Input
   m_EditorClassIdentifier: 
+  PlayerNumber: 2
   MoveHorizontalAxis: P2_Horizontal
   MoveVerticalAxis: P2_Vertical
   LookHorizontalAxis: P2_LookHorizontal

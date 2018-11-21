@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class InputObject : ScriptableObject
 {
+    public uint PlayerNumber;
+
     public string MoveHorizontalAxis = "Horizontal";
     public string MoveVerticalAxis = "Vertical";
     public string LookHorizontalAxis = "Mouse X";
@@ -24,8 +26,6 @@ public class InputObject : ScriptableObject
 
     public bool GetJumpInput()
     {
-        bool j = Input.GetButton(JumpButton);
-        if (j) { Debug.Log(JumpButton); }
-        return j;
+        return Input.GetButton(JumpButton);
     }
 }

@@ -7,6 +7,7 @@ public class SplitScreenManager : MonoBehaviour
     public static SplitScreenManager Instance;
 
     public List<Camera> PlayerCameras;
+    public List<uint> CameraNumbers;
     public Camera FallbackCamera;
     public int playerCameraDepth;
 
@@ -35,8 +36,6 @@ public class SplitScreenManager : MonoBehaviour
 
     public virtual void ConfigureScreenSpace()
     {
-        Debug.Log("Configuring...");
-
         Camera[] allCameras = FindObjectsOfType<Camera>();
         foreach(Camera c in allCameras)
         {
@@ -63,14 +62,13 @@ public class SplitScreenManager : MonoBehaviour
             yCameras = Mathf.CeilToInt((float)PlayerCameras.Count / xCameras);
         }
 
-        Debug.Log("xCameras: " + xCameras + "\nyCameras: " + yCameras);
-
         Vector2 CameraPosition = Vector2.zero;
         Vector2 CameraSize = new Vector2(1.0f / xCameras, 1.0f / yCameras);
 
         for (int cameraIndex = 0; cameraIndex < PlayerCameras.Count; cameraIndex++)
         {
             PlayerCameras[cameraIndex].rect = new Rect(CameraPosition, CameraSize);
+            Debug.Log(PlayerCameras[cameraIndex].transform.parent.parent.name + ": " + PlayerCameras[cameraIndex].rect);
             PlayerCameras[cameraIndex].enabled = true;
 
             CameraPosition.x += CameraSize.x;

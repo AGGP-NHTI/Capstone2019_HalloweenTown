@@ -39,13 +39,17 @@ public class PlayerController : MonoBehaviour
         ControlledPawn.PassFire1(true);
         if (SplitScreenManager.Instance && ControlledPawn.MyCamera)
         {
-            SplitScreenManager.Instance.PlayerCameras.Add(ControlledPawn.MyCamera);
+            SplitScreenManager.Instance.PlayerCameras.Add( ControlledPawn.MyCamera);
         }
     }
 
     protected virtual void OnLoseControl()
     {
         _previouslyControlledPawn.PassFire1(false);
+        if(SplitScreenManager.Instance && _previouslyControlledPawn.MyCamera)
+        {
+            SplitScreenManager.Instance.PlayerCameras.Remove(ControlledPawn.MyCamera);
+        }
     }
     #endregion
 
