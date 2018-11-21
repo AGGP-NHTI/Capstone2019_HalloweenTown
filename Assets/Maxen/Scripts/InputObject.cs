@@ -24,6 +24,8 @@ public class InputObject : ScriptableObject
 
     public bool GetJumpInput()
     {
-        return Input.GetButton(JumpButton);
+        bool j = Input.GetButton(JumpButton);
+        if (j) { Debug.Log(JumpButton); }
+        return j;
     }
 }

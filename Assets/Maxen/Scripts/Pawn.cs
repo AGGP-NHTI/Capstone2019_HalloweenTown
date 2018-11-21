@@ -6,6 +6,7 @@ public class Pawn : MonoBehaviour
 {
     public MoveScript MyMoveScript;
     public LookScript MyLookScript;
+    public Camera MyCamera;
 
     [HideInInspector]
     public PlayerController MyController;

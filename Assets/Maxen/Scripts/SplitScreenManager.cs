@@ -4,59 +4,82 @@ using UnityEngine;
 
 public class SplitScreenManager : MonoBehaviour
 {
-    protected PlayerController[] _controllersInScene;
+    public static SplitScreenManager Instance;
 
-    public enum SplitScreenDirection
-    {
-        HORIZONTAL,
-        VERTICAL
-    }
-    public SplitScreenDirection FavoredSplitDirection = SplitScreenDirection.HORIZONTAL;
+    public List<Camera> PlayerCameras;
+    public Camera FallbackCamera;
+    public int playerCameraDepth;
 
-    void Start ()
-    {
-        _controllersInScene = FindObjectsOfType<PlayerController>();
-        ConfigureScreenSpace();
-	}
+    public bool TriggerConfigureScreenSpace;
 
-    protected void ConfigureScreenSpace()
+    protected virtual void Start ()
     {
-        Camera[] playerCameras = new Camera[_controllersInScene.Length];
-        for (int i = 0; i < _controllersInScene.Length; i++)
+        if(Instance)
         {
-            playerCameras[i] = _controllersInScene[i].MyCamera;
-        }
-
-        int verticalCameras = 1;
-        int horizontalCameras = 1;
-        if (playerCameras.Length <= 2)
-        {
-            if(FavoredSplitDirection == SplitScreenDirection.HORIZONTAL)
-            {
-                verticalCameras = 1;
-                horizontalCameras = 2;
-            }
-            else if(FavoredSplitDirection == SplitScreenDirection.VERTICAL)
-            {
-                verticalCameras = 2;
-                horizontalCameras = 1;
-            }
+            Destroy(this);
         }
         else
         {
-            float Lsqrt = Mathf.CeilToInt(Mathf.Sqrt(playerCameras.Length));
-            if (FavoredSplitDirection == SplitScreenDirection.HORIZONTAL)
+            Instance = this;
+        }
+	}
+
+    private void Update()
+    {
+        if(TriggerConfigureScreenSpace)
+        {
+            ConfigureScreenSpace();
+            TriggerConfigureScreenSpace = false;
+        }
+    }
+
+    public virtual void ConfigureScreenSpace()
+    {
+        Debug.Log("Configuring...");
+
+        Camera[] allCameras = FindObjectsOfType<Camera>();
+        foreach(Camera c in allCameras)
+        {
+            if(c.depth >= playerCameraDepth - 1)
             {
-                horizontalCameras = Mathf.CeilToInt(Lsqrt);
-                verticalCameras = playerCameras.Length / horizontalCameras;
-            }
-            else if(FavoredSplitDirection == SplitScreenDirection.VERTICAL)
-            {
-                verticalCameras = Mathf.CeilToInt(Mathf.Sqrt(playerCameras.Length));
-                horizontalCameras = playerCameras.Length / verticalCameras;
+                if(FallbackCamera)
+                {
+                    FallbackCamera.depth = playerCameraDepth - 1;
+                }
+                c.depth = playerCameraDepth - 2;
             }
         }
-        float cameraWidth = 1.0f / horizontalCameras;
-        float cameraHeight = 1.0f / verticalCameras;
+        
+        int xCameras = 1;
+        int yCameras = 1;
+
+        if (0 < PlayerCameras.Count && PlayerCameras.Count <= 2)
+        {
+            xCameras = PlayerCameras.Count;
+        }
+        else
+        {
+            xCameras = Mathf.CeilToInt(Mathf.Sqrt(PlayerCameras.Count));
+            yCameras = Mathf.CeilToInt((float)PlayerCameras.Count / xCameras);
+        }
+
+        Debug.Log("xCameras: " + xCameras + "\nyCameras: " + yCameras);
+
+        Vector2 CameraPosition = Vector2.zero;
+        Vector2 CameraSize = new Vector2(1.0f / xCameras, 1.0f / yCameras);
+
+        for (int cameraIndex = 0; cameraIndex < PlayerCameras.Count; cameraIndex++)
+        {
+            PlayerCameras[cameraIndex].rect = new Rect(CameraPosition, CameraSize);
+            PlayerCameras[cameraIndex].enabled = true;
+
+            CameraPosition.x += CameraSize.x;
+            if (CameraPosition.x >= 1.0f)
+            {
+                CameraPosition.x = 0.0f;
+                CameraPosition.y += CameraSize.y;
+            }
+            PlayerCameras[cameraIndex].depth = playerCameraDepth;
+        }
     }
 }
