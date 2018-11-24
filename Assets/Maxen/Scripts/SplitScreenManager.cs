@@ -13,7 +13,7 @@ public class SplitScreenManager : MonoBehaviour
 
     public bool TriggerConfigureScreenSpace;
 
-    protected virtual void Start ()
+    protected virtual void Awake ()
     {
         if(Instance)
         {

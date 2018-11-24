@@ -5,14 +5,35 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public InputObject playerInput;
-    public Pawn ControlledPawn;                 //This is the main Pawn var for this script, use this one.
-    protected Pawn _previouslyControlledPawn;   //This one is used to check and update the ControlChangeEvents. DO NOT use this one.
-    public bool IsControllingPawn { get { return ControlledPawn; } }
+    [SerializeField] protected Pawn _controlledPawn;
+    private void Start()
+    {
+        if(_controlledPawn)
+        {
+            OnGainControl();
+        }
+    }
+
+    public Pawn ControlledPawn
+    {
+        get { return _controlledPawn; }
+        set
+        {
+            if(value != _controlledPawn)
+            {
+                OnLoseControl();
+                _controlledPawn = value;
+                if(value)
+                {
+                    OnGainControl();
+                }
+            }
+        }
+    }
+    public bool IsControllingPawn { get { return _controlledPawn; } }
 
     protected virtual void Update ()
     {
-        CheckControlChangeEvent();
-
         if(ControlledPawn)
         {
             HandleInput();
@@ -20,35 +41,21 @@ public class PlayerController : MonoBehaviour
 	}
 
     #region Control Change Events
-    protected virtual void CheckControlChangeEvent()
-    {
-        if (ControlledPawn && !_previouslyControlledPawn)
-        {
-            OnGainControl();
-            _previouslyControlledPawn = ControlledPawn;
-        }
-        else if (!ControlledPawn && _previouslyControlledPawn)
-        {
-            OnLoseControl();
-            _previouslyControlledPawn = null;
-        }
-    }
-
     protected virtual void OnGainControl()
     {
         ControlledPawn.PassFire1(true);
-        if (SplitScreenManager.Instance && ControlledPawn.MyCamera)
+        if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
-            SplitScreenManager.Instance.PlayerCameras.Add( ControlledPawn.MyCamera);
+            SplitScreenManager.Instance.PlayerCameras.Add( _controlledPawn.MyCamera);
         }
     }
 
     protected virtual void OnLoseControl()
     {
-        _previouslyControlledPawn.PassFire1(false);
-        if(SplitScreenManager.Instance && _previouslyControlledPawn.MyCamera)
+        ControlledPawn.PassFire1(false);
+        if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
-            SplitScreenManager.Instance.PlayerCameras.Remove(ControlledPawn.MyCamera);
+            SplitScreenManager.Instance.PlayerCameras.Remove(_controlledPawn.MyCamera);
         }
     }
     #endregion
