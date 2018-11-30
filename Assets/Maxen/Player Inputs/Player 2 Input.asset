@@ -16,4 +16,13 @@ MonoBehaviour:
   MoveVerticalAxis: P2_Vertical
   LookHorizontalAxis: P2_LookHorizontal
   LookVerticalAxis: P2_LookVertical
+  LeftTriggerAxis: 
+  RightTriggerAxis: 
+  DPadHorizontalAxis: 
+  DPadVerticalAxis: 
+  UltimateButton: P2_Ultimate
+  InteractButton: P2_Interact
   JumpButton: P2_Jump
+  BooButton: P2_Boo
+  StartButton: 
+  SelectButton: 
