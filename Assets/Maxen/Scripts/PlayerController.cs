@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Pawn _controlledPawn;
     private void Start()
     {
-        if(_controlledPawn)
+        if (_controlledPawn)
         {
             OnGainControl();
         }
@@ -19,11 +19,11 @@ public class PlayerController : MonoBehaviour
         get { return _controlledPawn; }
         set
         {
-            if(value != _controlledPawn)
+            if (value != _controlledPawn)
             {
                 OnLoseControl();
                 _controlledPawn = value;
-                if(value)
+                if (value)
                 {
                     OnGainControl();
                 }
@@ -32,27 +32,31 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsControllingPawn { get { return _controlledPawn; } }
 
-    protected virtual void Update ()
+    protected virtual void Update()
     {
-        if(ControlledPawn)
+        if (ControlledPawn)
         {
             HandleInput();
         }
-	}
+    }
 
     #region Control Change Events
     protected virtual void OnGainControl()
     {
-        ControlledPawn.PassFire1(true);
+        if (!_controlledPawn) { return; }
+
+        _controlledPawn.PassLockScreen(true);
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
-            SplitScreenManager.Instance.PlayerCameras.Add( _controlledPawn.MyCamera);
+            SplitScreenManager.Instance.PlayerCameras.Add(_controlledPawn.MyCamera);
         }
     }
 
     protected virtual void OnLoseControl()
     {
-        ControlledPawn.PassFire1(false);
+        if (!_controlledPawn) { return; }
+
+        ControlledPawn.PassLockScreen(false);
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
             SplitScreenManager.Instance.PlayerCameras.Remove(_controlledPawn.MyCamera);
@@ -63,11 +67,19 @@ public class PlayerController : MonoBehaviour
     #region Input
     protected virtual void HandleInput()
     {
-        if(!(ControlledPawn && playerInput)) { return; }
+        if (!(ControlledPawn && playerInput)) { return; }
 
         PassMoveInput(playerInput.GetMoveVector());
         PassLookInput(playerInput.GetLookVector());
+        PassLeftTriggerInput(playerInput.GetLeftTrigger());
+        PassRightTriggerInput(playerInput.GetRightTrigger());
+        PassDPadInput(playerInput.GetDPadInput());
+        PassUltimateInput(playerInput.GetUltimateInput());
+        PassInteractInput(playerInput.GetInteractInput());
         PassJumpInput(playerInput.GetJumpInput());
+        PassBooInput(playerInput.GetBooInput());
+        PassStart(playerInput.GetStartInput());
+        PassSelect(playerInput.GetSelectInput());
     }
 
     protected virtual void PassMoveInput(Vector2 value)
@@ -84,9 +96,65 @@ public class PlayerController : MonoBehaviour
         ControlledPawn.PassLookInput(value);
     }
 
+    protected virtual void PassLeftTriggerInput(bool value)
+    {
+        if (!ControlledPawn) { return; }
+
+        ControlledPawn.PassLeftTriggerInput(value);
+    }
+
+    protected virtual void PassRightTriggerInput(bool value)
+    {
+        if (!ControlledPawn) { return; }
+
+        ControlledPawn.PassRightTriggerInput(value);
+    }
+
+    protected virtual void PassDPadInput(Vector2 value)
+    {
+        if (!ControlledPawn) { return; }
+
+        ControlledPawn.PassDPadInput(value);
+    }
+
+    protected virtual void PassUltimateInput(bool value)
+    {
+        if (!ControlledPawn) { return; }
+
+        ControlledPawn.PassUltimateInput(value);
+    }
+
+    protected virtual void PassInteractInput(bool value)
+    {
+        if (!ControlledPawn) { return; }
+
+        ControlledPawn.PassInteractInput(value);
+    }
+
     protected virtual void PassJumpInput(bool value)
     {
+        if (!ControlledPawn) { return; }
+
         ControlledPawn.PassJumpInput(value);
+    }
+
+    protected virtual void PassBooInput(bool value)
+    {
+        if (!ControlledPawn) { return; }
+
+        ControlledPawn.PassBooInput(value);
+    }
+
+    protected virtual void PassStart(bool value)
+    {
+        //Might not connect to pawn, not sure.
+        //Will need to display on the camera of this pawn though, so maybe.
+    }
+
+    protected virtual void PassSelect(bool value)
+    {
+        //Might not connect to pawn, not sure.
+        //Will need to display on the camera of this pawn though, so maybe.
     }
     #endregion
 }

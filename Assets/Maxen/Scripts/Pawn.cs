@@ -21,6 +21,15 @@ public class Pawn : MonoBehaviour
 		
 	}
 
+    #region Input
+    public virtual void PassLockScreen(bool value)
+    {
+        if (MyLookScript)
+        {
+            MyLookScript.lockState = value;
+        }
+    }
+
     public virtual void PassMoveInput(Vector2 value)
     {
         if(!MyMoveScript)
@@ -44,12 +53,29 @@ public class Pawn : MonoBehaviour
         MyLookScript.MouseInput = value;
     }
 
-    public virtual void PassFire1(bool value)
+    public virtual void PassLeftTriggerInput(bool value)
     {
-        if(MyLookScript)
-        {
-            MyLookScript.lockState = value;
-        }
+
+    }
+
+    public virtual void PassRightTriggerInput(bool value)
+    {
+
+    }
+
+    public virtual void PassDPadInput(Vector2 value)
+    {
+
+    }
+
+    public virtual void PassUltimateInput(bool value)
+    {
+
+    }
+
+    public virtual void PassInteractInput(bool value)
+    {
+
     }
 
     public virtual void PassJumpInput(bool value)
@@ -62,4 +88,10 @@ public class Pawn : MonoBehaviour
 
         MyMoveScript.Jump(value);
     }
+
+    public virtual void PassBooInput(bool value)
+    {
+
+    }
+    #endregion
 }
