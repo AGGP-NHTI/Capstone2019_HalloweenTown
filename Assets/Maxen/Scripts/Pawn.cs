@@ -54,24 +54,36 @@ public class Pawn : MonoBehaviour
         MyLookScript.MouseInput = value;
     }
 
-    public virtual void PassLeftTriggerInput(bool value)
+    public virtual void PassLeftTriggerInput(float value)
     {
-
+        if(value > 0.0f)
+        {
+            Debug.Log(name + " left trigger: " + value);
+        }
     }
 
-    public virtual void PassRightTriggerInput(bool value)
+    public virtual void PassRightTriggerInput(float value)
     {
-
+        if (value > 0.0f)
+        {
+            Debug.Log(name + " right trigger: " + value);
+        }
     }
 
     public virtual void PassDPadInput(Vector2 value)
     {
-
+        if (value != Vector2.zero)
+        {
+            Debug.Log(name + " dPad: " + value);
+        }
     }
 
     public virtual void PassUltimateInput(bool value)
     {
-
+        if(value)
+        {
+            Debug.Log(name + " ultimate!");
+        }
     }
 
     //x button
@@ -80,13 +92,15 @@ public class Pawn : MonoBehaviour
         if(!MyCandy)
         {
             Debug.LogWarning(name + " is trying to be passed input when it has no Candy component assigned!");
+            return;
         }
+        
+        MyCandy.actionButton = value;
 
         if (value)
         {
             Debug.Log(name + " interact!");
         }
-        MyCandy.actionButton = value;
     }
 
     public virtual void PassJumpInput(bool value)
@@ -102,7 +116,10 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassBooInput(bool value)
     {
-
+        if (value)
+        {
+            Debug.Log(name + " BOO!");
+        }
     }
     #endregion
 }
