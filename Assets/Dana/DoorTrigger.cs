@@ -32,6 +32,7 @@ public class DoorTrigger : MonoBehaviour
                             script.candy++;
                             dictionary.Add(script, StartCoroutine(WaitingforCandy(script)));
                         }
+                        script.actionButton = false;
                         
                     }
 
