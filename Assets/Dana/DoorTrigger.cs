@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorTrigger : MonoBehaviour
 {
 
-    // Use this for initialization
+    Candy script;
     float radius = 3.0f;
     Dictionary<Candy, Coroutine> dictionary = new Dictionary<Candy, Coroutine>();
     void Start()
@@ -22,7 +22,8 @@ public class DoorTrigger : MonoBehaviour
         {
             if (hitColliders[i].tag == "Player")
             {
-                Candy script = hitColliders[i].gameObject.GetComponent<Candy>();
+                script = hitColliders[i].gameObject.GetComponent<Candy>();
+                script.xForCandy = true;
                 if (script != null)
                 {
                     if (dictionary.ContainsKey(script) == false)
@@ -43,7 +44,9 @@ public class DoorTrigger : MonoBehaviour
                         script.WaitForCandy();
                     }*/
                 }
+                script.xForCandy = false;
             }
+           
             i++;
         }
 
