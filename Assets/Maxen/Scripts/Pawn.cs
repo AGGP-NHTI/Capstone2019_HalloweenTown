@@ -7,6 +7,7 @@ public class Pawn : MonoBehaviour
     public MoveScript MyMoveScript;
     public LookScript MyLookScript;
     public Camera MyCamera;
+    public Candy MyCandy;
 
     [HideInInspector]
     public PlayerController MyController;
@@ -73,9 +74,15 @@ public class Pawn : MonoBehaviour
 
     }
 
+    //x button
     public virtual void PassInteractInput(bool value)
     {
+        if(!MyCandy)
+        {
+            Debug.LogWarning(name + " is trying to be passed input when it has no Candy component assigned!");
+        }
 
+        MyCandy.actionButton = true;
     }
 
     public virtual void PassJumpInput(bool value)
