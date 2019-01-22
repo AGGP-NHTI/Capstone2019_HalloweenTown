@@ -59,8 +59,7 @@ public class InputObject : ScriptableObject
 
     public bool GetInteractInput()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        return Input.GetButtonDown(InteractButton);
     }
 
     public bool GetJumpInput()

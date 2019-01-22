@@ -50,10 +50,5 @@ public class Candy : MonoBehaviour
             }
         } */
     }
-
-    
-
     
 }
-
-   

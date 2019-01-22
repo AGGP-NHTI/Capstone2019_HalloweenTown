@@ -21,7 +21,7 @@ MonoBehaviour:
   DPadHorizontalAxis: 
   DPadVerticalAxis: 
   UltimateButton: P3_Ultimate
-  InteractButton: P3_Interact
+  InteractButton: P1_Interact
   JumpButton: P3_Jump
   BooButton: P3_Boo
   StartButton: 
