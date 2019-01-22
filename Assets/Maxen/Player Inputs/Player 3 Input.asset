@@ -16,12 +16,12 @@ MonoBehaviour:
   MoveVerticalAxis: P3_Vertical
   LookHorizontalAxis: P3_LookHorizontal
   LookVerticalAxis: P3_LookVertical
-  LeftTriggerAxis: 
-  RightTriggerAxis: 
-  DPadHorizontalAxis: 
-  DPadVerticalAxis: 
+  LeftTriggerAxis: P3_LeftTrigger
+  RightTriggerAxis: P3_RightTrigger
+  DPadHorizontalAxis: P3_DPadHorizontal
+  DPadVerticalAxis: P3_DPadVertical
   UltimateButton: P3_Ultimate
-  InteractButton: P1_Interact
+  InteractButton: P3_Interact
   JumpButton: P3_Jump
   BooButton: P3_Boo
   StartButton: 
