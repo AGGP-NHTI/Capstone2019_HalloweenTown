@@ -81,11 +81,8 @@ public class Pawn : MonoBehaviour
         {
             Debug.LogWarning(name + " is trying to be passed input when it has no Candy component assigned!");
         }
-
-        if(value)
-        {
-            MyCandy.IWantCandy();
-        }
+        
+        MyCandy.IWantCandy(value);
     }
 
     public virtual void PassJumpInput(bool value)
