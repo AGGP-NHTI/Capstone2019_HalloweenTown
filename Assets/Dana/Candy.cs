@@ -10,10 +10,13 @@ public class Candy : MonoBehaviour
     public Text testcandy;
     float radius = 3.0f;
     public bool waitforcandy = false;
+    public bool actionButton;
     bool test = true;
+
     void Start()
     {
         testcandy.text = "Candy: " + candy.ToString();
+        actionButton = false;
     }
 
 
@@ -47,6 +50,10 @@ public class Candy : MonoBehaviour
             }
         } */
     }
+
+    
+
+    
 }
 
    

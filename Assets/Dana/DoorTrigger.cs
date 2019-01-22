@@ -27,8 +27,12 @@ public class DoorTrigger : MonoBehaviour
                 {
                     if (dictionary.ContainsKey(script) == false)
                     {
-                        script.candy++;                        
-                        dictionary.Add(script, StartCoroutine(WaitingforCandy(script)));
+                        if (script.actionButton == true)
+                        {
+                            script.candy++;
+                            dictionary.Add(script, StartCoroutine(WaitingforCandy(script)));
+                        }
+                        
                     }
 
                     /*Debug.Log(hitColliders[i].gameObject.name);
