@@ -96,14 +96,14 @@ public class PlayerController : MonoBehaviour
         ControlledPawn.PassLookInput(value);
     }
 
-    protected virtual void PassLeftTriggerInput(bool value)
+    protected virtual void PassLeftTriggerInput(float value)
     {
         if (!ControlledPawn) { return; }
 
         ControlledPawn.PassLeftTriggerInput(value);
     }
 
-    protected virtual void PassRightTriggerInput(bool value)
+    protected virtual void PassRightTriggerInput(float value)
     {
         if (!ControlledPawn) { return; }
 
@@ -149,12 +149,20 @@ public class PlayerController : MonoBehaviour
     {
         //Might not connect to pawn, not sure.
         //Will need to display on the camera of this pawn though, so maybe.
+        if (value)
+        {
+            Debug.Log(name + " START");
+        }
     }
 
     protected virtual void PassSelect(bool value)
     {
         //Might not connect to pawn, not sure.
         //Will need to display on the camera of this pawn though, so maybe.
+        if (value)
+        {
+            Debug.Log(name + " SELECT");
+        }
     }
     #endregion
 }
