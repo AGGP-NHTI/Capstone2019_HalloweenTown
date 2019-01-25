@@ -16,10 +16,10 @@ MonoBehaviour:
   MoveVerticalAxis: P4_Vertical
   LookHorizontalAxis: P4_LookHorizontal
   LookVerticalAxis: P4_LookVertical
-  LeftTriggerAxis: 
-  RightTriggerAxis: 
-  DPadHorizontalAxis: 
-  DPadVerticalAxis: 
+  LeftTriggerAxis: P4_LeftTrigger
+  RightTriggerAxis: P4_RightTrigger
+  DPadHorizontalAxis: P4_DPadHorizontal
+  DPadVerticalAxis: P4_DPadVertical
   UltimateButton: P4_Ultimate
   InteractButton: P4_Interact
   JumpButton: P4_Jump

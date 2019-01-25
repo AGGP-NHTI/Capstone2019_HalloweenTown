@@ -25,7 +25,17 @@ public class InputObject : ScriptableObject
 
     public Vector2 GetMoveVector()
     {
-        return new Vector2(Input.GetAxis(MoveHorizontalAxis), Input.GetAxis(MoveVerticalAxis));
+        Vector2 moveVector = Vector2.zero;
+        if (MoveHorizontalAxis != "")
+        {
+            moveVector.x = Input.GetAxis(MoveHorizontalAxis);
+        }
+        if (MoveVerticalAxis != "")
+        {
+            moveVector.y = Input.GetAxis(MoveVerticalAxis);
+        }
+
+        return moveVector;
     }
 
     public Vector2 GetLookVector()
@@ -33,34 +43,46 @@ public class InputObject : ScriptableObject
         return new Vector2(Input.GetAxis(LookHorizontalAxis), Input.GetAxis(LookVerticalAxis));
     }
 
-    public bool GetLeftTrigger()
+    public float GetLeftTrigger()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        if(LeftTriggerAxis == "")
+        {
+            return 0.0f;
+        }
+        return Input.GetAxis(LeftTriggerAxis);
     }
 
-    public bool GetRightTrigger()
+    public float GetRightTrigger()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        if (RightTriggerAxis == "")
+        {
+            return 0.0f;
+        }
+        return Input.GetAxis(RightTriggerAxis);
     }
 
     public Vector2 GetDPadInput()
     {
-        //NOT YET IMPLEMENTED
-        return Vector2.zero;
+        Vector2 dPadInput = Vector2.zero;
+        if (DPadHorizontalAxis != "")
+        {
+            dPadInput.x = Input.GetAxis(DPadHorizontalAxis);
+        }
+        if (DPadVerticalAxis != "")
+        {
+            dPadInput.y = Input.GetAxis(DPadVerticalAxis);
+        }
+        return dPadInput;
     }
 
     public bool GetUltimateInput()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        return Input.GetButtonDown(UltimateButton);
     }
 
     public bool GetInteractInput()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        return Input.GetButtonDown(InteractButton);
     }
 
     public bool GetJumpInput()
@@ -70,19 +92,24 @@ public class InputObject : ScriptableObject
 
     public bool GetBooInput()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        return Input.GetButtonDown(BooButton);
     }
 
     public bool GetStartInput()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        if(StartButton == "")
+        {
+            return false;
+        }
+        return Input.GetButtonDown(StartButton);
     }
 
     public bool GetSelectInput()
     {
-        //NOT YET IMPLEMENTED
-        return false;
+        if(SelectButton == "")
+        {
+            return false;
+        }
+        return Input.GetButtonDown(SelectButton);
     }
 }

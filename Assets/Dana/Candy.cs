@@ -10,43 +10,30 @@ public class Candy : MonoBehaviour
     public Text testcandy;
     float radius = 3.0f;
     public bool waitforcandy = false;
-    bool test = true;
+    public bool actionButton;
+    public bool xForCandy;
+    public Text xforcandy;
+
     void Start()
     {
         testcandy.text = "Candy: " + candy.ToString();
+        actionButton = false;
+        xForCandy = false;
     }
 
 
     void Update()
     {
         testcandy.text = "Candy: " + candy.ToString();
-        /*
-        if(waitforcandy)
+
+        if (xForCandy)
         {
-            
-                testcandy.text = "Candy: " + candy.ToString();
-                StartCoroutine(WaitingforCandy());
-                test = false;
-            
-            
+            xforcandy.enabled = true;
         }
-        /*if (waitforcandy == false)
+        else
         {
-            while (i < hitColliders.Length)
-            {
-                if (hitColliders[i].gameObject == gameObject)
-                {
-                    waitforcandy = true;
-                    
-                    StartCoroutine(WaitingforCandy());
-
-                    candy++;
-                    testcandy.text = "Candy: " + candy.ToString();
-                }
-                i++;
-            }
-        } */
+            xforcandy.enabled = false;
+        }
     }
+    
 }
-
-   
