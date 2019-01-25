@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boo : MonoBehaviour {
-
+    public AudioSource boo;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,6 +19,7 @@ public class Boo : MonoBehaviour {
         if (value)
         {
             Debug.Log("Boo");
+            boo.Play();
         }
     }
 }
