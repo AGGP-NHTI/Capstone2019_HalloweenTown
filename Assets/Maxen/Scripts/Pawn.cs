@@ -8,7 +8,9 @@ public class Pawn : MonoBehaviour
     public LookScript MyLookScript;
     public Camera MyCamera;
     public Candy MyCandy;
-
+    public Boo MyBoo;
+    public Egg myEgg;
+    
     [HideInInspector]
     public PlayerController MyController;
 
@@ -60,6 +62,7 @@ public class Pawn : MonoBehaviour
         {
             Debug.Log(name + " left trigger: " + value);
         }
+        
     }
 
     public virtual void PassRightTriggerInput(float value)
@@ -68,6 +71,13 @@ public class Pawn : MonoBehaviour
         {
             Debug.Log(name + " right trigger: " + value);
         }
+        if (!myEgg)
+        {
+            Debug.LogWarning(name + " is trying to be passed input when it has no Egg component assigned!");
+            return;
+        }
+        myEgg.throwEgg(value);
+
     }
 
     public virtual void PassDPadInput(Vector2 value)
@@ -116,10 +126,13 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassBooInput(bool value)
     {
-        if (value)
+        if (!MyBoo)
         {
-            Debug.Log(name + " BOO!");
+            Debug.LogWarning(name + " is trying to be passed input when it has no Boo component assigned!");
+            return;
+
         }
+        MyBoo.GoBoo(value);
     }
     #endregion
 }
