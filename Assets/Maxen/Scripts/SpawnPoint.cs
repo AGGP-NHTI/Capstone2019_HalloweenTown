@@ -7,6 +7,8 @@ public class SpawnPoint : MonoBehaviour {
     public static List<SpawnPoint> ActiveSpawns = new List<SpawnPoint>();
 
     protected bool isValid;
+    public float spawnValidityCheckRadius = 2.0f;
+    public LayerMask spawnValidityCheckLayerMask;
 
     public static SpawnPoint GetRandomSpawn()
     {
@@ -20,7 +22,26 @@ public class SpawnPoint : MonoBehaviour {
 
     public static SpawnPoint GetRandomValidSpawn()
     {
-        return null;
+        if (ActiveSpawns.Count <= 0)
+        {
+            return null;
+        }
+
+        List<SpawnPoint> validSpawns = new List<SpawnPoint>();
+        foreach(SpawnPoint sp in ActiveSpawns)
+        {
+            if(sp.CheckValidity())
+            {
+                validSpawns.Add(sp);
+            }
+        }
+
+        if(validSpawns.Count <= 0)
+        {
+            return GetRandomSpawn();
+        }
+
+        return validSpawns[Random.Range(0, validSpawns.Count)];
     }
 
     protected virtual void Awake()
@@ -28,15 +49,30 @@ public class SpawnPoint : MonoBehaviour {
         ActiveSpawns.Add(this);
     }
 
+    private void OnEnable()
+    {
+        if(!ActiveSpawns.Contains(this))
+        {
+            ActiveSpawns.Add(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        ActiveSpawns.Remove(this);
+    }
+
     protected virtual void OnDestroy()
     {
         ActiveSpawns.Remove(this);
     }
 
-    /*public virtual bool CheckValidity()
+    public virtual bool CheckValidity()
     {
-        Physics.OverlapSphere(transform.position);
-    }*/
+        isValid = !Physics.CheckSphere(transform.position, spawnValidityCheckRadius, spawnValidityCheckLayerMask, QueryTriggerInteraction.UseGlobal);
+
+        return isValid;
+    }
 
     public virtual void SpawnPlayer(PlayerController pc, GameObject pawnPrefab)
     {

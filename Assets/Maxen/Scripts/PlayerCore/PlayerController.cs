@@ -5,15 +5,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public InputObject playerInput;
-    [SerializeField] protected Pawn _controlledPawn;
-    private void Start()
+    public uint PlayerNumber
     {
-        if (_controlledPawn)
+        get
         {
-            OnGainControl();
+            if(playerInput)
+            {
+                return playerInput.PlayerNumber;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 
+    [SerializeField] protected Pawn _controlledPawn;
     public Pawn ControlledPawn
     {
         get { return _controlledPawn; }
@@ -31,6 +38,14 @@ public class PlayerController : MonoBehaviour
         }
     }
     public bool IsControllingPawn { get { return _controlledPawn; } }
+
+    private void Start()
+    {
+        if (_controlledPawn)
+        {
+            OnGainControl();
+        }
+    }
 
     protected virtual void Update()
     {
