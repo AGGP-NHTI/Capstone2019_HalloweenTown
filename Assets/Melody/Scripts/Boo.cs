@@ -19,7 +19,10 @@ public class Boo : MonoBehaviour {
         if (value)
         {
             Debug.Log("Boo");
-            boo.Play();
+            if(!boo.isPlaying)
+            {
+                boo.Play();
+            }
         }
     }
 }
