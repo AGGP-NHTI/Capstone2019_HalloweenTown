@@ -24,5 +24,5 @@ MonoBehaviour:
   InteractButton: P2_Interact
   JumpButton: P2_Jump
   BooButton: P2_Boo
-  StartButton: 
-  SelectButton: 
+  StartButton: P2_Start
+  SelectButton: P2_Select
