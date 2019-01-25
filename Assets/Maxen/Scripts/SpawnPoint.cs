@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour {
 
+    #region Variables
+    //List of all spawns in a scene - static.
     public static List<SpawnPoint> ActiveSpawns = new List<SpawnPoint>();
 
+    //Validity checking variables
     protected bool isValid;
     public float spawnValidityCheckRadius = 2.0f;
     public LayerMask spawnValidityCheckLayerMask;
+    #endregion
 
+    #region Static list related stuff
     public static SpawnPoint GetRandomSpawn()
     {
         if (ActiveSpawns.Count <= 0)
@@ -43,7 +48,10 @@ public class SpawnPoint : MonoBehaviour {
 
         return validSpawns[Random.Range(0, validSpawns.Count)];
     }
+    #endregion
 
+    #region Adding/Removing spawnpoint instances to the ActiveSpawns static list
+    //ADDING
     protected virtual void Awake()
     {
         ActiveSpawns.Add(this);
@@ -57,6 +65,7 @@ public class SpawnPoint : MonoBehaviour {
         }
     }
 
+    //REMOVING
     private void OnDisable()
     {
         ActiveSpawns.Remove(this);
@@ -66,7 +75,9 @@ public class SpawnPoint : MonoBehaviour {
     {
         ActiveSpawns.Remove(this);
     }
+    #endregion
 
+    #region SpawnPoint object methods
     public virtual bool CheckValidity()
     {
         isValid = !Physics.CheckSphere(transform.position, spawnValidityCheckRadius, spawnValidityCheckLayerMask, QueryTriggerInteraction.UseGlobal);
@@ -89,4 +100,5 @@ public class SpawnPoint : MonoBehaviour {
             Debug.LogWarning(name + " attempted to spawn prefab " + pawnPrefab.name + " that has no Pawn component!");
         }
     }
+    #endregion
 }
