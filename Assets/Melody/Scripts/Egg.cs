@@ -10,6 +10,7 @@ public class Egg : MonoBehaviour {
     float deadZone;
     public GameObject eggPrefab;
     public Transform leftSpawn;
+    public Vector3 offset;
     Transform model;
     // Use this for initialization
     void Start() {
@@ -48,7 +49,7 @@ public class Egg : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw egg no model component not found!");
                 return;
             }
-            GameObject.Instantiate(eggPrefab, leftSpawn.position, model.rotation);
+            GameObject.Instantiate(eggPrefab, leftSpawn.position + leftSpawn.transform.forward, model.rotation);
             inventory.numberEggs--;
             inventory.UpdateEggCountDisplay();
             
