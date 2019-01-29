@@ -893,6 +893,8 @@ MonoBehaviour:
   testcandy: {fileID: 114998304957766370}
   waitforcandy: 0
   actionButton: 0
+  xForCandy: 0
+  xforcandy: {fileID: 0}
 --- !u!114 &114111810154500646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -951,6 +953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c241e55b154ba19449c33fcd211d23d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boo: {fileID: 0}
+  barrel: {fileID: 0}
 --- !u!114 &114625579863731902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,6 +971,7 @@ MonoBehaviour:
   MyCamera: {fileID: 20543541649374208}
   MyCandy: {fileID: 0}
   MyBoo: {fileID: 0}
+  myEgg: {fileID: 0}
   MyController: {fileID: 0}
 --- !u!114 &114758356851527998
 MonoBehaviour:

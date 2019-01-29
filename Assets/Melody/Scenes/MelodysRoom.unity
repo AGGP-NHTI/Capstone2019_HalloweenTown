@@ -461,6 +461,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5abf50769825d5647b7ffb6f0f378612, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1172859881
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000499559721658, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1215499757
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggPrefab: {fileID: 1778895021635794, guid: 0c0126f391d9ab446b0a1d8fe2eb64ae, type: 2}
+  toiletPaperPrefab: {fileID: 1453956450199670, guid: c3f13b971722d6a46aedfe8241ba1a32,
+    type: 2}
   leftSpawn: {fileID: 2067870659}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &2131370734
