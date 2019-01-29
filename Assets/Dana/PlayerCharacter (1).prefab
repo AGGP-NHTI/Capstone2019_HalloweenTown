@@ -1027,7 +1027,9 @@ MonoBehaviour:
   MyMoveScript: {fileID: 114088471850560280}
   MyLookScript: {fileID: 114523717310474980}
   MyCamera: {fileID: 20995015130987112}
-  MyCandy: {fileID: 0}
+  MyCandy: {fileID: 114802209100391056}
+  MyBoo: {fileID: 0}
+  myEgg: {fileID: 0}
   MyController: {fileID: 0}
 --- !u!114 &114802209100391056
 MonoBehaviour:
@@ -1044,6 +1046,8 @@ MonoBehaviour:
   testcandy: {fileID: 114273797148567474}
   waitforcandy: 0
   actionButton: 0
+  xForCandy: 0
+  xforcandy: {fileID: 0}
 --- !u!135 &135569550552790444
 SphereCollider:
   m_ObjectHideFlags: 1

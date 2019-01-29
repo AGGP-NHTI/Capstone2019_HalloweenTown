@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class Boo : MonoBehaviour {
     public AudioSource boo;
-    bool canBoo = true;
     public GameObject barrel;
+    public GameObject Model;
 
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-    }
+    public int radiusOfBoo = 60;
+    bool canBoo = true;    
 
     public void GoBoo(bool value)
     {
         if (value && canBoo)
-        {
-            Debug.Log("Boo");
+        {            
             if(!boo.isPlaying)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 1.0f);
@@ -31,15 +24,28 @@ public class Boo : MonoBehaviour {
                     {
                         if(hitColliders[i].transform.position != transform.position)
                         {
-                            Debug.Log("Hit Player");
+                            Debug.Log("Boo");
+
+                            GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;
+                            float difference = otherModel.transform.rotation.eulerAngles.y - Model.transform.rotation.eulerAngles.y;
+
+                            //checks if the difference is a negative value
+                            if(Mathf.Sign(difference) == -1)
+                            {
+                                difference *= -1;
+                            }
+
+                            if (difference <= radiusOfBoo)
+                            {                                
+                                Debug.Log("Player is Booed");   //add damage here
+                            }                            
                         }
                     }
                 }
-
                 boo.Play();
-            }
-            canBoo = false;
-            StartCoroutine(WaitingToBoo());
+                canBoo = false;
+                StartCoroutine(WaitingToBoo());
+            }            
         }
     }
 
@@ -47,6 +53,5 @@ public class Boo : MonoBehaviour {
     {
         yield return new WaitForSeconds(3);
         canBoo = true;
-        //Debug.Log(Time.time);
     }
 }
