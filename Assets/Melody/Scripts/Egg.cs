@@ -82,7 +82,7 @@ public class Egg : MonoBehaviour {
                 selectedWeaponIndex -= 1;
             }
         }
-        if (currentDPadY > 0.5f && previousDPadY >= 0.5f)
+        if (currentDPadY > 0.5f && previousDPadY <= 0.5f)
         {
             if (selectedWeaponIndex == weaponList.Count - 1)
             {
