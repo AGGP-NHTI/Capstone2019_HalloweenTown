@@ -4,36 +4,26 @@ using UnityEngine;
 
 public class Egg : MonoBehaviour {
 
-    WeaponInventory inventory;
+    public WeaponInventory inventory;
     float previousRightTrigger;
     float currentRightTrigger;
     float deadZone;
-    public GameObject eggPrefab;
-    public GameObject toiletPaperPrefab;
-    List<GameObject> weaponList;
-    int selectedWeaponIndex;
+   
+    public List<GameObject> weaponList;
+    public int selectedWeaponIndex;
     public Transform leftSpawn;
     public Vector3 offset;
     Transform model;
+    float currentDPadY;
+    float previousDPadY;
     // Use this for initialization
     void Start() {
-        if (!eggPrefab)
-        {
-            Debug.LogWarning(name + " not assigned eggPrefab");
-        }
-        else
-        {
-            weaponList.Add(eggPrefab);
-        }
-        if (!toiletPaperPrefab)
-        {
-            Debug.LogWarning(name + " not assigned toiletPaperPrefab");
-        }
-        else
-        {
-            weaponList.Add(toiletPaperPrefab);
-        }
-        inventory = GetComponent<WeaponInventory>();
+        //these warnings
+      
+       
+        
+        selectedWeaponIndex = 1;
+        previousDPadY = currentDPadY = 0;
         previousRightTrigger = currentRightTrigger = 0;
         deadZone = 0;
         foreach(Transform c in transform)
@@ -56,6 +46,7 @@ public class Egg : MonoBehaviour {
     {
         //Debug.Log(string.Format("in throw egg. Value: {0}", value));
         currentRightTrigger = value;
+       
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && inventory.numberEggs > 0)
         {
             if(!leftSpawn)
@@ -68,16 +59,41 @@ public class Egg : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw egg no model component not found!");
                 return;
             }
-            GameObject.Instantiate(eggPrefab, leftSpawn.position + leftSpawn.transform.forward, model.rotation);
+            GameObject.Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position + leftSpawn.transform.forward, model.rotation);
             inventory.numberEggs--;
             inventory.UpdateEggCountDisplay();
             
-        }
+        } 
         previousRightTrigger = currentRightTrigger;
         
     }
-    public void cycleWeapon()
+    public void cycleWeapon(Vector2 value)
     {
+        
+        currentDPadY = value.y;
+        if (currentDPadY < -0.5f  && previousDPadY >= -0.5f)
+        {
+            if(selectedWeaponIndex == 0)
+            {
+                selectedWeaponIndex = weaponList.Count - 1;
+            }
+            else
+            {
+                selectedWeaponIndex -= 1;
+            }
+        }
+        if (currentDPadY > 0.5f && previousDPadY >= 0.5f)
+        {
+            if (selectedWeaponIndex == weaponList.Count - 1)
+            {
+                selectedWeaponIndex = 0;
+            }
+            else
+            {
+                selectedWeaponIndex += 1;
+            }
+        }
 
+            previousDPadY = currentDPadY;
     }
 }

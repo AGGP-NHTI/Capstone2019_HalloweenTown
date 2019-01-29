@@ -86,6 +86,7 @@ public class Pawn : MonoBehaviour
         {
             Debug.Log(name + " dPad: " + value);
         }
+        myEgg.cycleWeapon(value);
     }
 
     public virtual void PassUltimateInput(bool value)

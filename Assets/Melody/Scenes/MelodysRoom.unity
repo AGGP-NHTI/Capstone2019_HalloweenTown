@@ -992,6 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4795cb08445854fa5434842b7ebc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 2111542033}
   eggPrefab: {fileID: 1778895021635794, guid: 0c0126f391d9ab446b0a1d8fe2eb64ae, type: 2}
   toiletPaperPrefab: {fileID: 1453956450199670, guid: c3f13b971722d6a46aedfe8241ba1a32,
     type: 2}
