@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Manager : MonoBehaviour {
-        
+public class Manager : MonoBehaviour
+{
+    public RoundManager roundMode;
     public GameObject playercontroller;
     public GameObject playerPrefab;
     public List<InputObject> io;
     List<bool> joinedGame = new List<bool>();
     List<bool> readyUp = new List<bool>();
    // public Text countDown;
-    
-    Coroutine timer;
+    Coroutine startGameTimer;
 
     bool startGame = true;
-	void Start () {
+	void Start ()
+    {
         //sets list of bools to false
         
         for(int i = 0; i < 4; i++)
@@ -64,10 +65,10 @@ public class Manager : MonoBehaviour {
             if(allPlayersReady && onePlayerInGame)
             {
                 
-                if (timer == null)
+                if (startGameTimer == null)
                 {
                     Debug.Log("timer");
-                    timer = StartCoroutine(BeginGameCountDown());
+                    startGameTimer = StartCoroutine(BeginGameCountDown());
                 }
             }
             
