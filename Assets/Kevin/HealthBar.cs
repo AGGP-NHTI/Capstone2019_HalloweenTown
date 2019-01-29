@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour {
 	
 	void Start () {
 
-        health = startHealth;
+        health = 0f;
 
 	}
 
@@ -23,11 +23,20 @@ public class HealthBar : MonoBehaviour {
         healthBar.fillAmount = health / startHealth;
 
     }
+    public void HealHealth(float amount) // this is how the damage needs to work for fillAmount.
+    {
+        health += amount;
+
+        healthBar.fillAmount = health / startHealth;
+
+    }
 
     private void Update()
     {
-        //health -= 10;
-        //healthBar.fillAmount = health / startHealth;
+        if (health != 110)
+        {
+            HealHealth(1f);
+        }      
     }
 
 }
