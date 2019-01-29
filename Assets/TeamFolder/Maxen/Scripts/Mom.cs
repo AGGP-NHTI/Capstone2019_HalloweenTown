@@ -13,6 +13,8 @@ public class Mom : MonoBehaviour
     public float collectPlayerRange = 2.0f;
     public LayerMask PlayerLayerMask;
 
+    public float moveSpeed = 3.0f;
+
 	public virtual void FindPlayers(List<PlayerController> listOfPlayers)
     {
         foreach(PlayerController pc in listOfPlayers)
@@ -27,19 +29,27 @@ public class Mom : MonoBehaviour
 
     private void Update()
     {
-        if(huntChildren)
+        if (huntChildren)
         {
-            //Capture targetPlayer if they are within range
-            float targetSqrDistance = (targetPlayer.transform.position - transform.position).sqrMagnitude;
-            if (targetSqrDistance < collectPlayerRange * collectPlayerRange)
+            if (!targetPlayer)
             {
-                RemainingPlayersToFind.Remove(targetPlayer);
-                Destroy(targetPlayer);
                 targetPlayer = FindNewTarget(RemainingPlayersToFind);
-                if(!targetPlayer)
+                if (!targetPlayer)
                 {
                     huntChildren = false;
+                    return;
                 }
+            }
+
+            //Capture targetPlayer if they are within range
+            Vector3 vectorToTarget = targetPlayer.transform.position - transform.position;
+            float targetSqrDistance = vectorToTarget.sqrMagnitude;
+            Debug.Log(targetSqrDistance);
+            if (targetSqrDistance < collectPlayerRange * collectPlayerRange)
+            {
+                Debug.Log("target in range!");
+                RemainingPlayersToFind.Remove(targetPlayer);
+                Destroy(targetPlayer.gameObject);
             }
 
             //Figure out if players are nearby
@@ -59,6 +69,16 @@ public class Mom : MonoBehaviour
             if (newTargetCandidate && newTargetCandidate != targetPlayer)
             {
                 targetPlayer = newTargetCandidate;
+            }
+
+            transform.forward = vectorToTarget;
+            if (targetSqrDistance > moveSpeed * moveSpeed)
+            {
+                transform.position += vectorToTarget.normalized * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position = targetPlayer.transform.position;
             }
         }
     }
