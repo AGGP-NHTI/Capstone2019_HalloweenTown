@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour {
 	
 	void Start () {
 
-        health = 0f;
+       health = startHealth;
 
 	}
 
@@ -33,10 +33,10 @@ public class HealthBar : MonoBehaviour {
 
     private void Update()
     {
-        if (health != 110)
+        /*if (health != 110)
         {
             HealHealth(1f);
-        }      
+        }  */    
     }
 
 }

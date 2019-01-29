@@ -36,8 +36,10 @@ public class Boo : MonoBehaviour {
                             }
 
                             if (difference <= radiusOfBoo)
-                            {                                
-                                Debug.Log("Player is Booed");   //add damage here
+                            {
+                                Debug.Log("Got Booed");
+                                HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
+                                hb.TakeDamage(20f);
                             }                            
                         }
                     }

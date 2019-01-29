@@ -7,16 +7,16 @@ public class Candy : MonoBehaviour
 {
 
     public int candy = 0;
-    public Text testcandy;
+   //public Text testcandy;
     float radius = 3.0f;
     public bool waitforcandy = false;
     public bool actionButton;
     public bool xForCandy;
-    public Text xforcandy;
+    //public Text xforcandy;
 
     void Start()
     {
-        testcandy.text = "Candy: " + candy.ToString();
+        //testcandy.text = "Candy: " + candy.ToString();
         actionButton = false;
         xForCandy = false;
     }
@@ -24,15 +24,15 @@ public class Candy : MonoBehaviour
 
     void Update()
     {
-        testcandy.text = "Candy: " + candy.ToString();
+        //testcandy.text = "Candy: " + candy.ToString();
 
         if (xForCandy)
         {
-            xforcandy.enabled = true;
+            //xforcandy.enabled = true;
         }
         else
         {
-            xforcandy.enabled = false;
+            //xforcandy.enabled = false;
         }
     }
     
