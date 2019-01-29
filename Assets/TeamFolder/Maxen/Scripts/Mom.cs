@@ -5,6 +5,8 @@ using UnityEngine;
 //THIS CLASS WILL BE MADE RESPONSIBLE FOR MUCH LESS ONCE WE GET A REAL MOM THAT HAS AI
 public class Mom : MonoBehaviour
 {
+    public bool huntChildren = false;
+
     public List<Pawn> RemainingPlayersToFind;
     public Pawn targetPlayer;
     public float reconsiderTargetRange = 7.0f;
@@ -25,48 +27,65 @@ public class Mom : MonoBehaviour
 
     private void Update()
     {
-        //Capture targetPlayer if they are within range
-        float targetSqrDistance = (targetPlayer.transform.position - transform.position).sqrMagnitude;
-        if(targetSqrDistance < collectPlayerRange * collectPlayerRange)
+        if(huntChildren)
         {
-            RemainingPlayersToFind.Remove(targetPlayer);
-            Destroy(targetPlayer);
+            //Capture targetPlayer if they are within range
+            float targetSqrDistance = (targetPlayer.transform.position - transform.position).sqrMagnitude;
+            if (targetSqrDistance < collectPlayerRange * collectPlayerRange)
+            {
+                RemainingPlayersToFind.Remove(targetPlayer);
+                Destroy(targetPlayer);
+                targetPlayer = FindNewTarget(RemainingPlayersToFind);
+                if(!targetPlayer)
+                {
+                    huntChildren = false;
+                }
+            }
 
+            //Figure out if players are nearby
+            Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, reconsiderTargetRange, PlayerLayerMask);
+            List<Pawn> nearbyPawns = new List<Pawn>();
+            foreach (Collider c in nearbyPlayers)
+            {
+                Pawn foundPawn = c.GetComponent<Pawn>();
+                if (foundPawn)
+                {
+                    nearbyPawns.Add(foundPawn);
+                }
+            }
+            Pawn newTargetCandidate = FindNewTarget(nearbyPawns);
+
+            //Change targetPlayer if necessary
+            if (newTargetCandidate && newTargetCandidate != targetPlayer)
+            {
+                targetPlayer = newTargetCandidate;
+            }
         }
+    }
 
-        //Figure out if players are nearby
-        Collider[] nearbyPlayers = Physics.OverlapSphere(transform.position, reconsiderTargetRange, PlayerLayerMask);
+    public Pawn FindNewTarget(List<Pawn> possiblePawns)
+    {
         Pawn newTargetCandidate = null;
         int targetCandidateCandyCount = 0;
-        foreach(Collider c in nearbyPlayers)
+        foreach (Pawn p in possiblePawns)
         {
-            Pawn foundPawn = c.GetComponent<Pawn>();
-            if(foundPawn)
+            //Figure out the richest nearby player, and select them as the new target. If there's a tie, the nearest player gets picked.
+            if (!newTargetCandidate || p.MyCandy.candy > newTargetCandidate.MyCandy.candy)
             {
-                //Figure out the richest nearby player, and select them as the new target. If there's a tie, the nearest player gets picked.
-                if (!newTargetCandidate || foundPawn.MyCandy.candy > newTargetCandidate.MyCandy.candy)
+                newTargetCandidate = p;
+                targetCandidateCandyCount = p.MyCandy.candy;
+            }
+            else if (newTargetCandidate && p.MyCandy.candy == newTargetCandidate.MyCandy.candy)
+            {
+                float foundPawnSqrDistance = (p.transform.position - transform.position).sqrMagnitude;
+                float targetCandidateSqrDistance = (newTargetCandidate.transform.position - transform.position).sqrMagnitude;
+                if (foundPawnSqrDistance < targetCandidateCandyCount)
                 {
-                    newTargetCandidate = foundPawn;
-                    targetCandidateCandyCount = foundPawn.MyCandy.candy;
-                }
-                else if(newTargetCandidate && foundPawn.MyCandy.candy == newTargetCandidate.MyCandy.candy)
-                {
-                    float foundPawnSqrDistance = (foundPawn.transform.position - transform.position).sqrMagnitude;
-                    float targetCandidateSqrDistance = (newTargetCandidate.transform.position - transform.position).sqrMagnitude;
-                    if(foundPawnSqrDistance < targetCandidateCandyCount)
-                    {
-                        newTargetCandidate = foundPawn;
-                    }
+                    newTargetCandidate = p;
                 }
             }
         }
 
-        //Change targetPlayer if necessary
-        if(newTargetCandidate && newTargetCandidate != targetPlayer)
-        {
-            targetPlayer = newTargetCandidate;
-        }
+        return newTargetCandidate;
     }
-
-    //public void FindNew
 }

@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     public List<InputObject> inputObject;
     List<bool> joinedGame = new List<bool>();
     List<bool> readyUp = new List<bool>();
+    [HideInInspector]public List<PlayerController> activePlayers;
    // public Text countDown;
     Coroutine startGameTimer;
 
@@ -23,10 +24,10 @@ public class Manager : MonoBehaviour
             joinedGame.Add(false);
             readyUp.Add(false);
         }
-		
 	}
 	
-	void Update () {
+	void Update ()
+    {
         if (startGame)
         {
             bool allPlayersReady = true;
@@ -94,14 +95,19 @@ public class Manager : MonoBehaviour
 
     void SpawnPlayers()
     {
+        activePlayers = new List<PlayerController>();
+
         for(int i = 0; i< inputObject.Count; i++)
         {
             if(joinedGame[i] && readyUp[i])
             {
                 GameObject spawnedBoy = Instantiate(playercontroller, Vector3.zero, Quaternion.identity);
-                spawnedBoy.GetComponent<PlayerController>().playerInput = inputObject[i];
+                PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
+                pc.playerInput = inputObject[i];
 
-                SpawnPoint.GetRandomValidSpawn().SpawnPlayer(spawnedBoy.GetComponent<PlayerController>(), playerPrefab);
+                SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);
+
+                activePlayers.Add(pc);
             }
         }
 

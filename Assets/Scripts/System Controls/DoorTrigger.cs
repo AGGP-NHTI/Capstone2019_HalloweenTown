@@ -23,7 +23,7 @@ public class DoorTrigger : MonoBehaviour
             if (hitColliders[i].tag == "Player")
             {
                 script = hitColliders[i].gameObject.GetComponent<Candy>();
-                script.xForCandy = true;
+                script.showXForCandy = true;
                 if (script != null)
                 {
                     if (dictionary.ContainsKey(script) == false)
@@ -44,7 +44,7 @@ public class DoorTrigger : MonoBehaviour
                         script.WaitForCandy();
                     }*/
                 }
-                script.xForCandy = false;
+                script.showXForCandy = false;
             }
            
             i++;

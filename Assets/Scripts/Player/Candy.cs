@@ -11,28 +11,37 @@ public class Candy : MonoBehaviour
     float radius = 3.0f;
     public bool waitforcandy = false;
     public bool actionButton;
-    public bool xForCandy;
-    public Text xforcandy;
+    public bool showXForCandy;
+    public Text xForCandyText;
 
     void Start()
     {
-        testcandy.text = "Candy: " + candy.ToString();
+        if (testcandy)
+        {
+            testcandy.text = "Candy: " + candy.ToString();
+        }
         actionButton = false;
-        xForCandy = false;
+        showXForCandy = false;
     }
 
 
     void Update()
     {
-        testcandy.text = "Candy: " + candy.ToString();
-
-        if (xForCandy)
+        if(testcandy)
         {
-            xforcandy.enabled = true;
+            testcandy.text = "Candy: " + candy.ToString();
         }
-        else
+
+        if(xForCandyText)
         {
-            xforcandy.enabled = false;
+            if (showXForCandy)
+            {
+                xForCandyText.enabled = true;
+            }
+            else
+            {
+                xForCandyText.enabled = false;
+            }
         }
     }
     

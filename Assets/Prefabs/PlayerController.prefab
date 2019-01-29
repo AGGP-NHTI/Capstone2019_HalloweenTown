@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: 50840f44d6b771a4ca8523a26d96d0ad, type: 2}
-  ControlledPawn: {fileID: 0}
+  _controlledPawn: {fileID: 0}

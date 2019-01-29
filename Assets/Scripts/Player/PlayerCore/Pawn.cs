@@ -86,6 +86,12 @@ public class Pawn : MonoBehaviour
         {
             Debug.Log(name + " dPad: " + value);
         }
+
+        if (!myEgg)
+        {
+            Debug.LogWarning(name + " is trying to be passed input when it has no Egg component assigned!");
+            return;
+        }
         myEgg.cycleWeapon(value);
     }
 

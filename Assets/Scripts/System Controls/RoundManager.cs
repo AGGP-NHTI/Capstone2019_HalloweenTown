@@ -29,7 +29,7 @@ public class RoundManager : MonoBehaviour {
     #region Specific Phase Variables
     [Header("Round Ending")]
     public GameObject momPrefab;
-    public GameObject spawnedMom;
+    [HideInInspector] public GameObject spawnedMom;
 
     [Header("Round Over")]
     public float timeBeforeReturningToMenu = 5.0f;
@@ -98,7 +98,7 @@ public class RoundManager : MonoBehaviour {
         //Maybe move player spawning here. Otherwise only necessary for future-proofing.
         while(currentPhase == RoundPhase.ROUND_STARTING)
         {
-            if (roundElapsedTime >= roundStartEndTime)
+            if (roundElapsedTime >= roundStartEndTime && roundStartEndTime > 0.0f)
             {
                 currentPhase = RoundPhase.ROUND_RUNNING;
             }
@@ -114,7 +114,7 @@ public class RoundManager : MonoBehaviour {
         //Probably manage scoreboard stuff here
         while(currentPhase == RoundPhase.ROUND_RUNNING)
         {
-            if (roundElapsedTime >= roundRunningEndTime)
+            if (roundElapsedTime >= roundRunningEndTime && roundRunningEndTime > 0.0f)
             {
                 currentPhase = RoundPhase.ROUND_ENDING;
             }
@@ -129,7 +129,8 @@ public class RoundManager : MonoBehaviour {
     {
         spawnedMom = Instantiate(momPrefab);
         Mom momClass = spawnedMom.GetComponent<Mom>();
-        //momClass.FindPlayers(myManager.)  Get playerControllers from manager class
+        momClass.FindPlayers(myManager.activePlayers);
+        momClass.huntChildren = true;
 
         while(currentPhase == RoundPhase.ROUND_ENDING)
         {
