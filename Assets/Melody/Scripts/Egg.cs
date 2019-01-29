@@ -9,10 +9,30 @@ public class Egg : MonoBehaviour {
     float currentRightTrigger;
     float deadZone;
     public GameObject eggPrefab;
+    public GameObject toiletPaperPrefab;
+    List<GameObject> weaponList;
+    int selectedWeaponIndex;
     public Transform leftSpawn;
+    public Vector3 offset;
     Transform model;
     // Use this for initialization
     void Start() {
+        if (!eggPrefab)
+        {
+            Debug.LogWarning(name + " not assigned eggPrefab");
+        }
+        else
+        {
+            weaponList.Add(eggPrefab);
+        }
+        if (!toiletPaperPrefab)
+        {
+            Debug.LogWarning(name + " not assigned toiletPaperPrefab");
+        }
+        else
+        {
+            weaponList.Add(toiletPaperPrefab);
+        }
         inventory = GetComponent<WeaponInventory>();
         previousRightTrigger = currentRightTrigger = 0;
         deadZone = 0;
@@ -34,7 +54,7 @@ public class Egg : MonoBehaviour {
 
     public void throwEgg(float value)
     {
-        Debug.Log(string.Format("in throw egg. Value: {0}", value));
+        //Debug.Log(string.Format("in throw egg. Value: {0}", value));
         currentRightTrigger = value;
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && inventory.numberEggs > 0)
         {
@@ -48,12 +68,16 @@ public class Egg : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw egg no model component not found!");
                 return;
             }
-            GameObject.Instantiate(eggPrefab, leftSpawn.position, model.rotation);
+            GameObject.Instantiate(eggPrefab, leftSpawn.position + leftSpawn.transform.forward, model.rotation);
             inventory.numberEggs--;
             inventory.UpdateEggCountDisplay();
             
         }
         previousRightTrigger = currentRightTrigger;
         
+    }
+    public void cycleWeapon()
+    {
+
     }
 }

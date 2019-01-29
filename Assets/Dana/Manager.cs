@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour {
         
-    Pawn pawn;
-    //public List<GameObject> spawnpts;
+    public GameObject playercontroller;
+    public GameObject playerPrefab;
     public List<InputObject> io;
     List<bool> joinedGame = new List<bool>();
     List<bool> readyUp = new List<bool>();
-
-
+   // public Text countDown;
+    
     Coroutine timer;
 
     bool startGame = true;
@@ -71,11 +72,44 @@ public class Manager : MonoBehaviour {
             }
             
         }
+        
 	}
 
     IEnumerator BeginGameCountDown()
     {
-        yield return new WaitForSeconds(5);
-        startGame = false;        
+        startGame = false;
+
+        float duration = 5f; 
+        float endTime = 0;
+        while (duration>= endTime)
+        {
+            //countDown.text = Mathf.Round(duration).ToString();
+            duration -= Time.deltaTime;
+            yield return null;
+        }
+        
+        //countDown.text = Mathf.Round(Time.time).ToString();
+        
+        SpawnPlayers();
+        
+    }
+
+    void SpawnPlayers()
+    {
+        //Instantiate(playercontroller, Vector3.zero, Quaternion.identity);
+        //SpawnPoint.ActiveSpawns[0].SpawnPlayer;
+        for(int i = 0; i< io.Count; i++)
+        {
+            if(joinedGame[i] && readyUp[i])
+            {
+                GameObject spawnedBoy = Instantiate(playercontroller, Vector3.zero, Quaternion.identity);
+                spawnedBoy.GetComponent<PlayerController>().playerInput = io[i];
+
+                SpawnPoint.GetRandomValidSpawn().SpawnPlayer(spawnedBoy.GetComponent<PlayerController>(), playerPrefab);
+            }
+
+        }
+
+        SplitScreenManager.Instance.ConfigureScreenSpace();
     }
 }
