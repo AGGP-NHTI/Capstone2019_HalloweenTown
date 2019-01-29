@@ -15,6 +15,7 @@ public class RoundManager : MonoBehaviour {
         ROUND_OVER
     }
     [Header("Round Management Variables")]
+    public Manager myManager;
     public RoundPhase currentPhase = RoundPhase.PRE_GAME;
     protected Coroutine ActiveLogicRoutine;
 
@@ -27,7 +28,8 @@ public class RoundManager : MonoBehaviour {
 
     #region Specific Phase Variables
     [Header("Round Ending")]
-    GameObject momPrefab;
+    public GameObject momPrefab;
+    public GameObject spawnedMom;
 
     [Header("Round Over")]
     public float timeBeforeReturningToMenu = 5.0f;
@@ -125,13 +127,16 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundEndingLogic()
     {
+        spawnedMom = Instantiate(momPrefab);
+        Mom momClass = spawnedMom.GetComponent<Mom>();
+        //momClass.FindPlayers(myManager.)  Get playerControllers from manager class
+
         while(currentPhase == RoundPhase.ROUND_ENDING)
         {
-            if (roundElapsedTime >= roundEndingEndTime)
+            if(momClass.RemainingPlayersToFind.Count <= 0)
             {
                 currentPhase = RoundPhase.ROUND_OVER;
             }
-
             yield return null;
         }
         
