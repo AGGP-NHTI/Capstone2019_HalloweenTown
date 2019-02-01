@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4871944866744842}
   - component: {fileID: 114804008596638940}
   m_Layer: 9
-  m_Name: justModel
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

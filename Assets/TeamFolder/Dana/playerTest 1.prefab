@@ -214,7 +214,6 @@ GameObject:
   - component: {fileID: 114843247697677412}
   - component: {fileID: 114826779481496426}
   - component: {fileID: 114739240249491342}
-  - component: {fileID: 114473355319974760}
   - component: {fileID: 114565792227927230}
   - component: {fileID: 114232376446937778}
   - component: {fileID: 114372627896307026}
@@ -329,7 +328,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1845284288991574
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -388,9 +387,8 @@ Transform:
   - {fileID: 4412512055286186}
   - {fileID: 4195368660897156}
   - {fileID: 4712784701504910}
-  - {fileID: 4875794208239142}
   m_Father: {fileID: 4054800304494186}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4054800304494186
 Transform:
@@ -399,9 +397,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658613415614286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4635518, y: -1.9837149e-16, z: 8.933858}
+  m_LocalPosition: {x: 3.8668008, y: 1.1990438e-17, z: -0.54000133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4875794208239142}
   - {fileID: 4011352338219590}
   - {fileID: 4087352419970042}
   m_Father: {fileID: 0}
@@ -419,7 +418,7 @@ Transform:
   m_Children:
   - {fileID: 4753220067205014}
   m_Father: {fileID: 4054800304494186}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4146057034912680
 Transform:
@@ -581,8 +580,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.16, z: 1.049}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4011352338219590}
-  m_RootOrder: 4
+  m_Father: {fileID: 4054800304494186}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20074297382974372
 Camera:
@@ -1093,7 +1092,7 @@ MonoBehaviour:
   MyCamera: {fileID: 20074297382974372}
   MyCandy: {fileID: 114826779481496426}
   MyBoo: {fileID: 114739240249491342}
-  myEgg: {fileID: 114473355319974760}
+  myProjectileManager: {fileID: 0}
   MyInteractManager: {fileID: 114232376446937778}
   myMask: {fileID: 114372627896307026}
   MyController: {fileID: 0}
@@ -1231,6 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10802393f873e940abca972cc2b8c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyPawn: {fileID: 114033654672841998}
   selectedInteractable: {fileID: 0}
   interactionRange: 3
 --- !u!114 &114295033943155968
@@ -1257,6 +1257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ultButton: 0
+  interactButton: 0
   playerPref: {fileID: 1516650407040434, guid: b709bbcd485ecf5418e5de979722d87d, type: 2}
   ghostPref: {fileID: 1459857841415240, guid: a5456110c7b61354887dc02d611b0eb9, type: 2}
   currentModel: {fileID: 1231671617047948}
@@ -1281,22 +1282,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114473355319974760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1658613415614286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4795cb08445854fa5434842b7ebc6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  weaponList: []
-  selectedWeaponIndex: 0
-  leftSpawn: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114565792227927230
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 114834288857831420}
   - component: {fileID: 114478735275913418}
   m_Layer: 9
-  m_Name: playerghostTEST
+  m_Name: playerTEST
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -629,9 +629,8 @@ MonoBehaviour:
   MyCamera: {fileID: 20651290885336090}
   MyCandy: {fileID: 114185349465444112}
   MyBoo: {fileID: 114779268247658944}
-  myEgg: {fileID: 114683996690313926}
+  myProjectileManager: {fileID: 0}
   MyInteractManager: {fileID: 114834288857831420}
-  myMask: {fileID: 114478735275913418}
   MyController: {fileID: 0}
 --- !u!114 &114442521261495158
 MonoBehaviour:
@@ -687,11 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4795cb08445854fa5434842b7ebc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  weaponList: []
-  selectedWeaponIndex: 0
-  leftSpawn: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
+  throwForce: 20
+  arcAfterElapsedTime: 5
 --- !u!114 &114775124761771342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -745,6 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10802393f873e940abca972cc2b8c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyPawn: {fileID: 0}
   selectedInteractable: {fileID: 0}
   interactionRange: 3
 --- !u!114 &114900436481738116
