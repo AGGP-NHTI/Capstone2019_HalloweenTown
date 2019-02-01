@@ -117,7 +117,7 @@ public class Pawn : MonoBehaviour
 
         if(value)
         {
-            MyInteractManager.TryToInteract(this);
+            MyInteractManager.TryToInteract();
         }
 
         /*if(!MyCandy)

@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-
-    Candy script;
     float radius = 3.0f;
-    Dictionary<Candy, Coroutine> dictionary = new Dictionary<Candy, Coroutine>();
+    public float CandyCollectionCoolDown = 3.0f;
+
     void Start()
     {
 
     }
 
+    public virtual void RecieveInteract(Pawn source, Interactable myInteractable)
+    {
+        //Make it so that the player can't interact and get more candy until they wait for a bit.
+        myInteractable.PawnsThatCantInteract.Add(source);
+        StartCoroutine(WaitingforCandy(source, myInteractable));
+        
+        //Give candy
+        if(source.MyCandy)
+        {
+            source.MyCandy.candy++;
+        }
+    }
+
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, radius);//for testing
         int i = 0;
@@ -42,7 +54,7 @@ public class DoorTrigger : MonoBehaviour
                     {
                         script.candy++;
                         script.WaitForCandy();
-                    }*/
+                    }*//*
                 }
                 script.showXForCandy = false;
             }
@@ -50,11 +62,12 @@ public class DoorTrigger : MonoBehaviour
             i++;
         }
 
-    }
-    IEnumerator WaitingforCandy(Candy script)
+    }*/
+
+    IEnumerator WaitingforCandy(Pawn interacter, Interactable myInteractable)
     {
-        yield return new WaitForSeconds(3);
-        dictionary.Remove(script);
+        yield return new WaitForSeconds(CandyCollectionCoolDown);
+        myInteractable.PawnsThatCantInteract.Remove(interacter);
         //Debug.Log(Time.time);
     }
 }
