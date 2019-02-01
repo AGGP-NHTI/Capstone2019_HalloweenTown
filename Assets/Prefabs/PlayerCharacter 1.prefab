@@ -89,13 +89,14 @@ GameObject:
   - component: {fileID: 4767037007209448}
   - component: {fileID: 136071755270632876}
   - component: {fileID: 54969067811321112}
+  - component: {fileID: 82477417070614050}
   - component: {fileID: 114337822256865454}
   - component: {fileID: 114675866898328490}
   - component: {fileID: 114771322975251056}
   - component: {fileID: 114927027784808138}
-  - component: {fileID: 82477417070614050}
   - component: {fileID: 114419358322517654}
   - component: {fileID: 114975502059546076}
+  - component: {fileID: 114745792788088588}
   m_Layer: 9
   m_Name: PlayerCharacter 1
   m_TagString: Player
@@ -1257,6 +1258,17 @@ MonoBehaviour:
   minFootstepVelocity: 0.01
   minFootstepBreak: 0.1
   maxFootstepBreak: 2
+--- !u!114 &114745792788088588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322969968266322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ddb702706e4924592f2f48626167d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114749896965508854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1290,9 +1302,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candy: 0
+  testcandy: {fileID: 0}
   waitforcandy: 0
   actionButton: 0
-  xForCandy: 0
+  showXForCandy: 0
+  xForCandyText: {fileID: 0}
 --- !u!114 &114808711818839626
 MonoBehaviour:
   m_ObjectHideFlags: 1

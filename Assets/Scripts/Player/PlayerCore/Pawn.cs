@@ -10,13 +10,14 @@ public class Pawn : MonoBehaviour
     public Candy MyCandy;
     public Boo MyBoo;
     public Egg myEgg;
+    Mask myMask;
     
     [HideInInspector]
     public PlayerController MyController;
 
     protected virtual void Start ()
     {
-		
+        myMask = GetComponent<Mask>();
 	}
 	
 	protected virtual void Update ()
@@ -100,6 +101,7 @@ public class Pawn : MonoBehaviour
         if(value)
         {
             Debug.Log(name + " ultimate!");
+            myMask.ultButton = true;
         }
     }
 
