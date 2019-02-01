@@ -10,6 +10,7 @@ public class Pawn : MonoBehaviour
     public Candy MyCandy;
     public Boo MyBoo;
     public Egg myEgg;
+    public InteractionManager MyInteractManager;
     Mask myMask;
     
     [HideInInspector]
@@ -108,7 +109,18 @@ public class Pawn : MonoBehaviour
     //x button
     public virtual void PassInteractInput(bool value)
     {
-        if(!MyCandy)
+        if(!MyInteractManager)
+        {
+            Debug.LogWarning(name + " is trying to be passed input when it has no InteractionManager component assigned!");
+            return;
+        }
+
+        if(value)
+        {
+            MyInteractManager.TryToInteract(this);
+        }
+
+        /*if(!MyCandy)
         {
             Debug.LogWarning(name + " is trying to be passed input when it has no Candy component assigned!");
             return;
@@ -119,7 +131,7 @@ public class Pawn : MonoBehaviour
         if (value)
         {
             Debug.Log(name + " interact!");
-        }
+        }*/
     }
 
     public virtual void PassJumpInput(bool value)

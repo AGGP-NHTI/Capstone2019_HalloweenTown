@@ -1156,6 +1156,7 @@ MonoBehaviour:
   MyCandy: {fileID: 114771322975251056}
   MyBoo: {fileID: 114927027784808138}
   myEgg: {fileID: 114419358322517654}
+  MyInteractManager: {fileID: 114745792788088588}
   MyController: {fileID: 0}
 --- !u!114 &114360806975532258
 MonoBehaviour:
@@ -1266,9 +1267,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1322969968266322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ddb702706e4924592f2f48626167d4, type: 3}
+  m_Script: {fileID: 11500000, guid: f10802393f873e940abca972cc2b8c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedInteractable: {fileID: 0}
+  interactionRange: 3
 --- !u!114 &114749896965508854
 MonoBehaviour:
   m_ObjectHideFlags: 1

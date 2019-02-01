@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
-    public Pawn MyPawn;
     public Interactable selectedInteractable;
 
     public float interactionRange = 3.0f;
 
-    public virtual void TryToInteract()
+    public virtual void TryToInteract(Pawn source)
     {
         if (selectedInteractable != null)
         {
-            selectedInteractable.Interact(MyPawn);
+            selectedInteractable.Interact(source);
         }
     }
 
