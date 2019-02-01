@@ -30,7 +30,10 @@ public class InteractionManager : MonoBehaviour
         foreach(Collider c in nearbyColliders)
         {
             Interactable i = c.GetComponent<Interactable>();
-            nearbyInteractables.Add(i);
+            if(i)
+            {
+                nearbyInteractables.Add(i);
+            }
         }
 
         //Just using the nearest interactable atm
