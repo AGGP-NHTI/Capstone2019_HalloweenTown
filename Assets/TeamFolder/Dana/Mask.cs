@@ -2,43 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mask : MonoBehaviour {
+public class Mask : MonoBehaviour
+{
 
+    float startHealth;
     bool hasMask = false;
+    public bool ultButton = false;
+    Pawn pawn;
     HealthBar hbar;
-    PlayerController pc;
+    GhostMask gMask;
 
-	void Start () {
+    void Start()
+    {
+        pawn = gameObject.GetComponent<Pawn>();
         hbar = GetComponent<HealthBar>();
-        pc = GetComponent<PlayerController>();
-	}
-	
-	
-	void Update () {
+        gMask = gameObject.AddComponent<GhostMask>();//test script
+    }
 
-        if (pc.playerInput.GetSelectInput())
+
+    void Update()
+    {
+
+        if (ultButton && hasMask == false)
         {
-            //gameObject.AddComponent(GhostMask)
+            Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, 10f);//for testing
+            int i = 0;
+            while (i < hitColliders.Length)
+            {
+                if (hitColliders[i].tag == "Mask")
+                {
+                    hasMask = true;
+                    UpdateHealth();
+                    Destroy(hitColliders[i].gameObject);
+                }
+            }
         }
 
-        if (hasMask)
+        if (ultButton && hasMask)
         {
-            
-            
+            Color color = GetComponent<MeshRenderer>().material.color;
+            color.a -= 0;
+            GetComponent<MeshRenderer>().material.color = color;
         }
-	}
+
+        if (hbar.health <= startHealth)
+        {
+            Destroy(gMask);
+        }
+    }
 
     void UpdateHealth()
     {
+        startHealth = hbar.health;
         hbar.health += 50;
-        hasMask = true;
-    }
-
-    List<InputObject> GetInputs()
-    {
-        List<InputObject> inputObject = new List<InputObject>();
-
-
-        return inputObject;
     }
 }
