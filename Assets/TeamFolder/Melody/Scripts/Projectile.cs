@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    float destroyAfterElapsedTime = 10.0f;
+    protected float elapsedTime = 0.0f;
+    protected Rigidbody rb;
+    protected void Start () {
+        rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	protected void Update () {
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= destroyAfterElapsedTime)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    protected void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }

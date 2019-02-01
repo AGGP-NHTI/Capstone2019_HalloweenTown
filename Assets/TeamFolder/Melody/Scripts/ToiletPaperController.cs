@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToiletPaperController : MonoBehaviour {
+public class ToiletPaperController : Projectile {
 
-    Rigidbody rb;
+    
     public float throwForce;
 
     Vector3 throwAngle;
     // Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
+        base.Start();
         
         throwAngle = (transform.forward + transform.up).normalized * throwForce;
         
@@ -22,8 +22,8 @@ public class ToiletPaperController : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    new void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        base.OnCollisionEnter(collision);
     }
 }
