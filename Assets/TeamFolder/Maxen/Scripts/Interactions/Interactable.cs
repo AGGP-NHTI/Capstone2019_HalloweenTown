@@ -9,7 +9,7 @@ public class InteractEvent : UnityEvent<Pawn, Interactable> { }
 public class Interactable : MonoBehaviour
 {
     public InteractEvent OnInteract;
-    public bool AvailableForInteraction = true;
+    public List<Pawn> PawnsThatCantInteract = new List<Pawn>();
 
     private void Awake()
     {
@@ -22,5 +22,17 @@ public class Interactable : MonoBehaviour
     public virtual void Interact(Pawn source)
     {
         OnInteract.Invoke(source, this);
+    }
+
+    public virtual bool IsInteractable(Pawn source)
+    {
+        if(PawnsThatCantInteract.Contains(source))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

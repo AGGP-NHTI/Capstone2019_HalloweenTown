@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10802393f873e940abca972cc2b8c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyPawn: {fileID: 114337822256865454}
   selectedInteractable: {fileID: 0}
   interactionRange: 3
 --- !u!114 &114749896965508854
