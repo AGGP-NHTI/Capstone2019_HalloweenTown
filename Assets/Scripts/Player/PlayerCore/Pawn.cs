@@ -9,7 +9,7 @@ public class Pawn : MonoBehaviour
     public Camera MyCamera;
     public Candy MyCandy;
     public Boo MyBoo;
-    public Egg myEgg;
+    public ProjectileManager myProjectileManager;
     public InteractionManager MyInteractManager;
     Mask myMask;
     
@@ -73,12 +73,12 @@ public class Pawn : MonoBehaviour
         {
             Debug.Log(name + " right trigger: " + value);
         }
-        if (!myEgg)
+        if (!myProjectileManager)
         {
-            Debug.LogWarning(name + " is trying to be passed input when it has no Egg component assigned!");
+            Debug.LogWarning(name + " is trying to be passed input when it has no Projectile Manager component assigned!");
             return;
         }
-        myEgg.throwEgg(value);
+        myProjectileManager.throwEgg(value);
 
     }
 
@@ -89,12 +89,12 @@ public class Pawn : MonoBehaviour
             Debug.Log(name + " dPad: " + value);
         }
 
-        if (!myEgg)
+        if (!myProjectileManager)
         {
             Debug.LogWarning(name + " is trying to be passed input when it has no Egg component assigned!");
             return;
         }
-        myEgg.cycleWeapon(value);
+        myProjectileManager.cycleWeapon(value);
     }
 
     public virtual void PassUltimateInput(bool value)

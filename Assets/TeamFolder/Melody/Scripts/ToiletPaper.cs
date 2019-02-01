@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToiletPaperController : Projectile {
+public class ToiletPaper : Projectile {
 
     
     public float throwForce;

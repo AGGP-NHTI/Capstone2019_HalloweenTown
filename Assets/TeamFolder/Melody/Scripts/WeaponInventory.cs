@@ -12,7 +12,7 @@ public class WeaponInventory : MonoBehaviour {
 	void Start () {
         txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
         txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
-        txtNumberToiletPaper.gameObject.SetActive(false);
+        //txtNumberToiletPaper.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -20,19 +20,33 @@ public class WeaponInventory : MonoBehaviour {
 		
 	}
 
-    public void UpdateEggCountDisplay()
+    private void UpdateDisplay()
     {
         txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
+        txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
     }
+    
     void OnTriggerEnter(Collider other)
     {
         Debug.Log(string.Format("other name: {0}", other.gameObject.name));
         if (other.gameObject.name.Contains("EggCarton"))
         {
             numberEggs += 12;
-            UpdateEggCountDisplay();
+            UpdateDisplay();
             Destroy(other.gameObject);
         }
+    }
+    public void subtractFromInventory(GameObject thrown)
+    {
+        if (thrown.GetComponent<Egg>()) numberEggs--;
+        else if (thrown.GetComponent<ToiletPaper>()) numberToiletPaper--;
+        UpdateDisplay();
+    }
+    public bool hasProjectile(GameObject go)
+    {
+        if (go.GetComponent<Egg>() && numberEggs > 0) return true;
+        else if (go.GetComponent<ToiletPaper>() && numberToiletPaper > 0) return true;
+        return false;
     }
 
 }

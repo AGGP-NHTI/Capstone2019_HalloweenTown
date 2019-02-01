@@ -354,6 +354,11 @@ Prefab:
       propertyPath: xforcandy
       value: 
       objectReference: {fileID: 194412070}
+    - target: {fileID: 114625579863731902, guid: f3fac25b2793238439ddc315980315eb,
+        type: 2}
+      propertyPath: myProjectileManager
+      value: 
+      objectReference: {fileID: 2111542034}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3fac25b2793238439ddc315980315eb, type: 2}
   m_IsPrefabAsset: 0
@@ -616,7 +621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333, y: 228}
+  m_AnchoredPosition: {x: -333, y: 203.07}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1350970846
@@ -651,7 +656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Toilet Paper: '
 --- !u!222 &1350970847
 CanvasRenderer:
   m_ObjectHideFlags: 0
