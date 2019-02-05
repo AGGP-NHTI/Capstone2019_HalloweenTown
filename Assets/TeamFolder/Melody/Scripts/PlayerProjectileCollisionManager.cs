@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProjectileCollisionManager : MonoBehaviour {
-    public HealthBar myHealthBar;
+    HealthBar myHealthBar;
+    MoveScript myMoveScript;
 	// Use this for initialization
 	void Start () {
-		
+        myMoveScript = GetComponent<MoveScript>();
+        myHealthBar = GetComponent<HealthBar>();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +27,7 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
         if (collision.gameObject.CompareTag("Toilet Paper"))
         {
             Debug.Log("I've been hit by an Toilet Paper!");
+
             Destroy(collision.gameObject);
         }
         //else Destroy(gameObject);
