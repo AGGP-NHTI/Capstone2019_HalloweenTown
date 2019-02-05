@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Mask : MonoBehaviour
 {
-
     float startHealth;
     public bool hasMask = false;
     public bool ultButton = false;
@@ -14,60 +13,82 @@ public class Mask : MonoBehaviour
     public GameObject playerPref;
     public GameObject ghostPref;
     public GameObject currentModel;
+    public string scriptName;
+    GameObject mask;
+
+    BaseMask equipedMask;
 
     void Start()
     {
         pawn = gameObject.GetComponent<Pawn>();
-        hbar = GetComponent<HealthBar>();
+        hbar = GetComponent<HealthBar>(); 
     }
 
 
     void Update()
     {
-        if (interactButton && hasMask == false)
+        if (ultButton && hasMask)
         {
-            //Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, 10f);//for testing
-            
-            //for(int i = 0; i < hitColliders.Length; i++)
-            //{
-                //if (hitColliders[i].tag == "Mask")
-               // {
-                    hasMask = true;
-                    UpdateHealth();
-                    gameObject.AddComponent<GhostMask>();//test script
-
-                    //Destroy(hitColliders[i].gameObject);
-                    Vector3 pos = currentModel.transform.position;
-                    Quaternion rot = currentModel.transform.rotation;
-                    Destroy(currentModel);
-
-                    GameObject mask = Instantiate(ghostPref, gameObject.transform);
-                    mask.transform.position = pos;
-                    mask.transform.rotation = rot;
-                    gameObject.transform.parent = mask.transform;
-                    AlignToMovement al = mask.GetComponent<AlignToMovement>();
-                    al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
-                    currentModel = mask;
-              //  }
-           // }
+            equipedMask.Ult();
         }
 
-        
-        /*
-        if (hbar.health <= startHealth)
+        if (interactButton && hasMask == false)
         {
-            //Destroy(gameObject.GetComponent<GhostMask>());
-           // Destroy(currentModel);
-
+            interactButton = false;
+            GetMask();
+            UpdateHealth();
+        }        
+        
+        if (hbar.health <= 0 && hasMask)
+        {
+            hasMask = false;
+            Debug.Log("dead");
+            Vector3 pos = currentModel.transform.position;
+            Quaternion rot = currentModel.transform.rotation;
+            Destroy(currentModel);
             GameObject mask = Instantiate(playerPref, gameObject.transform);
+            mask.transform.position = pos;
+            mask.transform.rotation = rot;
+            AlignToMovement al = mask.GetComponent<AlignToMovement>();
+            al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
+
             currentModel = mask;
-        }*/
+            
+        }
     }    
 
     void UpdateHealth()
     {
-        startHealth = hbar.health;
-        hbar.health += 50;
+        hbar.health = 100;
+    }
+
+    void GetMask()
+    {
+        hasMask = true;        
+
+        Vector3 pos = currentModel.transform.position;
+        Quaternion rot = currentModel.transform.rotation;
+
+        switch(scriptName)
+        {
+            case "Ghost Mask":
+                equipedMask = gameObject.AddComponent<GhostMask>();
+                Destroy(currentModel);
+                mask = Instantiate(ghostPref, gameObject.transform);
+                break;
+            case "Werewolf Mask":
+                break;
+            default:
+                Debug.Log("Error with mask");
+                break;
+        }  
+
+        mask.transform.position = pos;
+        mask.transform.rotation = rot;
+        gameObject.transform.parent = mask.transform;
+        AlignToMovement al = mask.GetComponent<AlignToMovement>();
+        al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
+        currentModel = mask;
     }
 
     

@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 405085887}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Mask
+  m_TagString: Ghost Mask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,6 +940,10 @@ Prefab:
         type: 2}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398849399249320, guid: 27495dbc5c79ad14dbfec5f1e66598c0, type: 2}
+      propertyPath: m_TagString
+      value: Ghost Mask
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27495dbc5c79ad14dbfec5f1e66598c0, type: 2}

@@ -99,10 +99,10 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassUltimateInput(bool value)
     {
-        if(value)
+        myMask.ultButton = value;
+        if (value)
         {
-            Debug.Log(name + " ultimate!");
-            myMask.ultButton = true;
+            Debug.Log(name + " ultimate!");            
         }
     }
 

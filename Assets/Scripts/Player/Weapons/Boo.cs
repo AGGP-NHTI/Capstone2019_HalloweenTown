@@ -8,8 +8,14 @@ public class Boo : MonoBehaviour {
     public GameObject Model;
 
     public int radiusOfBoo = 60;
-    bool canBoo = true;    
+    bool canBoo = true;
 
+    private void Update()
+    {
+        Mask mask = gameObject.GetComponent<Mask>();
+        Model = mask.currentModel;
+        barrel = Model.GetComponent<GetBarrel>().barrel;
+    }
     public void GoBoo(bool value)
     {
         if (value && canBoo)
@@ -26,7 +32,7 @@ public class Boo : MonoBehaviour {
                         {
                             Debug.Log("Boo");
 
-                            GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;
+                            GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;//gets other model in boo
                             float difference = otherModel.transform.rotation.eulerAngles.y - Model.transform.rotation.eulerAngles.y;
 
                             //checks if the difference is a negative value
@@ -39,7 +45,7 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                hb.TakeDamage(20f);
+                                hb.TakeDamage(50f);
                             }                            
                         }
                     }
