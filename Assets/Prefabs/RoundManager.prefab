@@ -54,8 +54,9 @@ MonoBehaviour:
   currentPhase: 0
   roundElapsedTime: 0
   roundStartEndTime: -1
-  roundRunningEndTime: -1
+  roundRunningEndTime: 180
   roundEndingEndTime: -1
+  _letRoundTimerRun: 0
   GameSceneBuildIndex: 1
   playercontrollerPrefab: {fileID: 1261868761011518, guid: 7fd3bcb03dcd685449b27c32865a00e7,
     type: 2}
