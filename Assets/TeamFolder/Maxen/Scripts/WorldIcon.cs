@@ -23,6 +23,8 @@ public class WorldIcon : MonoBehaviour
 
     }
 
+    public Vector2 screenCenter;
+    public Vector2 screenOffset;
     private void LateUpdate()
     {
         if(MoveToTransform)
@@ -34,13 +36,15 @@ public class WorldIcon : MonoBehaviour
         {
             return;
         }
+
+        screenCenter = new Vector2(renderCamera.pixelWidth / 2, renderCamera.pixelHeight / 2);
+        screenOffset = renderCamera.rect.position * screenCenter;
         
         screenPos = renderCamera.WorldToScreenPoint(MoveToPosition);
         if (screenPos.z > 0.0f && LetRender)
         {
-            //screenPos.z = 0.0f;
-            _myRect.position = screenPos;
-            if(!_image.enabled)
+            _myRect.localPosition = (Vector2)screenPos - screenCenter - screenOffset;
+            if (!_image.enabled)
             {
                 _image.enabled = true;
             }
