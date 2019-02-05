@@ -241,15 +241,13 @@ GameObject:
   - component: {fileID: 114080729304180156}
   - component: {fileID: 114554577993014346}
   - component: {fileID: 114130012895240354}
-  - component: {fileID: 114954474102904684}
-  - component: {fileID: 114931984026700068}
   m_Layer: 9
   m_Name: Melody'sCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1983553756797418
 GameObject:
   m_ObjectHideFlags: 1
@@ -445,7 +443,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948248195341248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.37, y: 8.824396e-18, z: -3.9741545}
+  m_LocalPosition: {x: 2.0342228, y: 8.824396e-18, z: -3.9741545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4431517467724308}
@@ -895,8 +893,8 @@ MonoBehaviour:
   testcandy: {fileID: 114998304957766370}
   waitforcandy: 0
   actionButton: 0
-  showXForCandy: 0
-  xForCandyText: {fileID: 0}
+  xForCandy: 0
+  xforcandy: {fileID: 0}
 --- !u!114 &114111810154500646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,8 +955,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boo: {fileID: 0}
   barrel: {fileID: 0}
-  Model: {fileID: 0}
-  radiusOfBoo: 60
 --- !u!114 &114625579863731902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -973,10 +969,9 @@ MonoBehaviour:
   MyMoveScript: {fileID: 114130012895240354}
   MyLookScript: {fileID: 114873111309862696}
   MyCamera: {fileID: 20543541649374208}
-  MyCandy: {fileID: 114080729304180156}
-  MyBoo: {fileID: 114554577993014346}
-  myProjectileManager: {fileID: 114931984026700068}
-  MyInteractManager: {fileID: 0}
+  MyCandy: {fileID: 0}
+  MyBoo: {fileID: 0}
+  myEgg: {fileID: 0}
   MyController: {fileID: 0}
 --- !u!114 &114758356851527998
 MonoBehaviour:
@@ -1034,39 +1029,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114931984026700068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1948248195341248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4795cb08445854fa5434842b7ebc6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 114954474102904684}
-  weaponList:
-  - {fileID: 1778895021635794, guid: 0c0126f391d9ab446b0a1d8fe2eb64ae, type: 2}
-  - {fileID: 1453956450199670, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
-  selectedWeaponIndex: 0
-  leftSpawn: {fileID: 4746431639157700}
-  offset: {x: 0, y: 0, z: 0}
---- !u!114 &114954474102904684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1948248195341248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042e4e7d2c5af9c4da8f4a02bca5bfaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txtNumberEggs: {fileID: 0}
-  txtNumberToiletPaper: {fileID: 0}
-  numberEggs: 500
-  numberToiletPaper: 500
 --- !u!114 &114998304957766370
 MonoBehaviour:
   m_ObjectHideFlags: 1

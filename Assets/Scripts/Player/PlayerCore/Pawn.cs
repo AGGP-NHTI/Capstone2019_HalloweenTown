@@ -11,7 +11,7 @@ public class Pawn : MonoBehaviour
     public Boo MyBoo;
     public ProjectileManager myProjectileManager;
     public InteractionManager MyInteractManager;
-    Mask myMask;
+    public Mask myMask;
     
     [HideInInspector]
     public PlayerController MyController;

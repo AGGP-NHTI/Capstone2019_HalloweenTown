@@ -5,11 +5,11 @@ using UnityEngine;
 public class ToiletPaper : Projectile {
 
     
-    public float throwForce = 400;
+    public float throwForce;
 
     Vector3 throwAngle;
     // Use this for initialization
-	new void Start () {
+	void Start () {
         base.Start();
         
         throwAngle = (transform.forward + transform.up).normalized * throwForce;

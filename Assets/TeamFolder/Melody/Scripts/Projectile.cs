@@ -24,11 +24,6 @@ public class Projectile : MonoBehaviour {
 
     protected void OnCollisionEnter(Collision collision)
     {
-        
-
-        if (collision.gameObject.CompareTag("Player")) Debug.Log("colidded with player " );
-        
-        else Destroy(gameObject);
-        
+        Destroy(gameObject);
     }
 }

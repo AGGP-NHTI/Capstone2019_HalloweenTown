@@ -686,11 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4795cb08445854fa5434842b7ebc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  weaponList: []
-  selectedWeaponIndex: 0
-  leftSpawn: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
+  throwForce: 20
+  arcAfterElapsedTime: 5
 --- !u!114 &114775124761771342
 MonoBehaviour:
   m_ObjectHideFlags: 1
