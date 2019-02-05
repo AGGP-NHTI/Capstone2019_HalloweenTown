@@ -22,7 +22,7 @@ public class RoundManager : MonoBehaviour {
     public float roundStartEndTime = -1.0f;
     public float roundRunningEndTime = -1.0f;
     public float roundEndingEndTime = -1.0f;
-    protected bool _letRoundTimerRun = false;
+    [SerializeField]protected bool _letRoundTimerRun = false;
 
     protected List<InputObject> _activeInputs;
     protected List<PlayerController> _activePlayers;
@@ -106,6 +106,7 @@ public class RoundManager : MonoBehaviour {
         }
 
         currentPhase = RoundPhase.ROUND_STARTING;
+        _letRoundTimerRun = true;
         ActiveLogicRoutine = null;
     }
 
