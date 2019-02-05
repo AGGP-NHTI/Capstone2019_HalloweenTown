@@ -5,21 +5,23 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
-    public RoundManager roundMode;
-    public GameObject playercontroller;
-    public GameObject playerPrefab;
+    public GameObject RoundModePrefab;
+    
     public List<InputObject> inputObject;
     List<bool> joinedGame = new List<bool>();
     List<bool> readyUp = new List<bool>();
-    [HideInInspector]public List<PlayerController> activePlayers;
+    
    // public Text countDown;
     Coroutine startGameTimer;
 
-    bool startGame = true;
+    protected bool startGame = true;
 	void Start ()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         //sets list of bools to false        
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             joinedGame.Add(false);
             readyUp.Add(false);
@@ -90,27 +92,32 @@ public class Manager : MonoBehaviour
         }
         //countDown.text = Mathf.Round(Time.time).ToString();
         startGame = false;
-        SpawnPlayers();        
-    }
-
-    void SpawnPlayers()
-    {
-        activePlayers = new List<PlayerController>();
-
-        for(int i = 0; i< inputObject.Count; i++)
+        //This is when the game actually begins.
+        if(RoundModePrefab)
         {
-            if(joinedGame[i] && readyUp[i])
+            GameObject spawnedObj = Instantiate(RoundModePrefab);
+            RoundManager roundMode = spawnedObj.GetComponent<RoundManager>();
+
+            if(roundMode)
             {
-                GameObject spawnedBoy = Instantiate(playercontroller, Vector3.zero, Quaternion.identity);
-                PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
-                pc.playerInput = inputObject[i];
-
-                SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);
-
-                activePlayers.Add(pc);
+                List<InputObject> participatingPlayers = new List<InputObject>();
+                for (int i = 0; i < inputObject.Count; i++)
+                {
+                    if (joinedGame[i] && readyUp[i])
+                    {
+                        participatingPlayers.Add(inputObject[i]);
+                    }
+                }
+                roundMode.StartRound(participatingPlayers);
+            }
+            else
+            {
+                Debug.LogWarning(spawnedObj + " prefab has no RoundManager component!");
             }
         }
-
-        SplitScreenManager.Instance.ConfigureScreenSpace();
+        else
+        {
+            Debug.LogWarning(name + " has no RoundModePrefab!");
+        }
     }
 }

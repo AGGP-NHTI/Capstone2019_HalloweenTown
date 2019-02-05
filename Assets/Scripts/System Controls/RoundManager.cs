@@ -15,7 +15,6 @@ public class RoundManager : MonoBehaviour {
         ROUND_OVER
     }
     [Header("Round Management Variables")]
-    public Manager myManager;
     public RoundPhase currentPhase = RoundPhase.PRE_GAME;
     protected Coroutine ActiveLogicRoutine;
 
@@ -23,10 +22,18 @@ public class RoundManager : MonoBehaviour {
     public float roundStartEndTime = -1.0f;
     public float roundRunningEndTime = -1.0f;
     public float roundEndingEndTime = -1.0f;
-    protected bool letRoundTimerRun = false;
+    protected bool _letRoundTimerRun = false;
+
+    protected List<InputObject> _activeInputs;
+    protected List<PlayerController> _activePlayers;
     #endregion
 
     #region Specific Phase Variables
+    [Header("Round Starting")]
+    public int GameSceneBuildIndex = 1;
+    public GameObject playercontrollerPrefab;
+    public GameObject playerPrefab;
+
     [Header("Round Ending")]
     public GameObject momPrefab;
     [HideInInspector] public GameObject spawnedMom;
@@ -36,16 +43,21 @@ public class RoundManager : MonoBehaviour {
     public int MainMenuBuildIndex = 0;
     #endregion
 
-    public virtual void StartRound()
+    protected virtual void Awake()
     {
-        currentPhase = RoundPhase.ROUND_STARTING;
-        letRoundTimerRun = true;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public virtual void StartRound(List<InputObject> ParticipatingPlayers)
+    {
+        currentPhase = RoundPhase.PRE_GAME;
+        _activeInputs = ParticipatingPlayers;
     }
 
     #region Round Logic
     protected virtual void FixedUpdate()
     {
-        if(letRoundTimerRun)
+        if(_letRoundTimerRun)
         {
             roundElapsedTime += Time.fixedDeltaTime;
         }
@@ -85,17 +97,24 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator PreGameLogic()
     {
-        while(currentPhase == RoundPhase.PRE_GAME)
+        AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(GameSceneBuildIndex);
+
+        while (!loadingOperation.isDone)
         {
+            Debug.Log("Loading progress: " + loadingOperation.progress);
             yield return null;
         }
 
+        currentPhase = RoundPhase.ROUND_STARTING;
         ActiveLogicRoutine = null;
     }
 
     protected virtual IEnumerator RoundStartingLogic()
     {
-        //Maybe move player spawning here. Otherwise only necessary for future-proofing.
+        SpawnPlayers(_activeInputs);
+
+        currentPhase = RoundPhase.ROUND_RUNNING;
+
         while(currentPhase == RoundPhase.ROUND_STARTING)
         {
             if (roundElapsedTime >= roundStartEndTime && roundStartEndTime > 0.0f)
@@ -129,7 +148,7 @@ public class RoundManager : MonoBehaviour {
     {
         spawnedMom = Instantiate(momPrefab);
         Mom momClass = spawnedMom.GetComponent<Mom>();
-        momClass.FindPlayers(myManager.activePlayers);
+        momClass.FindPlayers(_activePlayers);
         momClass.huntChildren = true;
 
         while(currentPhase == RoundPhase.ROUND_ENDING)
@@ -153,6 +172,27 @@ public class RoundManager : MonoBehaviour {
 
         SceneManager.LoadScene(MainMenuBuildIndex);
         ActiveLogicRoutine = null;
+        Destroy(gameObject);
+    }
+    #endregion
+
+    #region Extra Utility
+    protected void SpawnPlayers(List<InputObject> inputObjects)
+    {
+        _activePlayers = new List<PlayerController>();
+
+        for (int i = 0; i < inputObjects.Count; i++)
+        {
+            GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
+            PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
+            pc.playerInput = inputObjects[i];
+
+            SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);
+
+            _activePlayers.Add(pc);
+        }
+
+        SplitScreenManager.Instance.ConfigureScreenSpace();
     }
     #endregion
 }

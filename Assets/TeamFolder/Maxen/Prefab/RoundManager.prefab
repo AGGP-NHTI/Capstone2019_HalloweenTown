@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1244543098896214}
+  m_RootGameObject: {fileID: 1933142380146496}
   m_IsPrefabAsset: 1
---- !u!1 &1244543098896214
+--- !u!1 &1933142380146496
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4414316435520304}
-  - component: {fileID: 114385693536549220}
+  - component: {fileID: 4828137947829838}
+  - component: {fileID: 114194267148948926}
   m_Layer: 0
-  m_Name: manager
+  m_Name: RoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4414316435520304
+--- !u!4 &4828137947829838
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244543098896214}
+  m_GameObject: {fileID: 1933142380146496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,21 +40,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114385693536549220
+--- !u!114 &114194267148948926
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244543098896214}
+  m_GameObject: {fileID: 1933142380146496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7329ebfb6d14d9478b7c8481d05f4a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aeca5303b90bf249a68d7b90f1e706c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoundModePrefab: {fileID: 1933142380146496, guid: e59002e5c535c5d4ab721c2373533d56,
+  currentPhase: 0
+  roundElapsedTime: 0
+  roundStartEndTime: -1
+  roundRunningEndTime: -1
+  roundEndingEndTime: -1
+  GameSceneBuildIndex: 1
+  playercontrollerPrefab: {fileID: 1261868761011518, guid: 7fd3bcb03dcd685449b27c32865a00e7,
     type: 2}
-  inputObject:
-  - {fileID: 11400000, guid: 50840f44d6b771a4ca8523a26d96d0ad, type: 2}
-  - {fileID: 11400000, guid: 8a06baef94a9a5a419947188c4582f16, type: 2}
-  - {fileID: 11400000, guid: 44ab394621c48be4182aa86d549087e6, type: 2}
-  - {fileID: 11400000, guid: b4f0d88fb69227f44af4f66c6abac08a, type: 2}
+  playerPrefab: {fileID: 1322969968266322, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+    type: 2}
+  momPrefab: {fileID: 1781754937150684, guid: 348e5b84cf091d444ac535336b6f5d54, type: 2}
+  spawnedMom: {fileID: 0}
+  timeBeforeReturningToMenu: 5
+  MainMenuBuildIndex: 0
