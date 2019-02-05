@@ -7,7 +7,7 @@ public class Egg : Projectile {
    
     public float throwForce = 20;
     public float arcAfterElapsedTime = 5;
-    
+    public float damage = 10.0f;
     // Use this for initialization
 	void Start () {
         base.Start();

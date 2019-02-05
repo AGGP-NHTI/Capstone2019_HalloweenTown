@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerProjectileCollisionManager : MonoBehaviour {
-
+    public HealthBar myHealthBar;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,6 +18,8 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
         if (collision.gameObject.CompareTag("Egg"))
         {
             Debug.Log("I've been hit by an egg!");
+            float d = collision.gameObject.GetComponent<Egg>().damage;
+            myHealthBar.TakeDamage(d);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Toilet Paper"))
