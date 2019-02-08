@@ -32,6 +32,11 @@ public class HealthBar : MonoBehaviour {
 
     }
 
+    public void Hit()
+    {
+        soundManager.Oof();
+    }
+
     //private void Update()
    // {
         /*if (health != 110)
