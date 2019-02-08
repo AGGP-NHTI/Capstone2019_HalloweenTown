@@ -662,17 +662,17 @@ Prefab:
     - target: {fileID: 114824283408437338, guid: 9cc5c04e0aaea9041a394c158df68d7e,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.02367392
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 114824283408437338, guid: 9cc5c04e0aaea9041a394c158df68d7e,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.7169812
+      value: 0.5107194
       objectReference: {fileID: 0}
     - target: {fileID: 114824283408437338, guid: 9cc5c04e0aaea9041a394c158df68d7e,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.11352294
+      value: 0.06474723
       objectReference: {fileID: 0}
     - target: {fileID: 224640276329586118, guid: 9cc5c04e0aaea9041a394c158df68d7e,
         type: 2}
@@ -693,6 +693,31 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 224558110170526642, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224729455165008684, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771322975251056, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: candyText
+      value: 
+      objectReference: {fileID: 1638592832}
+    - target: {fileID: 114824283408437338, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771322975251056, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
@@ -3156,6 +3181,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1616384671}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1638592832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114876008250522518, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+    type: 2}
+  m_PrefabInternal: {fileID: 290929814}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1645366684
 GameObject:
   m_ObjectHideFlags: 0

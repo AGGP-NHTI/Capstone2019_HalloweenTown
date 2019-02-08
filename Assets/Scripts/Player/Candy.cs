@@ -17,7 +17,7 @@ public class Candy : MonoBehaviour
     {
         if (candyText)
         {
-            candyText.text = "Candy: " + candy.ToString();
+            candyText.text = " " + candy.ToString();
         }
         actionButton = false;
         showXForCandy = false;
@@ -28,7 +28,7 @@ public class Candy : MonoBehaviour
     {
         if(candyText)
         {
-            candyText.text = "Candy: " + candy.ToString();
+            candyText.text = " " + candy.ToString();
         }
     }
     
