@@ -60,7 +60,7 @@ MonoBehaviour:
   GameSceneBuildIndex: 1
   playercontrollerPrefab: {fileID: 1261868761011518, guid: 7fd3bcb03dcd685449b27c32865a00e7,
     type: 2}
-  playerPrefab: {fileID: 1322969968266322, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+  playerPrefab: {fileID: 1658613415614286, guid: 9387731fc6fee6c44a72e93dfac40df1,
     type: 2}
   momPrefab: {fileID: 1781754937150684, guid: 348e5b84cf091d444ac535336b6f5d54, type: 2}
   spawnedMom: {fileID: 0}
