@@ -10,12 +10,14 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
     public float stunTime = 5.0f;
     public float iFrameTimer = 8.0f;
     public bool canBeHit = true;
+    Stun myStun;
 	// Use this for initialization
 	void Start () {
         myMoveScript = GetComponent<MoveScript>();
         myHealthBar = GetComponent<HealthBar>();
         myProjecctileManager = GetComponent<ProjectileManager>();
-	}
+        myStun = GetComponent<Stun>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,7 +42,7 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
             {
                 Debug.Log("I've been hit by an Toilet Paper!");
                 //disable movement
-                StartCoroutine(suspendMovement1());
+                StartCoroutine(myStun.suspendMovement(stunTime));
             }
             Destroy(collision.gameObject);
 
