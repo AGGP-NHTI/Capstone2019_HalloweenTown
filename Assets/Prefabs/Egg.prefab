@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54893764044661340}
   m_Layer: 0
   m_Name: Egg
-  m_TagString: Untagged
+  m_TagString: Egg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,10 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a26a73532d58a44a3d7b9db037abd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   throwForce: 400
   arcAfterElapsedTime: 1
-  destroyAfterElapsedTime: 25
+  damage: 10
 --- !u!135 &135743072073084304
 SphereCollider:
   m_ObjectHideFlags: 1
