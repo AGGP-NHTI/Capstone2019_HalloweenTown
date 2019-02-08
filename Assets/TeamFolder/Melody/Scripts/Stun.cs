@@ -6,7 +6,7 @@ public class Stun : MonoBehaviour {
     ProjectileManager myProjectileManager;
     MoveScript myMoveScript;
     PlayerProjectileCollisionManager myCollisionManager;
-    public bool stuned = false;
+    //public bool stuned = false;
     
     // Use this for initialization
     void Start () {
@@ -18,28 +18,8 @@ public class Stun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (stuned)
-        {
-            
-           
-        }
+		
 	}
-
-    public void Stuned()
-    {
-        //add tings to disable
-        myMoveScript.allowSprinting = false;
-        myMoveScript.allowJumping = false;
-        myMoveScript.allowCrouching = false;
-        myMoveScript.moveSpeed = 0.0f;
-    }
-    public void UnStun()
-    {
-        myMoveScript.allowSprinting = true;
-        myMoveScript.allowJumping = true;
-        myMoveScript.allowCrouching = true;
-        myMoveScript.moveSpeed = 5.0f;
-    }
 
 
     public IEnumerator suspendMovement(float duration)

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour {
 
+    public AudioClip momMusic;
+
     #region Overall Round Management Variables
     public enum RoundPhase
     {
@@ -151,6 +153,11 @@ public class RoundManager : MonoBehaviour {
         Mom momClass = spawnedMom.GetComponent<Mom>();
         momClass.FindPlayers(_activePlayers);
         momClass.huntChildren = true;
+
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = momMusic;
+        audio.Play();
+        audio.loop = true;
 
         while(currentPhase == RoundPhase.ROUND_ENDING)
         {

@@ -89,6 +89,8 @@ public class Mask : MonoBehaviour
         AlignToMovement al = mask.GetComponent<AlignToMovement>();
         al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
         currentModel = mask;
+
+        pawn.MyBoo.ModelChange();
     }
 
     

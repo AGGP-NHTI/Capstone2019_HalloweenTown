@@ -24,7 +24,7 @@ public class DoorTrigger : MonoBehaviour
         {
             if(source.myMask.hasMask)
             {
-                candyCount = 10;
+                candyCount = Random.Range(6,8);
                 source.MyCandy.candy += candyCount;
             }
             else
