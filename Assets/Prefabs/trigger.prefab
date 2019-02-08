@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4639072197716420}
   - component: {fileID: 114354322664957194}
   - component: {fileID: 65480465698171108}
+  - component: {fileID: 114541739141558288}
   m_Layer: 0
   m_Name: trigger
   m_TagString: Untagged
@@ -65,3 +66,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CandyCollectionCoolDown: 3
+--- !u!114 &114541739141558288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141441639617066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2906743df0fd54881b79c7e6a5bf52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114354322664957194}
+        m_MethodName: RecieveInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  PawnsThatCantInteract: []
