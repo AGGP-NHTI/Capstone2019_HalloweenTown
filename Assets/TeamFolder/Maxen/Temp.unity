@@ -156,6 +156,16 @@ Prefab:
       propertyPath: m_Name
       value: PlayerCharacter (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 224558110170526642, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224729455165008684, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
   m_IsPrefabAsset: 0
@@ -684,6 +694,16 @@ Prefab:
       propertyPath: m_Name
       value: PlayerCharacter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 224558110170526642, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224729455165008684, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
   m_IsPrefabAsset: 0
@@ -925,6 +945,8 @@ MonoBehaviour:
   MoveToTransform: {fileID: 1753889787}
   LetRender: 1
   screenPos: {x: 0, y: 0, z: 0}
+  screenCenter: {x: 0, y: 0}
+  screenOffset: {x: 0, y: 0}
 --- !u!114 &548989927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3721,6 +3743,8 @@ MonoBehaviour:
   MoveToTransform: {fileID: 1753889787}
   LetRender: 1
   screenPos: {x: 0, y: 0, z: 0}
+  screenCenter: {x: 0, y: 0}
+  screenOffset: {x: 0, y: 0}
 --- !u!114 &1662623599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4025,108 +4049,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1743041459}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1753889785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1141441639617066, guid: 5c455f70e34353d4ab9a1942007e2f40,
-    type: 2}
-  m_PrefabInternal: {fileID: 1826835613}
---- !u!114 &1753889786 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114354322664957194, guid: 5c455f70e34353d4ab9a1942007e2f40,
-    type: 2}
-  m_PrefabInternal: {fileID: 1826835613}
-  m_Script: {fileID: 11500000, guid: 4792506ad675e2a48945dc798eb012e3, type: 3}
 --- !u!4 &1753889787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4639072197716420, guid: 5c455f70e34353d4ab9a1942007e2f40,
     type: 2}
   m_PrefabInternal: {fileID: 1826835613}
---- !u!114 &1753889788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753889785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2906743df0fd54881b79c7e6a5bf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1753889786}
-        m_MethodName: RecieveInteract
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  PawnsThatCantInteract: []
---- !u!212 &1753889789
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753889785}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1d24ef7c2f93904ca261de3a4a8893b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!65 &1753889790
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753889785}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1757804317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,6 +4106,8 @@ MonoBehaviour:
   MoveToTransform: {fileID: 1753889787}
   LetRender: 1
   screenPos: {x: 0, y: 0, z: 0}
+  screenCenter: {x: 0, y: 0}
+  screenOffset: {x: 0, y: 0}
 --- !u!114 &1757804320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4847,6 +4776,8 @@ MonoBehaviour:
   MoveToTransform: {fileID: 1753889787}
   LetRender: 1
   screenPos: {x: 0, y: 0, z: 0}
+  screenCenter: {x: 0, y: 0}
+  screenOffset: {x: 0, y: 0}
 --- !u!114 &1967876320
 MonoBehaviour:
   m_ObjectHideFlags: 0

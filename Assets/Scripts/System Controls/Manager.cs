@@ -8,8 +8,10 @@ public class Manager : MonoBehaviour
     public GameObject RoundModePrefab;
     
     public List<InputObject> inputObject;
-    List<bool> joinedGame = new List<bool>();
-    List<bool> readyUp = new List<bool>();
+    [HideInInspector] public List<bool> joinedGame = new List<bool>();
+    [HideInInspector] public List<bool> readyUp = new List<bool>();
+    public float CountDownDuration { get; private set; }
+    public bool RoundReadyToStart { get; private set; }
     
    // public Text countDown;
     Coroutine startGameTimer;
@@ -68,26 +70,27 @@ public class Manager : MonoBehaviour
             }
 
             //Debug.Log("oneplayer " + onePlayerInGame.ToString());
-            if(allPlayersReady && onePlayerInGame)
+            RoundReadyToStart = allPlayersReady && onePlayerInGame;
+            if (RoundReadyToStart)
             {                
                 if (startGameTimer == null)
                 {
                     Debug.Log("timer");
                     startGameTimer = StartCoroutine(BeginGameCountDown());
                 }
-            }            
+            }
         }        
 	}
 
     IEnumerator BeginGameCountDown()
     {      
-        float duration = 5f; 
+        CountDownDuration = 5f; 
         float endTime = 0;
-        while (duration>= endTime)
+        while (CountDownDuration >= endTime)
         {
             //countDown.text = Mathf.Round(duration).ToString();
-            Debug.Log(Mathf.Round(duration).ToString());
-            duration -= Time.deltaTime;
+            Debug.Log(Mathf.Round(CountDownDuration).ToString());
+            CountDownDuration -= Time.deltaTime;
             yield return null;
         }
         //countDown.text = Mathf.Round(Time.time).ToString();
