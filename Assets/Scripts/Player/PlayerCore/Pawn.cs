@@ -13,6 +13,7 @@ public class Pawn : MonoBehaviour
     public InteractionManager MyInteractManager;
     public Mask myMask;
     
+
     [HideInInspector]
     public PlayerController MyController;
 

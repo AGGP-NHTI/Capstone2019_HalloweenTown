@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boo : MonoBehaviour {
-    public AudioSource boo;
     public GameObject barrel;
     public GameObject Model;
-
+    SoundManager soundManager;
     public int radiusOfBoo = 60;
     bool canBoo = true;
+    Mask mask;
 
-    private void Update()
+    private void Start()
     {
-        Mask mask = gameObject.GetComponent<Mask>();
+        soundManager = GetComponent<SoundManager>();
+
+        mask = gameObject.GetComponent<Mask>();
         Model = mask.currentModel;
         barrel = Model.GetComponent<GetBarrel>().barrel;
     }
+    public void ModelChange()
+    {
+        mask = gameObject.GetComponent<Mask>();
+        Model = mask.currentModel;
+        barrel = Model.GetComponent<GetBarrel>().barrel;
+    }
+
     public void GoBoo(bool value)
     {
         if (value && canBoo)
         {            
-            if(!boo.isPlaying)
+            if(!soundManager.audioSource.isPlaying)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 1.0f);
                 
@@ -50,7 +59,7 @@ public class Boo : MonoBehaviour {
                         }
                     }
                 }
-                boo.Play();
+                soundManager.Boo();
                 canBoo = false;
                 StartCoroutine(WaitingToBoo());
             }            
