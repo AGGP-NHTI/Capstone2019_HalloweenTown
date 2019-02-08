@@ -21,8 +21,8 @@ public class ProjectileManager : MonoBehaviour {
     void Start() {
         //these warnings
         inventory = GetComponent<WeaponInventory>();
-        leftSpawn = transform.Find("LeftArm");
-       
+        leftSpawn = transform.Find("Model/LeftArm");
+
         
         selectedWeaponIndex = 1;
         previousDPadY = currentDPadY = 0;
@@ -46,6 +46,7 @@ public class ProjectileManager : MonoBehaviour {
 
     public void throwEgg(float value)
     {
+        
         //Debug.Log(string.Format("in throw egg. Value: {0}", value));
         currentRightTrigger = value;
         //isthereathingtothrow
@@ -54,7 +55,8 @@ public class ProjectileManager : MonoBehaviour {
 
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
         {
-            if(!leftSpawn)
+            //Debug.Log("in egg");
+            if (!leftSpawn)
             {
                 Debug.LogWarning(name + "is trying to throw projectile no leftSpawn component assigned!");
                 return;
