@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour {
 
-    public WeaponInventory inventory;
+   WeaponInventory inventory;
     float previousRightTrigger;
     float currentRightTrigger;
     float deadZone;
    
     public List<GameObject> weaponList;
     public int selectedWeaponIndex;
-    public Transform leftSpawn;
+    Transform leftSpawn;
     public Vector3 offset;
     Transform model;
     float currentDPadY;
     float previousDPadY;
+    public bool canThrow = true;
     // Use this for initialization
     void Start() {
         //these warnings
-      
+        inventory = GetComponent<WeaponInventory>();
+        leftSpawn = transform.Find("LeftArm");
        
         
         selectedWeaponIndex = 1;
@@ -50,7 +52,7 @@ public class ProjectileManager : MonoBehaviour {
         GameObject go = weaponList[selectedWeaponIndex];
         if (!inventory.hasProjectile(go)) return;
 
-        if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && inventory.numberEggs > 0)
+        if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
         {
             if(!leftSpawn)
             {

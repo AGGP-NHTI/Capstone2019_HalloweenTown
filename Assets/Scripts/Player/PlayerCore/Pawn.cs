@@ -9,7 +9,7 @@ public class Pawn : MonoBehaviour
     public Camera MyCamera;
     public Candy MyCandy;
     public Boo MyBoo;
-    public ProjectileManager myProjectileManager;
+    ProjectileManager myProjectileManager;
     public InteractionManager MyInteractManager;
     public Mask myMask;
     
@@ -19,6 +19,8 @@ public class Pawn : MonoBehaviour
     protected virtual void Start ()
     {
         myMask = GetComponent<Mask>();
+        myProjectileManager = GetComponent<ProjectileManager>();
+
 	}
 	
 	protected virtual void Update ()

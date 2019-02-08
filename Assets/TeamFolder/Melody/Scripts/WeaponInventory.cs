@@ -4,16 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WeaponInventory : MonoBehaviour {
-    public Text txtNumberEggs;
-    public Text txtNumberToiletPaper;
+    Text txtNumberEggs;
+    Text txtNumberToiletPaper;
 	public int numberEggs;
     public int numberToiletPaper;
     // Use this for initialization
 	void Start () {
-        txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
-        txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
+        //  txtNumberEggs = transform.Find("EggText").gameObject.Te
+        txtNumberEggs= GameObject.Find("EggText").GetComponent<Text>();
+        txtNumberToiletPaper = GameObject.Find("TPText").GetComponent<Text>();
+        //txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
+        txtNumberEggs.text = "lol";
         //txtNumberToiletPaper.gameObject.SetActive(false);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
