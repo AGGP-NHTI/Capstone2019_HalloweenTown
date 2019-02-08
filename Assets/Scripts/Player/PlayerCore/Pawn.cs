@@ -12,7 +12,6 @@ public class Pawn : MonoBehaviour
     ProjectileManager myProjectileManager;
     public InteractionManager MyInteractManager;
     public Mask myMask;
-    
 
     [HideInInspector]
     public PlayerController MyController;

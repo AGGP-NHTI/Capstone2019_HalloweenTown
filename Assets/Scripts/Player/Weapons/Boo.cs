@@ -9,11 +9,13 @@ public class Boo : MonoBehaviour {
     public int radiusOfBoo = 60;
     bool canBoo = true;
     Mask mask;
+    Pawn pawn;
 
     private void Start()
     {
         soundManager = GetComponent<SoundManager>();
 
+        pawn = GetComponent<Pawn>();
         mask = gameObject.GetComponent<Mask>();
         Model = mask.currentModel;
         barrel = Model.GetComponent<GetBarrel>().barrel;
@@ -54,7 +56,10 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                hb.TakeDamage(50f);
+                                //hb.TakeDamage(50f);
+                                Stun stun = hitColliders[i].GetComponent<Stun>();
+                                hb.Hit();
+                                //stun.GetStunned(5f);
                             }                            
                         }
                     }
