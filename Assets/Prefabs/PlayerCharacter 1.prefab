@@ -643,7 +643,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322969968266322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.42671, y: -6.573365e-18, z: 2.9603803}
+  m_LocalPosition: {x: 9.908077, y: -1.5289726, z: -3.99481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4260875385593358}
@@ -1636,11 +1636,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candy: 0
-  testcandy: {fileID: 0}
+  candyText: {fileID: 114876008250522518}
   waitforcandy: 0
   actionButton: 0
   showXForCandy: 0
-  xForCandyText: {fileID: 0}
 --- !u!114 &114780518861721594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1778,6 +1777,7 @@ MonoBehaviour:
   playerPref: {fileID: 1516650407040434, guid: b709bbcd485ecf5418e5de979722d87d, type: 2}
   ghostPref: {fileID: 1459857841415240, guid: a5456110c7b61354887dc02d611b0eb9, type: 2}
   currentModel: {fileID: 1230579340358226}
+  scriptName: 
 --- !u!114 &114927027784808138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1821,7 +1821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 114824283408437338}
-  startHealth: 100
   health: 100
 --- !u!135 &135239812431612056
 SphereCollider:
