@@ -6,7 +6,7 @@ public class DoorTrigger : MonoBehaviour
 {
     float radius = 3.0f;
     public float CandyCollectionCoolDown = 3.0f;
-
+    public int candyCount = 2;
     void Start()
     {
 
@@ -21,7 +21,7 @@ public class DoorTrigger : MonoBehaviour
         //Give candy
         if(source.MyCandy)
         {
-            source.MyCandy.candy++;
+            source.MyCandy.candy = candyCount;
         }
     }
 
