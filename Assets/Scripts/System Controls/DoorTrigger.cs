@@ -7,6 +7,7 @@ public class DoorTrigger : MonoBehaviour
     float radius = 3.0f;
     public float CandyCollectionCoolDown = 3.0f;
     public int candyCount = 2;
+
     void Start()
     {
 
