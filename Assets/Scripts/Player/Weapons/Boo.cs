@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boo : MonoBehaviour {
+
     public GameObject barrel;
     public GameObject Model;
-    SoundManager soundManager;
     public int radiusOfBoo = 60;
+    public float damage = 10f;
     bool canBoo = true;
     Mask mask;
     Pawn pawn;
-
+    SoundManager soundManager;
+    
     private void Start()
     {
         soundManager = GetComponent<SoundManager>();
@@ -30,8 +32,9 @@ public class Boo : MonoBehaviour {
     public void GoBoo(bool value)
     {
         if (value && canBoo)
-        {            
-            if(!soundManager.audioSource.isPlaying)
+        {
+            Debug.Log("Boo");
+            if (!soundManager.audioSource.isPlaying)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 1.0f);
                 
@@ -40,9 +43,7 @@ public class Boo : MonoBehaviour {
                     if(hitColliders[i].tag == "Player")
                     {
                         if(hitColliders[i].transform.position != transform.position)
-                        {
-                            Debug.Log("Boo");
-
+                        {    
                             GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;//gets other model in boo
                             float difference = otherModel.transform.rotation.eulerAngles.y - Model.transform.rotation.eulerAngles.y;
 
@@ -56,9 +57,9 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                //hb.TakeDamage(50f);
-                                Stun stun = hitColliders[i].GetComponent<Stun>();
-                                hb.Hit();
+                                hb.TakeDamage(damage);
+                                //Stun stun = hitColliders[i].GetComponent<Stun>();
+                                //hb.Hit();
                                 //stun.GetStunned(5f);
                             }                            
                         }

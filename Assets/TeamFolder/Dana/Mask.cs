@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Mask : MonoBehaviour
 {
-    float startHealth;
     public bool hasMask = false;
     public bool ultButton = false;
     public bool interactButton;
-    Pawn pawn;
-    HealthBar hbar;
+    public string scriptName;
+
+    public GameObject currentModel;
     public GameObject playerPref;
     public GameObject ghostPref;
-    public GameObject currentModel;
-    public string scriptName;
+    public GameObject witchPref;
+    public GameObject werewolfPref;
+    public GameObject vampirePref;
     GameObject mask;
 
     BaseMask equipedMask;
+    Pawn pawn;
+    HealthBar hbar;
 
     void Start()
     {
         pawn = gameObject.GetComponent<Pawn>();
         hbar = GetComponent<HealthBar>(); 
     }
-
 
     void Update()
     {
@@ -52,8 +54,7 @@ public class Mask : MonoBehaviour
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
 
-            currentModel = mask;
-            
+            currentModel = mask;            
         }
     }    
 
@@ -76,8 +77,22 @@ public class Mask : MonoBehaviour
                 Destroy(currentModel);
                 mask = Instantiate(ghostPref, gameObject.transform);
                 break;
-            case "Werewolf Mask":
+            case "Witch Mask":
+                equipedMask = gameObject.AddComponent<WitchMask>();
+                Destroy(currentModel);
+                mask = Instantiate(ghostPref, gameObject.transform);
                 break;
+            case "Werewolf Mask":
+                equipedMask = gameObject.AddComponent<WerewolfMask>();
+                Destroy(currentModel);
+                mask = Instantiate(werewolfPref, gameObject.transform);
+                break;
+            case "Vampire Mask":
+                equipedMask = gameObject.AddComponent<VampireMask>();
+                Destroy(currentModel);
+                mask = Instantiate(vampirePref, gameObject.transform);
+                break;
+                
             default:
                 Debug.Log("Error with mask");
                 break;

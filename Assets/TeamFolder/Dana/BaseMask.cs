@@ -6,11 +6,14 @@ public class BaseMask : MonoBehaviour
 {
     public float duration = 5f;
     protected Coroutine wait;
+    public Pawn pawn;
+    public GameObject barrel;
 
     // Use this for initialization
     void Start()
     {
-
+        pawn = GetComponent<Pawn>();
+        barrel = pawn.myMask.currentModel.GetComponent<GetBarrel>().barrel;
     }
 
     // Update is called once per frame
