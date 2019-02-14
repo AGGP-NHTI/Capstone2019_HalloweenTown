@@ -8,6 +8,9 @@ TagManager:
   - Ghost Mask
   - Toilet Paper
   - Egg
+  - Witch Mask
+  - Werewolf Mask
+  - Vampire Mask
   layers:
   - Default
   - TransparentFX

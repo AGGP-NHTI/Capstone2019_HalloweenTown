@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114887082208631712}
   - component: {fileID: 114916676434051950}
   m_Layer: 0
-  m_Name: BigBoo
+  m_Name: GhostMask
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

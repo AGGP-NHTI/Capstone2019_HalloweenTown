@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114536418920714812}
   m_Layer: 0
   m_Name: GhostGrabable
-  m_TagString: Werewolf Mask
+  m_TagString: Ghost Mask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
