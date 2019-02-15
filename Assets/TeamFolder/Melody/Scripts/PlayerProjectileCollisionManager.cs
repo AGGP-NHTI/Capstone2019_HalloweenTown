@@ -22,7 +22,7 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-	}
+	}/*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Egg"))
@@ -45,15 +45,9 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
                 StartCoroutine(myStun.suspendMovement(stunTime));
             }
             Destroy(collision.gameObject);
-
-
-    //disable projectile
-
-    //
-    Destroy(collision.gameObject);
         }
         //else Destroy(gameObject);
-    }
+    }*/
     private IEnumerator suspendMovement1()
     {
         bool couldBeHit = canBeHit;

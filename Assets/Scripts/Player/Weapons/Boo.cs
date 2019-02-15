@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boo : MonoBehaviour {
-
-    public GameObject barrel;
+    
     public GameObject Model;
     public int radiusOfBoo = 60;
     public float damage = 10f;
@@ -20,13 +19,6 @@ public class Boo : MonoBehaviour {
         pawn = GetComponent<Pawn>();
         mask = gameObject.GetComponent<Mask>();
         Model = mask.currentModel;
-        barrel = Model.GetComponent<GetBarrel>().barrel;
-    }
-    public void ModelChange()
-    {
-        mask = gameObject.GetComponent<Mask>();
-        Model = mask.currentModel;
-        barrel = Model.GetComponent<GetBarrel>().barrel;
     }
 
     public void GoBoo(bool value)
@@ -36,7 +28,7 @@ public class Boo : MonoBehaviour {
             Debug.Log("Boo");
             if (!soundManager.audioSource.isPlaying)
             {
-                Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 1.0f);
+                Collider[] hitColliders = Physics.OverlapSphere(pawn.barrel.transform.position, 1.0f);
                 
                 for(int i = 0; i < hitColliders.Length; i++)
                 {
@@ -57,9 +49,9 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                hb.TakeDamage(damage);
-                                //Stun stun = hitColliders[i].GetComponent<Stun>();
-                                //hb.Hit();
+                                //hb.TakeDamage(damage);
+                                StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                hb.Hit();
                                 //stun.GetStunned(5f);
                             }                            
                         }

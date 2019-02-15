@@ -13,21 +13,32 @@ public class Pawn : MonoBehaviour
     public InteractionManager MyInteractManager;
     public Mask myMask;
     public HealthBar myHealth;
+    public Stun myStun;
+    public GameObject barrel;
 
     [HideInInspector]
     public PlayerController MyController;
 
+    private void Awake()
+    {
+        barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+    }
     protected virtual void Start ()
     {
         myMask = GetComponent<Mask>();
         myProjectileManager = GetComponent<ProjectileManager>();
-
-	}
+        
+    }
 	
 	protected virtual void Update ()
     {
 		
 	}
+
+    public void ModelChange()
+    {
+        barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+    }
 
     #region Input
     public virtual void PassLockScreen(bool value)
@@ -74,15 +85,16 @@ public class Pawn : MonoBehaviour
     {
         if (value > 0.0f)
         {
-            Debug.Log(name + " right trigger: " + value);
+            
+            //Debug.Log(name + " right trigger: " + value);
         }
         if (!myProjectileManager)
         {
             Debug.LogWarning(name + " is trying to be passed input when it has no Projectile Manager component assigned!");
             return;
         }
-        myProjectileManager.throwEgg(value);
 
+        myProjectileManager.throwObject(value);
     }
 
     public virtual void PassDPadInput(Vector2 value)

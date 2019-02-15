@@ -124,4 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e38941c14f8244dbc787291e0bdf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 400
+  throwForce: 10
+  moveSpeed: {x: 0, y: 0, z: 0}
