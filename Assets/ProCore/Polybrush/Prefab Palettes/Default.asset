@@ -11,4 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc38003c0e0db6641a4762d4f392de52, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - gameObject: {fileID: 1747955951340388, guid: 512aafa079e8ae8459cf512e8fbcee27,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1024549113582280, guid: 6d20e3bbbad9d9c46ba49229ee585b51,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1820779542379742, guid: 405cc392c85aa974693f76181431fbb8,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
