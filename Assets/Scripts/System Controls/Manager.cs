@@ -6,58 +6,57 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public GameObject RoundModePrefab;
-    
+
     public List<InputObject> inputObject;
-    [HideInInspector] public List<bool> joinedGame = new List<bool>();
-    [HideInInspector] public List<bool> readyUp = new List<bool>();
+    /*[HideInInspector]*/ public List<bool> joinedGame = new List<bool>(new bool[] {false, false, false, false});
+    /*[HideInInspector]*/ public List<bool> readyUp = new List<bool>(new bool[] { false, false, false, false });
     public float CountDownDuration { get; private set; }
     public bool RoundReadyToStart { get; private set; }
     
-   // public Text countDown;
     Coroutine startGameTimer;
 
-    protected bool startGame = true;
+    protected bool lookForJoining = false;
 	void Start ()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        //sets list of bools to false        
-        for (int i = 0; i < 4; i++)
-        {
-            joinedGame.Add(false);
-            readyUp.Add(false);
-        }
 	}
 	
 	void Update ()
     {
-        if (startGame)
+        if (lookForJoining)
         {
             bool allPlayersReady = true;
             bool onePlayerInGame = false;
 
             for (int i = 0; i < inputObject.Count; i++)
             {         
-                //test if Joined Game                
+                //test if trying to Joined Game                
                 if (inputObject[i].GetStartInput())
                 {                    
                     joinedGame[i] = true;
-                    if(startGameTimer != null)
-                    {
-                        StopCoroutine(startGameTimer);
-                        
-                        startGameTimer = null;
-                    }
                     Debug.Log("Player " + i + " joined the game!");
                 }
                 
-                //test if Ready Up
+                //test if trying to Ready Up
                 if(inputObject[i].GetJumpInput() && joinedGame[i])
                 {
                     readyUp[i] = true;
                     Debug.Log("Player " + i + " is ready!");
-                }                
+                }
+
+                //test if trying to Unready/Unjoin
+                if(inputObject[i].GetBooInput())
+                {
+                    if(readyUp[i])
+                    {
+                        readyUp[i] = false;
+                    }
+                    else if(joinedGame[i])
+                    {
+                        joinedGame[i] = false;
+                    }
+                }
                 
                 if (joinedGame[i])
                 {
@@ -79,6 +78,12 @@ public class Manager : MonoBehaviour
                     startGameTimer = StartCoroutine(BeginGameCountDown());
                 }
             }
+            else if(startGameTimer != null)
+            {
+                StopCoroutine(startGameTimer);
+
+                startGameTimer = null;
+            }
         }        
 	}
 
@@ -94,7 +99,7 @@ public class Manager : MonoBehaviour
             yield return null;
         }
         //countDown.text = Mathf.Round(Time.time).ToString();
-        startGame = false;
+        lookForJoining = false;
         //This is when the game actually begins.
         if(RoundModePrefab)
         {
@@ -121,6 +126,25 @@ public class Manager : MonoBehaviour
         else
         {
             Debug.LogWarning(name + " has no RoundModePrefab!");
+        }
+    }
+
+    public void StartLookingForPlayers()
+    {
+        lookForJoining = true;
+        joinedGame = new List<bool>(new bool[] { false, false, false, false });
+        readyUp = new List<bool>(new bool[] { false, false, false, false });
+    }
+
+    public void StopLookingForPlayers()
+    {
+        lookForJoining = false;
+
+        if (startGameTimer != null)
+        {
+            StopCoroutine(startGameTimer);
+
+            startGameTimer = null;
         }
     }
 }
