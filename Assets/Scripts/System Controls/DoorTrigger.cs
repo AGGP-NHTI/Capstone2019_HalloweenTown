@@ -8,6 +8,8 @@ public class DoorTrigger : MonoBehaviour
     public float CandyCollectionCoolDown = 3.0f;
     public int candyCount;
 
+    public ParticleSystem system;
+
     void Start()
     {
 
@@ -22,6 +24,8 @@ public class DoorTrigger : MonoBehaviour
         //Give candy
         if(source.MyCandy)
         {
+            system.Play();
+
             if(source.myMask.hasMask)
             {
                 candyCount = Random.Range(6,8);
