@@ -23,6 +23,14 @@ ModelImporter:
     400016: //RootNode
     2100000: initialShadingGroup
     2100002: blinn1SG
+    2100004: pCylinder1Mat
+    2100006: pSphere1Mat
+    2100008: pSphere2Mat
+    2100010: pSphere3Mat
+    2100012: pSphere4Mat
+    2100014: pSphere5Mat
+    2100016: pSphere6Mat
+    2100018: pSphere7Mat
     2300000: pCylinder1
     2300002: pSphere1
     2300004: pSphere2
