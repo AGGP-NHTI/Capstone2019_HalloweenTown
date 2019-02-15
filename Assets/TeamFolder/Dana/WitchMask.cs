@@ -5,10 +5,10 @@ using UnityEngine;
 public class WitchMask : BaseMask
 {
     public override void Ult()
-    {
-        pawn.MyMoveScript.moveSpeed *=2;
+    {        
         if (wait == null)
         {
+            pawn.MyMoveScript.moveSpeed *= 2;
             wait = StartCoroutine("BeginGameCountDown");
         }
     }

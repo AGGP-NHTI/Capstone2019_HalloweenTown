@@ -9,7 +9,7 @@ public class Pawn : MonoBehaviour
     public Camera MyCamera;
     public Candy MyCandy;
     public Boo MyBoo;
-    ProjectileManager myProjectileManager;
+    public ProjectileManager myProjectileManager;
     public InteractionManager MyInteractManager;
     public Mask myMask;
     public HealthBar myHealth;

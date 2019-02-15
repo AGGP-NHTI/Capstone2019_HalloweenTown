@@ -28,8 +28,8 @@ public class WeaponInventory : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
-        txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
+        //txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
+       // txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
     }
 
     void OnTriggerEnter(Collider other)

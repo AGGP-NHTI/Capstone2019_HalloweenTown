@@ -8,7 +8,9 @@ public class VampireMask : BaseMask {
     
     public override void Ult()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
+        if (wait == null)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             if (hitColliders[i].tag == "Player")
@@ -29,8 +31,7 @@ public class VampireMask : BaseMask {
                 }
             }
         }
-        if (wait == null)
-        {
+        
             wait = StartCoroutine("BeginGameCountDown");
         }
     }

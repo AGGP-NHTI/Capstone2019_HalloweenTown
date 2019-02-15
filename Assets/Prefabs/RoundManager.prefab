@@ -151,13 +151,13 @@ MonoBehaviour:
   currentPhase: 0
   roundElapsedTime: 0
   roundStartEndTime: -1
-  roundRunningEndTime: 35
+  roundRunningEndTime: 60
   roundEndingEndTime: -1
   _letRoundTimerRun: 0
   GameSceneBuildIndex: 1
   playercontrollerPrefab: {fileID: 1261868761011518, guid: 7fd3bcb03dcd685449b27c32865a00e7,
     type: 2}
-  playerPrefab: {fileID: 1658613415614286, guid: 9387731fc6fee6c44a72e93dfac40df1,
+  playerPrefab: {fileID: 1057452389426254, guid: 548c399c44a08df4da895ff2e51b35ab,
     type: 2}
   momPrefab: {fileID: 1781754937150684, guid: 348e5b84cf091d444ac535336b6f5d54, type: 2}
   spawnedMom: {fileID: 0}

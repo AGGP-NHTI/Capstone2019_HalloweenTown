@@ -17,6 +17,7 @@ public class ProjectileManager : MonoBehaviour {
     float currentDPadY;
     float previousDPadY;
     public bool canThrow = true;
+    public bool werewolfUlt = false;
 
     Pawn pawn;
     Rigidbody rb;
@@ -80,10 +81,15 @@ public class ProjectileManager : MonoBehaviour {
             {
                 thrownObject.GetComponent<ToiletPaper>().moveSpeed += rb.velocity;
 
+
             }
             else if(thrownObject.GetComponent<Egg>())
             {
                 thrownObject.GetComponent<Egg>().moveSpeed += rb.velocity;
+                if(werewolfUlt)
+                {
+                    thrownObject.GetComponent<Egg>().damage *= 2;
+                }
             }
             
         } 
