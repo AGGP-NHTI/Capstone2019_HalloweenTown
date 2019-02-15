@@ -3,24 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boo : MonoBehaviour {
-    public AudioSource boo;
+
     public GameObject barrel;
     public GameObject Model;
-
     public int radiusOfBoo = 60;
+    public float damage = 10f;
     bool canBoo = true;
-
-    private void Update()
+    Mask mask;
+    Pawn pawn;
+    SoundManager soundManager;
+    
+    private void Start()
     {
-        Mask mask = gameObject.GetComponent<Mask>();
+        soundManager = GetComponent<SoundManager>();
+
+        pawn = GetComponent<Pawn>();
+        mask = gameObject.GetComponent<Mask>();
         Model = mask.currentModel;
         barrel = Model.GetComponent<GetBarrel>().barrel;
     }
+    public void ModelChange()
+    {
+        mask = gameObject.GetComponent<Mask>();
+        Model = mask.currentModel;
+        barrel = Model.GetComponent<GetBarrel>().barrel;
+    }
+
     public void GoBoo(bool value)
     {
         if (value && canBoo)
-        {            
-            if(!boo.isPlaying)
+        {
+            Debug.Log("Boo");
+            if (!soundManager.audioSource.isPlaying)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 1.0f);
                 
@@ -29,9 +43,7 @@ public class Boo : MonoBehaviour {
                     if(hitColliders[i].tag == "Player")
                     {
                         if(hitColliders[i].transform.position != transform.position)
-                        {
-                            Debug.Log("Boo");
-
+                        {    
                             GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;//gets other model in boo
                             float difference = otherModel.transform.rotation.eulerAngles.y - Model.transform.rotation.eulerAngles.y;
 
@@ -45,12 +57,15 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                hb.TakeDamage(50f);
+                                hb.TakeDamage(damage);
+                                //Stun stun = hitColliders[i].GetComponent<Stun>();
+                                //hb.Hit();
+                                //stun.GetStunned(5f);
                             }                            
                         }
                     }
                 }
-                boo.Play();
+                soundManager.Boo();
                 canBoo = false;
                 StartCoroutine(WaitingToBoo());
             }            

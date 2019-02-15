@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour {
 
     public Image healthBar;
-    
-    //public float startHealth = 100;
     public float health;
-	
+    public bool ghostUlt = false;
+
+    SoundManager soundManager;
+
 	void Start () {
-        
-       
+        soundManager = GetComponent<SoundManager>();
 	}
 
     private void Update()
@@ -21,17 +21,23 @@ public class HealthBar : MonoBehaviour {
     }
     public void TakeDamage(float amount) // this is how the damage needs to work for fillAmount.
     {
-        health -= amount;
-
-       // healthBar.fillAmount = health;
-
+        if (health >=0 ||!ghostUlt)//if ghost is not ulting
+        {
+            health -= amount;
+            soundManager.Oof();
+        }
     }
     public void HealHealth(float amount) // this is how the damage needs to work for fillAmount.
     {
         health += amount;
+    }
 
-       // healthBar.fillAmount = health;
-
+    public void Hit()
+    {
+        if (!ghostUlt)
+        {
+            soundManager.Oof();
+        }
     }
 
     //private void Update()

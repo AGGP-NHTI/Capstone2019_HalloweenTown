@@ -12,7 +12,8 @@ public class Pawn : MonoBehaviour
     ProjectileManager myProjectileManager;
     public InteractionManager MyInteractManager;
     public Mask myMask;
-    
+    public HealthBar myHealth;
+
     [HideInInspector]
     public PlayerController MyController;
 

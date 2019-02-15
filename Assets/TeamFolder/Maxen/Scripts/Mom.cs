@@ -6,7 +6,7 @@ using UnityEngine;
 public class Mom : MonoBehaviour
 {
     public bool huntChildren = false;
-
+    AudioSource audioSource;
     public List<Pawn> RemainingPlayersToFind;
     public Pawn targetPlayer;
     public float reconsiderTargetRange = 7.0f;
@@ -15,7 +15,12 @@ public class Mom : MonoBehaviour
 
     public float moveSpeed = 3.0f;
 
-	public virtual void FindPlayers(List<PlayerController> listOfPlayers)
+    private void Start()
+    {
+       audioSource = GetComponent<AudioSource>();
+    }
+
+    public virtual void FindPlayers(List<PlayerController> listOfPlayers)
     {
         foreach(PlayerController pc in listOfPlayers)
         {
@@ -46,9 +51,11 @@ public class Mom : MonoBehaviour
             float targetSqrDistance = vectorToTarget.sqrMagnitude;
             Debug.Log(targetSqrDistance);
             if (targetSqrDistance < collectPlayerRange * collectPlayerRange)
-            {
+            {                
                 Debug.Log("target in range!");
                 RemainingPlayersToFind.Remove(targetPlayer);
+                audioSource.Play();              
+
                 Destroy(targetPlayer.gameObject);
             }
 
