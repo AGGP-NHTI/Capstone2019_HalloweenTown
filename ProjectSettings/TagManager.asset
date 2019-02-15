@@ -8,9 +8,13 @@ TagManager:
   - Ghost Mask
   - Toilet Paper
   - Egg
+<<<<<<< HEAD
+  - TPPickUp
+=======
   - Witch Mask
   - Werewolf Mask
   - Vampire Mask
+>>>>>>> a3212c23111465cbed036dfb0d70b34b61dad40c
   layers:
   - Default
   - TransparentFX

@@ -38,6 +38,15 @@ public class WeaponInventory : MonoBehaviour {
             UpdateDisplay();
             Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("TPPickUp"))
+        {
+            if (numberToiletPaper < 3)
+            {
+                numberToiletPaper++;
+                UpdateDisplay();
+                Destroy(other.gameObject);
+            }
+        }
     }
     public void subtractFromInventory(GameObject thrown)
     {
