@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponInventory : MonoBehaviour {
+public class WeaponInventory : MonoBehaviour
+{
     Text txtNumberEggs;
     Text txtNumberToiletPaper;
-	public int numberEggs;
+    public int numberEggs;
     public int numberToiletPaper;
     // Use this for initialization
-	void Start () {
+    void Start()
+    {
         //  txtNumberEggs = transform.Find("EggText").gameObject.Te
-        txtNumberEggs= GameObject.Find("EggText").GetComponent<Text>();
-        txtNumberToiletPaper = GameObject.Find("TPText").GetComponent<Text>();
+        // txtNumberEggs= GameObject.Find("EggText").GetComponent<Text>();
+        //txtNumberToiletPaper = GameObject.Find("TPText").GetComponent<Text>();
         //txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
-        txtNumberEggs.text = "lol";
+        // txtNumberEggs.text = "lol";
         //txtNumberToiletPaper.gameObject.SetActive(false);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void UpdateDisplay()
     {
         txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
         txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
         Debug.Log(string.Format("other name: {0}", other.gameObject.name));
@@ -37,15 +40,6 @@ public class WeaponInventory : MonoBehaviour {
             numberEggs += 12;
             UpdateDisplay();
             Destroy(other.gameObject);
-        }
-        if(other.gameObject.CompareTag("TPPickUp"))
-        {
-            if (numberToiletPaper < 3)
-            {
-                numberToiletPaper++;
-                UpdateDisplay();
-                Destroy(other.gameObject);
-            }
         }
     }
     public void subtractFromInventory(GameObject thrown)
