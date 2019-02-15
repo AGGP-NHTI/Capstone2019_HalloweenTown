@@ -8,8 +8,7 @@ public class SplitScreenManager : MonoBehaviour
 
     public List<Camera> PlayerCameras;
     public List<uint> CameraNumbers;
-    public Camera FallbackCamera;
-    public int playerCameraDepth;
+    
 
     public bool TriggerConfigureScreenSpace;
 
@@ -25,7 +24,7 @@ public class SplitScreenManager : MonoBehaviour
         }
 	}
 
-    private void Update()
+    private void OnValidate()
     {
         if(TriggerConfigureScreenSpace)
         {
@@ -36,19 +35,10 @@ public class SplitScreenManager : MonoBehaviour
 
     public virtual void ConfigureScreenSpace()
     {
-        Camera[] allCameras = FindObjectsOfType<Camera>();
-        foreach(Camera c in allCameras)
-        {
-            if(c.depth >= playerCameraDepth - 1)
-            {
-                if(FallbackCamera)
-                {
-                    FallbackCamera.depth = playerCameraDepth - 1;
-                }
-                c.depth = playerCameraDepth - 2;
-            }
-        }
+        //Configure Camera Depth (which renders on top of which)
+        CameraManager.Instance.ConfigurePlayerCameraDepths(PlayerCameras);
         
+        //Configure screen space
         int xCameras = 1;
         int yCameras = 1;
 
@@ -77,7 +67,6 @@ public class SplitScreenManager : MonoBehaviour
                 CameraPosition.x = 0.0f;
                 CameraPosition.y += CameraSize.y;
             }
-            PlayerCameras[cameraIndex].depth = playerCameraDepth;
         }
     }
 }
