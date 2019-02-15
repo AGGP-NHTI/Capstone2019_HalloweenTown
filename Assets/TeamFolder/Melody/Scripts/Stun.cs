@@ -6,7 +6,7 @@ public class Stun : MonoBehaviour {
     ProjectileManager myProjectileManager;
     MoveScript myMoveScript;
     PlayerProjectileCollisionManager myCollisionManager;
-    //public bool stuned = false;
+    public bool stunned = false;
     
     // Use this for initialization
     void Start () {
@@ -20,16 +20,16 @@ public class Stun : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    
 
     public IEnumerator suspendMovement(float duration)
     {
         
         float timer = 0f;
         float rate = 1 / duration;
-        bool stun = true;
+        stunned = true;
         //store original values
-        bool couldBeHit = myCollisionManager.canBeHit;
+        //bool couldBeHit = myCollisionManager.canBeHit;
         bool canThrowBeforeHit = myProjectileManager.canThrow;
         bool sprintingBeforeHit = myMoveScript.allowSprinting;
         bool jumpingBeforeHit = myMoveScript.allowJumping;
@@ -42,15 +42,13 @@ public class Stun : MonoBehaviour {
         myMoveScript.allowCrouching = false;
         myMoveScript.moveSpeed = 0.0f;
         myProjectileManager.canThrow = false;
-        myCollisionManager.canBeHit = false;
+        //myCollisionManager.canBeHit = false;
 
         //count
-        while (stun)
+        while (timer < duration)
         {
-
             timer += Time.deltaTime;
-            if (timer > duration) stun = false;
-            yield return 0;
+            yield return null;
         }
 
         //enable
@@ -58,7 +56,9 @@ public class Stun : MonoBehaviour {
         myMoveScript.allowJumping = jumpingBeforeHit;
         myMoveScript.allowCrouching = crouchingBeforeHit;
         myMoveScript.moveSpeed = moveSpeedBeforeHit;
-        myCollisionManager.canBeHit = couldBeHit;
+        //myCollisionManager.canBeHit = couldBeHit;
         myProjectileManager.canThrow = canThrowBeforeHit;
+        stunned = false;
+        Debug.Log("done being stunned");
     }
 }

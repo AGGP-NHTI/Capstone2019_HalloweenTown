@@ -8,8 +8,11 @@ public class Projectile : MonoBehaviour {
     float destroyAfterElapsedTime = 10.0f;
     protected float elapsedTime = 0.0f;
     protected Rigidbody rb;
+
+    Pawn pawn;
+    
     protected void Start () {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();        
 	}
 	
 	// Update is called once per frame
@@ -20,10 +23,5 @@ public class Projectile : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-    }
-
-    protected void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-    }
+    }    
 }

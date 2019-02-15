@@ -105,7 +105,7 @@ public class Mask : MonoBehaviour
         al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
         currentModel = mask;
 
-        pawn.MyBoo.ModelChange();
+        pawn.ModelChange();
     }
 
     

@@ -6,15 +6,16 @@ public class ToiletPaper : Projectile {
 
     
     public float throwForce;
+    public Vector3 moveSpeed;
 
     Vector3 throwAngle;
+    float stunTime = 5f;
     // Use this for initialization
-	void Start () {
+    void Start () {
         base.Start();
-        
-        throwAngle = (transform.forward + transform.up).normalized * throwForce;
-        
-        rb.AddForce(throwAngle);
+        throwAngle = (transform.forward  + transform.up).normalized * throwForce;
+        throwAngle += moveSpeed;
+        rb.velocity = throwAngle;
     }
 	
 	// Update is called once per frame
@@ -22,8 +23,18 @@ public class ToiletPaper : Projectile {
 		
 	}
 
-    new void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
+        if (collision.gameObject.tag == "Player")
+        {            
+            GameObject player = collision.gameObject;            
+            Stun stun = player.GetComponent<Stun>();
+
+            if (stun.stunned == false)
+            {
+                StartCoroutine(stun.suspendMovement(stunTime));
+            }           
+        }
+        Destroy(gameObject);
     }
 }

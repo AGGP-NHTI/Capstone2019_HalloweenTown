@@ -17,14 +17,18 @@ public class ProjectileManager : MonoBehaviour {
     float currentDPadY;
     float previousDPadY;
     public bool canThrow = true;
-    // Use this for initialization
+
+    Pawn pawn;
+    Rigidbody rb;
     void Start() {
-        //these warnings
+
+        pawn = GetComponent<Pawn>();
+        rb = GetComponent<Rigidbody>();
+
         inventory = GetComponent<WeaponInventory>();
         leftSpawn = transform.Find("Model/LeftArm");
-
         
-        selectedWeaponIndex = 1;
+        selectedWeaponIndex = 0;
         previousDPadY = currentDPadY = 0;
         previousRightTrigger = currentRightTrigger = 0;
         deadZone = 0;
@@ -44,15 +48,17 @@ public class ProjectileManager : MonoBehaviour {
 
     }
 
-    public void throwEgg(float value)
+    public void throwObject(float value)
     {
         
         //Debug.Log(string.Format("in throw egg. Value: {0}", value));
         currentRightTrigger = value;
         //isthereathingtothrow
-        GameObject go = weaponList[selectedWeaponIndex];
-        if (!inventory.hasProjectile(go)) return;
-
+        GameObject weapon = weaponList[selectedWeaponIndex];
+        if (!inventory.hasProjectile(weapon))
+        {
+            return;
+        }
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
         {
             //Debug.Log("in egg");
@@ -66,9 +72,19 @@ public class ProjectileManager : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw projectile but no model component not found!");
                 return;
             }
-            GameObject.Instantiate(go, leftSpawn.position + leftSpawn.transform.forward, model.rotation);
-            inventory.subtractFromInventory(go); 
+            GameObject thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position + leftSpawn.transform.forward, model.rotation);
+            Debug.Log(thrownObject.gameObject.name);
+            inventory.subtractFromInventory(weaponList[selectedWeaponIndex]);
             
+            if(thrownObject.GetComponent<ToiletPaper>())
+            {
+                thrownObject.GetComponent<ToiletPaper>().moveSpeed += rb.velocity;
+
+            }
+            else if(thrownObject.GetComponent<Egg>())
+            {
+                thrownObject.GetComponent<Egg>().moveSpeed += rb.velocity;
+            }
             
         } 
         previousRightTrigger = currentRightTrigger;

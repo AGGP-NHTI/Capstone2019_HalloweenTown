@@ -9,9 +9,11 @@ public class DoorTrigger : MonoBehaviour
     public int candyCount;
 
     public ParticleSystem system;
+    
 
     void Start()
     {
+       
 
     }
 
