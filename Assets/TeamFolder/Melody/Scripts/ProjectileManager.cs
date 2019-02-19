@@ -11,9 +11,8 @@ public class ProjectileManager : MonoBehaviour {
    
     public List<GameObject> weaponList;
     public int selectedWeaponIndex;
-    public Transform leftSpawn;
+    //public Transform leftSpawn;
     public Vector3 offset;
-    public Transform model;
     float currentDPadY;
     float previousDPadY;
     public bool canThrow = true;
@@ -33,13 +32,6 @@ public class ProjectileManager : MonoBehaviour {
         previousDPadY = currentDPadY = 0;
         previousRightTrigger = currentRightTrigger = 0;
         deadZone = 0;
-        foreach(Transform c in transform)
-        {
-            if (c.name == "Model")
-            {
-                model = c;
-            }
-        }
       
         //leftSpawn = ge
     }
@@ -51,6 +43,30 @@ public class ProjectileManager : MonoBehaviour {
 
     public void throwObject(float value)
     {
+        if(!pawn)
+        {
+            Debug.Log("No assigned pawn for " + name +"'s projectile manager");
+            return;
+        }
+        if (!pawn.barrel)
+        {
+            Debug.Log("No assigned barrel  for pawn " + name);
+            return;
+        }
+        Transform leftSpawn = pawn.barrel.transform;
+
+        if(!pawn.myMask)
+        {
+            Debug.Log("No myMask for pawn " + name);
+            return;
+        }
+        if (!pawn.myMask.currentModel)
+        {
+            Debug.Log("No currentModel for myMask " + name);
+            return;
+        }
+        Transform model = pawn.myMask.currentModel.transform;
+
         //Debug.Log("in throw object");
         //Debug.Log(string.Format("in throw egg. Value: {0}", value));
         currentRightTrigger = value;
@@ -58,7 +74,7 @@ public class ProjectileManager : MonoBehaviour {
         GameObject weapon = weaponList[selectedWeaponIndex];
         if (!inventory.hasProjectile(weapon))
         {
-            //Debug.Log("inventory has projectile" + inventory.hasProjectile(weapon));
+            Debug.Log("inventory has no projectile" + inventory.hasProjectile(weapon));
             return;
         }
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
