@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1141441639617066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.18, y: 0.37, z: -12.34}
+  m_LocalPosition: {x: 37.446762, y: 160.35886, z: 83.412544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,7 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4792506ad675e2a48945dc798eb012e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CandyCollectionCoolDown: 3
+  CandyCollectionCoolDown: 60
+  candyCount: 0
+  system: {fileID: 198054028848065416, guid: 317f9533317cde94392a530dcae28f25, type: 2}
 --- !u!114 &114541739141558288
 MonoBehaviour:
   m_ObjectHideFlags: 1

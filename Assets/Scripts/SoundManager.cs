@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip boo;
     public AudioClip oof;
+    public AudioClip trickotreat;
 	void Start () {
 	}
 	
