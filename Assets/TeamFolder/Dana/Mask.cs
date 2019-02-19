@@ -15,7 +15,7 @@ public class Mask : MonoBehaviour
     public GameObject witchPref;
     public GameObject werewolfPref;
     public GameObject vampirePref;
-    GameObject mask;
+    
 
     BaseMask equipedMask;
     Pawn pawn;
@@ -65,8 +65,8 @@ public class Mask : MonoBehaviour
 
     void GetMask()
     {
-        hasMask = true;        
-
+        hasMask = true;
+        GameObject mask = currentModel;
         Vector3 pos = currentModel.transform.position;
         Quaternion rot = currentModel.transform.rotation;
 
@@ -80,7 +80,7 @@ public class Mask : MonoBehaviour
             case "Witch Mask":
                 equipedMask = gameObject.AddComponent<WitchMask>();
                 Destroy(currentModel);
-                mask = Instantiate(ghostPref, gameObject.transform);
+                mask = Instantiate(witchPref, gameObject.transform);
                 break;
             case "Werewolf Mask":
                 equipedMask = gameObject.AddComponent<WerewolfMask>();

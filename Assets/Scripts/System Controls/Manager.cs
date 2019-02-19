@@ -94,7 +94,6 @@ public class Manager : MonoBehaviour
         while (CountDownDuration >= endTime)
         {
             //countDown.text = Mathf.Round(duration).ToString();
-            Debug.Log(Mathf.Round(CountDownDuration).ToString());
             CountDownDuration -= Time.deltaTime;
             yield return null;
         }

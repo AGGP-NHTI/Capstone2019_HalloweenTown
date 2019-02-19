@@ -76,7 +76,7 @@ public class Pawn : MonoBehaviour
     {
         if(value > 0.0f)
         {
-            Debug.Log(name + " left trigger: " + value);
+            //Debug.Log(name + " left trigger: " + value);
         }
         
     }

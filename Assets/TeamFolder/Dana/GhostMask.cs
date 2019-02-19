@@ -9,7 +9,7 @@ public class GhostMask : BaseMask{
     
     void Start () {
        // myMask = GetComponent<Mask>();
-        color = pawn.myMask.currentModel.GetComponent<Renderer>().material.color;        
+        color = pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color;        
     }
 	
 
