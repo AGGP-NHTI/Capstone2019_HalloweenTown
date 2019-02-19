@@ -75,6 +75,7 @@ public class ProjectileManager : MonoBehaviour {
             }
             GameObject thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position + leftSpawn.transform.forward, model.rotation);
             Debug.Log(thrownObject.gameObject.name);
+            thrownObject.GetComponent<Projectile>().owner = gameObject;
             inventory.subtractFromInventory(weaponList[selectedWeaponIndex]);
             
             if(thrownObject.GetComponent<ToiletPaper>())

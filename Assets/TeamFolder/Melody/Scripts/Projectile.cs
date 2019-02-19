@@ -24,5 +24,9 @@ public class Projectile : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        if(owner)
+        {
+            Debug.Log("owner: " + owner.name);
+        }
     }    
 }
