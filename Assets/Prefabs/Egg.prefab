@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23732306582424532}
   - component: {fileID: 135743072073084304}
   - component: {fileID: 54893764044661340}
-  - component: {fileID: 114869420728993194}
+  - component: {fileID: 114670260165009506}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Egg
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114869420728993194
+--- !u!114 &114670260165009506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,11 +109,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778895021635794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4795cb08445854fa5434842b7ebc6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 68a26a73532d58a44a3d7b9db037abd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
-  arcAfterElapsedTime: 0
+  owner: {fileID: 0}
+  throwForce: 1
+  arcAfterElapsedTime: 5
   damage: 10
   moveSpeed: {x: 0, y: 0, z: 0}
 --- !u!135 &135743072073084304
