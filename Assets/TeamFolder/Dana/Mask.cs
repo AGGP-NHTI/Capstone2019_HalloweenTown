@@ -73,9 +73,11 @@ public class Mask : MonoBehaviour
         switch(scriptName)
         {
             case "Ghost Mask":
-                equipedMask = gameObject.AddComponent<GhostMask>();
                 Destroy(currentModel);
                 mask = Instantiate(ghostPref, gameObject.transform);
+                currentModel = mask;
+                equipedMask = gameObject.AddComponent<GhostMask>();
+                
                 break;
             case "Witch Mask":
                 equipedMask = gameObject.AddComponent<WitchMask>();

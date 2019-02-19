@@ -6,10 +6,18 @@ public class GhostMask : BaseMask{
 
     //Mask myMask;
     Color color;
-    
+    public GameObject mask;
+
+
     void Start () {
-       // myMask = GetComponent<Mask>();
-        color = pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color;        
+        base.Start();
+        mask = pawn.myMask.currentModel;
+        color = mask.GetComponent<MeshRenderer>().material.color;
+        // myMask = GetComponent<Mask>();
+        //color = pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color;
+
+
+
     }
 	
 
@@ -26,7 +34,7 @@ public class GhostMask : BaseMask{
     }
 
     public override void UltFinished()
-    {
+    {        
         color.a = 1f;
         pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
     }
