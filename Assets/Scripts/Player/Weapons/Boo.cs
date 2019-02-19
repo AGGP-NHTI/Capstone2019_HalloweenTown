@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Boo : MonoBehaviour {
     
-    public GameObject Model;
     public int radiusOfBoo = 60;
     public float damage = 10f;
     bool canBoo = true;
-    Mask mask;
     Pawn pawn;
     SoundManager soundManager;
     
@@ -17,8 +15,6 @@ public class Boo : MonoBehaviour {
         soundManager = GetComponent<SoundManager>();
 
         pawn = GetComponent<Pawn>();
-        mask = gameObject.GetComponent<Mask>();
-        Model = mask.currentModel;
     }
 
     public void GoBoo(bool value)
@@ -35,9 +31,10 @@ public class Boo : MonoBehaviour {
                     if(hitColliders[i].tag == "Player")
                     {
                         if(hitColliders[i].transform.position != transform.position)
-                        {    
-                            GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;//gets other model in boo
-                            float difference = otherModel.transform.rotation.eulerAngles.y - Model.transform.rotation.eulerAngles.y;
+                        {
+                            // GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;//gets other model in boo
+                            GameObject otherModel = hitColliders[i].GetComponent<Pawn>().myMask.currentModel;
+                            float difference = otherModel.transform.rotation.eulerAngles.y - pawn.myMask.currentModel.transform.rotation.eulerAngles.y;
 
                             //checks if the difference is a negative value
                             if(Mathf.Sign(difference) == -1)
@@ -49,10 +46,9 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                //hb.TakeDamage(damage);
-                                StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
-                                hb.Hit();
-                                //stun.GetStunned(5f);
+                                hb.TakeDamage(damage); //for testing
+                               // StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                //hb.Hit();
                             }                            
                         }
                     }
