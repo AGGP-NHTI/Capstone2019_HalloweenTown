@@ -13,7 +13,7 @@ public class ProjectileManager : MonoBehaviour {
     public int selectedWeaponIndex;
     public Transform leftSpawn;
     public Vector3 offset;
-    Transform model;
+    public Transform model;
     float currentDPadY;
     float previousDPadY;
     public bool canThrow = true;
