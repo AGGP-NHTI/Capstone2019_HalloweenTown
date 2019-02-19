@@ -11,7 +11,11 @@ public class HealthBar : MonoBehaviour {
 
     SoundManager soundManager;
 
-	void Start () {
+    //public GameObject dropCandy;//The candy
+    //public Transform player;//get player transform
+    //public ParticleSystem system;//particles
+
+    void Start () {
         soundManager = GetComponent<SoundManager>();
 	}
 
@@ -39,13 +43,24 @@ public class HealthBar : MonoBehaviour {
             soundManager.Oof();
         }
     }
+    //Causes Candy to Drop and particles
+    //public void DropCandy(int numCandy)
+    //{
+    //    for (int i = 0; i < numCandy; i++)
+    //    {
+    //        system.Play();
+    //        Vector3 pos = new Vector3(0f, 2f, 0f);
+    //        GameObject candy;
+    //        candy = Instantiate(dropCandy, transform.position + pos, transform.rotation);
+    //    }
+    //}
 
     //private void Update()
-   // {
-        /*if (health != 110)
-        {
-            HealHealth(1f);
-        }  */    
-   // }
+    // {
+    /*if (health != 110)
+    {
+        HealHealth(1f);
+    }  */
+    // }
 
 }
