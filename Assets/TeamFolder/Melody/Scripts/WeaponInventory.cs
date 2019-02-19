@@ -50,7 +50,10 @@ public class WeaponInventory : MonoBehaviour
     }
     public bool hasProjectile(GameObject go)
     {
-        if (go.GetComponent<Egg>() && numberEggs > 0) return true;
+        if (go.GetComponent<Egg>() && numberEggs > 0)
+        {
+            return true;
+        }
         else if (go.GetComponent<ToiletPaper>() && numberToiletPaper > 0) return true;
         return false;
     }
