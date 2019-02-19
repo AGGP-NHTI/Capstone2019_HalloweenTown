@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour {
     float destroyAfterElapsedTime = 10.0f;
     protected float elapsedTime = 0.0f;
     protected Rigidbody rb;
+    public GameObject owner;
 
     Pawn pawn;
     
