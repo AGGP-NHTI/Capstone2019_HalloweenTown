@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BaseMask : MonoBehaviour
 {
-    public float duration = 5f;
+    public float duration = 20f;
     protected Coroutine wait;
     public Pawn pawn;
     public GameObject barrel;
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
         pawn = GetComponent<Pawn>();
         barrel = pawn.myMask.currentModel.GetComponent<GetBarrel>().barrel;
