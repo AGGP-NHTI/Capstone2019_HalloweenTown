@@ -9,11 +9,11 @@ public class DoorTrigger : MonoBehaviour
     public int candyCount;
 
     public ParticleSystem system;
-    
+    AudioSource trickOtreat;
 
     void Start()
     {
-
+        trickOtreat = GetComponent<AudioSource>();
     }
 
     public virtual void RecieveInteract(Pawn source, Interactable myInteractable)
@@ -26,7 +26,7 @@ public class DoorTrigger : MonoBehaviour
         if(source.MyCandy)
         {
             system.Play();
-
+            trickOtreat.Play();
             if(source.myMask.hasMask)
             {
                 candyCount = Random.Range(6,8);

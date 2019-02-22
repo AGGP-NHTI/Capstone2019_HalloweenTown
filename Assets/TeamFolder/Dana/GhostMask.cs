@@ -26,9 +26,9 @@ public class GhostMask : BaseMask{
         color.a = 0.5f;
         pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
         pawn.myHealth.ghostUlt = true;
-        if (wait == null)
+        if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
-            wait = StartCoroutine("BeginGameCountDown");
+            ulttimerCoroutine = StartCoroutine("UltTimer");
             pawn.myHealth.ghostUlt = false;
         }
     }

@@ -8,31 +8,31 @@ public class VampireMask : BaseMask {
     
     public override void Ult()
     {
-        if (wait == null)
+        if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            if (hitColliders[i].tag == "Player")
-            {
-                Pawn hitPlayerPawn = hitColliders[i].GetComponent<Pawn>();
-                if(hitPlayerPawn.myMask.hasMask)
-                {
-                    if(hitPlayerPawn.myHealth.health < healthSuck)
-                    {
-                        pawn.myHealth.health += hitPlayerPawn.myHealth.health;
-                        hitPlayerPawn.myHealth.health = 0;
-                    }
-                    else
-                    {
-                        pawn.myHealth.health += healthSuck;
-                        hitPlayerPawn.myHealth.health -=healthSuck;
-                    }                    
-                }
-            }
-        }
+               Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
+               for (int i = 0; i < hitColliders.Length; i++)
+               {
+                   if (hitColliders[i].tag == "Player")
+                   {
+                     Pawn hitPlayerPawn = hitColliders[i].GetComponent<Pawn>();
+                        if(hitPlayerPawn.myMask.hasMask)
+                        {
+                           if(hitPlayerPawn.myHealth.health < healthSuck)
+                           {
+                               pawn.myHealth.health += hitPlayerPawn.myHealth.health;
+                               hitPlayerPawn.myHealth.health = 0;
+                          }
+                          else
+                          {
+                              pawn.myHealth.health += healthSuck;
+                              hitPlayerPawn.myHealth.health -=healthSuck;
+                          }                    
+                        }
+                   }
+               }
         
-            wait = StartCoroutine("BeginGameCountDown");
+            ulttimerCoroutine = StartCoroutine("UltTimer");
         }
     }
 }
