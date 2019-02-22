@@ -9,11 +9,19 @@ public class Projectile : MonoBehaviour {
     protected float elapsedTime = 0.0f;
     protected Rigidbody rb;
     public GameObject owner;
+    protected Vector3 velocityY = Vector3.zero;
+    protected Vector3 velocityXZ = Vector3.zero;
 
     Pawn pawn;
-    
+
+    protected void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     protected void Start () {
-        rb = GetComponent<Rigidbody>();        
+
+       
 	}
 	
 	// Update is called once per frame
@@ -28,5 +36,10 @@ public class Projectile : MonoBehaviour {
         {
             Debug.Log("owner: " + owner.name);
         }
-    }    
+    } 
+    protected void addVelocity()
+    {
+        Debug.Log("velocityy: " + velocityY);
+        rb.velocity = velocityY + velocityXZ;
+    }
 }

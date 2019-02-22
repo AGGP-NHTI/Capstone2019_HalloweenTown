@@ -11,14 +11,16 @@ public class Egg : Projectile {
     public Vector3 moveSpeed = Vector3.zero;
     bool startFalling = false;
     Vector3 fallSpeed = new Vector3(0, -1, 0);
-
+   
 	void Start () {
-        base.Start();
-        rb.velocity = (transform.forward * throwForce)+ moveSpeed;
-        rb.velocity += transform.up * 2;
+        
+        velocityXZ = (transform.forward * throwForce) + moveSpeed;
+        velocityY = transform.up * 2;
+        
+        addVelocity();
 
         //StartCoroutine(turnOnGravity());
-        
+
     }
 
     // Update is called once per frame
