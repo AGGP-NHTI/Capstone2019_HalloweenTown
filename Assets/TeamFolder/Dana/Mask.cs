@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mask : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Mask : MonoBehaviour
     public GameObject witchPref;
     public GameObject werewolfPref;
     public GameObject vampirePref;
-    
+
+    public Image ultBar;
 
     BaseMask equipedMask;
     Pawn pawn;
@@ -29,6 +31,17 @@ public class Mask : MonoBehaviour
 
     void Update()
     {
+        if (equipedMask == null)
+        {
+            ultBar.fillAmount = 0;
+        }
+        else
+        {
+            ultBar.fillAmount = equipedMask.ultTimeFloat / 100;
+        }
+
+        
+        
         if (ultButton && hasMask)
         {
             equipedMask.Ult();
@@ -53,6 +66,7 @@ public class Mask : MonoBehaviour
             mask.transform.rotation = rot;
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
+
 
             currentModel = mask;            
         }
