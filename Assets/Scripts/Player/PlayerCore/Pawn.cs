@@ -15,6 +15,7 @@ public class Pawn : MonoBehaviour
     public HealthBar myHealth;
     public Stun myStun;
     public GameObject barrel;
+    public SoundManager soundMan;
 
     [HideInInspector]
     public PlayerController MyController;
