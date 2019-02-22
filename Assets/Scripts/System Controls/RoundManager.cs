@@ -116,7 +116,12 @@ public class RoundManager : MonoBehaviour {
     protected virtual IEnumerator RoundStartingLogic()
     {
         SpawnPlayers(_activeInputs);
-        spawnMom = GameObject.Find("MomSpawn").transform;
+        GameObject momSpawnGO = GameObject.Find("MomSpawn");
+        if(momSpawnGO)
+        {
+            Debug.LogWarning("No mom spawn in scene!");
+            spawnMom = momSpawnGO.transform;
+        }
         currentPhase = RoundPhase.ROUND_RUNNING;
 
         while(currentPhase == RoundPhase.ROUND_STARTING)
