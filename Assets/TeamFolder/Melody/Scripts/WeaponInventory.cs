@@ -9,6 +9,7 @@ public class WeaponInventory : MonoBehaviour
     Text txtNumberToiletPaper;
     public int numberEggs;
     public int numberToiletPaper;
+    public int toiletPaperMax = 3;
     // Use this for initialization
     void Start()
     {
@@ -40,6 +41,18 @@ public class WeaponInventory : MonoBehaviour
             numberEggs += 12;
             UpdateDisplay();
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("TPPickUp"))
+        {
+            Debug.Log("tp pick up");
+            Debug.Log(string.Format("numberToiletPaper: {0}; toiletPaperMax:  {1}", numberToiletPaper, toiletPaperMax));
+            if (numberToiletPaper < toiletPaperMax)
+            {
+                numberToiletPaper++;
+                UpdateDisplay();
+                Destroy(other.gameObject);
+            }
+
         }
     }
     public void subtractFromInventory(GameObject thrown)
