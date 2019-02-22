@@ -6,6 +6,7 @@ public class InteractionManager : MonoBehaviour
 {
     public Pawn MyPawn;
     public Interactable selectedInteractable;
+    public WorldIcon interactIcon;
 
     public float interactionRange = 3.0f;
 
@@ -55,6 +56,19 @@ public class InteractionManager : MonoBehaviour
                     nearestInteractableSqrDistance = sqrDistance;
                     selectedInteractable = i;
                 }
+            }
+        }
+
+        if(interactIcon)
+        {
+            if(selectedInteractable)
+            {
+                interactIcon.MoveToTransform = selectedInteractable.transform;
+                interactIcon.LetRender = true;
+            }
+            else
+            {
+                interactIcon.LetRender = false;
             }
         }
     }
