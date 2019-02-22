@@ -9,8 +9,8 @@ public class Projectile : MonoBehaviour {
     protected float elapsedTime = 0.0f;
     protected Rigidbody rb;
     public GameObject owner;
-    protected Vector3 velocityY = Vector3.zero;
-    protected Vector3 velocityXZ = Vector3.zero;
+    public Vector3 velocityY = Vector3.zero;
+    public Vector3 velocityXZ = Vector3.zero;
 
     Pawn pawn;
 
