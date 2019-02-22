@@ -12,9 +12,8 @@ public class BaseMask : MonoBehaviour
     public GameObject barrel;
 
     public float ultTimeFloat = 0;
-    //public float ultWaiting = 0;
+    public bool isUlting = false;
 
-    // Use this for initialization
     protected void Start()
     {
         pawn = GetComponent<Pawn>();
@@ -41,6 +40,7 @@ public class BaseMask : MonoBehaviour
 
     public IEnumerator UltTimer()
     {
+        isUlting = true;
         ultTimeFloat = ultingDuration;
         while (ultTimeFloat >= 0)
         {
@@ -54,7 +54,8 @@ public class BaseMask : MonoBehaviour
     }
 
     public IEnumerator WaitForUltTimer()
-    {        
+    {
+        isUlting = false;
         while (ultTimeFloat <= waitingDuration)
         {
             ultTimeFloat += Time.deltaTime *5;

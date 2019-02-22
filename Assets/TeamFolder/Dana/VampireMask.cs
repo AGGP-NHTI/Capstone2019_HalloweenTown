@@ -31,8 +31,8 @@ public class VampireMask : BaseMask {
                         }
                    }
                }
-        
-            ulttimerCoroutine = StartCoroutine("UltTimer");
+            ultTimeFloat = 0;
+            waitforultCoroutine = StartCoroutine("WaitForUltTimer");
         }
     }
 }

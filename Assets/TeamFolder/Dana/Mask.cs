@@ -23,10 +23,13 @@ public class Mask : MonoBehaviour
     Pawn pawn;
     HealthBar hbar;
 
+    Vector3 savedPos;
+
     void Start()
     {
         pawn = gameObject.GetComponent<Pawn>();
-        hbar = GetComponent<HealthBar>(); 
+        hbar = GetComponent<HealthBar>();
+        savedPos = currentModel.transform.position;
     }
 
     void Update()
@@ -58,7 +61,16 @@ public class Mask : MonoBehaviour
         {
             hasMask = false;
             Debug.Log("dead");
-            Vector3 pos = currentModel.transform.position;
+            Vector3 pos;
+            if (gameObject.GetComponent<GhostMask>())
+            {
+                pos = savedPos;
+            }
+            else
+            {
+                pos = currentModel.transform.position;
+            }
+            
             Quaternion rot = currentModel.transform.rotation;
             Destroy(currentModel);
             GameObject mask = Instantiate(playerPref, gameObject.transform);
@@ -71,6 +83,22 @@ public class Mask : MonoBehaviour
             currentModel = mask;            
         }
     }    
+
+    public void SuccesfulBoo()
+    {
+        float booUltAdd = 20f;
+        if(equipedMask != null && equipedMask.isUlting == false)
+        {
+            if(equipedMask.ultTimeFloat >= 100-booUltAdd)
+            {
+                equipedMask.ultTimeFloat = 100f;
+            }
+            else
+            {
+                equipedMask.ultTimeFloat += booUltAdd;
+            }
+        }
+    }
 
     void UpdateHealth()
     {

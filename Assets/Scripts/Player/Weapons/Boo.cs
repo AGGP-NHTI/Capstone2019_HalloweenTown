@@ -47,9 +47,10 @@ public class Boo : MonoBehaviour {
                                 Debug.Log("Got Booed");
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
                                 hb.TakeDamage(damage);//for testing
-                                //hb.DropCandy(10);//This will cause candy to drop from booed player
-                               // StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
-                                //hb.Hit();
+                                                      //hb.DropCandy(10);//This will cause candy to drop from booed player
+                                                      // StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                                      //hb.Hit();
+                                pawn.myMask.SuccesfulBoo();
                             }                            
                         }
                     }
