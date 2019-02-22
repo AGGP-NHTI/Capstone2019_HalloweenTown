@@ -733,11 +733,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 198937723876360538, guid: 36ef81cc629df894b99c6b361d23157b,
-        type: 2}
-      propertyPath: LightsModule.light
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36ef81cc629df894b99c6b361d23157b, type: 2}
   m_IsPrefabAsset: 0
@@ -1945,6 +1940,18 @@ Prefab:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114576528290964926, guid: 03a44d8bd50b61248834ca72dcff05c8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b83c97afd49c6754caabb9b294918592,
+        type: 3}
+    - target: {fileID: 114963866002529836, guid: 03a44d8bd50b61248834ca72dcff05c8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300076, guid: fea96a0220c344686b40cf9b233701f1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a44d8bd50b61248834ca72dcff05c8, type: 2}
   m_IsPrefabAsset: 0
