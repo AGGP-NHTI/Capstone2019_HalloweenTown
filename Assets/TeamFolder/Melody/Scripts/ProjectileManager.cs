@@ -17,7 +17,8 @@ public class ProjectileManager : MonoBehaviour {
     float previousDPadY;
     public bool canThrow = true;
     public bool werewolfUlt = false;
-
+    public LineRenderer lr;
+    public bool debugLineOn = false; 
     Pawn pawn;
     Rigidbody rb;
     void Start() {
@@ -32,13 +33,21 @@ public class ProjectileManager : MonoBehaviour {
         previousDPadY = currentDPadY = 0;
         previousRightTrigger = currentRightTrigger = 0;
         deadZone = 0;
-      
+        
+        //set up debug line Renderer
+        if (GetComponent<LineRenderer>() && debugLineOn)
+        {
+            lr = GetComponent<LineRenderer>();
+            lr.positionCount = 2;
+            lr.SetPosition(0, transform.position);
+            lr.SetPosition(1, transform.forward * 10);
+        }
         //leftSpawn = ge
     }
 
     // Update is called once per frame
     void Update() {
-
+        if (debugLineOn) updateLine();
     }
 
     public void throwObject(float value)
@@ -142,5 +151,20 @@ public class ProjectileManager : MonoBehaviour {
         }
 
             previousDPadY = currentDPadY;
+    }
+
+    private void updateLine()
+    {
+        
+        var t = Time.time;
+        int sides = 30;
+        for (int i = 0; i < sides; i++)
+        {
+           // lr.SetPosition(i, new Vector3(i * 0.5f, Mathf.Sin(i + t), 0.0f));
+        }
+
+
+        lr.SetPosition(0, pawn.barrel.transform.position);
+        lr.SetPosition(1, pawn.barrel.transform.forward * 10);
     }
 }

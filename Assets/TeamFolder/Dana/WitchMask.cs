@@ -6,10 +6,10 @@ public class WitchMask : BaseMask
 {
     public override void Ult()
     {        
-        if (wait == null)
+        if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
             pawn.MyMoveScript.moveSpeed *= 2;
-            wait = StartCoroutine("BeginGameCountDown");
+            ulttimerCoroutine = StartCoroutine("UltTimer");
         }
     }
     public override void UltFinished()

@@ -58,7 +58,7 @@ public class SplitScreenManager : MonoBehaviour
         for (int cameraIndex = 0; cameraIndex < PlayerCameras.Count; cameraIndex++)
         {
             PlayerCameras[cameraIndex].rect = new Rect(CameraPosition, CameraSize);
-            Debug.Log(PlayerCameras[cameraIndex].transform.parent.parent.name + ": " + PlayerCameras[cameraIndex].rect);
+            //Debug.Log(PlayerCameras[cameraIndex].transform.parent.parent.name + ": " + PlayerCameras[cameraIndex].rect);
             PlayerCameras[cameraIndex].enabled = true;
 
             CameraPosition.x += CameraSize.x;
