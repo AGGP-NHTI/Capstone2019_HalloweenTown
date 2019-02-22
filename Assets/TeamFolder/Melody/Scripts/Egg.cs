@@ -5,7 +5,7 @@ using UnityEngine;
 public class Egg : Projectile {
 
    
-    public float throwForce = 500;
+    public float throwForce = 25;
     public float upMultiplier = 2;
     public float arcAfterElapsedTime = 5;
     public float damage = 10.0f;
