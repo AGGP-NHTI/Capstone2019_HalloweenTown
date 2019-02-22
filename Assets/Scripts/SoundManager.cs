@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip boo;
     public AudioClip oof;
-    public AudioClip trickotreat;
+    public AudioClip witchScream;
 	void Start () {
 	}
 	
@@ -25,6 +25,12 @@ public class SoundManager : MonoBehaviour {
     public void Boo()
     {
         audioSource.clip = boo;
+        audioSource.Play();
+    }
+
+    public void WitchUltScream()
+    {
+        audioSource.clip = witchScream;
         audioSource.Play();
     }
 }

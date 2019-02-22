@@ -48,12 +48,12 @@ public class GhostMask : BaseMask{
 
 
     public override void Ult()
-    {        
-        color.a = 0.5f;
-        pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
-        pawn.myHealth.ghostUlt = true;
+    {               
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
+            color.a = 0.5f;
+            pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
+            pawn.myHealth.ghostUlt = true;
             ulttimerCoroutine = StartCoroutine("UltTimer");
             pawn.myHealth.ghostUlt = false;
         }

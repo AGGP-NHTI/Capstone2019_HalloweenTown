@@ -44,7 +44,7 @@ public class BaseMask : MonoBehaviour
         ultTimeFloat = ultingDuration;
         while (ultTimeFloat >= 0)
         {
-            ultTimeFloat -= Time.deltaTime *5;
+            ultTimeFloat -= Time.deltaTime *20;
             //Debug.Log("Ulting Time Left: " + Mathf.Round(ultTimeFloat).ToString());
             yield return null;
         }
@@ -56,9 +56,10 @@ public class BaseMask : MonoBehaviour
     public IEnumerator WaitForUltTimer()
     {
         isUlting = false;
+        
         while (ultTimeFloat <= waitingDuration)
         {
-            ultTimeFloat += Time.deltaTime *5;
+            ultTimeFloat += Time.deltaTime *20;
             //Debug.Log("Waiting For Ult: " + Mathf.Round(ultTimeFloat).ToString());
             yield return null;
         }
