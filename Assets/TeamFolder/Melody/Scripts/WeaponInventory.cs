@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class WeaponInventory : MonoBehaviour
 {
-    Text txtNumberEggs;
-    Text txtNumberToiletPaper;
-    public int numberEggs;
-    public int numberToiletPaper;
+    public Text txtNumberEggs;
+    public Text txtNumberToiletPaper;
+    public int numberEggs = 0;
+    public int numberToiletPaper = 0;
     public int toiletPaperMax = 3;
+    Pawn pawn;
+    int selectedWeapon;
+    List<GameObject> weaponList;
     // Use this for initialization
     void Start()
     {
@@ -27,10 +30,22 @@ public class WeaponInventory : MonoBehaviour
 
     }
 
-    private void UpdateDisplay()
+    public void UpdateDisplay()
     {
-        //txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
-       // txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
+        if (/*weaponList[selectedWeapon].CompareTag("Egg") */ selectedWeapon == 0)
+        {
+            txtNumberToiletPaper.enabled = false;
+            txtNumberEggs.enabled = true;
+        }
+        if (/*pawn.myProjectileManager.selectedWeaponIndex ==*/ selectedWeapon == 1)
+        {
+            txtNumberToiletPaper.enabled = true;
+            txtNumberEggs.enabled = false;
+        }
+
+
+        if (txtNumberEggs) txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
+        if (txtNumberToiletPaper) txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
     }
 
     void OnTriggerEnter(Collider other)

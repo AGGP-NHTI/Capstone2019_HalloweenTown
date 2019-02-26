@@ -149,7 +149,7 @@ public class ProjectileManager : MonoBehaviour {
                 selectedWeaponIndex += 1;
             }
         }
-
+            inventory.UpdateDisplay();
             previousDPadY = currentDPadY;
     }
     //This is a mess

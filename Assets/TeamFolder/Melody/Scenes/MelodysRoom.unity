@@ -172,6 +172,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunned: 0
+--- !u!114 &410965960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114426145860454970, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+    type: 2}
+  m_PrefabInternal: {fileID: 758701425}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &412567413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114134206129006356, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+    type: 2}
+  m_PrefabInternal: {fileID: 758701425}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &418774851
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +380,7 @@ Prefab:
     - target: {fileID: 114147107339278674, guid: 9cc5c04e0aaea9041a394c158df68d7e,
         type: 2}
       propertyPath: numberToiletPaper
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 114503021145427212, guid: 9cc5c04e0aaea9041a394c158df68d7e,
         type: 2}
@@ -401,6 +413,21 @@ Prefab:
       propertyPath: barrel
       value: 
       objectReference: {fileID: 1984936081}
+    - target: {fileID: 114147107339278674, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: numberEggs
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114147107339278674, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: txtNumberEggs
+      value: 
+      objectReference: {fileID: 410965960}
+    - target: {fileID: 114147107339278674, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: txtNumberToiletPaper
+      value: 
+      objectReference: {fileID: 412567413}
     m_RemovedComponents:
     - {fileID: 114553709068838068, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
