@@ -8,6 +8,7 @@ public class WerewolfMask : BaseMask {
     {
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
+            pawn.soundMan.WerewolfUltScream();
             ulted = true;
             pawn.MyBoo.damage *= 2;
             pawn.myProjectileManager.werewolfUlt = true;

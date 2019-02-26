@@ -10,7 +10,8 @@ public class VampireMask : BaseMask {
     {
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
-               Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
+            pawn.soundMan.VampireUltScream();
+            Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
                for (int i = 0; i < hitColliders.Length; i++)
                {
                    if (hitColliders[i].tag == "Player")

@@ -979,6 +979,7 @@ MonoBehaviour:
   myHealth: {fileID: 114637959882705460}
   myStun: {fileID: 114576020868789664}
   barrel: {fileID: 0}
+  soundMan: {fileID: 114984112973351088}
   MyController: {fileID: 0}
 --- !u!114 &114812388536489570
 MonoBehaviour:
@@ -1095,7 +1096,10 @@ MonoBehaviour:
   audioSource: {fileID: 82515380320019916}
   boo: {fileID: 8300000, guid: a2446b0d38503c74892b009996180e5d, type: 3}
   oof: {fileID: 8300000, guid: ff6690437731a8340b973141917810cf, type: 3}
-  trickotreat: {fileID: 8300000, guid: 1240775ec6e410a43ad86c24e2e61b88, type: 3}
+  witchScream: {fileID: 8300000, guid: 3af950dfabd3bd345b8e6890dc94d53a, type: 3}
+  ghostScream: {fileID: 8300000, guid: c89349b01d634314f876878d22525c53, type: 3}
+  werewolfScream: {fileID: 8300000, guid: cf2927e74ed5f5d4d9a33defdb9ece21, type: 3}
+  vampireScream: {fileID: 8300000, guid: 6a9007532f44536489d6c4735824557c, type: 3}
 --- !u!114 &114994745730158940
 MonoBehaviour:
   m_ObjectHideFlags: 1
