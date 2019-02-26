@@ -9,10 +9,16 @@ public class Boo : MonoBehaviour {
     bool canBoo = true;
     Pawn pawn;
     SoundManager soundManager;
-    
+
+
+
+    ParticleManager particleManager;
+
     private void Start()
     {
         soundManager = GetComponent<SoundManager>();
+
+        particleManager = GetComponent<ParticleManager>();
 
         pawn = GetComponent<Pawn>();
     }
@@ -56,6 +62,7 @@ public class Boo : MonoBehaviour {
                     }
                 }
                 soundManager.Boo();
+                particleManager.booPart();
                 canBoo = false;
                 StartCoroutine(WaitingToBoo());
             }            
