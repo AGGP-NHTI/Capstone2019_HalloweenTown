@@ -84,15 +84,21 @@ public class PlayerController : MonoBehaviour
     {
         if (!(ControlledPawn && playerInput)) { return; }
 
-        PassMoveInput(playerInput.GetMoveVector());
-        PassLookInput(playerInput.GetLookVector());
-        PassLeftTriggerInput(playerInput.GetLeftTrigger());
-        PassRightTriggerInput(playerInput.GetRightTrigger());
-        PassDPadInput(playerInput.GetDPadInput());
-        PassUltimateInput(playerInput.GetUltimateInput());
-        PassInteractInput(playerInput.GetInteractInput());
-        PassJumpInput(playerInput.GetJumpInput());
-        PassBooInput(playerInput.GetBooInput());
+        //Some inputs should not be processed if the game is "paused"
+        if(Time.timeScale != 0.0f)
+        {
+            PassMoveInput(playerInput.GetMoveVector());
+            PassLookInput(playerInput.GetLookVector());
+            PassLeftTriggerInput(playerInput.GetLeftTrigger());
+            PassRightTriggerInput(playerInput.GetRightTrigger());
+            PassDPadInput(playerInput.GetDPadInput());
+            PassUltimateInput(playerInput.GetUltimateInput());
+            PassInteractInput(playerInput.GetInteractInput());
+            PassJumpInput(playerInput.GetJumpInput());
+            PassBooInput(playerInput.GetBooInput());
+        }
+
+        //These inputs should always be processed, even if the game is paused.
         PassStart(playerInput.GetStartInput());
         PassSelect(playerInput.GetSelectInput());
     }

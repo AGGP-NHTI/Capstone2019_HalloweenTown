@@ -31,7 +31,7 @@ public class LookScript : MonoBehaviour
             targetCharacterDirection = characterBody.transform.localRotation.eulerAngles;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Ensure the cursor is always locked when set
         if (CursorCanBeLocked)
