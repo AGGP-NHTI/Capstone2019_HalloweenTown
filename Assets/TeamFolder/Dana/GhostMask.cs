@@ -51,6 +51,7 @@ public class GhostMask : BaseMask{
     {               
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
+            pawn.soundMan.GhostUltScream();
             color.a = 0.5f;
             pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
             pawn.myHealth.ghostUlt = true;

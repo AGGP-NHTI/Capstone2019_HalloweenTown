@@ -42,7 +42,6 @@ public class Mask : MonoBehaviour
         {
             ultBar.fillAmount = equipedMask.ultTimeFloat / 100;
         }
-
         
         
         if (ultButton && hasMask)
@@ -107,49 +106,52 @@ public class Mask : MonoBehaviour
 
     void GetMask()
     {
-        hasMask = true;
-        GameObject mask = currentModel;
-        Vector3 pos = currentModel.transform.position;
-        Quaternion rot = currentModel.transform.rotation;
-
-        switch(scriptName)
+        if (!hasMask)
         {
-            case "Ghost Mask":
-                Destroy(currentModel);
-                mask = Instantiate(ghostPref, gameObject.transform);
-                currentModel = mask;
-                equipedMask = gameObject.AddComponent<GhostMask>();
-                
-                break;
-            case "Witch Mask":
-                equipedMask = gameObject.AddComponent<WitchMask>();
-                Destroy(currentModel);
-                mask = Instantiate(witchPref, gameObject.transform);
-                break;
-            case "Werewolf Mask":
-                equipedMask = gameObject.AddComponent<WerewolfMask>();
-                Destroy(currentModel);
-                mask = Instantiate(werewolfPref, gameObject.transform);
-                break;
-            case "Vampire Mask":
-                equipedMask = gameObject.AddComponent<VampireMask>();
-                Destroy(currentModel);
-                mask = Instantiate(vampirePref, gameObject.transform);
-                break;
-                
-            default:
-                Debug.Log("Error with mask");
-                break;
-        }  
+            hasMask = true;
+            GameObject mask = currentModel;
+            Vector3 pos = currentModel.transform.position;
+            Quaternion rot = currentModel.transform.rotation;
 
-        mask.transform.position = pos;
-        mask.transform.rotation = rot;
-        gameObject.transform.parent = mask.transform;
-        AlignToMovement al = mask.GetComponent<AlignToMovement>();
-        al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
-        currentModel = mask;
+            switch (scriptName)
+            {
+                case "Ghost Mask":
+                    Destroy(currentModel);
+                    mask = Instantiate(ghostPref, gameObject.transform);
+                    currentModel = mask;
+                    equipedMask = gameObject.AddComponent<GhostMask>();
 
-        pawn.ModelChange();
+                    break;
+                case "Witch Mask":
+                    equipedMask = gameObject.AddComponent<WitchMask>();
+                    Destroy(currentModel);
+                    mask = Instantiate(witchPref, gameObject.transform);
+                    break;
+                case "Werewolf Mask":
+                    equipedMask = gameObject.AddComponent<WerewolfMask>();
+                    Destroy(currentModel);
+                    mask = Instantiate(werewolfPref, gameObject.transform);
+                    break;
+                case "Vampire Mask":
+                    equipedMask = gameObject.AddComponent<VampireMask>();
+                    Destroy(currentModel);
+                    mask = Instantiate(vampirePref, gameObject.transform);
+                    break;
+
+                default:
+                    Debug.Log("Error with mask");
+                    break;
+            }
+
+            mask.transform.position = pos;
+            mask.transform.rotation = rot;
+            gameObject.transform.parent = mask.transform;
+            AlignToMovement al = mask.GetComponent<AlignToMovement>();
+            al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
+            currentModel = mask;
+
+            pawn.ModelChange();
+        }
     }
 
     

@@ -8,6 +8,10 @@ public class SoundManager : MonoBehaviour {
     public AudioClip boo;
     public AudioClip oof;
     public AudioClip witchScream;
+    public AudioClip ghostScream;
+    public AudioClip werewolfScream;
+    public AudioClip vampireScream;
+
 	void Start () {
 	}
 	
@@ -31,6 +35,24 @@ public class SoundManager : MonoBehaviour {
     public void WitchUltScream()
     {
         audioSource.clip = witchScream;
+        audioSource.Play();
+    }
+
+    public void GhostUltScream()
+    {
+        audioSource.clip = ghostScream;
+        audioSource.Play();
+    }
+
+    public void WerewolfUltScream()
+    {
+        audioSource.clip = werewolfScream;
+        audioSource.Play();
+    }
+
+    public void VampireUltScream()
+    {
+        audioSource.clip = vampireScream;
         audioSource.Play();
     }
 }
