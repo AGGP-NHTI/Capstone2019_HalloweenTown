@@ -83,7 +83,7 @@ public class ProjectileManager : MonoBehaviour {
         GameObject weapon = weaponList[selectedWeaponIndex];
         if (!inventory.hasProjectile(weapon))
         {
-            Debug.Log("inventory has no projectile" + inventory.hasProjectile(weapon));
+           // Debug.Log("inventory has no projectile" + inventory.hasProjectile(weapon));
             return;
         }
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
