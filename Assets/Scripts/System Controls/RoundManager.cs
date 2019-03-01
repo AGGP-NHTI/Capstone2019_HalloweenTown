@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class RoundManager : MonoBehaviour {
 
     public AudioClip momMusic;
-    public Transform spawnMom;
 
     #region Overall Round Management Variables
     public enum RoundPhase
@@ -115,22 +114,10 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundStartingLogic()
     {
-        SpawnPlayers(_activeInputs);
-        GameObject momSpawnGO = GameObject.Find("MomSpawn");
-        if(momSpawnGO)
-        {
-            Debug.LogWarning("No mom spawn in scene!");
-            spawnMom = momSpawnGO.transform;
-        }
-        currentPhase = RoundPhase.ROUND_RUNNING;
+        CameraManager.Instance.StartCutscene(LevelInfo.GetIntroCutscene(), SetRoundToRunning);
 
         while(currentPhase == RoundPhase.ROUND_STARTING)
         {
-            if (roundElapsedTime >= roundStartEndTime && roundStartEndTime > 0.0f)
-            {
-                currentPhase = RoundPhase.ROUND_RUNNING;
-            }
-
             yield return null;
         }
 
@@ -155,7 +142,7 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundEndingLogic()
     {
-        spawnedMom = Instantiate(momPrefab, spawnMom);
+        spawnedMom = Instantiate(momPrefab, LevelInfo.GetMomSpawn());
         Mom momClass = spawnedMom.GetComponent<Mom>();
         momClass.FindPlayers(_activePlayers);
         momClass.huntChildren = true;
@@ -207,6 +194,12 @@ public class RoundManager : MonoBehaviour {
         }
 
         SplitScreenManager.Instance.ConfigureScreenSpace();
+    }
+
+    protected void SetRoundToRunning()
+    {
+        SpawnPlayers(_activeInputs);
+        currentPhase = RoundPhase.ROUND_RUNNING;
     }
     #endregion
 }
