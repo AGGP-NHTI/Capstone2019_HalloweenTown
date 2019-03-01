@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CameraManager : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class CameraManager : MonoBehaviour
     public Camera fallbackCamera;
     public Camera[] AllCameras;
     public int playerCameraDepth;
+
+    public delegate void FinishedAction();
+    protected event FinishedAction CutsceneFinished;
+
+    PlayableDirector activeCutsceneObject;
+
 
     private void Awake()
     {
@@ -47,19 +54,45 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    public void StartCutscene(GameObject CutsceneObject)
+    public void StartCutscene(GameObject CutsceneObject, FinishedAction CutsceneFinishedEvent = null)
     {
-        Camera cam = CutsceneObject.GetComponent<Camera>();
-        if(cam)
+        if (activeCutsceneObject)
         {
-            cam.enabled = true;
-            cam.depth = playerCameraDepth + 1;
+            activeCutsceneObject.Stop();
         }
 
-        Animator anim = CutsceneObject.GetComponent<Animator>();
-        if(anim)
+        Camera cam = CutsceneObject.GetComponent<Camera>();
+        PlayableDirector timeline = CutsceneObject.GetComponent<PlayableDirector>();
+
+        if (cam && timeline)
         {
-            anim.SetTrigger("Start");
+            CutsceneFinished = CutsceneFinishedEvent;
+
+            cam.enabled = true;
+            cam.depth = playerCameraDepth + 1;
+        
+            timeline.Play();
+            timeline.stopped += OnCustsceneFinished;
+
+            activeCutsceneObject = timeline;
+        }
+    }
+
+    protected void OnCustsceneFinished(PlayableDirector pd)
+    {
+        Camera cam = pd.GetComponent<Camera>();
+        if(cam)
+        {
+            cam.enabled = false;
+            cam.depth = playerCameraDepth - 1;
+        }
+
+        activeCutsceneObject = null;
+
+        if(CutsceneFinished != null)
+        {
+            CutsceneFinished();
+            CutsceneFinished = null;
         }
     }
 }
