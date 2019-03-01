@@ -34,13 +34,13 @@ public class WeaponInventory : MonoBehaviour
     {
         if (/*weaponList[selectedWeapon].CompareTag("Egg") */ selectedWeapon == 0)
         {
-            txtNumberToiletPaper.enabled = false;
-            txtNumberEggs.enabled = true;
+            if(txtNumberToiletPaper) txtNumberToiletPaper.enabled = false;
+            if(txtNumberEggs) txtNumberEggs.enabled = true;
         }
         if (/*pawn.myProjectileManager.selectedWeaponIndex ==*/ selectedWeapon == 1)
         {
-            txtNumberToiletPaper.enabled = true;
-            txtNumberEggs.enabled = false;
+            if (txtNumberToiletPaper) txtNumberToiletPaper.enabled = true;
+             if (txtNumberEggs) txtNumberEggs.enabled = false;
         }
 
 

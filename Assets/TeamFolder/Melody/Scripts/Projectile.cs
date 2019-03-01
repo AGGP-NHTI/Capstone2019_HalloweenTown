@@ -34,12 +34,12 @@ public class Projectile : MonoBehaviour {
         }
         if(owner)
         {
-            Debug.Log("owner: " + owner.name);
+           // Debug.Log("owner: " + owner.name);
         }
     } 
     protected void addVelocity()
     {
-        Debug.Log("velocityy: " + velocityY);
+        //Debug.Log("velocityy: " + velocityY);
         rb.velocity = velocityY + velocityXZ;
     }
 }
