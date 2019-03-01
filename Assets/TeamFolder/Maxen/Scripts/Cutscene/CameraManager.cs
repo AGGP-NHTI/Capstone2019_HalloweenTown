@@ -16,6 +16,13 @@ public class CameraManager : MonoBehaviour
 
     PlayableDirector activeCutsceneObject;
 
+    public bool CutsceneRunning
+    {
+        get
+        {
+            return activeCutsceneObject != null;
+        }
+    }
 
     private void Awake()
     {
@@ -32,6 +39,14 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         AllCameras = FindObjectsOfType<Camera>();
+    }
+
+    public void SkipCutscene()
+    {
+        if(activeCutsceneObject)
+        {
+            activeCutsceneObject.Stop();
+        }
     }
 
     public void ConfigurePlayerCameraDepths(List<Camera> PlayerCameras)
