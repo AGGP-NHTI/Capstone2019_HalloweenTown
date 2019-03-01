@@ -428,6 +428,24 @@ Prefab:
       propertyPath: txtNumberToiletPaper
       value: 
       objectReference: {fileID: 412567413}
+    - target: {fileID: 114889261443523230, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: witchPref
+      value: 
+      objectReference: {fileID: 1356752858523584, guid: 066bcd0141aa185499d62468d643d477,
+        type: 2}
+    - target: {fileID: 114889261443523230, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: werewolfPref
+      value: 
+      objectReference: {fileID: 1764701011736728, guid: 9214dd0d87131b2498369931407e640c,
+        type: 2}
+    - target: {fileID: 114889261443523230, guid: 9cc5c04e0aaea9041a394c158df68d7e,
+        type: 2}
+      propertyPath: vampirePref
+      value: 
+      objectReference: {fileID: 1331622129452190, guid: bd0b9985702a8d24daeddbcabb11b6eb,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114553709068838068, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 9cc5c04e0aaea9041a394c158df68d7e, type: 2}
