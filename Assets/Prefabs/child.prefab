@@ -989,10 +989,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042e4e7d2c5af9c4da8f4a02bca5bfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtNumberEggs: {fileID: 0}
-  txtNumberToiletPaper: {fileID: 0}
-  numberEggs: 50
-  numberToiletPaper: 50
+  txtNumberEggs: {fileID: 114415216691090638}
+  txtNumberToiletPaper: {fileID: 114549319640091942}
+  numberEggs: 0
+  numberToiletPaper: 0
   toiletPaperMax: 3
 --- !u!114 &114622455860635014
 MonoBehaviour:

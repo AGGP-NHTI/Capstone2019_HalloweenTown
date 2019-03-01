@@ -16,6 +16,9 @@ public class WeaponInventory : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        pawn = GetComponent<Pawn>();
+        weaponList = pawn.myProjectileManager.weaponList;
+
         //  txtNumberEggs = transform.Find("EggText").gameObject.Te
         // txtNumberEggs= GameObject.Find("EggText").GetComponent<Text>();
         //txtNumberToiletPaper = GameObject.Find("TPText").GetComponent<Text>();
@@ -32,12 +35,14 @@ public class WeaponInventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        if (/*weaponList[selectedWeapon].CompareTag("Egg") */ selectedWeapon == 0)
+        selectedWeapon = pawn.myProjectileManager.selectedWeaponIndex;
+
+        if (weaponList[selectedWeapon].CompareTag("Egg") /* selectedWeapon == 0*/)
         {
             if(txtNumberToiletPaper) txtNumberToiletPaper.enabled = false;
             if(txtNumberEggs) txtNumberEggs.enabled = true;
         }
-        if (/*pawn.myProjectileManager.selectedWeaponIndex ==*/ selectedWeapon == 1)
+        if (/*weaponList[selectedWeapon].CompareTag("Toilet Paper")*/ selectedWeapon == 1)
         {
             if (txtNumberToiletPaper) txtNumberToiletPaper.enabled = true;
              if (txtNumberEggs) txtNumberEggs.enabled = false;
