@@ -10,6 +10,7 @@ public class HealthBar : MonoBehaviour {
     public bool ghostUlt = false;
 
     SoundManager soundManager;
+    ParticleManager particleManager;
 
     //public GameObject dropCandy;//The candy
     //public Transform player;//get player transform
@@ -17,6 +18,7 @@ public class HealthBar : MonoBehaviour {
 
     void Start () {
         soundManager = GetComponent<SoundManager>();
+        particleManager = GetComponent<ParticleManager>();
 	}
 
     private void Update()
@@ -29,6 +31,7 @@ public class HealthBar : MonoBehaviour {
         {
             health -= amount;
             soundManager.Oof();
+            particleManager.hitPart();
         }
     }
     public void HealHealth(float amount) // this is how the damage needs to work for fillAmount.
