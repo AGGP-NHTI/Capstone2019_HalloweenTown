@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4047972525478040}
   - component: {fileID: 33025242400131504}
   - component: {fileID: 23896050311967248}
-  - component: {fileID: 65102831706352858}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -41,6 +40,7 @@ GameObject:
   - component: {fileID: 23498521894191934}
   - component: {fileID: 135907073386751982}
   - component: {fileID: 54533876841171872}
+  - component: {fileID: 114132340918905232}
   m_Layer: 0
   m_Name: Candy
   m_TagString: Candy
@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 4761426716125732}
   - component: {fileID: 33257526872363994}
   - component: {fileID: 23748141153598718}
-  - component: {fileID: 135353032647804588}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -76,7 +75,6 @@ GameObject:
   - component: {fileID: 4394839863424588}
   - component: {fileID: 33358353148309522}
   - component: {fileID: 23205427248067104}
-  - component: {fileID: 135079056519409546}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -117,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277981026362844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.125754, y: 0.92608, z: 2}
+  m_LocalPosition: {x: 7.544776, y: 0.125, z: -1.7211967}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.24}
   m_Children:
   - {fileID: 4047972525478040}
@@ -322,42 +320,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65102831706352858
-BoxCollider:
+--- !u!114 &114132340918905232
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1065341970131544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1277981026362844}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135079056519409546
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1944551989002488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135353032647804588
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929104320478286}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abac89a29f413e945a7cbde3dcb042ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canCollect: 0
 --- !u!135 &135907073386751982
 SphereCollider:
   m_ObjectHideFlags: 1

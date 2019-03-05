@@ -693,6 +693,8 @@ MonoBehaviour:
   waitforcandy: 0
   actionButton: 0
   showXForCandy: 0
+  candyPrefab: {fileID: 1483791962831766, guid: 80405886d24cf6e4a96ad3c38027c230,
+    type: 2}
 --- !u!114 &114387047930138118
 MonoBehaviour:
   m_ObjectHideFlags: 1

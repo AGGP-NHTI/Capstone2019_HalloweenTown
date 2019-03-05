@@ -38,7 +38,6 @@ public class Boo : MonoBehaviour {
                     {
                         if(hitColliders[i].transform.position != transform.position)
                         {
-                            // GameObject otherModel = hitColliders[i].GetComponent<Boo>().Model;//gets other model in boo
                             GameObject otherModel = hitColliders[i].GetComponent<Pawn>().myMask.currentModel;
                             float difference = otherModel.transform.rotation.eulerAngles.y - pawn.myMask.currentModel.transform.rotation.eulerAngles.y;
 
@@ -51,13 +50,13 @@ public class Boo : MonoBehaviour {
                             if (difference <= radiusOfBoo)
                             {
                                 Debug.Log("Got Booed");
-                                particleManager.batPart();//stun particles circling bats
-                                particleManager.dropPart();//drop candy particles
+                                //particleManager.batPart();//stun particles circling bats
+                                //particleManager.dropPart();//drop candy particles
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                hb.TakeDamage(damage);//for testing
-                                                      //hb.DropCandy(10);//This will cause candy to drop from booed player
-                                                      // StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
-                                                      //hb.Hit();
+                                //hb.TakeDamage(damage);//for testing
+                                StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                hb.Hit();//makes oof sound
+                                hitColliders[i].GetComponent<Pawn>().MyCandy.DropCandy();
                                 pawn.myMask.SuccesfulBoo();
                             }                            
                         }

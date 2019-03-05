@@ -12,6 +12,10 @@ public class Candy : MonoBehaviour
     public bool waitforcandy = false;
     public bool actionButton;
     public bool showXForCandy;
+    
+    
+
+    public GameObject candyPrefab;
 
     void Start()
     {
@@ -31,5 +35,38 @@ public class Candy : MonoBehaviour
             candyText.text = " " + candy.ToString();
         }
     }
-    
+
+    public void DropCandy()
+    {
+        int numCandy = 0;
+        if (candy > 5)
+        {
+            numCandy = Random.Range(1, 5);
+        }
+        else if(candy > 0)
+        {
+            numCandy = Random.Range(1, candy);
+        }
+
+        if (candy > 0)
+        {
+            for (int i = 0; i < numCandy; i++)
+            {
+                //system.Play();
+
+                Vector3 vel = Random.onUnitSphere;
+                vel.y = Mathf.Abs(vel.y);
+                Vector3 pos = new Vector3(0f, 1f, 0f) + vel;// * 0.5f);
+                vel *= 5;
+
+                GameObject candy;
+
+                candy = Instantiate(candyPrefab, transform.position + pos, transform.rotation);
+                candy.GetComponent<Rigidbody>().velocity = vel;
+            }
+        }
+
+        candy -= numCandy;
+    }
+
 }
