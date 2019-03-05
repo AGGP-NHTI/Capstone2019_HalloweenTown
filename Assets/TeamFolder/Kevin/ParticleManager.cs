@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleManager : MonoBehaviour {
-
     
-
     public ParticleSystem booParticles;
 
     public ParticleSystem doorParticles;
@@ -16,9 +14,30 @@ public class ParticleManager : MonoBehaviour {
 
     public ParticleSystem hitParticles;
 
+
     public void booPart()
     {
         booParticles.Play();
+    }
+
+    public void doorPart()
+    {
+        doorParticles.Play();
+    }
+
+    public void dropPart()
+    {
+        dropCandyParticles.Play();
+    }
+
+    public void batPart()
+    {
+        batParticles.Play();
+    }
+
+    public void hitPart()
+    {
+        hitParticles.Play();
     }
 
 }
