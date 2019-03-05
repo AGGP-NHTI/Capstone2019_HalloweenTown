@@ -49,12 +49,13 @@ public class Mask : MonoBehaviour
             equipedMask.Ult();
         }
 
-        if (interactButton && hasMask == false)
+        if (interactButton) //&& hasMask == false)
         {
             interactButton = false;
-            GetMask();
             UpdateHealth();
-        }        
+            GetMask();
+            
+        }
         
         if (hbar.health <= 0 && hasMask)
         {
@@ -106,8 +107,8 @@ public class Mask : MonoBehaviour
 
     void GetMask()
     {
-        if (!hasMask)
-        {
+        //if (!hasMask)
+       // {
             hasMask = true;
             GameObject mask = currentModel;
             Vector3 pos = currentModel.transform.position;
@@ -120,7 +121,7 @@ public class Mask : MonoBehaviour
                     mask = Instantiate(ghostPref, gameObject.transform);
                     currentModel = mask;
                     equipedMask = gameObject.AddComponent<GhostMask>();
-
+                    
                     break;
                 case "Witch Mask":
                     equipedMask = gameObject.AddComponent<WitchMask>();
@@ -151,8 +152,7 @@ public class Mask : MonoBehaviour
             currentModel = mask;
 
             pawn.ModelChange();
-        }
+       // }
     }
-
     
 }
