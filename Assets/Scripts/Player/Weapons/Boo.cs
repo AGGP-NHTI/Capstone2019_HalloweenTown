@@ -51,6 +51,7 @@ public class Boo : MonoBehaviour {
                             if (difference <= radiusOfBoo)
                             {
                                 Debug.Log("Got Booed");
+                                particleManager.batPart();//stun particles circling bats
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
                                 hb.TakeDamage(damage);//for testing
                                                       //hb.DropCandy(10);//This will cause candy to drop from booed player
@@ -62,7 +63,7 @@ public class Boo : MonoBehaviour {
                     }
                 }
                 soundManager.Boo();
-                particleManager.booPart();
+                particleManager.booPart();//shoots out boo and bat particles
                 canBoo = false;
                 StartCoroutine(WaitingToBoo());
             }            
