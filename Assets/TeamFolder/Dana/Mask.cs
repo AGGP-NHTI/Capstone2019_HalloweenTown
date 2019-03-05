@@ -53,8 +53,12 @@ public class Mask : MonoBehaviour
         {
             interactButton = false;
             UpdateHealth();
-            GetMask();
-            
+
+            if(hasMask)
+            {
+                RemoveMaskScript();
+            }
+            GetMask();            
         }
         
         if (hbar.health <= 0 && hasMask)
@@ -79,8 +83,9 @@ public class Mask : MonoBehaviour
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
 
+            currentModel = mask;
 
-            currentModel = mask;            
+            RemoveMaskScript();
         }
     }    
 
@@ -104,7 +109,11 @@ public class Mask : MonoBehaviour
     {
         hbar.health = 100;
     }
-
+    void RemoveMaskScript()
+    {
+        Destroy(equipedMask);
+        equipedMask = null;
+    }
     void GetMask()
     {
         //if (!hasMask)
