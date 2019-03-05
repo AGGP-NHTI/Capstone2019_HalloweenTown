@@ -55,7 +55,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   momMusic: {fileID: 8300000, guid: 1ccd7978718782945b3753e702040d5f, type: 3}
-  spawnMom: {fileID: 0}
   currentPhase: 0
   roundElapsedTime: 0
   roundStartEndTime: -1

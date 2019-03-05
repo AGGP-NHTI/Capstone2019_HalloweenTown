@@ -50,8 +50,8 @@ public class Boo : MonoBehaviour {
                             if (difference <= radiusOfBoo)
                             {
                                 Debug.Log("Got Booed");
-                                //particleManager.batPart();//stun particles circling bats
-                                //particleManager.dropPart();//drop candy particles
+                                hitColliders[i].GetComponent<ParticleManager>().batPart();//stun particles circling bats
+                                hitColliders[i].GetComponent<ParticleManager>().dropPart();//drop candy particles
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
                                 //hb.TakeDamage(damage);//for testing
                                 StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
