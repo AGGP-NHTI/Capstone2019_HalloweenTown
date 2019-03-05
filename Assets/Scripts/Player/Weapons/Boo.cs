@@ -52,6 +52,7 @@ public class Boo : MonoBehaviour {
                             {
                                 Debug.Log("Got Booed");
                                 particleManager.batPart();//stun particles circling bats
+                                particleManager.dropPart();//drop candy particles
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
                                 hb.TakeDamage(damage);//for testing
                                                       //hb.DropCandy(10);//This will cause candy to drop from booed player
