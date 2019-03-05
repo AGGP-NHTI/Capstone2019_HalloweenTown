@@ -451,6 +451,19 @@ MonoBehaviour:
   dropCandyParticles: {fileID: 548147127}
   batParticles: {fileID: 1175512005}
   hitParticles: {fileID: 1838092697}
+--- !u!114 &104218652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 104218636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565ecf608edff6a44902f958a571bff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropCandy: {fileID: 1277981026362844, guid: 9c2d48f375172fe4d81861ce7c6152df, type: 2}
+  player: {fileID: 104218641}
 --- !u!1 &125593878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,6 +3486,21 @@ Prefab:
       propertyPath: booParticles
       value: 
       objectReference: {fileID: 281988996}
+    - target: {fileID: 114918133142790932, guid: 548c399c44a08df4da895ff2e51b35ab,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114576020868789664, guid: 548c399c44a08df4da895ff2e51b35ab,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114600282082635594, guid: 548c399c44a08df4da895ff2e51b35ab,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 548c399c44a08df4da895ff2e51b35ab, type: 2}
   m_IsPrefabAsset: 0

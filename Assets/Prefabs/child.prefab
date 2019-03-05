@@ -377,7 +377,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057452389426254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.878628, y: 0.039555397, z: -26.19659}
+  m_LocalPosition: {x: 15.1618, y: 0.039555397, z: -10.040787}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4226244057043352}
@@ -693,8 +693,7 @@ MonoBehaviour:
   waitforcandy: 0
   actionButton: 0
   showXForCandy: 0
-  candyPrefab: {fileID: 1483791962831766, guid: 80405886d24cf6e4a96ad3c38027c230,
-    type: 2}
+  candyPrefab: {fileID: 0}
 --- !u!114 &114387047930138118
 MonoBehaviour:
   m_ObjectHideFlags: 1
