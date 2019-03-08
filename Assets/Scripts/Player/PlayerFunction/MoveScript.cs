@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
+    public Animator anim;
+    Pawn pawn;
+
     #region Pawn Properties
     public Transform movementRelativeTransform;
 
@@ -70,6 +73,7 @@ public class MoveScript : MonoBehaviour
 
     protected virtual void Start()
     {
+        pawn = GetComponent<Pawn>();
         //Grab initial scale to use in crouching later on
         _playerInitialScale = transform.localScale.y;
 
@@ -90,6 +94,18 @@ public class MoveScript : MonoBehaviour
         if (_rb.velocity.sqrMagnitude > minFootstepVelocity && !_footstepAudioCoroutineIsActive && _isGrounded)
         {
             StartCoroutine(HandleFootstepAudio());
+
+        }
+        if (anim != null)
+        {
+            if (_rb.velocity.magnitude > 1f && pawn.myMask.equipedMask == null)
+            {
+                anim.SetBool("runBool", true);
+            }
+            else
+            {
+                anim.SetBool("runBool", false);
+            }
         }
         UpdateMoveVelocity();
         HandleCrouching();

@@ -19,7 +19,7 @@ public class Mask : MonoBehaviour
 
     public Image ultBar;
 
-    BaseMask equipedMask;
+    public BaseMask equipedMask;
     Pawn pawn;
     HealthBar hbar;
 

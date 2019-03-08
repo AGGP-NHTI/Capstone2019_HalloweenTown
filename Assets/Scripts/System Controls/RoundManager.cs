@@ -171,7 +171,7 @@ public class RoundManager : MonoBehaviour {
         for(int i = 0; i < _activePlayers.Count; i++)
         {
             playerscores[i].enabled = true;
-            playerscores[i].text = "Player " + i+1 + ": " + Candy.Scoreboard[_activePlayers[i]].ToString();
+            playerscores[i].text = "Player " + (i+1) + ": " + Candy.Scoreboard[_activePlayers[i]].ToString();
         }
 
         Canvas scoreboard = LevelInfo.GetScoreBoard();
