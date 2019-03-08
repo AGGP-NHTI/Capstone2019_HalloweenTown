@@ -504,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusOfBoo: 60
   damage: 10
+  canBoo: 1
 --- !u!114 &200559686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2115,7 +2116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61db4f53dcdc61b4b829a13ed6118aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300074, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
+  ghostSprite: {fileID: 0}
+  witchSprite: {fileID: 0}
+  vampireSprite: {fileID: 0}
+  warewolfSrpite: {fileID: 0}
 --- !u!114 &1162227202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,6 +2384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 1984936081}
+  boopartical: {fileID: 0}
 --- !u!114 &1272032897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2524,7 +2529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61db4f53dcdc61b4b829a13ed6118aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300026, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
+  ghostSprite: {fileID: 0}
+  witchSprite: {fileID: 0}
+  vampireSprite: {fileID: 0}
+  warewolfSrpite: {fileID: 0}
 --- !u!114 &1570493456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,4 +3306,5 @@ MonoBehaviour:
   myStun: {fileID: 0}
   barrel: {fileID: 1984936081}
   soundMan: {fileID: 0}
+  myParticle: {fileID: 0}
   MyController: {fileID: 0}

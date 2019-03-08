@@ -49,8 +49,8 @@ public class WeaponInventory : MonoBehaviour
         }
 
 
-        if (txtNumberEggs) txtNumberEggs.text = string.Format("0", numberEggs);
-        if (txtNumberToiletPaper) txtNumberToiletPaper.text = string.Format("0", numberToiletPaper);
+        if (txtNumberEggs) txtNumberEggs.text = string.Format("{0}", numberEggs);
+        if (txtNumberToiletPaper) txtNumberToiletPaper.text = string.Format("{0}", numberToiletPaper);
     }
 
     void OnTriggerEnter(Collider other)
