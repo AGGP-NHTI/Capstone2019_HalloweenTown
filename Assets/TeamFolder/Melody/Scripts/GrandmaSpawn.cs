@@ -37,17 +37,17 @@ public class GrandmaSpawn : MonoBehaviour {
     void Start ()
     {
         selectSpawn();
-        if (isSpawn)
-        {
-            Instantiate(grandma, transform.position, transform.rotation);
-        }
+        //if(isSpawn)
+        //SpawnGrandma(grandma);
+        //Debug.Log(grandma.name);
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	
+	public static void SpawnGrandma(GameObject gran)
     {
-	   	
-	}
+        Debug.Log("spawning grandma");
+        Instantiate(gran, spawns[(int)spawnIndex].transform.position, spawns[(int)spawnIndex].transform.rotation);
+    }
 
 
 }
