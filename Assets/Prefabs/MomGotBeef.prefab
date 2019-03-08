@@ -506,7 +506,7 @@ MonoBehaviour:
   RemainingPlayersToFind: []
   targetPlayer: {fileID: 0}
   reconsiderTargetRange: 7
-  collectPlayerRange: 3
+  collectPlayerRange: 1
   PlayerLayerMask:
     serializedVersion: 2
     m_Bits: 512

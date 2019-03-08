@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeUntilItemRespawn: 1
-  spawnPool: {fileID: 11400000, guid: 7f9b38a8c870d9f49813910e4a2b06dd, type: 2}
+  spawnPool: {fileID: 11400000, guid: b8512f9bcae46604bac079064ca2a5c6, type: 2}

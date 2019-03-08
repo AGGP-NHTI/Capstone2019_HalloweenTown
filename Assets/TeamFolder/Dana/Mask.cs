@@ -113,6 +113,8 @@ public class Mask : MonoBehaviour
     {
         Destroy(equipedMask);
         equipedMask = null;
+
+        pawn.ModelChange();
     }
     void GetMask()
     {
