@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Candy : MonoBehaviour
 {
+    public static Dictionary<PlayerController, int> Scoreboard;
+
     public int candy = 0;
     public Text candyText;
     float radius = 3.0f;
