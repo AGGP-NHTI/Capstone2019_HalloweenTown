@@ -6,6 +6,7 @@ public class Stun : MonoBehaviour {
     ProjectileManager myProjectileManager;
     MoveScript myMoveScript;
     PlayerProjectileCollisionManager myCollisionManager;
+    Boo myBoo;
     public bool stunned = false;
 
     Pawn pawn;
@@ -16,6 +17,7 @@ public class Stun : MonoBehaviour {
         myProjectileManager = GetComponent<ProjectileManager>();
         myCollisionManager = GetComponent<PlayerProjectileCollisionManager>();
         pawn = GetComponent<Pawn>();
+        myBoo = GetComponent<Boo>();
     }
 	
 	// Update is called once per frame
@@ -37,6 +39,7 @@ public class Stun : MonoBehaviour {
         bool jumpingBeforeHit = myMoveScript.allowJumping;
         bool crouchingBeforeHit = myMoveScript.allowCrouching;
         float moveSpeedBeforeHit = myMoveScript.moveSpeed;
+        bool couldBoo = myBoo.canBoo;
 
         //disable
         myMoveScript.allowSprinting = false;
@@ -45,7 +48,7 @@ public class Stun : MonoBehaviour {
         myMoveScript.moveSpeed = 0.0f;
         myProjectileManager.canThrow = false;
         myCollisionManager.canBeHit = false;
-
+        myBoo.canBoo = false;
         //count
         while (timer < duration)
         {
@@ -60,6 +63,7 @@ public class Stun : MonoBehaviour {
         myMoveScript.moveSpeed = moveSpeedBeforeHit;
         myCollisionManager.canBeHit = couldBeHit;
         myProjectileManager.canThrow = canThrowBeforeHit;
+        myBoo.canBoo = couldBoo;
         stunned = false;
         Debug.Log("done being stunned");
     }

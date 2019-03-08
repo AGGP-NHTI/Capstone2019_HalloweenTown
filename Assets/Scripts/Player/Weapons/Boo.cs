@@ -6,7 +6,7 @@ public class Boo : MonoBehaviour {
     
     public int radiusOfBoo = 60;
     public float damage = 10f;
-    bool canBoo = true;
+    public bool canBoo = true;
     Pawn pawn;
     SoundManager soundManager;
     ParticleManager particleManager;
