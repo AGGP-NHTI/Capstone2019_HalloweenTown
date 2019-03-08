@@ -49,7 +49,7 @@ public class Mask : MonoBehaviour
             equipedMask.Ult();
         }
 
-        if (interactButton) //&& hasMask == false)
+        if (interactButton)
         {
             interactButton = false;
             UpdateHealth();
@@ -116,8 +116,6 @@ public class Mask : MonoBehaviour
     }
     void GetMask()
     {
-        //if (!hasMask)
-       // {
             hasMask = true;
             GameObject mask = currentModel;
             Vector3 pos = currentModel.transform.position;
@@ -160,8 +158,7 @@ public class Mask : MonoBehaviour
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
             currentModel = mask;
 
-            pawn.ModelChange();
-       // }
+            pawn.ModelChange();       
     }
     
 }

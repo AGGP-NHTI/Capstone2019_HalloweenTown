@@ -16,6 +16,7 @@ public class Pawn : MonoBehaviour
     public Stun myStun;
     public GameObject barrel;
     public SoundManager soundMan;
+    public ParticleManager myParticle;
 
     [HideInInspector]
     public PlayerController MyController;
@@ -35,10 +36,11 @@ public class Pawn : MonoBehaviour
     {
 		
 	}
-
+    
     public void ModelChange()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;
     }
 
     #region Input

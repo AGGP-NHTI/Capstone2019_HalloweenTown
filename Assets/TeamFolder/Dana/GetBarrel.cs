@@ -5,4 +5,5 @@ using UnityEngine;
 public class GetBarrel : MonoBehaviour {
 
     public GameObject barrel;
+    public ParticleSystem boopartical;
 }

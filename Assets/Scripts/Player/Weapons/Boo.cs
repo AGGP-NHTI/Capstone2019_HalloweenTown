@@ -9,9 +9,6 @@ public class Boo : MonoBehaviour {
     bool canBoo = true;
     Pawn pawn;
     SoundManager soundManager;
-
-
-
     ParticleManager particleManager;
 
     private void Start()
@@ -56,7 +53,7 @@ public class Boo : MonoBehaviour {
                                 //hb.TakeDamage(damage);//for testing
                                 StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
                                 hb.Hit();//makes oof sound
-                                hitColliders[i].GetComponent<Pawn>().MyCandy.DropCandy();
+                                //hitColliders[i].GetComponent<Pawn>().MyCandy.DropCandy();
                                 pawn.myMask.SuccesfulBoo();
                             }                            
                         }
