@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
         if (!_controlledPawn) { return; }
 
         _controlledPawn.PassLockScreen(true);
+        if(_controlledPawn.MyCandy)
+        {
+            _controlledPawn.MyCandy.SetPlayerController(this);
+        }
+
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
             SplitScreenManager.Instance.PlayerCameras.Add(_controlledPawn.MyCamera);
@@ -72,6 +77,11 @@ public class PlayerController : MonoBehaviour
         if (!_controlledPawn) { return; }
 
         ControlledPawn.PassLockScreen(false);
+        /*if (_controlledPawn.MyCandy)
+        {
+            _controlledPawn.MyCandy.SetPlayerController(this);
+        }*/
+
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
             SplitScreenManager.Instance.PlayerCameras.Remove(_controlledPawn.MyCamera);

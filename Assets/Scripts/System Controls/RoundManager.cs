@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour {
 
@@ -166,6 +167,15 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundOverLogic()
     {
+        Text[] playerscores = LevelInfo.GetPlayerScores();
+        for(int i = 0; i < _activePlayers.Count; i++)
+        {
+            playerscores[i].enabled = true;
+            playerscores[i].text = "Player " + i+1 + ": " + Candy.Scoreboard[_activePlayers[i]].ToString();
+        }
+
+        Canvas scoreboard = LevelInfo.GetScoreBoard();
+        scoreboard.gameObject.SetActive(true);
         for(float timer = 0.0f; timer < timeBeforeReturningToMenu; timer += Time.deltaTime)
         {
             yield return null;

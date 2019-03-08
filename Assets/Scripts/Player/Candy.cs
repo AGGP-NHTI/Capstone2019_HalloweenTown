@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Candy : MonoBehaviour
 {
+    public static Dictionary<PlayerController, int> Scoreboard;
+
     public int candy = 0;
     public Text candyText;
     float radius = 3.0f;
@@ -12,6 +14,7 @@ public class Candy : MonoBehaviour
     public bool actionButton;
     public bool showXForCandy; 
     public GameObject candyPrefab;
+    protected PlayerController _myController;
 
     void Start()
     {
@@ -60,7 +63,30 @@ public class Candy : MonoBehaviour
             }
         }
 
-        candy -= numCandy;
+        AddCandy(numCandy * -1);
     }
 
+    public void AddCandy(int amount)
+    {
+        candy += amount;
+        Scoreboard[_myController] = candy;
+    }
+
+    public void SetPlayerController(PlayerController pc)
+    {
+        if(Scoreboard == null)
+        {
+            Scoreboard = new Dictionary<PlayerController, int>();
+        }
+
+        _myController = pc;
+        if(Scoreboard.ContainsKey(pc))
+        {
+            Scoreboard[pc] = candy;
+        }
+        else
+        {
+            Scoreboard.Add(pc, candy);
+        }
+    }
 }
