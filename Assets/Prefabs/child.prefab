@@ -1259,8 +1259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042e4e7d2c5af9c4da8f4a02bca5bfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtNumberEggs: {fileID: 114415216691090638}
-  txtNumberToiletPaper: {fileID: 114549319640091942}
+  txtNumberEggs: {fileID: 114138891185904340}
+  txtNumberToiletPaper: {fileID: 114622455860635014}
   numberEggs: 0
   numberToiletPaper: 0
   toiletPaperMax: 3
@@ -1296,7 +1296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 8
+  m_Text: 0
 --- !u!114 &114632994928009920
 MonoBehaviour:
   m_ObjectHideFlags: 1
