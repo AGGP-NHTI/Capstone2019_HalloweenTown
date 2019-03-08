@@ -7,13 +7,15 @@ public class Stun : MonoBehaviour {
     MoveScript myMoveScript;
     PlayerProjectileCollisionManager myCollisionManager;
     public bool stunned = false;
+
+    Pawn pawn;
     
     // Use this for initialization
     void Start () {
 		myMoveScript = GetComponent<MoveScript>();
         myProjectileManager = GetComponent<ProjectileManager>();
         myCollisionManager = GetComponent<PlayerProjectileCollisionManager>();
-        
+        pawn = GetComponent<Pawn>();
     }
 	
 	// Update is called once per frame
@@ -24,7 +26,7 @@ public class Stun : MonoBehaviour {
 
     public IEnumerator suspendMovement(float duration)
     {
-        
+        pawn.MyCandy.DropCandy();
         float timer = 0f;
         float rate = 1 / duration;
         stunned = true;
