@@ -7,13 +7,15 @@ public class Stun : MonoBehaviour {
     MoveScript myMoveScript;
     PlayerProjectileCollisionManager myCollisionManager;
     public bool stunned = false;
+
+    Pawn pawn;
     
     // Use this for initialization
     void Start () {
 		myMoveScript = GetComponent<MoveScript>();
         myProjectileManager = GetComponent<ProjectileManager>();
         myCollisionManager = GetComponent<PlayerProjectileCollisionManager>();
-        
+        pawn = GetComponent<Pawn>();
     }
 	
 	// Update is called once per frame
@@ -24,12 +26,12 @@ public class Stun : MonoBehaviour {
 
     public IEnumerator suspendMovement(float duration)
     {
-        
+        pawn.MyCandy.DropCandy();
         float timer = 0f;
         float rate = 1 / duration;
         stunned = true;
         //store original values
-        //bool couldBeHit = myCollisionManager.canBeHit;
+        bool couldBeHit = myCollisionManager.canBeHit;
         bool canThrowBeforeHit = myProjectileManager.canThrow;
         bool sprintingBeforeHit = myMoveScript.allowSprinting;
         bool jumpingBeforeHit = myMoveScript.allowJumping;
@@ -42,7 +44,7 @@ public class Stun : MonoBehaviour {
         myMoveScript.allowCrouching = false;
         myMoveScript.moveSpeed = 0.0f;
         myProjectileManager.canThrow = false;
-        //myCollisionManager.canBeHit = false;
+        myCollisionManager.canBeHit = false;
 
         //count
         while (timer < duration)
@@ -56,7 +58,7 @@ public class Stun : MonoBehaviour {
         myMoveScript.allowJumping = jumpingBeforeHit;
         myMoveScript.allowCrouching = crouchingBeforeHit;
         myMoveScript.moveSpeed = moveSpeedBeforeHit;
-        //myCollisionManager.canBeHit = couldBeHit;
+        myCollisionManager.canBeHit = couldBeHit;
         myProjectileManager.canThrow = canThrowBeforeHit;
         stunned = false;
         Debug.Log("done being stunned");

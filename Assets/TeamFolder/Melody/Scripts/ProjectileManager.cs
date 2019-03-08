@@ -11,14 +11,14 @@ public class ProjectileManager : MonoBehaviour {
    
     public List<GameObject> weaponList;
     public int selectedWeaponIndex;
-    public Transform leftSpawn;
+    //public Transform leftSpawn;
     public Vector3 offset;
-    public Transform model;
     float currentDPadY;
     float previousDPadY;
     public bool canThrow = true;
     public bool werewolfUlt = false;
-
+    public LineRenderer lr;
+    public bool debugLineOn = false; 
     Pawn pawn;
     Rigidbody rb;
     void Start() {
@@ -33,24 +33,49 @@ public class ProjectileManager : MonoBehaviour {
         previousDPadY = currentDPadY = 0;
         previousRightTrigger = currentRightTrigger = 0;
         deadZone = 0;
-        foreach(Transform c in transform)
+        
+        //set up debug line Renderer
+        if (GetComponent<LineRenderer>() && debugLineOn)
         {
-            if (c.name == "Model")
-            {
-                model = c;
-            }
+            lr = GetComponent<LineRenderer>();
+            lr.positionCount = 2;
+            lr.SetPosition(0, transform.position);
+            lr.SetPosition(1, transform.forward * 10);
         }
-      
         //leftSpawn = ge
     }
 
     // Update is called once per frame
     void Update() {
-
+       // if (debugLineOn) updateLine();
     }
 
     public void throwObject(float value)
     {
+        if(!pawn)
+        {
+            Debug.Log("No assigned pawn for " + name +"'s projectile manager");
+            return;
+        }
+        if (!pawn.barrel)
+        {
+            Debug.Log("No assigned barrel  for pawn " + name);
+            return;
+        }
+        Transform leftSpawn = pawn.barrel.transform;
+
+        if(!pawn.myMask)
+        {
+            Debug.Log("No myMask for pawn " + name);
+            return;
+        }
+        if (!pawn.myMask.currentModel)
+        {
+            Debug.Log("No currentModel for myMask " + name);
+            return;
+        }
+        Transform model = pawn.myMask.currentModel.transform;
+
         //Debug.Log("in throw object");
         //Debug.Log(string.Format("in throw egg. Value: {0}", value));
         currentRightTrigger = value;
@@ -58,7 +83,7 @@ public class ProjectileManager : MonoBehaviour {
         GameObject weapon = weaponList[selectedWeaponIndex];
         if (!inventory.hasProjectile(weapon))
         {
-            //Debug.Log("inventory has projectile" + inventory.hasProjectile(weapon));
+           // Debug.Log("inventory has no projectile" + inventory.hasProjectile(weapon));
             return;
         }
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
@@ -81,13 +106,13 @@ public class ProjectileManager : MonoBehaviour {
             
             if(thrownObject.GetComponent<ToiletPaper>())
             {
-                thrownObject.GetComponent<ToiletPaper>().moveSpeed += rb.velocity;
+                thrownObject.GetComponent<ToiletPaper>().moveSpeed = rb.velocity;
 
 
             }
             else if(thrownObject.GetComponent<Egg>())
             {
-                thrownObject.GetComponent<Egg>().moveSpeed += rb.velocity;
+                /*thrownObject.GetComponent<Egg>()*/ Egg.moveSpeed = rb.velocity;
                 if(werewolfUlt)
                 {
                     thrownObject.GetComponent<Egg>().damage *= 2;
@@ -124,7 +149,59 @@ public class ProjectileManager : MonoBehaviour {
                 selectedWeaponIndex += 1;
             }
         }
-
+            inventory.UpdateDisplay();
             previousDPadY = currentDPadY;
     }
+    //This is a mess
+    /*private void updateLine()
+    {
+      
+
+        Transform model = pawn.myMask.currentModel.transform;
+        Transform leftSpawn = pawn.barrel.transform;
+       
+
+        float gravity = Physics.gravity.y;
+
+        Vector3 velocityXZ = (leftSpawn.transform.forward * Egg.throwForce) +Egg.moveSpeed;
+        Vector3 velocityY = (leftSpawn.transform.up * 2);
+        Vector3 initVelocity = (velocityY + velocityXZ) * -Mathf.Sign(gravity);
+        PlotTrajectory(leftSpawn.position, initVelocity, 10, 30);
+
+
+        var t = Time.time;
+        int sides = 30;
+        float height = 1.0f;
+         //float timeTotal = Mathf.Sqrt(-2* height/Physics.gravity) + Mathf.Sqrt(2* )
+
+        for (int i = 0; i < sides; i++)
+        {
+           //float simulationTime = i / (float)sides * timeTotal
+            
+            // lr.SetPosition(i, new Vector3(i * 0.5f, Mathf.Sin(i + t), 0.0f));
+        }
+
+
+        lr.SetPosition(0, pawn.barrel.transform.position);
+        lr.SetPosition(1, pawn.barrel.transform.forward * 10);
+    }
+
+    public Vector3 PlotTrajectoryAtTime(Vector3 start, Vector3 startVelocity, float time)
+    {
+        return start + startVelocity * time + Physics.gravity * time * time * 0.5f;    
+    }
+    public void PlotTrajectory(Vector3 start, Vector3 startVelocity, float timeStep, float maxTime)
+    {
+        Vector3 previous = start;
+        for (int i = 1; ;i++)
+        {
+            float t = timeStep * i;
+            if (t > maxTime) break;
+            Vector3 pos = PlotTrajectoryAtTime(start, startVelocity, t);
+            if (Physics.Linecast(previous, pos)) break;
+            Debug.DrawLine(previous, pos, Color.red);
+            previous = pos;
+        }
+
+    }*/
 }

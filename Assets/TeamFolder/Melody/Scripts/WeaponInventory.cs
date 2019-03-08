@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class WeaponInventory : MonoBehaviour
 {
-    Text txtNumberEggs;
-    Text txtNumberToiletPaper;
-    public int numberEggs;
-    public int numberToiletPaper;
+    public Text txtNumberEggs;
+    public Text txtNumberToiletPaper;
+    public int numberEggs = 0;
+    public int numberToiletPaper = 0;
+    public int toiletPaperMax = 3;
+    Pawn pawn;
+    int selectedWeapon;
+    List<GameObject> weaponList;
     // Use this for initialization
     void Start()
     {
+        pawn = GetComponent<Pawn>();
+        weaponList = pawn.myProjectileManager.weaponList;
+
         //  txtNumberEggs = transform.Find("EggText").gameObject.Te
         // txtNumberEggs= GameObject.Find("EggText").GetComponent<Text>();
         //txtNumberToiletPaper = GameObject.Find("TPText").GetComponent<Text>();
@@ -26,10 +33,24 @@ public class WeaponInventory : MonoBehaviour
 
     }
 
-    private void UpdateDisplay()
+    public void UpdateDisplay()
     {
-        //txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
-       // txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
+        selectedWeapon = pawn.myProjectileManager.selectedWeaponIndex;
+
+        if (weaponList[selectedWeapon].CompareTag("Egg") /* selectedWeapon == 0*/)
+        {
+            if(txtNumberToiletPaper) txtNumberToiletPaper.enabled = false;
+            if(txtNumberEggs) txtNumberEggs.enabled = true;
+        }
+        if (/*weaponList[selectedWeapon].CompareTag("Toilet Paper")*/ selectedWeapon == 1)
+        {
+            if (txtNumberToiletPaper) txtNumberToiletPaper.enabled = true;
+             if (txtNumberEggs) txtNumberEggs.enabled = false;
+        }
+
+
+        if (txtNumberEggs) txtNumberEggs.text = string.Format("Eggs: {0}", numberEggs);
+        if (txtNumberToiletPaper) txtNumberToiletPaper.text = string.Format("Toilet Paper: {0}", numberToiletPaper);
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,6 +61,18 @@ public class WeaponInventory : MonoBehaviour
             numberEggs += 12;
             UpdateDisplay();
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("TPPickUp"))
+        {
+            Debug.Log("tp pick up");
+            Debug.Log(string.Format("numberToiletPaper: {0}; toiletPaperMax:  {1}", numberToiletPaper, toiletPaperMax));
+            if (numberToiletPaper < toiletPaperMax)
+            {
+                numberToiletPaper++;
+                UpdateDisplay();
+                Destroy(other.gameObject);
+            }
+
         }
     }
     public void subtractFromInventory(GameObject thrown)

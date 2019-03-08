@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class BaseMask : MonoBehaviour
 {
-    public float duration = 20f;
-    protected Coroutine wait;
+    public float waitingDuration = 100f;
+    public float ultingDuration = 100f;
+    protected Coroutine ulttimerCoroutine;
+    protected Coroutine waitforultCoroutine;
     public Pawn pawn;
     public GameObject barrel;
 
-    // Use this for initialization
+    public float ultTimeFloat = 0;
+    public bool isUlting = false;
+
     protected void Start()
     {
         pawn = GetComponent<Pawn>();
         barrel = pawn.myMask.currentModel.GetComponent<GetBarrel>().barrel;
+
+        waitforultCoroutine = StartCoroutine("WaitForUltTimer");
     }
 
     // Update is called once per frame
@@ -32,16 +38,32 @@ public class BaseMask : MonoBehaviour
 
     }
 
-    public IEnumerator BeginGameCountDown()
+    public IEnumerator UltTimer()
     {
-        float temp = duration;
-        while (temp >= 0)
+        isUlting = true;
+        ultTimeFloat = ultingDuration;
+        while (ultTimeFloat >= 0)
         {
-            temp -= Time.deltaTime;
-            Debug.Log("Waiting for ult again " + Mathf.Round(temp).ToString());
+            ultTimeFloat -= Time.deltaTime *20;
+            //Debug.Log("Ulting Time Left: " + Mathf.Round(ultTimeFloat).ToString());
             yield return null;
         }
         UltFinished();
-        wait = null;
+        ulttimerCoroutine = null;
+        waitforultCoroutine = StartCoroutine("WaitForUltTimer");
+    }
+
+    public IEnumerator WaitForUltTimer()
+    {
+        isUlting = false;
+        
+        while (ultTimeFloat <= waitingDuration)
+        {
+            ultTimeFloat += Time.deltaTime *20;
+            //Debug.Log("Waiting For Ult: " + Mathf.Round(ultTimeFloat).ToString());
+            yield return null;
+        }
+        UltFinished();
+        waitforultCoroutine = null;
     }
 }

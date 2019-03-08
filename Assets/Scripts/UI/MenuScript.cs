@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MenuScript : MonoBehaviour
     protected int previousMenuIndex = -1;
     public GameObject[] MenuScreens;
     public int StartingMenu = 0;
+    public EventSystem eventSystem;
 
     public bool PauseMenuExists = false;
     
@@ -64,6 +66,11 @@ public class MenuScript : MonoBehaviour
                 if (MenuScreens[newMenuIndex])
                 {
                     MenuScreens[newMenuIndex].SetActive(true);
+                    MenuInfoHolder mih = MenuScreens[newMenuIndex].GetComponent<MenuInfoHolder>();
+                    if(mih && eventSystem)
+                    {
+                        eventSystem.SetSelectedGameObject(mih.FirstSelected);
+                    }
                 }
             }
 

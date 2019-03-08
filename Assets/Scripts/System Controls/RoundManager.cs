@@ -114,17 +114,10 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundStartingLogic()
     {
-        SpawnPlayers(_activeInputs);
-
-        currentPhase = RoundPhase.ROUND_RUNNING;
+        CameraManager.Instance.StartCutscene(LevelInfo.GetIntroCutscene(), SetRoundToRunning);
 
         while(currentPhase == RoundPhase.ROUND_STARTING)
         {
-            if (roundElapsedTime >= roundStartEndTime && roundStartEndTime > 0.0f)
-            {
-                currentPhase = RoundPhase.ROUND_RUNNING;
-            }
-
             yield return null;
         }
 
@@ -149,7 +142,7 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundEndingLogic()
     {
-        spawnedMom = Instantiate(momPrefab);
+        spawnedMom = Instantiate(momPrefab, LevelInfo.GetMomSpawn());
         Mom momClass = spawnedMom.GetComponent<Mom>();
         momClass.FindPlayers(_activePlayers);
         momClass.huntChildren = true;
@@ -201,6 +194,12 @@ public class RoundManager : MonoBehaviour {
         }
 
         SplitScreenManager.Instance.ConfigureScreenSpace();
+    }
+
+    protected void SetRoundToRunning()
+    {
+        SpawnPlayers(_activeInputs);
+        currentPhase = RoundPhase.ROUND_RUNNING;
     }
     #endregion
 }

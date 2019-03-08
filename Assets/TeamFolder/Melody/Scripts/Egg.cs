@@ -5,20 +5,24 @@ using UnityEngine;
 public class Egg : Projectile {
 
    
-    public float throwForce = 1;
+    public float throwForce = 25;
+    public float upMultiplier = 2;
     public float arcAfterElapsedTime = 5;
     public float damage = 10.0f;
-    public Vector3 moveSpeed = Vector3.zero;
+    public static Vector3 moveSpeed = Vector3.zero;
     bool startFalling = false;
     Vector3 fallSpeed = new Vector3(0, -1, 0);
-
+   
 	void Start () {
-        base.Start();
-        rb.velocity = (transform.forward * throwForce)+ moveSpeed;
-        rb.velocity += transform.up * 2;
+
+        rb.useGravity = true;
+        velocityXZ = (transform.forward * throwForce) + moveSpeed;
+        velocityY = transform.up * upMultiplier;
+        
+        addVelocity();
 
         //StartCoroutine(turnOnGravity());
-        
+
     }
 
     // Update is called once per frame

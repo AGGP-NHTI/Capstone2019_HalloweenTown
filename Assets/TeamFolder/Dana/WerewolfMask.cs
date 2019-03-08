@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WerewolfMask : BaseMask {
-
+    bool ulted = false;
     public override void Ult()
     {
-        pawn.MyBoo.damage *= 2;//add all weapons
-        pawn.myProjectileManager.werewolfUlt = true;
-        if (wait == null)
+        if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
-            wait = StartCoroutine("BeginGameCountDown");
+            pawn.soundMan.WerewolfUltScream();
+            ulted = true;
+            pawn.MyBoo.damage *= 2;
+            pawn.myProjectileManager.werewolfUlt = true;
+            ulttimerCoroutine = StartCoroutine("UltTimer");
         }
     }
     public override void UltFinished()
     {
-        pawn.MyBoo.damage /= 2;
-        pawn.myProjectileManager.werewolfUlt = false;
+        if (ulted)
+        {
+            pawn.MyBoo.damage /= 2;
+            pawn.myProjectileManager.werewolfUlt = false;
+            ulted = false;
+        }
     }
 }
