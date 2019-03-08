@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4769215099652908}
   - component: {fileID: 114362929270912150}
   m_Layer: 0
-  m_Name: ItemSpawn
+  m_Name: MaskItemSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeUntilItemRespawn: 1
-  spawnPool: {fileID: 11400000, guid: 8845a55cf89040046af37b677ef0d08c, type: 2}
+  spawnPool: {fileID: 11400000, guid: 4b627472d0866a34f8b00c13a6528b77, type: 2}
