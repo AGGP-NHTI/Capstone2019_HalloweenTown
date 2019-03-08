@@ -30,12 +30,12 @@ public class DoorTrigger : MonoBehaviour
             if(source.myMask.hasMask)
             {
                 candyCount = Random.Range(6,8);
-                source.MyCandy.candy += candyCount;
+                source.MyCandy.AddCandy(candyCount);
             }
             else
             {
                 candyCount = Random.Range(2,4);
-                source.MyCandy.candy += candyCount;
+                source.MyCandy.AddCandy(candyCount);
             }            
         }
     }

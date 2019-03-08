@@ -63,7 +63,12 @@ public class Candy : MonoBehaviour
             }
         }
 
-        candy -= numCandy;
+        AddCandy(numCandy * -1);
+    }
+
+    public void AddCandy(int amount)
+    {
+        candy += amount;
         Scoreboard[_myController] = candy;
     }
 
