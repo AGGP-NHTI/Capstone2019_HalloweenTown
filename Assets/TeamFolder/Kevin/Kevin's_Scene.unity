@@ -16047,6 +16047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 1361512227}
+  boopartical: {fileID: 0}
 --- !u!23 &733505698
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28079,6 +28080,7 @@ MonoBehaviour:
   myStun: {fileID: 104218639}
   barrel: {fileID: 0}
   soundMan: {fileID: 104218637}
+  myParticle: {fileID: 0}
   MyController: {fileID: 0}
 --- !u!1 &1683659777
 GameObject:
