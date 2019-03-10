@@ -98,7 +98,9 @@ public class MoveScript : MonoBehaviour
         }
         if (anim != null)
         {
-            if (_rb.velocity.magnitude > 1f && pawn.myMask.equipedMask == null)
+            Vector3 curVel = _rb.velocity;
+            curVel.y = 0.0f;
+            if (curVel.magnitude > 1f && pawn.myMask.equipedMask == null)
             {
                 anim.SetBool("runBool", true);
             }
