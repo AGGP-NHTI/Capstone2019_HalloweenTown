@@ -143,19 +143,20 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundEndingLogic()
     {
-        spawnedMom = Instantiate(momPrefab, LevelInfo.GetMomSpawn());
-        Mom momClass = spawnedMom.GetComponent<Mom>();
-        momClass.FindPlayers(_activePlayers);
-        momClass.huntChildren = true;
+        Mom momInScene = LevelInfo.GetMom();
+        momInScene.gameObject.SetActive(true);
+        momInScene.FindPlayers(_activePlayers);
 
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = momMusic;
         audio.Play();
         audio.loop = true;
 
-        while(currentPhase == RoundPhase.ROUND_ENDING)
+        CameraManager.Instance.StartCutscene(LevelInfo.GetMomCutscene(), momInScene.LetMomHunt);
+
+        while (currentPhase == RoundPhase.ROUND_ENDING)
         {
-            if(momClass.RemainingPlayersToFind.Count <= 0)
+            if(momInScene.RemainingPlayersToFind.Count <= 0)
             {
                 currentPhase = RoundPhase.ROUND_OVER;
             }

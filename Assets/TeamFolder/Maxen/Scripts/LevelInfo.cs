@@ -8,14 +8,14 @@ public class LevelInfo : MonoBehaviour
     #region Static Stuff
     protected static LevelInfo _instance;
 
-    public static Transform GetMomSpawn()
+    public static Mom GetMom()
     {
         if (!_instance)
         {
             return null;
         }
 
-        return _instance.MomSpawn;
+        return _instance.Mom;
     }
 
     public static Canvas GetScoreBoard()
@@ -60,7 +60,7 @@ public class LevelInfo : MonoBehaviour
     #endregion
 
     #region Instance Stuff
-    public Transform MomSpawn;
+    public Mom Mom;
     public GameObject IntroCutscene;
     public GameObject MomCutscene;
     public Canvas scoreBoard;

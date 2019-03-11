@@ -20,6 +20,11 @@ public class Mom : MonoBehaviour
        audioSource = GetComponent<AudioSource>();
     }
 
+    public virtual void LetMomHunt()
+    {
+        huntChildren = true;
+    }
+
     public virtual void FindPlayers(List<PlayerController> listOfPlayers)
     {
         foreach(PlayerController pc in listOfPlayers)
