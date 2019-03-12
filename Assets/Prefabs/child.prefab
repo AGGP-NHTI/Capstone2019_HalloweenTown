@@ -879,15 +879,15 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2ba88c76e03984a4aa9419194982d621, type: 3}
-    m_FontSize: 70
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 4
     m_MaxSize: 70
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 12
@@ -915,6 +915,7 @@ MonoBehaviour:
   vampirePref: {fileID: 1331622129452190, guid: bd0b9985702a8d24daeddbcabb11b6eb,
     type: 2}
   ultBar: {fileID: 114546840085601596}
+  equipedMask: {fileID: 0}
 --- !u!114 &114191420617676648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -928,6 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusOfBoo: 60
   damage: 10
+  canBoo: 1
 --- !u!114 &114196632566526332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -999,7 +1001,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691657584428646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1116,7 +1118,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456547541321250}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1199,6 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584485fe4c80ffa4eb40f8e914b2553a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   movementRelativeTransform: {fileID: 4351054697550414}
   allowSprinting: 1
   allowJumping: 1
@@ -1285,10 +1288,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2ba88c76e03984a4aa9419194982d621, type: 3}
-    m_FontSize: 70
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 4
     m_MaxSize: 70
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1296,7 +1299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 3
 --- !u!114 &114632994928009920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25035,7 +25038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100, y: 64}
+  m_AnchoredPosition: {x: -100, y: 40}
   m_SizeDelta: {x: 55, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224479375886969960
@@ -25212,6 +25215,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -21, y: 63.999893}
+  m_AnchoredPosition: {x: -7.200012, y: 40}
   m_SizeDelta: {x: 55, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
