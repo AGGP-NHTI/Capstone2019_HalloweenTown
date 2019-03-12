@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 114131523905762804}
   - component: {fileID: 114151291919258258}
   - component: {fileID: 114748930901580532}
+  - component: {fileID: 114620815470955696}
   m_Layer: 9
   m_Name: riggedChildPrefab
   m_TagString: Player
@@ -2013,6 +2014,21 @@ MonoBehaviour:
   soundMan: {fileID: 114131523905762804}
   myParticle: {fileID: 114071482234282638}
   MyController: {fileID: 0}
+--- !u!114 &114620815470955696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405976558990932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb62ca6d477f56b4c930e5b81cac8bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConsoleVisibleToggleKey: 96
+  console: {fileID: 0}
+  output: {fileID: 0}
+  input: {fileID: 0}
 --- !u!114 &114622372625539906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,11 +2200,11 @@ MonoBehaviour:
   scriptName: 
   currentModel: {fileID: 1723638829972258}
   playerPref: {fileID: 1641274433880270, guid: a9a64e510f6b55143a4094e5dca81b40, type: 2}
-  ghostPref: {fileID: 1162926624293028, guid: c956678ff65260e4ea377ad51c3ad597, type: 2}
+  ghostPref: {fileID: 1459857841415240, guid: a5456110c7b61354887dc02d611b0eb9, type: 2}
   witchPref: {fileID: 1284107184651326, guid: c36ad2f039e7571469c57f9782161666, type: 2}
   werewolfPref: {fileID: 1738160862842466, guid: c6dc78bafaca2ac449d833241c1fe8bc,
     type: 2}
-  vampirePref: {fileID: 1284107184651326, guid: c36ad2f039e7571469c57f9782161666,
+  vampirePref: {fileID: 1901844044293570, guid: 571b7a89135d1f04d8fdd5b3975d1f03,
     type: 2}
   ultBar: {fileID: 114851255990710114}
   equipedMask: {fileID: 0}
