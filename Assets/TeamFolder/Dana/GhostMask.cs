@@ -22,11 +22,11 @@ public class GhostMask : BaseMask{
 
     void Update()
     {       
-        if(pawn.myMask.currentModel.transform.position.y >= yvalue + 0.25f)
+        if(pawn.myMask.currentModel.transform.position.y >= yvalue + 0.5f)
         {
             up = false;
         }
-        else if(pawn.myMask.currentModel.transform.position.y <= yvalue-0.25f)
+        else if(pawn.myMask.currentModel.transform.position.y <= yvalue)
         {
             up = true;
         }
