@@ -5,6 +5,7 @@ public class ImageChange: MonoBehaviour
 {
     Image m_Image;//the Box mask
 
+    public Sprite baseSprite;
     public Sprite ghostSprite;
     public Sprite witchSprite;
     public Sprite vampireSprite;
@@ -20,6 +21,11 @@ public class ImageChange: MonoBehaviour
     void Update()
     {
         //Press space to change the Sprite of the Image will change to collision or trigger when you get a new mask  
+    }
+
+    public void whiteCircle()
+    {
+
     }
 
     public void ghost()

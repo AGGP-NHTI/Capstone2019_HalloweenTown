@@ -117,6 +117,7 @@ public class Mask : MonoBehaviour
     void RemoveMaskScript()
     {
         Destroy(equipedMask);
+        maskSprite.whiteCircle();
         equipedMask = null;
 
         pawn.ModelChange();
