@@ -25,7 +25,7 @@ public class ImageChange: MonoBehaviour
 
     public void whiteCircle()
     {
-
+        m_Image.sprite = baseSprite;
     }
 
     public void ghost()
