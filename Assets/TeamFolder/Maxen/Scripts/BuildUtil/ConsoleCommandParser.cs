@@ -56,6 +56,18 @@ public class ConsoleCommandParser : MonoBehaviour
                         Player(splitCmd);
                         break;
                     }
+                case "getcontrollers":
+                    {
+                        string[] names = Input.GetJoystickNames();
+                        string msg = "ConnectedControllers:\n{";
+                        foreach(string controller in names)
+                        {
+                            msg += "\n\t" + controller;
+                        }
+                        msg += "\n}";
+                        BuildConsole.WriteLine(msg);
+                        break;
+                    }
                 case "quit":
                     {
                         BuildConsole.WriteLine("Are you sure you want to quit? Y / N");
@@ -266,6 +278,67 @@ public class ConsoleCommandParser : MonoBehaviour
                             }
                             break;
                         }
+                    case "ammo":
+                        {
+                            if(keywords.Length < 6)
+                            {
+                                BuildConsole.WriteLine("Insufficent parameters");
+                                return;
+                            }
+                            WeaponInventory inv = pc.ControlledPawn.GetComponent<WeaponInventory>();
+                            int amount;
+                            if (!int.TryParse(keywords[5], out amount))
+                            {
+                                BuildConsole.WriteLine("Looking for integer, found " + keywords[4]);
+                                return;
+                            }
+                            if (keywords[4] == "set")
+                            {
+                                if(keywords[3] == "eggs" || keywords[3] == "egg")
+                                {
+                                    inv.numberEggs = amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else if(keywords[3] == "toiletpaper" || keywords[3] == "tp")
+                                {
+                                    inv.numberToiletPaper = amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else
+                                {
+                                    BuildConsole.WriteLine("Looking for \'eggs\' or \'toiletpaper\', found " + keywords[3]);
+                                    return;
+                                }
+                            }
+                            else if (keywords[4] == "add")
+                            {
+                                if (keywords[3] == "eggs" || keywords[3] == "egg")
+                                {
+                                    inv.numberEggs += amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else if (keywords[3] == "toiletpaper" || keywords[3] == "tp")
+                                {
+                                    inv.numberToiletPaper += amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else
+                                {
+                                    BuildConsole.WriteLine("Looking for \'eggs\' or \'toiletpaper\', found " + keywords[3]);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                BuildConsole.WriteLine("Invalid command. Looking for \'set\' or \'add\'");
+                            }
+                            break;
+                        }
+                    case "showinput":
+                        {
+                            BuildConsole.WriteLine(pc.playerInput);
+                            break;
+                        }
                 }
             }
         }
@@ -275,7 +348,7 @@ public class ConsoleCommandParser : MonoBehaviour
             if(int.TryParse(keywords[1], out playerNum))
             {
                 playerNum--;
-                if(0 < playerNum || playerNum >= activePlayers.Length)
+                if(0 > playerNum || playerNum >= activePlayers.Length)
                 {
                     BuildConsole.WriteLine("There is not a player " + (playerNum + 1));
                     return;
@@ -321,6 +394,67 @@ public class ConsoleCommandParser : MonoBehaviour
                             {
                                 BuildConsole.WriteLine("Invalid command. Looking for \'set\' or \'add\'");
                             }
+                            break;
+                        }
+                    case "ammo":
+                        {
+                            if (keywords.Length < 6)
+                            {
+                                BuildConsole.WriteLine("Insufficent parameters");
+                                return;
+                            }
+                            WeaponInventory inv = activePlayers[playerNum].ControlledPawn.GetComponent<WeaponInventory>();
+                            int amount;
+                            if (!int.TryParse(keywords[5], out amount))
+                            {
+                                BuildConsole.WriteLine("Looking for integer, found " + keywords[4]);
+                                return;
+                            }
+                            if (keywords[4] == "set")
+                            {
+                                if (keywords[3] == "eggs" || keywords[3] == "egg")
+                                {
+                                    inv.numberEggs = amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else if (keywords[3] == "toiletpaper" || keywords[3] == "tp")
+                                {
+                                    inv.numberToiletPaper = amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else
+                                {
+                                    BuildConsole.WriteLine("Looking for \'eggs\' or \'toiletpaper\', found " + keywords[3]);
+                                    return;
+                                }
+                            }
+                            else if (keywords[4] == "add")
+                            {
+                                if (keywords[3] == "eggs" || keywords[3] == "egg")
+                                {
+                                    inv.numberEggs += amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else if (keywords[3] == "toiletpaper" || keywords[3] == "tp")
+                                {
+                                    inv.numberToiletPaper += amount;
+                                    inv.UpdateDisplay();
+                                }
+                                else
+                                {
+                                    BuildConsole.WriteLine("Looking for \'eggs\' or \'toiletpaper\', found " + keywords[3]);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                BuildConsole.WriteLine("Invalid command. Looking for \'set\' or \'add\'");
+                            }
+                            break;
+                        }
+                    case "showinput":
+                        {
+                            BuildConsole.WriteLine(activePlayers[playerNum].playerInput);
                             break;
                         }
                 }

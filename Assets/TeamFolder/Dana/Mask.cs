@@ -61,16 +61,16 @@ public class Mask : MonoBehaviour
             {                
                 StopCoroutine(equipedMask.UltTimer());
                 equipedMask.UltFinished();
-                RemoveMaskScript();
+                RemoveMask();
             }
             GetMask();            
         }
         
         if (hbar.health <= 0 && hasMask)
         {
-            hasMask = false;
-            Debug.Log("dead");
+            hasMask = false;            
             Vector3 pos;
+
             if (gameObject.GetComponent<GhostMask>())
             {
                 pos = savedPos;
@@ -88,9 +88,11 @@ public class Mask : MonoBehaviour
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
 
+            maskSprite.whiteCircle();
             currentModel = mask;
-
-            RemoveMaskScript();
+            pawn.MyMoveScript.anim = mask.GetComponent<Animator>();
+            pawn.ModelChange();
+            equipedMask = null;
         }
     }    
 
@@ -114,14 +116,13 @@ public class Mask : MonoBehaviour
     {
         hbar.health = 100;
     }
-    void RemoveMaskScript()
+    void RemoveMask()
     {
         Destroy(equipedMask);
         maskSprite.whiteCircle();
         equipedMask = null;
-
-        pawn.ModelChange();
     }
+    
     void GetMask()
     {
             hasMask = true;
