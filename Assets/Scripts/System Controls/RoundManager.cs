@@ -212,5 +212,10 @@ public class RoundManager : MonoBehaviour {
         SpawnPlayers(_activeInputs);
         currentPhase = RoundPhase.ROUND_RUNNING;
     }
+
+    public PlayerController[] GetPlayers()
+    {
+        return _activePlayers.ToArray();
+    }
     #endregion
 }

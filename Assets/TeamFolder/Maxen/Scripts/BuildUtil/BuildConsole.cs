@@ -15,6 +15,11 @@ public class BuildConsole : MonoBehaviour
         }
     }
 
+    public static void ClearLog()
+    {
+        _instance.output.text = "";
+    }
+
     protected static BuildConsole _instance;
 #endregion
 
