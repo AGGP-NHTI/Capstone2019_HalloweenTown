@@ -24,6 +24,11 @@ public class Stun : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void StunPlayer(float stunTime)
+    {
+        StartCoroutine(suspendMovement(stunTime));
+    }
     
 
     public IEnumerator suspendMovement(float duration)

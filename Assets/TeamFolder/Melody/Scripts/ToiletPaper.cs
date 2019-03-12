@@ -32,7 +32,8 @@ public class ToiletPaper : Projectile {
 
             if (stun.stunned == false)
             {
-                StartCoroutine(stun.suspendMovement(stunTime));
+                stun.StunPlayer(stunTime);
+                    //StartCoroutine(stun.suspendMovement(stunTime));
             }           
         }
         Destroy(gameObject);
