@@ -886,12 +886,12 @@ GameObject:
   - component: {fileID: 114296466915694808}
   - component: {fileID: 114272788235341108}
   - component: {fileID: 114785806583521886}
+  - component: {fileID: 114369601422254262}
   - component: {fileID: 114915984232891176}
   - component: {fileID: 114980608256418906}
   - component: {fileID: 114647297434283134}
   - component: {fileID: 114681451151182754}
   - component: {fileID: 114227043990254350}
-  - component: {fileID: 114369601422254262}
   m_Layer: 9
   m_Name: riggedChild
   m_TagString: Player
@@ -1673,7 +1673,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1779435968201204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.369968, y: 2.2286305e-16, z: -10.0368595}
+  m_LocalPosition: {x: -1.376698, y: -9.355475e-17, z: 4.213331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4995244126646862}
@@ -2664,10 +2664,10 @@ MonoBehaviour:
   audioSource: {fileID: 82848929118139998}
   boo: {fileID: 8300000, guid: a2446b0d38503c74892b009996180e5d, type: 3}
   oof: {fileID: 8300000, guid: ff6690437731a8340b973141917810cf, type: 3}
-  witchScream: {fileID: 8300000, guid: 3af950dfabd3bd345b8e6890dc94d53a, type: 3}
-  ghostScream: {fileID: 8300000, guid: c89349b01d634314f876878d22525c53, type: 3}
-  werewolfScream: {fileID: 8300000, guid: cf2927e74ed5f5d4d9a33defdb9ece21, type: 3}
-  vampireScream: {fileID: 8300000, guid: 6a9007532f44536489d6c4735824557c, type: 3}
+  witchScream: {fileID: 8300000, guid: 84b13a8ba0d899c488a7cb87470d8c20, type: 3}
+  ghostScream: {fileID: 8300000, guid: c4d19874cd035134e823765af7ed3716, type: 3}
+  werewolfScream: {fileID: 8300000, guid: 7af06119f324c9945bf47f3fdbe85c2a, type: 3}
+  vampireScream: {fileID: 8300000, guid: 42cb8d47c20901442ba9493dfa55411b, type: 3}
 --- !u!114 &114662216286982048
 MonoBehaviour:
   m_ObjectHideFlags: 1

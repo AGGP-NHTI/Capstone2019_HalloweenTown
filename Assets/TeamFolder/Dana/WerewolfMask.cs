@@ -10,7 +10,8 @@ public class WerewolfMask : BaseMask {
         {
             pawn.soundMan.WerewolfUltScream();
             ulted = true;
-            pawn.MyBoo.damage *= 2;
+            pawn.myProjectileManager.eggDamage *= 2;
+            //pawn.MyBoo.damage *= 2;
             pawn.myProjectileManager.werewolfUlt = true;
             ulttimerCoroutine = StartCoroutine("UltTimer");
         }
@@ -19,7 +20,8 @@ public class WerewolfMask : BaseMask {
     {
         if (ulted)
         {
-            pawn.MyBoo.damage /= 2;
+            pawn.myProjectileManager.eggDamage /= 2;
+            // pawn.MyBoo.damage /= 2;
             pawn.myProjectileManager.werewolfUlt = false;
             ulted = false;
         }

@@ -58,7 +58,9 @@ public class Mask : MonoBehaviour
             UpdateHealth();
 
             if(hasMask)
-            {
+            {                
+                StopCoroutine(equipedMask.UltTimer());
+                equipedMask.UltFinished();
                 RemoveMaskScript();
             }
             GetMask();            
@@ -92,7 +94,7 @@ public class Mask : MonoBehaviour
         }
     }    
 
-    public void SuccesfulBoo()
+    public void SuccesfulBoo()//ult mulitplier; makes ult wait time shorter for each successful boo
     {
         float booUltAdd = 20f;
         if(equipedMask != null && equipedMask.isUlting == false)

@@ -21,6 +21,9 @@ public class ProjectileManager : MonoBehaviour {
     public bool debugLineOn = false; 
     Pawn pawn;
     Rigidbody rb;
+
+    public GameObject thrownObject;
+    public float eggDamage = 10f;
     void Start() {
 
         pawn = GetComponent<Pawn>();
@@ -99,7 +102,7 @@ public class ProjectileManager : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw projectile but no model component not found!");
                 return;
             }
-            GameObject thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position + leftSpawn.transform.forward, model.rotation);
+            thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position + leftSpawn.transform.forward, model.rotation);
             Debug.Log(thrownObject.gameObject.name);
             thrownObject.GetComponent<Projectile>().owner = gameObject;
             inventory.subtractFromInventory(weaponList[selectedWeaponIndex]);
@@ -112,11 +115,10 @@ public class ProjectileManager : MonoBehaviour {
             }
             else if(thrownObject.GetComponent<Egg>())
             {
-                /*thrownObject.GetComponent<Egg>()*/ Egg.moveSpeed = rb.velocity;
-                if(werewolfUlt)
-                {
-                    thrownObject.GetComponent<Egg>().damage *= 2;
-                }
+                Egg.moveSpeed = rb.velocity;
+                
+                thrownObject.GetComponent<Egg>().damage = eggDamage;
+                
             }
             
         } 
