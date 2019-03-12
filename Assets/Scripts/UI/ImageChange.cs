@@ -8,7 +8,7 @@ public class ImageChange: MonoBehaviour
     public Sprite ghostSprite;
     public Sprite witchSprite;
     public Sprite vampireSprite;
-    public Sprite warewolfSrpite;// each mask needs to be assigned a sprite
+    public Sprite werewolfSprite;// each mask needs to be assigned a sprite
 
     void Start()
     {
@@ -19,8 +19,26 @@ public class ImageChange: MonoBehaviour
 
     void Update()
     {
-        //Press space to change the Sprite of the Image will change to collision or trigger when you get a new mask
+        //Press space to change the Sprite of the Image will change to collision or trigger when you get a new mask  
+    }
 
-       
+    public void ghost()
+    {
+        m_Image.sprite = ghostSprite;
+    }
+
+    public void witch()
+    {
+        m_Image.sprite = witchSprite;
+    }
+
+    public void vampire()
+    {
+        m_Image.sprite = vampireSprite;
+    }
+
+    public void werewolf()
+    {
+        m_Image.sprite = werewolfSprite;
     }
 }

@@ -22,14 +22,17 @@ public class Mask : MonoBehaviour
     public BaseMask equipedMask;
     Pawn pawn;
     HealthBar hbar;
-
+    ImageChange maskSprite;
     Vector3 savedPos;
 
     void Start()
     {
+        
         pawn = gameObject.GetComponent<Pawn>();
         hbar = GetComponent<HealthBar>();
+        maskSprite = gameObject.GetComponentInChildren<ImageChange>();
         savedPos = currentModel.transform.position;
+        
     }
 
     void Update()
@@ -128,6 +131,7 @@ public class Mask : MonoBehaviour
                 case "Ghost Mask":
                     Destroy(currentModel);
                     mask = Instantiate(ghostPref, gameObject.transform);
+                    maskSprite.ghost();
                     currentModel = mask;
                     equipedMask = gameObject.AddComponent<GhostMask>();
                     
@@ -136,16 +140,20 @@ public class Mask : MonoBehaviour
                     equipedMask = gameObject.AddComponent<WitchMask>();
                     Destroy(currentModel);
                     mask = Instantiate(witchPref, gameObject.transform);
+                    maskSprite.witch();
+
                     break;
                 case "Werewolf Mask":
                     equipedMask = gameObject.AddComponent<WerewolfMask>();
                     Destroy(currentModel);
                     mask = Instantiate(werewolfPref, gameObject.transform);
+                    maskSprite.werewolf();
                     break;
                 case "Vampire Mask":
                     equipedMask = gameObject.AddComponent<VampireMask>();
                     Destroy(currentModel);
                     mask = Instantiate(vampirePref, gameObject.transform);
+                    maskSprite.vampire();
                     break;
 
                 default:

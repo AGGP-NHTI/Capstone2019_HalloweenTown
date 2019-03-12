@@ -225,7 +225,6 @@ GameObject:
   - component: {fileID: 224876645084880860}
   - component: {fileID: 222612762503841180}
   - component: {fileID: 114994745730158940}
-  - component: {fileID: 114438805374510848}
   m_Layer: 5
   m_Name: CandyIcon
   m_TagString: Untagged
@@ -243,7 +242,7 @@ GameObject:
   - component: {fileID: 224479375886969960}
   - component: {fileID: 222930431037806752}
   - component: {fileID: 114441405873890876}
-  - component: {fileID: 114822181352118628}
+  - component: {fileID: 114137414397464300}
   m_Layer: 5
   m_Name: MaskSprite
   m_TagString: Untagged
@@ -834,7 +833,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0e190d810b2d3c4f85d50324735be47, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abd78f84f98772943beb2ff47d3ecd6a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -858,6 +857,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114137414397464300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624583868074986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61db4f53dcdc61b4b829a13ed6118aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostSprite: {fileID: 21300000, guid: 0d9cec62ef0461748831427409d55bd7, type: 3}
+  witchSprite: {fileID: 21300000, guid: b8df34aaa41797b4f9587ac041a9ff0c, type: 3}
+  vampireSprite: {fileID: 21300000, guid: 1c030ed2838a7ae4cbf6d90ef9a179b9, type: 3}
+  werewolfSprite: {fileID: 21300000, guid: 4220f69e139e9f74bafc3c6277d11af9, type: 3}
 --- !u!114 &114138891185904340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1028,21 +1042,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Eggs: 0'
---- !u!114 &114438805374510848
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1498470432777804}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61db4f53dcdc61b4b829a13ed6118aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghostSprite: {fileID: 0}
-  witchSprite: {fileID: 0}
-  vampireSprite: {fileID: 0}
-  warewolfSrpite: {fileID: 0}
 --- !u!114 &114441405873890876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9660845, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.9660845, g: 1, b: 0, a: 0.8235294}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1186,7 +1185,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 435
@@ -1427,7 +1426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5400758, b: 0, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1486,21 +1485,6 @@ MonoBehaviour:
   dropCandyParticles: {fileID: 198264840671988544}
   batParticles: {fileID: 198245372861989112}
   hitParticles: {fileID: 198049006574514338}
---- !u!114 &114822181352118628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624583868074986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61db4f53dcdc61b4b829a13ed6118aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghostSprite: {fileID: 21300002, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
-  witchSprite: {fileID: 21300008, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
-  vampireSprite: {fileID: 21300010, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
-  warewolfSrpite: {fileID: 21300012, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
 --- !u!114 &114918133142790932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1555,7 +1539,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0e190d810b2d3c4f85d50324735be47, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1fde5ede3717f0479cfa7d4eb169cb1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1600,7 +1584,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300022, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1baf88e0c18566548a6b3492f36561d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25002,7 +24986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 115, y: -60}
+  m_AnchoredPosition: {x: 110, y: -80}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224369461869362956
