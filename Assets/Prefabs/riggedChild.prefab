@@ -2095,7 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b5203d0e167b244b410df913893d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candy: 100
+  candy: 0
   candyText: {fileID: 114831327120062224}
   waitforcandy: 0
   actionButton: 0

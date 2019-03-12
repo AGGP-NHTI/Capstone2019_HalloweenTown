@@ -112,4 +112,23 @@ public class InputObject : ScriptableObject
         }
         return Input.GetButtonDown(SelectButton);
     }
+
+    public override string ToString()
+    {
+        return "PlayerInput " + PlayerNumber +
+            "\n{\n\tMoveHorizontalAxis: " + MoveHorizontalAxis +
+            "\n\tMoveVerticalAxis: " + MoveVerticalAxis +
+            "\n\tLookHorizontalAxis: " + LookHorizontalAxis +
+            "\n\tLookVerticalAxis: " + LookVerticalAxis +
+            "\n\tLeftTriggerAxis: " + LeftTriggerAxis +
+            "\n\tRightTriggerAxis: " + RightTriggerAxis +
+            "\n\tDPadHorizontalAxis: " + DPadHorizontalAxis +
+            "\n\tDPadVerticalAxis: " + DPadVerticalAxis +
+            "\n\tUltimateButton: " + UltimateButton +
+            "\n\tInteractButton: " + InteractButton +
+            "\n\tJumpButton: " + JumpButton +
+            "\n\tBooButton: " + BooButton +
+            "\n\tStartButton: " + StartButton +
+            "\n\tSelectButton: " + SelectButton + "\n}";
+    }
 }
