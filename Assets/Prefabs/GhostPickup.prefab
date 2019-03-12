@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1083796546996238}
+  m_RootGameObject: {fileID: 1659858135639708}
   m_IsPrefabAsset: 1
---- !u!1 &1083796546996238
+--- !u!1 &1659858135639708
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4130206564667292}
-  - component: {fileID: 33424357295882498}
-  - component: {fileID: 23439468067292846}
-  - component: {fileID: 114047789882836470}
-  - component: {fileID: 114520334740276474}
-  - component: {fileID: 65425085059991548}
+  - component: {fileID: 4587550715772838}
+  - component: {fileID: 33593338966238426}
+  - component: {fileID: 23346646145661616}
+  - component: {fileID: 114813331922054124}
+  - component: {fileID: 65144740703332852}
+  - component: {fileID: 114402367940556856}
   m_Layer: 0
-  m_Name: WitchHatPickup
-  m_TagString: Witch Mask
+  m_Name: GhostPickup
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4130206564667292
+--- !u!4 &4587550715772838
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1659858135639708}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.460338, y: 0.51632077, z: 7.919888}
-  m_LocalScale: {x: 86.55863, y: 86.55863, z: 86.55863}
+  m_LocalPosition: {x: 5.4829, y: 0.14, z: -6.3862}
+  m_LocalScale: {x: 20.184216, y: 22.965622, z: 21.609613}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23439468067292846
+--- !u!23 &23346646145661616
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1659858135639708}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,8 +59,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a2e47476660df704daad6d616a8eae01, type: 3}
-  - {fileID: 2100002, guid: a2e47476660df704daad6d616a8eae01, type: 3}
+  - {fileID: 2100000, guid: bf6f91d4d48cd3e42973a5961e50077e, type: 3}
+  - {fileID: 2100002, guid: bf6f91d4d48cd3e42973a5961e50077e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,42 +80,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33424357295882498
+--- !u!33 &33593338966238426
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
-  m_Mesh: {fileID: 4300000, guid: a2e47476660df704daad6d616a8eae01, type: 3}
---- !u!65 &65425085059991548
+  m_GameObject: {fileID: 1659858135639708}
+  m_Mesh: {fileID: 4300000, guid: bf6f91d4d48cd3e42973a5961e50077e, type: 3}
+--- !u!65 &65144740703332852
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1659858135639708}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01347911, y: 0.011929969, z: 0.013483372}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114047789882836470
+  m_Size: {x: 0.02638895, y: 0.047405574, z: 0.025872003}
+  m_Center: {x: -0.0017119315, y: 0.02348504, z: 0.0016342192}
+--- !u!114 &114402367940556856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be05a373d9978b40bc21f022347214b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114520334740276474
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1659858135639708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c2906743df0fd54881b79c7e6a5bf52, type: 3}
@@ -124,7 +113,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114047789882836470}
+      - m_Target: {fileID: 114813331922054124}
         m_MethodName: RecieveInteract
         m_Mode: 0
         m_Arguments:
@@ -138,3 +127,14 @@ MonoBehaviour:
     m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   PawnsThatCantInteract: []
+--- !u!114 &114813331922054124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659858135639708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be05a373d9978b40bc21f022347214b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

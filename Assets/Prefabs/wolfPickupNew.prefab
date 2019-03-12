@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1083796546996238}
+  m_RootGameObject: {fileID: 1452463218854354}
   m_IsPrefabAsset: 1
---- !u!1 &1083796546996238
+--- !u!1 &1452463218854354
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4130206564667292}
-  - component: {fileID: 33424357295882498}
-  - component: {fileID: 23439468067292846}
-  - component: {fileID: 114047789882836470}
-  - component: {fileID: 114520334740276474}
-  - component: {fileID: 65425085059991548}
+  - component: {fileID: 4737281772179552}
+  - component: {fileID: 33545763980761822}
+  - component: {fileID: 23516949978497466}
+  - component: {fileID: 65917140589390100}
+  - component: {fileID: 114456684436664708}
+  - component: {fileID: 114126881951533722}
   m_Layer: 0
-  m_Name: WitchHatPickup
-  m_TagString: Witch Mask
+  m_Name: wolfPickupNew
+  m_TagString: Werewolf Mask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4130206564667292
+--- !u!4 &4737281772179552
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1452463218854354}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.460338, y: 0.51632077, z: 7.919888}
-  m_LocalScale: {x: 86.55863, y: 86.55863, z: 86.55863}
+  m_LocalPosition: {x: 7.2966, y: 0.82, z: 7.1784}
+  m_LocalScale: {x: 15.454, y: 15.454, z: 15.454}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23439468067292846
+--- !u!23 &23516949978497466
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1452463218854354}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,8 +59,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a2e47476660df704daad6d616a8eae01, type: 3}
-  - {fileID: 2100002, guid: a2e47476660df704daad6d616a8eae01, type: 3}
+  - {fileID: 2100000, guid: d531f98221407044dbbe75286463ec79, type: 3}
+  - {fileID: 2100002, guid: d531f98221407044dbbe75286463ec79, type: 3}
+  - {fileID: 2100004, guid: d531f98221407044dbbe75286463ec79, type: 3}
+  - {fileID: 2100006, guid: d531f98221407044dbbe75286463ec79, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,42 +82,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33424357295882498
+--- !u!33 &33545763980761822
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
-  m_Mesh: {fileID: 4300000, guid: a2e47476660df704daad6d616a8eae01, type: 3}
---- !u!65 &65425085059991548
+  m_GameObject: {fileID: 1452463218854354}
+  m_Mesh: {fileID: 4300000, guid: d531f98221407044dbbe75286463ec79, type: 3}
+--- !u!65 &65917140589390100
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1452463218854354}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01347911, y: 0.011929969, z: 0.013483372}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114047789882836470
+  m_Size: {x: 0.04193289, y: 0.0801321, z: 0.052723315}
+  m_Center: {x: 0.0076160696, y: 0.00051813014, z: -0.010423398}
+--- !u!114 &114126881951533722
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be05a373d9978b40bc21f022347214b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114520334740276474
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083796546996238}
+  m_GameObject: {fileID: 1452463218854354}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c2906743df0fd54881b79c7e6a5bf52, type: 3}
@@ -124,7 +115,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114047789882836470}
+      - m_Target: {fileID: 114456684436664708}
         m_MethodName: RecieveInteract
         m_Mode: 0
         m_Arguments:
@@ -138,3 +129,14 @@ MonoBehaviour:
     m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   PawnsThatCantInteract: []
+--- !u!114 &114456684436664708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452463218854354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be05a373d9978b40bc21f022347214b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
