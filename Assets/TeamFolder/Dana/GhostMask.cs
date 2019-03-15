@@ -22,7 +22,7 @@ public class GhostMask : BaseMask{
 
     void Update()
     {       
-        if(pawn.myMask.currentModel.transform.position.y >= yvalue + 0.5f)
+       /* if(pawn.myMask.currentModel.transform.position.y >= yvalue + 0.5f)
         {
             up = false;
         }
@@ -41,7 +41,7 @@ public class GhostMask : BaseMask{
         {
             float newvalue = pawn.myMask.currentModel.transform.position.y - Time.deltaTime/2;
             pawn.myMask.currentModel.transform.position = new Vector3(pawn.myMask.currentModel.transform.position.x, newvalue, pawn.myMask.currentModel.transform.position.z);
-        }     
+        }     */
             
 
     }
@@ -56,12 +56,13 @@ public class GhostMask : BaseMask{
             pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
             pawn.myHealth.ghostUlt = true;
             ulttimerCoroutine = StartCoroutine("UltTimer");
-            pawn.myHealth.ghostUlt = false;
+            
         }
     }
 
     public override void UltFinished()
-    {        
+    {
+        pawn.myHealth.ghostUlt = false;
         color.a = 1f;
         pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
     }

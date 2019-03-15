@@ -70,17 +70,19 @@ public class Mask : MonoBehaviour
         {
             hasMask = false;            
             Vector3 pos;
+            pos = currentModel.transform.position;
+            /* if (gameObject.GetComponent<GhostMask>())
+             {
+                 pos = currentModel.transform.position;
+                 pos.y = savedPos.y;
+             }
+             else
+             {
+                 pos = currentModel.transform.position;
+             }*/
 
-            if (gameObject.GetComponent<GhostMask>())
-            {
-                pos = savedPos;
-            }
-            else
-            {
-                pos = currentModel.transform.position;
-            }
-            
             Quaternion rot = currentModel.transform.rotation;
+            Destroy(equipedMask);
             Destroy(currentModel);
             GameObject mask = Instantiate(playerPref, gameObject.transform);
             mask.transform.position = pos;
@@ -92,6 +94,7 @@ public class Mask : MonoBehaviour
             currentModel = mask;
             pawn.MyMoveScript.anim = mask.GetComponent<Animator>();
             pawn.ModelChange();
+            
             equipedMask = null;
         }
     }    
