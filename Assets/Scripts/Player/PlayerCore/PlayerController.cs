@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
             SplitScreenManager.Instance.PlayerCameras.Add(_controlledPawn.MyCamera);
+            Debug.Log("Adding Camera" + PlayerNumber);
         }
     }
 
