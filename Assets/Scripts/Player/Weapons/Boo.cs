@@ -51,9 +51,9 @@ public class Boo : MonoBehaviour {
                                 hitColliders[i].GetComponent<ParticleManager>().dropPart();//drop candy particles
                                 HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
                                 //hb.TakeDamage(damage);//for testing
-                                StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                //StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                hitColliders[i].GetComponent<Pawn>().myStun.StunPlayer(5f);
                                 hb.Hit();//makes oof sound
-                                //hitColliders[i].GetComponent<Pawn>().MyCandy.DropCandy();
                                 pawn.myMask.SuccesfulBoo();
                             }                            
                         }
