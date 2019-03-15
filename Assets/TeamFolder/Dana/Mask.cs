@@ -70,7 +70,7 @@ public class Mask : MonoBehaviour
         {
             hasMask = false;            
             Vector3 pos;
-            pos = currentModel.transform.position;
+            //pos = currentModel.transform.position;
             /* if (gameObject.GetComponent<GhostMask>())
              {
                  pos = currentModel.transform.position;
@@ -85,7 +85,7 @@ public class Mask : MonoBehaviour
             Destroy(equipedMask);
             Destroy(currentModel);
             GameObject mask = Instantiate(playerPref, gameObject.transform);
-            mask.transform.position = pos;
+            //mask.transform.position = pos;
             mask.transform.rotation = rot;
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
@@ -130,7 +130,7 @@ public class Mask : MonoBehaviour
     {
             hasMask = true;
             GameObject mask = currentModel;
-            Vector3 pos = currentModel.transform.position;
+            //Vector3 pos = currentModel.transform.position;
             Quaternion rot = currentModel.transform.rotation;
 
             switch (scriptName)
@@ -168,7 +168,7 @@ public class Mask : MonoBehaviour
                     break;
             }
 
-            mask.transform.position = pos;
+            //mask.transform.position = pos;
             mask.transform.rotation = rot;
             gameObject.transform.parent = mask.transform;
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
