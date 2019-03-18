@@ -115,6 +115,9 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundStartingLogic()
     {
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         CameraManager.Instance.StartCutscene(LevelInfo.GetIntroCutscene(), SetRoundToRunning);
 
         while(currentPhase == RoundPhase.ROUND_STARTING)
@@ -177,7 +180,11 @@ public class RoundManager : MonoBehaviour {
 
         Canvas scoreboard = LevelInfo.GetScoreBoard();
         scoreboard.gameObject.SetActive(true);
-        for(float timer = 0.0f; timer < timeBeforeReturningToMenu; timer += Time.deltaTime)
+
+        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        for (float timer = 0.0f; timer < timeBeforeReturningToMenu; timer += Time.deltaTime)
         {
             yield return null;
         }

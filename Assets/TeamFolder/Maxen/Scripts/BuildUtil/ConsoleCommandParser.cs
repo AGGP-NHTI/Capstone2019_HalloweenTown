@@ -75,6 +75,11 @@ public class ConsoleCommandParser : MonoBehaviour
                         waitForResponseDelegate = Application.Quit;
                         break;
                     }
+                case "cursor":
+                    {
+                        Cursor(splitCmd);
+                        break;
+                    }
                 default:
                     {
                         BuildConsole.WriteLine("Invalid command");
@@ -464,6 +469,93 @@ public class ConsoleCommandParser : MonoBehaviour
                 BuildConsole.WriteLine("Looking for player number");
                 return;
             }
+        }
+    }
+
+    protected void Cursor(string[] keywords)
+    {
+        if (keywords.Length < 2)
+        {
+            BuildConsole.WriteLine("Insufficient parameters");
+            return;
+        }
+
+        switch(keywords[1])
+        {
+            case "lock":
+                {
+                    if(keywords.Length < 3)
+                    {
+                        if(UnityEngine.Cursor.lockState == CursorLockMode.None)
+                        {
+                            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                            BuildConsole.WriteLine("Cursor locked");
+                        }
+                        else
+                        {
+                            UnityEngine.Cursor.lockState = CursorLockMode.None;
+                            BuildConsole.WriteLine("Cursor unlocked");
+                        }
+                    }
+                    else
+                    {
+                        if(keywords[2] == "true")
+                        {
+                            UnityEngine.Cursor.lockState = CursorLockMode.Locked ;
+                            BuildConsole.WriteLine("Cursor locked");
+                        }
+                        else if (keywords[2] == "false")
+                        {
+                            UnityEngine.Cursor.lockState = CursorLockMode.None;
+                            BuildConsole.WriteLine("Cursor unlocked");
+                        }
+                        else
+                        {
+                            BuildConsole.WriteLine("Unexpected parameter \'" + keywords[2] + "\', expecting \'true\' or \'false\'");
+                            return;
+                        }
+                    }
+                    break;
+                }
+            case "visible":
+                {
+                    if (keywords.Length < 3)
+                    {
+                        UnityEngine.Cursor.visible = !UnityEngine.Cursor.visible;
+                        if(UnityEngine.Cursor.visible)
+                        {
+                            BuildConsole.WriteLine("Cursor set to visible");
+                        }
+                        else
+                        {
+                            BuildConsole.WriteLine("Cursor set to not visible");
+                        }
+                    }
+                    else
+                    {
+                        if (keywords[2] == "true")
+                        {
+                            UnityEngine.Cursor.visible = true;
+                            BuildConsole.WriteLine("Cursor set to visible");
+                        }
+                        else if (keywords[2] == "false")
+                        {
+                            UnityEngine.Cursor.visible = false;
+                            BuildConsole.WriteLine("Cursor set to not visible");
+                        }
+                        else
+                        {
+                            BuildConsole.WriteLine("Unexpected parameter \'" + keywords[2] + "\', expecting \'true\' or \'false\'");
+                            return;
+                        }
+                    }
+                    break;
+                }
+            default:
+                {
+                    BuildConsole.WriteLine("Invalid parameter. Expecting \'lock\' or \'visible\'");
+                    break;
+                }
         }
     }
     #endregion

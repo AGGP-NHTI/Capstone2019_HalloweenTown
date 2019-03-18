@@ -9,7 +9,6 @@ public class LookScript : MonoBehaviour
     protected Vector2 smoothMouse;
 
     public Vector2 clampInDegrees = new Vector2(360, 180);
-    public bool CursorCanBeLocked;
     public Vector2 sensitivity = new Vector2(2, 2);
     public Vector2 smoothing = new Vector2(3, 3);
     public Vector2 targetDirection;
@@ -18,8 +17,6 @@ public class LookScript : MonoBehaviour
     // Assign this if there's a parent object controlling motion, such as a Character Controller.
     // Yaw rotation will affect this object instead of the camera if set.
     public GameObject characterBody;
-
-    public bool lockState = true;
 
     void Start()
     {
@@ -33,23 +30,6 @@ public class LookScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Ensure the cursor is always locked when set
-        if (CursorCanBeLocked)
-        {
-            if(lockState)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-        }
-
-        if(!lockState) { return; }
-
         // Allow the script to clamp based on a desired target value.
         var targetOrientation = Quaternion.Euler(targetDirection);
         var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);

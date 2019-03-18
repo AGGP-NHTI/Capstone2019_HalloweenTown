@@ -44,14 +44,6 @@ public class Pawn : MonoBehaviour
     }
 
     #region Input
-    public virtual void PassLockScreen(bool value)
-    {
-        if (MyLookScript)
-        {
-            MyLookScript.lockState = value;
-        }
-    }
-
     public virtual void PassMoveInput(Vector2 value)
     {
         if(!MyMoveScript)

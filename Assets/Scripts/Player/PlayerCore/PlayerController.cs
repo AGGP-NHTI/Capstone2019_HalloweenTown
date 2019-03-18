@@ -59,8 +59,6 @@ public class PlayerController : MonoBehaviour
     protected virtual void OnGainControl()
     {
         if (!_controlledPawn) { return; }
-
-        _controlledPawn.PassLockScreen(true);
         if(_controlledPawn.MyCandy)
         {
             _controlledPawn.MyCandy.SetPlayerController(this);
@@ -76,8 +74,6 @@ public class PlayerController : MonoBehaviour
     protected virtual void OnLoseControl()
     {
         if (!_controlledPawn) { return; }
-
-        ControlledPawn.PassLockScreen(false);
         /*if (_controlledPawn.MyCandy)
         {
             _controlledPawn.MyCandy.SetPlayerController(this);
