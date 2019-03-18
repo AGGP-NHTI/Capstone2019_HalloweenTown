@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 23396807144677556}
   - component: {fileID: 114887082208631712}
   - component: {fileID: 114916676434051950}
+  - component: {fileID: 95235021825730564}
   m_Layer: 0
   m_Name: GhostMask
   m_TagString: Player
@@ -176,6 +177,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459857841415240}
   m_Mesh: {fileID: 4300000, guid: 99e75e38702b32d4ba8239a454c6ba8d, type: 3}
+--- !u!95 &95235021825730564
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1459857841415240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c7753faae1b54e4ab468392f4808b25, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114887082208631712
 MonoBehaviour:
   m_ObjectHideFlags: 1

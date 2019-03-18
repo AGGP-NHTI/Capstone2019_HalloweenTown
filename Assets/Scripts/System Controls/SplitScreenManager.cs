@@ -52,8 +52,8 @@ public class SplitScreenManager : MonoBehaviour
             yCameras = Mathf.CeilToInt((float)PlayerCameras.Count / xCameras);
         }
 
-        Vector2 CameraPosition = Vector2.zero;
         Vector2 CameraSize = new Vector2(1.0f / xCameras, 1.0f / yCameras);
+        Vector2 CameraPosition = new Vector2(0, 1 - CameraSize.y);
 
         for (int cameraIndex = 0; cameraIndex < PlayerCameras.Count; cameraIndex++)
         {
@@ -65,7 +65,7 @@ public class SplitScreenManager : MonoBehaviour
             if (CameraPosition.x >= 1.0f)
             {
                 CameraPosition.x = 0.0f;
-                CameraPosition.y += CameraSize.y;
+                CameraPosition.y -= CameraSize.y;
             }
         }
     }
