@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour {
     public Image healthBar;
     public float health;
     public bool ghostUlt = false;
+    Pawn pawn;
 
     SoundManager soundManager;
     ParticleManager particleManager;
@@ -17,6 +18,7 @@ public class HealthBar : MonoBehaviour {
     //public ParticleSystem system;//particles
 
     void Start () {
+        pawn = GetComponent<Pawn>();
         soundManager = GetComponent<SoundManager>();
         particleManager = GetComponent<ParticleManager>();
 	}
@@ -25,21 +27,29 @@ public class HealthBar : MonoBehaviour {
     {
         healthBar.fillAmount = health/100;
     }
-    public void TakeDamage(float amount) // this is how the damage needs to work for fillAmount.
+
+    public void TakeDamage(float amount) // changed - needs testing
     {
-        if (health >=0 ||!ghostUlt)//if ghost is not ulting
+        if (pawn.myMask.hasMask)
         {
-            health -= amount;
-            soundManager.Oof();
-            particleManager.hitPart();
+            if (health >= 0)//|| !ghostUlt)//if ghost is not ulting
+            {
+                health -= amount;
+                soundManager.Oof();
+                particleManager.hitPart();
+            }
+        }
+        else
+        {
+            pawn.MyCandy.DropCandy();
         }
     }
-    public void HealHealth(float amount) // this is how the damage needs to work for fillAmount.
+    public void HealHealth(float amount)
     {
         health += amount;
     }
 
-    public void Hit()
+    public void HitOof()
     {
         if (!ghostUlt)
         {

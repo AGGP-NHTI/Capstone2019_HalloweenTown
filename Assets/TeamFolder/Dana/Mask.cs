@@ -21,7 +21,6 @@ public class Mask : MonoBehaviour
 
     public BaseMask equipedMask;
     Pawn pawn;
-    HealthBar hbar;
     ImageChange maskSprite;
     Vector3 savedPos;
 
@@ -29,7 +28,6 @@ public class Mask : MonoBehaviour
     {
         
         pawn = gameObject.GetComponent<Pawn>();
-        hbar = GetComponent<HealthBar>();
         maskSprite = gameObject.GetComponentInChildren<ImageChange>();
         savedPos = currentModel.transform.position;
         
@@ -66,7 +64,7 @@ public class Mask : MonoBehaviour
             GetMask();            
         }
         
-        if (hbar.health <= 0 && hasMask)
+        if (pawn.myHealth.health <= 0 && hasMask)
         {
             hasMask = false;            
             Vector3 pos;
@@ -117,8 +115,9 @@ public class Mask : MonoBehaviour
 
     void UpdateHealth()
     {
-        hbar.health = 100;
+        pawn.myHealth.health = 100;
     }
+
     void RemoveMask()
     {
         Destroy(equipedMask);

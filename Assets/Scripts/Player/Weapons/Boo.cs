@@ -53,7 +53,7 @@ public class Boo : MonoBehaviour {
                                 //hb.TakeDamage(damage);//for testing
                                 //StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
                                 hitColliders[i].GetComponent<Pawn>().myStun.StunPlayer(5f);
-                                hb.Hit();//makes oof sound
+                                hb.HitOof();//makes oof sound
                                 pawn.myMask.SuccesfulBoo();
                             }                            
                         }
