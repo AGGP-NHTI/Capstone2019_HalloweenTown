@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class WerewolfMask : BaseMask {
     bool ulted = false;
+
+    void Start()
+    {
+        base.Start();
+        ultMultiplier = 30f;
+    }
     public override void Ult()
     {
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
@@ -13,6 +19,8 @@ public class WerewolfMask : BaseMask {
             pawn.myProjectileManager.eggDamage *= 2;
             //pawn.MyBoo.damage *= 2;
             pawn.myProjectileManager.werewolfUlt = true;
+            pawn.MyBoo.WerewolfUlt();
+
             ulttimerCoroutine = StartCoroutine("UltTimer");
         }
     }
@@ -20,6 +28,7 @@ public class WerewolfMask : BaseMask {
     {
         if (ulted)
         {
+            pawn.MyBoo.WerewolfUltDone();
             pawn.myProjectileManager.eggDamage /= 2;
             // pawn.MyBoo.damage /= 2;
             pawn.myProjectileManager.werewolfUlt = false;

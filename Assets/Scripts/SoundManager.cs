@@ -27,6 +27,16 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
+    public void WerewolfAttack()
+    {
+
+    }
+
+    public void VampireSlurp()
+    {
+
+    }
+
     public void Oof()
     {
         audioSource.clip = oof;
@@ -35,7 +45,6 @@ public class SoundManager : MonoBehaviour {
 
     public void Boo()
     {
-        Debug.Log("trying to boo");
         IsItPlaying();
         audioSource.clip = boo;
         audioSource.Play();

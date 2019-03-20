@@ -44,6 +44,7 @@ public class HealthBar : MonoBehaviour {
             pawn.MyCandy.DropCandy();
         }
     }
+
     public void HealHealth(float amount)
     {
         health += amount;
@@ -51,10 +52,7 @@ public class HealthBar : MonoBehaviour {
 
     public void HitOof()
     {
-        if (!ghostUlt)
-        {
-            soundManager.Oof();
-        }
+        soundManager.Oof();
     }
     //Causes Candy to Drop and particles
     //public void DropCandy(int numCandy)

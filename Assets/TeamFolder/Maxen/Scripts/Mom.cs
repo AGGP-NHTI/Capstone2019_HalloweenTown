@@ -40,7 +40,7 @@ public class Mom : MonoBehaviour
     private void Update()
     {
         if (huntChildren)
-        {
+        {      
             if (!targetPlayer)
             {
                 targetPlayer = FindNewTarget(RemainingPlayersToFind);
@@ -49,6 +49,11 @@ public class Mom : MonoBehaviour
                     huntChildren = false;
                     return;
                 }
+            }
+
+            if (targetPlayer.GhostUlt)//this doesn't work .-. help
+            {
+                targetPlayer = FindNewTarget(RemainingPlayersToFind);
             }
 
             //Capture targetPlayer if they are within range

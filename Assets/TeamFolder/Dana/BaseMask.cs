@@ -13,6 +13,7 @@ public class BaseMask : MonoBehaviour
 
     public float ultTimeFloat = 0;
     public bool isUlting = false;
+    public float ultMultiplier = 20;
 
     protected void Start()
     {
@@ -44,7 +45,7 @@ public class BaseMask : MonoBehaviour
         ultTimeFloat = ultingDuration;
         while (ultTimeFloat >= 0)
         {
-            ultTimeFloat -= Time.deltaTime *20;
+            ultTimeFloat -= Time.deltaTime *ultMultiplier;
             //Debug.Log("Ulting Time Left: " + Mathf.Round(ultTimeFloat).ToString());
             yield return null;
         }
@@ -59,7 +60,7 @@ public class BaseMask : MonoBehaviour
         
         while (ultTimeFloat <= waitingDuration)
         {
-            ultTimeFloat += Time.deltaTime *20;
+            ultTimeFloat += Time.deltaTime *ultMultiplier;
             //Debug.Log("Waiting For Ult: " + Mathf.Round(ultTimeFloat).ToString());
             yield return null;
         }

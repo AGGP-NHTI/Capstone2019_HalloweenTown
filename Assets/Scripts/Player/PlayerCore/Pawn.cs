@@ -18,6 +18,8 @@ public class Pawn : MonoBehaviour
     public SoundManager soundMan;
     public ParticleManager myParticle;
 
+    public bool GhostUlt = false;
+
     [HideInInspector]
     public PlayerController MyController;
 
@@ -112,7 +114,7 @@ public class Pawn : MonoBehaviour
         myMask.ultButton = value;
         if (value)
         {
-            Debug.Log(name + " ultimate!");            
+           // Debug.Log(name + " ultimate!");            
         }
     }
 

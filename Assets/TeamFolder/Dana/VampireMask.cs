@@ -2,38 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VampireMask : BaseMask {
-    
-    float healthSuck = 10f;
-    
+public class VampireMask : BaseMask
+{
+    bool ulted = false;
+
+    void Start()
+    {
+        base.Start();
+        ultMultiplier = 20f;
+    }
+
     public override void Ult()
     {
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
             pawn.soundMan.VampireUltScream();
-            Collider[] hitColliders = Physics.OverlapSphere(barrel.transform.position, 3.0f);
-               for (int i = 0; i < hitColliders.Length; i++)
-               {
-                   if (hitColliders[i].tag == "Player")
-                   {
-                     Pawn hitPlayerPawn = hitColliders[i].GetComponent<Pawn>();
-                        if(hitPlayerPawn.myMask.hasMask)
-                        {
-                           if(hitPlayerPawn.myHealth.health < healthSuck)
-                           {
-                               pawn.myHealth.health += hitPlayerPawn.myHealth.health;
-                               hitPlayerPawn.myHealth.health = 0;
-                          }
-                          else
-                          {
-                              pawn.myHealth.health += healthSuck;
-                              hitPlayerPawn.myHealth.health -=healthSuck;
-                          }                    
-                        }
-                   }
-               }
-            ultTimeFloat = 0;
-            waitforultCoroutine = StartCoroutine("WaitForUltTimer");
+            pawn.MyBoo.VampireUlt();
+
+            ulted = true;
+            // ultTimeFloat = 0;
+            ulttimerCoroutine = StartCoroutine("UltTimer");
+        }
+    }
+
+    public override void UltFinished()
+    {
+        if (ulted)
+        {
+            pawn.MyBoo.VampireUltDone();
+            ulted = false;
         }
     }
 }

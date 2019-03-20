@@ -35,16 +35,30 @@ public class Candy : MonoBehaviour
         }
     }
 
-    public void DropCandy()
+    public void CandySuck(int candySuck)
     {
-        int numCandy = 0;
-        if (candy > 20)
+
+    }
+
+    public void DropCandy(int numCandy = 0)
+    {
+        if (numCandy == 0)
         {
-            numCandy = Random.Range(5, 20);
+            if (candy > 20)
+            {
+                numCandy = Random.Range(5, 20);
+            }
+            else if (candy > 0)
+            {
+                numCandy = Random.Range(1, candy);
+            }
         }
-        else if(candy > 0)
+        else
         {
-            numCandy = Random.Range(1, candy);
+            if(candy < numCandy)// can set amount of candy player drops
+            {
+                numCandy = candy;
+            }
         }
 
         if (candy > 0)
