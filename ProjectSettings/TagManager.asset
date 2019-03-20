@@ -7,6 +7,10 @@ TagManager:
   - Egg
   - Toilet Paper
   - Candy
+  - Ghost Mask
+  - Werewolf Mask
+  - Witch Mask
+  - Vampire Mask
   layers:
   - Default
   - TransparentFX
@@ -16,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ghost
   - 
   - 
   - 

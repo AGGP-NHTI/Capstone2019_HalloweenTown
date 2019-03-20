@@ -9,6 +9,8 @@ public class GhostMask : BaseMask{
     public GameObject mask;
     bool up = true;
     public float yvalue;
+    public LayerMask test;
+
     void Start () {
         base.Start();
         mask = pawn.myMask.currentModel;
@@ -54,7 +56,18 @@ public class GhostMask : BaseMask{
             pawn.soundMan.GhostUltScream();
             color.a = 0.5f;
             pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
-            pawn.myHealth.ghostUlt = true;
+            //pawn.myHealth.ghostUlt = true;
+
+            GameObject[] playerCamera = GameObject.FindGameObjectsWithTag("MainCamera");
+
+            foreach(GameObject pc in playerCamera)
+            {
+                if(!pc.transform.IsChildOf(gameObject.transform))
+                {
+                    pc.GetComponent<Camera>().cullingMask &=  ~(1 << LayerMask.NameToLayer("Ghost"));
+                }
+            }
+
             ulttimerCoroutine = StartCoroutine("UltTimer");
             
         }
@@ -65,6 +78,15 @@ public class GhostMask : BaseMask{
         pawn.myHealth.ghostUlt = false;
         color.a = 1f;
         pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
+        GameObject[] playerCamera = GameObject.FindGameObjectsWithTag("MainCamera");
+
+        foreach (GameObject pc in playerCamera)
+        {
+            if (!pc.transform.IsChildOf(gameObject.transform))
+            {
+                pc.GetComponent<Camera>().cullingMask |= 1 << LayerMask.NameToLayer("Ghost");
+            }
+        }
     }
     
 }

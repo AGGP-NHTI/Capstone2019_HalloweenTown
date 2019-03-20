@@ -24,9 +24,8 @@ public class Boo : MonoBehaviour {
     {
         if (value && canBoo)
         {
-            Debug.Log("Boo");
-            if (!soundManager.audioSource.isPlaying)
-            {
+           // if (!soundManager.audioSource.isPlaying)
+           // {
                 Collider[] hitColliders = Physics.OverlapSphere(pawn.barrel.transform.position, 1.0f);
                 
                 for(int i = 0; i < hitColliders.Length; i++)
@@ -63,7 +62,7 @@ public class Boo : MonoBehaviour {
                 particleManager.booPart();//shoots out boo and bat particles
                 canBoo = false;
                 StartCoroutine(WaitingToBoo());
-            }            
+           // }            
         }
     }
 

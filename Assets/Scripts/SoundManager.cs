@@ -19,6 +19,13 @@ public class SoundManager : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void IsItPlaying()
+    {
+       if(audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
 
     public void Oof()
     {
@@ -28,6 +35,8 @@ public class SoundManager : MonoBehaviour {
 
     public void Boo()
     {
+        Debug.Log("trying to boo");
+        IsItPlaying();
         audioSource.clip = boo;
         audioSource.Play();
     }
