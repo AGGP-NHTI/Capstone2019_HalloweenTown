@@ -11,6 +11,7 @@ TagManager:
   - Werewolf Mask
   - Witch Mask
   - Vampire Mask
+  - TPPickUp
   layers:
   - Default
   - TransparentFX
@@ -20,10 +21,10 @@ TagManager:
   - UI
   - 
   - 
-  - Ghost
-  - 
-  - 
-  - 
+  - Player1
+  - Player2
+  - Player3
+  - Player4
   - 
   - 
   - 

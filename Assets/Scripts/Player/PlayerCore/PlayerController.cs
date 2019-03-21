@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static Dictionary<uint, string> PlayerLayers = new Dictionary<uint, string>()
+        {
+            { 1, "Player1" },
+            { 2, "Player2" },
+            { 3, "Player3" },
+            { 4, "Player4" },
+        };
+
     public InputObject playerInput;
     public uint PlayerNumber
     {
@@ -62,6 +70,16 @@ public class PlayerController : MonoBehaviour
         if(_controlledPawn.MyCandy)
         {
             _controlledPawn.MyCandy.SetPlayerController(this);
+        }
+
+        int playerLayer = LayerMask.NameToLayer(PlayerLayers[PlayerNumber]);
+        if(_controlledPawn.MyCamera)
+        {
+            _controlledPawn.MyCamera.cullingMask |= (1 << playerLayer);
+        }
+        if(_controlledPawn.MyCameraManager)
+        {
+            _controlledPawn.MyCameraManager.SetCameraLayer(playerLayer);
         }
 
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)

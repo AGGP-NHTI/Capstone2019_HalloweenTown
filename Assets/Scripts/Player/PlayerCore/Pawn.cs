@@ -17,6 +17,8 @@ public class Pawn : MonoBehaviour
     public GameObject barrel;
     public SoundManager soundMan;
     public ParticleManager myParticle;
+    public PlayerCamManager MyCameraManager;
+    public AlignToMovement MyAlignToMovement;
 
     public bool GhostUlt = false;
 
@@ -33,11 +35,6 @@ public class Pawn : MonoBehaviour
         myProjectileManager = GetComponent<ProjectileManager>();
         
     }
-	
-	protected virtual void Update ()
-    {
-		
-	}
     
     public void ModelChange()
     {
@@ -71,9 +68,25 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassLeftTriggerInput(float value)
     {
-        if(value > 0.0f)
+        if(MyCameraManager)
         {
-            //Debug.Log(name + " left trigger: " + value);
+            if (value > 0.0f)
+            {
+                MyCameraManager.SetVirtualCamera(1);
+                if(MyAlignToMovement)
+                {
+                    MyAlignToMovement.useOverrideForward = true;
+                    MyAlignToMovement.overrideForward = MyCamera.transform.forward;
+                }
+            }
+            else
+            {
+                MyCameraManager.SetVirtualCamera(0);
+                if(MyAlignToMovement)
+                {
+                    MyAlignToMovement.useOverrideForward = false;
+                }
+            }
         }
         
     }
@@ -82,8 +95,7 @@ public class Pawn : MonoBehaviour
     {
         if (value > 0.0f)
         {
-            
-            //Debug.Log(name + " right trigger: " + value);
+            Debug.Log(name + " right trigger: " + value);
         }
         if (!myProjectileManager)
         {

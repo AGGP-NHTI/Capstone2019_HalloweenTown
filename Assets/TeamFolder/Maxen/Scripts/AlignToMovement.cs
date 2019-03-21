@@ -9,6 +9,9 @@ public class AlignToMovement : MonoBehaviour
     public bool TrackY = true;
     public bool TrackZ = true;
 
+    public bool useOverrideForward = false;
+    public Vector3 overrideForward;
+
     void Start ()
     {
 		
@@ -16,12 +19,19 @@ public class AlignToMovement : MonoBehaviour
 	
 	void FixedUpdate ()
     {
-        if(!TrackedRigidBody) { return; }
+        if(useOverrideForward)
+        {
+            transform.forward = overrideForward;
+        }
+        else
+        {
+            if (!TrackedRigidBody) { return; }
 
-        Vector3 newDirection = TrackedRigidBody.velocity.normalized;
-        if (!TrackX) { newDirection.x = 0.0f; }
-        if (!TrackY) { newDirection.y = 0.0f; }
-        if (!TrackZ) { newDirection.z = 0.0f; }
-        transform.forward = Vector3.Slerp(transform.forward, newDirection, 0.25f);
+            Vector3 newDirection = TrackedRigidBody.velocity.normalized;
+            if (!TrackX) { newDirection.x = 0.0f; }
+            if (!TrackY) { newDirection.y = 0.0f; }
+            if (!TrackZ) { newDirection.z = 0.0f; }
+            transform.forward = Vector3.Slerp(transform.forward, newDirection, 0.25f);
+        }
     }
 }

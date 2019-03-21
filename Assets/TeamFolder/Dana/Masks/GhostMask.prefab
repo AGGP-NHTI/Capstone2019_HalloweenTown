@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4639231420835854}
   - component: {fileID: 198090058213529444}
   - component: {fileID: 199273452773856896}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Boo's Bats Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4088093135996702}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114887082208631712}
   - component: {fileID: 114916676434051950}
   - component: {fileID: 95235021825730564}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GhostMask
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4770392521389940}
   - component: {fileID: 198246161681371840}
   - component: {fileID: 199701104910445012}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Boo Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,6 +210,8 @@ MonoBehaviour:
   TrackX: 1
   TrackY: 0
   TrackZ: 1
+  useOverrideForward: 0
+  overrideForward: {x: 0, y: 0, z: 0}
 --- !u!114 &114916676434051950
 MonoBehaviour:
   m_ObjectHideFlags: 1

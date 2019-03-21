@@ -14,7 +14,6 @@ public class ItemSpawn : MonoBehaviour
 
     protected virtual IEnumerator itemRespawnCoolDown()
     {
-        Debug.Log("Cooldown start...");
         coolDownActive = true;
         for(float timer = timeUntilItemRespawn; timer > 0.0f; timer -= Time.deltaTime)
         {

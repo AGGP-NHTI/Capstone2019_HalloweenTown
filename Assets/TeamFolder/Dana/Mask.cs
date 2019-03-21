@@ -87,6 +87,7 @@ public class Mask : MonoBehaviour
             mask.transform.rotation = rot;
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
+            pawn.MyAlignToMovement = al;
 
             maskSprite.whiteCircle();
             currentModel = mask;
@@ -172,6 +173,7 @@ public class Mask : MonoBehaviour
             gameObject.transform.parent = mask.transform;
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
+            pawn.MyAlignToMovement = al;
             currentModel = mask;
 
             pawn.ModelChange();       
