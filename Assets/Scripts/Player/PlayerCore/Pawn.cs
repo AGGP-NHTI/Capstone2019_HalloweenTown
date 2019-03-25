@@ -139,10 +139,7 @@ public class Pawn : MonoBehaviour
             return;
         }
 
-        if(value)
-        {
-            MyInteractManager.TryToInteract();
-        }
+        MyInteractManager.TryToInteract(value);
 
         /*if(!MyCandy)
         {

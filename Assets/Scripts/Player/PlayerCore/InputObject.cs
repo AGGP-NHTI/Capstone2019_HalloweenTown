@@ -82,7 +82,7 @@ public class InputObject : ScriptableObject
 
     public bool GetInteractInput()
     {
-        return Input.GetButtonDown(InteractButton);
+        return Input.GetButton(InteractButton);
     }
 
     public bool GetJumpInput()

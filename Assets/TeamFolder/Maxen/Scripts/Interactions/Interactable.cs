@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
 {
     public InteractEvent OnInteract;
     public List<Pawn> PawnsThatCantInteract = new List<Pawn>();
+    public float interactTime = 0.0f;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+   //Returns value between 0 and 1 representing the percentage progress on how long 
     public virtual void Interact(Pawn source)
     {
         OnInteract.Invoke(source, this);

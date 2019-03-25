@@ -10,14 +10,13 @@ public class WorldIcon : MonoBehaviour
     public Vector3 MoveToPosition;
     public Transform MoveToTransform;
     public bool LetRender = true;
+    public Image[] images;
 
     private RectTransform _myRect;
-    private Image _image;
     
     private void Start()
     {
         _myRect = GetComponent<RectTransform>();
-        _image = GetComponent<Image>();
 
     }
     private void LateUpdate()
@@ -38,14 +37,35 @@ public class WorldIcon : MonoBehaviour
         {
             _myRect.anchorMin = screenPos;
             _myRect.anchorMax = screenPos;
-            if (!_image.enabled)
+            foreach (Image img in images)
             {
-                _image.enabled = true;
+                if (!img.enabled)
+                {
+                    img.enabled = true;
+                }
             }
         }
-        else if(_image.enabled)
+        else
         {
-            _image.enabled = false;
+            foreach (Image img in images)
+            {
+                if (img.enabled)
+                {
+                    img.enabled = false;
+                }
+            }
+        }
+    }
+
+    public void SetProgress(float current, float goal)
+    {
+        if(goal == 0.0f)
+        {
+            images[0].fillAmount = 0.0f;
+        }
+        else
+        {
+            images[0].fillAmount = current / goal;
         }
     }
 }

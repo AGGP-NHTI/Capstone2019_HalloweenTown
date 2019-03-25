@@ -127,6 +127,7 @@ MonoBehaviour:
     m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   PawnsThatCantInteract: []
+  interactTime: 1
 --- !u!114 &114813331922054124
 MonoBehaviour:
   m_ObjectHideFlags: 1

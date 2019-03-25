@@ -10,11 +10,27 @@ public class InteractionManager : MonoBehaviour
 
     public float interactionRange = 3.0f;
 
-    public virtual void TryToInteract()
+    protected float _interactionDuration = 0.0f;
+    protected bool _waitingForButtonRelease = false;
+
+    public virtual void TryToInteract(bool value)
     {
-        if (selectedInteractable != null)
+        if (value)
         {
-            selectedInteractable.Interact(MyPawn);
+            if (selectedInteractable && !_waitingForButtonRelease)
+            {
+                if (_interactionDuration >= selectedInteractable.interactTime)
+                {
+                    selectedInteractable.Interact(MyPawn);
+                    _waitingForButtonRelease = true;
+                }
+                _interactionDuration += Time.deltaTime;
+            }
+        }
+        else
+        {
+            _interactionDuration = 0.0f;
+            _waitingForButtonRelease = false;
         }
     }
 
@@ -25,7 +41,7 @@ public class InteractionManager : MonoBehaviour
 
     protected virtual void FindInteractableToSelect()
     {
-        selectedInteractable = null;
+        Interactable foundInteractable = null;
         Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, interactionRange);
 
         List<Interactable> nearbyInteractables = new List<Interactable>();
@@ -49,27 +65,35 @@ public class InteractionManager : MonoBehaviour
                 if(nearestInteractableSqrDistance < 0.0f)
                 {
                     nearestInteractableSqrDistance = sqrDistance;
-                    selectedInteractable = i;
+                    foundInteractable = i;
                 }
                 else if(nearestInteractableSqrDistance > sqrDistance)
                 {
                     nearestInteractableSqrDistance = sqrDistance;
-                    selectedInteractable = i;
+                    foundInteractable = i;
                 }
             }
         }
 
         if(interactIcon)
         {
-            if(selectedInteractable)
+            if (foundInteractable)
             {
-                interactIcon.MoveToTransform = selectedInteractable.transform;
+                interactIcon.MoveToTransform = foundInteractable.transform;
                 interactIcon.LetRender = true;
+                interactIcon.SetProgress(_interactionDuration, foundInteractable.interactTime);
             }
             else
             {
                 interactIcon.LetRender = false;
             }
+        }
+
+        if (foundInteractable != selectedInteractable)
+        {
+            selectedInteractable = foundInteractable;
+            _interactionDuration = 0.0f;
+            _waitingForButtonRelease = true;
         }
     }
 }
