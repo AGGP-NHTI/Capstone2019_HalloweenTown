@@ -6,6 +6,7 @@ public class GhostMask : BaseMask{ //needs AI invincibility
     
     Color color;
     GameObject mask;
+    protected int defaultLayer;
 
     void Start () {
         base.Start();
@@ -24,15 +25,8 @@ public class GhostMask : BaseMask{ //needs AI invincibility
             pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
             //pawn.myHealth.ghostUlt = true;
 
-            GameObject[] playerCamera = GameObject.FindGameObjectsWithTag("MainCamera");
-
-            foreach(GameObject pc in playerCamera)
-            {
-                if(!pc.transform.IsChildOf(gameObject.transform))
-                {
-                    pc.GetComponent<Camera>().cullingMask &=  ~(1 << LayerMask.NameToLayer("Ghost"));
-                }
-            }
+            defaultLayer = pawn.myMask.currentModel.layer;
+            pawn.myMask.currentModel.layer = pawn.MyLayer;
 
             ulttimerCoroutine = StartCoroutine("UltTimer");
             
@@ -45,15 +39,8 @@ public class GhostMask : BaseMask{ //needs AI invincibility
         pawn.myHealth.ghostUlt = false;
         color.a = 1f;
         pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
-        GameObject[] playerCamera = GameObject.FindGameObjectsWithTag("MainCamera");
 
-        foreach (GameObject pc in playerCamera)
-        {
-            if (!pc.transform.IsChildOf(gameObject.transform))
-            {
-                pc.GetComponent<Camera>().cullingMask |= 1 << LayerMask.NameToLayer("Ghost");
-            }
-        }
+        pawn.myMask.currentModel.layer = defaultLayer;
     }
     
 }

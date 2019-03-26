@@ -51,11 +51,6 @@ public class Mom : MonoBehaviour
                 }
             }
 
-            if (targetPlayer.GhostUlt)//this doesn't work .-. help
-            {
-                targetPlayer = FindNewTarget(RemainingPlayersToFind);
-            }
-
             //Capture targetPlayer if they are within range
             Vector3 vectorToTarget = targetPlayer.transform.position - transform.position;
             float targetSqrDistance = vectorToTarget.sqrMagnitude;
@@ -106,19 +101,22 @@ public class Mom : MonoBehaviour
         int targetCandidateCandyCount = 0;
         foreach (Pawn p in possiblePawns)
         {
-            //Figure out the richest nearby player, and select them as the new target. If there's a tie, the nearest player gets picked.
-            if (!newTargetCandidate || p.MyCandy.candy > newTargetCandidate.MyCandy.candy)
+            if (!p.GhostUlt)
             {
-                newTargetCandidate = p;
-                targetCandidateCandyCount = p.MyCandy.candy;
-            }
-            else if (newTargetCandidate && p.MyCandy.candy == newTargetCandidate.MyCandy.candy)
-            {
-                float foundPawnSqrDistance = (p.transform.position - transform.position).sqrMagnitude;
-                float targetCandidateSqrDistance = (newTargetCandidate.transform.position - transform.position).sqrMagnitude;
-                if (foundPawnSqrDistance < targetCandidateCandyCount)
+                //Figure out the richest nearby player, and select them as the new target. If there's a tie, the nearest player gets picked.
+                if (!newTargetCandidate || p.MyCandy.candy > newTargetCandidate.MyCandy.candy)
                 {
                     newTargetCandidate = p;
+                    targetCandidateCandyCount = p.MyCandy.candy;
+                }
+                else if (newTargetCandidate && p.MyCandy.candy == newTargetCandidate.MyCandy.candy)
+                {
+                    float foundPawnSqrDistance = (p.transform.position - transform.position).sqrMagnitude;
+                    float targetCandidateSqrDistance = (newTargetCandidate.transform.position - transform.position).sqrMagnitude;
+                    if (foundPawnSqrDistance < targetCandidateCandyCount)
+                    {
+                        newTargetCandidate = p;
+                    }
                 }
             }
         }
