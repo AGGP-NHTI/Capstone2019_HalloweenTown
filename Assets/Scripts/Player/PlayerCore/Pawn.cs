@@ -19,6 +19,7 @@ public class Pawn : MonoBehaviour
     public ParticleManager myParticle;
     public PlayerCamManager MyCameraManager;
     public AlignToMovement MyAlignToMovement;
+    public LayerMask MyLayer;
 
     public bool GhostUlt = false;
 
