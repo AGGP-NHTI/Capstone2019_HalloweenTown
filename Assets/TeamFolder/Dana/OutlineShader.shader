@@ -1,11 +1,11 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/OutlineShader" {
 	Properties{
-		_Color("Main Color", Color) = (.5,.5,.5,1)
 		_OutlineColor("Outline Color", Color) = (0,0,0,1)
 		_Outline("Outline width", Range(0.0, 0.03)) = .005
-		_MainTex("Base (RGB)", 2D) = "white" { }
 	}
 
 		CGINCLUDE
@@ -41,95 +41,44 @@ Shader "Custom/OutlineShader" {
 		SubShader{
 			Tags { "Queue" = "Transparent" }
 
-			// note that a vertex shader is specified here but its using the one above
-			Pass {
-				Name "OUTLINE"
-				Tags { "LightMode" = "Always" }
-				Cull Off
-				ZWrite Off
-				ZTest Always
-				ColorMask RGB // alpha not used
-
-				// you can choose what kind of blending mode you want for the outline
-				Blend SrcAlpha OneMinusSrcAlpha // Normal
-				//Blend One One // Additive
-				//Blend One OneMinusDstColor // Soft Additive
-				//Blend DstColor Zero // Multiplicative
-				//Blend DstColor SrcColor // 2x Multiplicative
-
-	CGPROGRAM
-	#pragma vertex vert
-	#pragma fragment frag
-
-	half4 frag(v2f i) :COLOR {
-		return i.color;
-	}
-	ENDCG
-			}
-
 			Pass {
 				Name "BASE"
-				ZWrite On
-				ZTest LEqual
-				Blend SrcAlpha OneMinusSrcAlpha
-				Material {
-					Diffuse[_Color]
-					Ambient[_Color]
-				}
-				Lighting On
-				SetTexture[_MainTex] {
-					ConstantColor[_Color]
-					Combine texture * constant
-				}
-				SetTexture[_MainTex] {
-					Combine previous * primary DOUBLE
-				}
-			}
+				Cull Back
+				Blend Zero One
+
+		// uncomment this to hide inner details:
+		//Offset -8, -8
+
+		SetTexture[_OutlineColor] {
+			ConstantColor(0,0,0,0)
+			Combine constant
+		}
 	}
 
-		SubShader{
-			Tags { "Queue" = "Transparent" }
-
-			Pass {
-				Name "OUTLINE"
-				Tags { "LightMode" = "Always" }
-				Cull Front
-				ZWrite Off
-				ZTest Always
-				ColorMask RGB
+		// note that a vertex shader is specified here but its using the one above
+		Pass {
+			Name "OUTLINE"
+			Tags { "LightMode" = "Always" }
+			Cull Front
 
 		// you can choose what kind of blending mode you want for the outline
-		Blend SrcAlpha OneMinusSrcAlpha // Normal
+		//Blend SrcAlpha OneMinusSrcAlpha // Normal
 		//Blend One One // Additive
-		//Blend One OneMinusDstColor // Soft Additive
+		Blend One OneMinusDstColor // Soft Additive
 		//Blend DstColor Zero // Multiplicative
 		//Blend DstColor SrcColor // 2x Multiplicative
 
-		CGPROGRAM
-		#pragma vertex vert
-		#pragma exclude_renderers gles xbox360 ps3
-		ENDCG
-		SetTexture[_MainTex] { combine primary }
-	}
+CGPROGRAM
+#pragma vertex vert
+#pragma fragment frag
 
-	Pass {
-		Name "BASE"
-		ZWrite On
-		ZTest LEqual
-		Blend SrcAlpha OneMinusSrcAlpha
-		Material {
-			Diffuse[_Color]
-			Ambient[_Color]
+half4 frag(v2f i) :COLOR {
+	return i.color;
+}
+ENDCG
 		}
-		Lighting On
-		SetTexture[_MainTex] {
-			ConstantColor[_Color]
-			Combine texture * constant
-		}
-		SetTexture[_MainTex] {
-			Combine previous * primary DOUBLE
-		}
-	}
+
+
 	}
 
 		Fallback "Diffuse"
