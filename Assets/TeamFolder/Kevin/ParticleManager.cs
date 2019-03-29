@@ -14,6 +14,8 @@ public class ParticleManager : MonoBehaviour {
 
     public ParticleSystem hitParticles;
 
+    public ParticleSystem tornadoParticles;
+
 
     public void booPart()
     {
