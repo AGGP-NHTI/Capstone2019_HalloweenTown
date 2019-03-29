@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 114151291919258258}
   - component: {fileID: 114748930901580532}
   m_Layer: 0
-  m_Name: riggedChildPrefab
+  m_Name: AdoptedChildPref
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
