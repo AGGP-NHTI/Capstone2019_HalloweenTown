@@ -6,7 +6,9 @@ public class GhostMask : BaseMask{ //needs AI invincibility
     
     Color color;
     GameObject mask;
-    protected int defaultLayer;
+    protected int solidLayer;
+    protected int outlineLayer;
+    bool layerSet = false;
 
     void Start () {
         base.Start();
@@ -25,8 +27,11 @@ public class GhostMask : BaseMask{ //needs AI invincibility
             //pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
             //pawn.myHealth.ghostUlt = true;
 
-            defaultLayer = pawn.myMask.currentModel.layer;
-            pawn.myMask.currentModel.layer = pawn.MyLayer;
+            solidLayer = pawn.solidMesh.gameObject.layer;
+            outlineLayer = pawn.outlineMesh.gameObject.layer;
+            pawn.solidMesh.gameObject.layer = pawn.MyLayer;
+            pawn.outlineMesh.gameObject.layer = pawn.MyLayer;
+            layerSet = true;
 
             ulttimerCoroutine = StartCoroutine("UltTimer");
             
@@ -40,7 +45,13 @@ public class GhostMask : BaseMask{ //needs AI invincibility
         //color.a = 1f;
         //pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
 
-        pawn.myMask.currentModel.layer = defaultLayer;
+        if(layerSet)
+        {
+            pawn.solidMesh.gameObject.layer = solidLayer;
+            pawn.outlineMesh.gameObject.layer = outlineLayer;
+
+            layerSet = false;
+        }
     }
     
 }
