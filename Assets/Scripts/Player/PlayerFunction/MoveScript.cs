@@ -108,6 +108,8 @@ public class MoveScript : MonoBehaviour
             {
                 anim.SetBool("runBool", false);
             }
+
+
         }
         UpdateMoveVelocity();
         HandleCrouching();
@@ -237,6 +239,7 @@ public class MoveScript : MonoBehaviour
             }
             if (_isJumping)
             {
+                anim.SetBool("jumpBool", true);
                 _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
                 _isJumping = false;
                 _isGrounded = false;
