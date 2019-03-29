@@ -8,20 +8,22 @@ public class LaunchArc : MonoBehaviour {
     LineRenderer lineRenderer;
     //public Vector3 startPoint;
     public Transform startPoint;
-    public Transform model;
+    Transform model;
     public float angle;
     public float velocity;
     float grav;
     float angleRadian;
     
     Pawn pawn;
+    Mask mask;
     // Use this for initialization
 
 
     void Start () {
 
-       // pawn = GetComponent<Pawn>();
+        pawn = GetComponent<Pawn>();
         lineRenderer = GetComponent<LineRenderer>();
+
         grav = Mathf.Abs(Physics2D.gravity.y);
         if (sideCount < 1) sideCount = 1;
        
@@ -29,9 +31,9 @@ public class LaunchArc : MonoBehaviour {
 
 
         lineRenderer.positionCount = sideCount + 1;
-      //Debug.Log(string.Format("sideCount: {0} positionCount: {1}", sideCount , lineRenderer.positionCount));
+     
       
-        lineRenderer.SetPosition(0, startPoint.position);
+       
 
 
     }
@@ -39,19 +41,13 @@ public class LaunchArc : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         model = pawn.myMask.currentModel.transform;
-        //startpoint
-        //startPoint = pawn.barrel.transform;
+        startPoint = pawn.myMask.currentModel.transform.GetComponent<GetBarrel>().barrel.transform;
+        mask = pawn.myMask;
+        
         lineRenderer.SetPositions(CalculateArcArray());
-        //lineRenderer.SetPosition(0, startPoint.position);
+        //Debug.Log("model.rotation" + model.rotation.eulerAngles);
         Debug.Log("line renderer position 0: " + lineRenderer.GetPosition(0));
-        Debug.Log("line renderer position last: " + lineRenderer.GetPosition(lineRenderer.positionCount -1));
-        //lineRenderer.SetPosition(1, CalculateArcPoint(.1f, 11.02f));
-        //lineRenderer.SetPosition(2, CalculateArcPoint(.2f, 11.02f));
-        //lineRenderer.SetPosition(3, CalculateArcPoint(.3f, 11.02f));
-        //lineRenderer.SetPositions(CalculateArcArray());
-
-        //end point
-        // lineRenderer.SetPosition(lineRenderer.positionCount - 1, startPoint + pawn.myMask.currentModel.transform.forward * 10);
+        Debug.Log("start point position: " + startPoint.position);
     }
 
     Vector3[] CalculateArcArray()
@@ -85,15 +81,34 @@ public class LaunchArc : MonoBehaviour {
         Vector3 velocityY = new Vector3(0, y, 0);
 
         Vector3 arcPoint = new Vector3( startPoint.position.x + x, y, 0);
-        arcPoint = RotatePoint(arcPoint, startPoint.position, model.rotation);
+        arcPoint = RotatePoint(arcPoint, startPoint.position , Mathf.Deg2Rad * model.rotation.eulerAngles.y);
         return arcPoint;
     }
-    Vector3 RotatePoint(Vector3 point, Vector3 pivot, Quaternion angle)
+    Vector3 RotatePoint(Vector3 point, Vector3 pivot, float angle)
     {
+        //Debug.Log("angle: " + angle);
+        //translate to origin
+        float tempX = point.x - pivot.x;
+        float tempZ = point.z - pivot.z;
+        //rotate
+        
+        float primeZ = tempZ * Mathf.Cos(angle) - tempX * Mathf.Sin(angle);
+        float primeX = tempZ * Mathf.Cos(angle) + tempX * Mathf.Sin(angle);
+
+
+        //z = 
+
+        //translate back
+
         Vector3 rotatedPoint = Vector3.zero;
-        Vector3 direction = point - pivot;
-        direction = angle * direction;
-        rotatedPoint = direction + pivot;
+
+        rotatedPoint.x = primeX + pivot.x;
+        rotatedPoint.z = primeZ + pivot.z;
+        rotatedPoint.y = point.y;
+        //Vector3 direction = point - pivot;
+        //direction = Quaternion.Euler(angle) * direction;
+        
+        //rotatedPoint = direction + pivot;
         return rotatedPoint;
     }
 }
