@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         }
 
         int playerLayer = LayerMask.NameToLayer(PlayerLayers[PlayerNumber]);
+        _controlledPawn.MyLayer = playerLayer;
         if(_controlledPawn.MyCamera)
         {
             _controlledPawn.MyCamera.cullingMask |= (1 << playerLayer);

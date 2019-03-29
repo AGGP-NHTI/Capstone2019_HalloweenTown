@@ -16,6 +16,9 @@ public class VampireMask : BaseMask
     {
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
+            pawn.MyCamera.cullingMask |= 1 << LayerMask.NameToLayer("GlowyBoy");
+            pawn.MyCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("RegularBoy"));
+
             pawn.soundMan.VampireUltScream();
             pawn.MyBoo.VampireUlt();
 
@@ -29,6 +32,8 @@ public class VampireMask : BaseMask
     {
         if (ulted)
         {
+            pawn.MyCamera.cullingMask |= 1 << LayerMask.NameToLayer("RegularBoy");
+            pawn.MyCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("GlowyBoy"));
             pawn.MyBoo.VampireUltDone();
             ulted = false;
         }
