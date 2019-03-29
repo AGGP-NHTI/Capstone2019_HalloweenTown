@@ -11,7 +11,7 @@ public class GhostMask : BaseMask{ //needs AI invincibility
     void Start () {
         base.Start();
         mask = pawn.myMask.currentModel;
-        color = mask.GetComponent<MeshRenderer>().material.color;
+        //color = mask.GetComponent<MeshRenderer>().material.color;
         ultMultiplier = 10f;
     }
 
@@ -21,8 +21,8 @@ public class GhostMask : BaseMask{ //needs AI invincibility
         {
             pawn.GhostUlt = true;
             pawn.soundMan.GhostUltScream();
-            color.a = 0.5f;
-            pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
+            //color.a = 0.5f;
+            //pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
             //pawn.myHealth.ghostUlt = true;
 
             defaultLayer = pawn.myMask.currentModel.layer;
@@ -37,8 +37,8 @@ public class GhostMask : BaseMask{ //needs AI invincibility
     {
         pawn.GhostUlt = false;
         pawn.myHealth.ghostUlt = false;
-        color.a = 1f;
-        pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
+        //color.a = 1f;
+        //pawn.myMask.currentModel.GetComponent<MeshRenderer>().material.color = color;
 
         pawn.myMask.currentModel.layer = defaultLayer;
     }
