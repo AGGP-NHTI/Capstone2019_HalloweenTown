@@ -8,19 +8,22 @@ public class LaunchArc : MonoBehaviour {
     LineRenderer lineRenderer;
     //public Vector3 startPoint;
     public Transform startPoint;
+    Transform model;
     public float angle;
     public float velocity;
     float grav;
     float angleRadian;
     
     Pawn pawn;
+    Mask mask;
     // Use this for initialization
 
 
     void Start () {
 
-       // pawn = GetComponent<Pawn>();
+        pawn = GetComponent<Pawn>();
         lineRenderer = GetComponent<LineRenderer>();
+
         grav = Mathf.Abs(Physics2D.gravity.y);
         if (sideCount < 1) sideCount = 1;
        
@@ -28,28 +31,23 @@ public class LaunchArc : MonoBehaviour {
 
 
         lineRenderer.positionCount = sideCount + 1;
-      //Debug.Log(string.Format("sideCount: {0} positionCount: {1}", sideCount , lineRenderer.positionCount));
+     
       
-        lineRenderer.SetPosition(0, startPoint.position);
+       
 
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //startpoint
-        //startPoint = pawn.barrel.transform;
+        model = pawn.myMask.currentModel.transform;
+        startPoint = pawn.myMask.currentModel.transform.GetComponent<GetBarrel>().barrel.transform;
+        mask = pawn.myMask;
+        
         lineRenderer.SetPositions(CalculateArcArray());
-        //lineRenderer.SetPosition(0, startPoint.position);
+        //Debug.Log("model.rotation" + model.rotation.eulerAngles);
         Debug.Log("line renderer position 0: " + lineRenderer.GetPosition(0));
-        Debug.Log("line renderer position last: " + lineRenderer.GetPosition(lineRenderer.positionCount -1));
-        //lineRenderer.SetPosition(1, CalculateArcPoint(.1f, 11.02f));
-        //lineRenderer.SetPosition(2, CalculateArcPoint(.2f, 11.02f));
-        //lineRenderer.SetPosition(3, CalculateArcPoint(.3f, 11.02f));
-        //lineRenderer.SetPositions(CalculateArcArray());
-
-        //end point
-        // lineRenderer.SetPosition(lineRenderer.positionCount - 1, startPoint + pawn.myMask.currentModel.transform.forward * 10);
+        Debug.Log("start point position: " + startPoint.position);
     }
 
     Vector3[] CalculateArcArray()
@@ -75,23 +73,42 @@ public class LaunchArc : MonoBehaviour {
 
     Vector3 CalculateArcPoint(float t, float maxDistance)
     {
-        float startX = startPoint.position.x;
+        //float startX = startPoint.position.x;
         float x = t * maxDistance;
         float multiplier = maxDistance* t;
         //Vector3 xz = new Vector3 (startPoint.position.x * multiplier, 1, startPoint.position.z * multiplier);
         float y = startPoint.position.y + x * Mathf.Tan(angleRadian) -((grav*x*x)/(2*velocity*velocity*Mathf.Cos(angleRadian) * Mathf.Cos(angleRadian)) ) ;
         Vector3 velocityY = new Vector3(0, y, 0);
 
-        Vector3 arcPoint = new Vector3( x, y, 0);
-        arcPoint = RotatePoint(arcPoint, transform.position, transform.rotation);
+        Vector3 arcPoint = new Vector3( startPoint.position.x + x, y, 0);
+        arcPoint = RotatePoint(arcPoint, startPoint.position , Mathf.Deg2Rad * model.rotation.eulerAngles.y);
         return arcPoint;
     }
-    Vector3 RotatePoint(Vector3 point, Vector3 pivot, Quaternion angle)
+    Vector3 RotatePoint(Vector3 point, Vector3 pivot, float angle)
     {
+        //Debug.Log("angle: " + angle);
+        //translate to origin
+        float tempX = point.x - pivot.x;
+        float tempZ = point.z - pivot.z;
+        //rotate
+        
+        float primeZ = tempZ * Mathf.Cos(angle) - tempX * Mathf.Sin(angle);
+        float primeX = tempZ * Mathf.Cos(angle) + tempX * Mathf.Sin(angle);
+
+
+        //z = 
+
+        //translate back
+
         Vector3 rotatedPoint = Vector3.zero;
-        Vector3 direction = point - pivot;
-        direction = angle * direction;
-        rotatedPoint = direction + pivot;
+
+        rotatedPoint.x = primeX + pivot.x;
+        rotatedPoint.z = primeZ + pivot.z;
+        rotatedPoint.y = point.y;
+        //Vector3 direction = point - pivot;
+        //direction = Quaternion.Euler(angle) * direction;
+        
+        //rotatedPoint = direction + pivot;
         return rotatedPoint;
     }
 }
