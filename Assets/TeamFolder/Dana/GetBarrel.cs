@@ -6,4 +6,6 @@ public class GetBarrel : MonoBehaviour {
 
     public GameObject barrel;
     public ParticleSystem boopartical;
+    public SkinnedMeshRenderer outlineMesh;
+    public SkinnedMeshRenderer solidMesh;
 }

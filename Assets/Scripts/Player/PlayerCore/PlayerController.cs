@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
             _controlledPawn.MyCameraManager.SetCameraLayer(playerLayer);
         }
 
+        _controlledPawn.color = Color.red;
+
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
             SplitScreenManager.Instance.PlayerCameras.Add(_controlledPawn.MyCamera);

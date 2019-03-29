@@ -20,6 +20,9 @@ public class Pawn : MonoBehaviour
     public PlayerCamManager MyCameraManager;
     public AlignToMovement MyAlignToMovement;
     public LayerMask MyLayer;
+    public Color color;
+    public SkinnedMeshRenderer outlineMesh;
+    public SkinnedMeshRenderer solidMesh;
 
     public bool GhostUlt = false;
 
@@ -34,13 +37,21 @@ public class Pawn : MonoBehaviour
     {
         myMask = GetComponent<Mask>();
         myProjectileManager = GetComponent<ProjectileManager>();
-        
+        //Debug.Log(outlineMesh.materials[0].name.ToString());
+       outlineMesh.materials[0].SetColor("_OutlineColor", color);
+        solidMesh.material.SetColor("_OutlineColor", color);
     }
     
     public void ModelChange()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
         myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;
+
+        outlineMesh = myMask.currentModel.GetComponent<GetBarrel>().outlineMesh;
+        solidMesh = myMask.currentModel.GetComponent<GetBarrel>().solidMesh;
+
+        outlineMesh.materials[0].SetColor("_OutlineColor", color);
+        solidMesh.material.SetColor("_OutlineColor", color);
     }
 
     #region Input

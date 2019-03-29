@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 4099250216511158}
   - component: {fileID: 137136712195310552}
   m_Layer: 13
-  m_Name: group4_pasted__polySurface6 (1)
+  m_Name: Solidgroup4_pasted__polySurface6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 4842394379114056}
   - component: {fileID: 137910564131434984}
   m_Layer: 12
-  m_Name: group4_pasted__polySurface6
+  m_Name: Outlinegroup4_pasted__polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1891,6 +1891,7 @@ MonoBehaviour:
   dropCandyParticles: {fileID: 198166494632300472}
   batParticles: {fileID: 198467436003764280}
   hitParticles: {fileID: 198983139065857984}
+  tornadoParticles: {fileID: 0}
 --- !u!114 &114126889355792966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2112,6 +2113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 1787698088982398}
   boopartical: {fileID: 198152361198826256}
+  outlineMesh: {fileID: 0}
+  solidMesh: {fileID: 0}
 --- !u!114 &114383845968681942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2340,6 +2343,9 @@ MonoBehaviour:
   MyLayer:
     serializedVersion: 2
     m_Bits: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  outlineMesh: {fileID: 137910564131434984}
+  solidMesh: {fileID: 137136712195310552}
   GhostUlt: 0
   MyController: {fileID: 0}
 --- !u!114 &114622372625539906
@@ -2538,7 +2544,7 @@ MonoBehaviour:
   scriptName: 
   currentModel: {fileID: 1723638829972258}
   playerPref: {fileID: 1641274433880270, guid: a9a64e510f6b55143a4094e5dca81b40, type: 2}
-  ghostPref: {fileID: 1459857841415240, guid: a5456110c7b61354887dc02d611b0eb9, type: 2}
+  ghostPref: {fileID: 1144466450342428, guid: 828d40f042b068941b5a813f12ef5a9b, type: 2}
   witchPref: {fileID: 1284107184651326, guid: c36ad2f039e7571469c57f9782161666, type: 2}
   werewolfPref: {fileID: 1738160862842466, guid: c6dc78bafaca2ac449d833241c1fe8bc,
     type: 2}
