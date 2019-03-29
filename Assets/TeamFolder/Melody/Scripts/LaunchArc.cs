@@ -40,6 +40,7 @@ public class LaunchArc : MonoBehaviour {
         //startpoint
         //startPoint = pawn.barrel.transform;
         lineRenderer.SetPositions(CalculateArcArray());
+        //lineRenderer.SetPosition(0, startPoint.position);
         Debug.Log("line renderer position 0: " + lineRenderer.GetPosition(0));
         Debug.Log("line renderer position last: " + lineRenderer.GetPosition(lineRenderer.positionCount -1));
         //lineRenderer.SetPosition(1, CalculateArcPoint(.1f, 11.02f));
@@ -74,14 +75,14 @@ public class LaunchArc : MonoBehaviour {
 
     Vector3 CalculateArcPoint(float t, float maxDistance)
     {
-       
-        float x =  t * maxDistance;
+        float startX = startPoint.position.x;
+        float x = t * maxDistance;
         float multiplier = maxDistance* t;
-        Vector3 xz = new Vector3 (startPoint.position.x * multiplier, 1, startPoint.position.z * multiplier);
-        float y = startPoint.position.y + x * Mathf.Tan(angleRadian) -( (grav*x*x)/(2*velocity*velocity*Mathf.Cos(angleRadian) * Mathf.Cos(angleRadian)) ) ;
+        //Vector3 xz = new Vector3 (startPoint.position.x * multiplier, 1, startPoint.position.z * multiplier);
+        float y = startPoint.position.y + x * Mathf.Tan(angleRadian) -((grav*x*x)/(2*velocity*velocity*Mathf.Cos(angleRadian) * Mathf.Cos(angleRadian)) ) ;
         Vector3 velocityY = new Vector3(0, y, 0);
 
-        Vector3 arcPoint = new Vector3(startPoint.position.x + x, y, 0);
+        Vector3 arcPoint = new Vector3( x, y, 0);
         arcPoint = RotatePoint(arcPoint, transform.position, transform.rotation);
         return arcPoint;
     }
