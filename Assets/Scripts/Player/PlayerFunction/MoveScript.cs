@@ -239,12 +239,18 @@ public class MoveScript : MonoBehaviour
             }
             if (_isJumping)
             {
-                anim.SetBool("jumpBool", true);
+                if (anim)
+                {
+                    anim.SetBool("jumpBool", true);
+                }
                 _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
                 _isJumping = false;
                 _isGrounded = false;
             }
-            else { anim.SetBool("jumpBool", false); }
+            else if(anim)
+            {
+                anim.SetBool("jumpBool", false);
+            }
         }
         //Debug.DrawRay(transform.position, desiredVelocity, Color.cyan, 1.0f);
         //Debug.DrawRay(transform.position, _rb.velocity, Color.green, 1.0f);
