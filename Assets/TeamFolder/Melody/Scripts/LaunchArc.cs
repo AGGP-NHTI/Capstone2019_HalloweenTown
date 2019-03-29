@@ -8,6 +8,7 @@ public class LaunchArc : MonoBehaviour {
     LineRenderer lineRenderer;
     //public Vector3 startPoint;
     public Transform startPoint;
+    public Transform model;
     public float angle;
     public float velocity;
     float grav;
@@ -37,6 +38,7 @@ public class LaunchArc : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        model = pawn.myMask.currentModel.transform;
         //startpoint
         //startPoint = pawn.barrel.transform;
         lineRenderer.SetPositions(CalculateArcArray());
@@ -75,15 +77,15 @@ public class LaunchArc : MonoBehaviour {
 
     Vector3 CalculateArcPoint(float t, float maxDistance)
     {
-        float startX = startPoint.position.x;
+        //float startX = startPoint.position.x;
         float x = t * maxDistance;
         float multiplier = maxDistance* t;
         //Vector3 xz = new Vector3 (startPoint.position.x * multiplier, 1, startPoint.position.z * multiplier);
         float y = startPoint.position.y + x * Mathf.Tan(angleRadian) -((grav*x*x)/(2*velocity*velocity*Mathf.Cos(angleRadian) * Mathf.Cos(angleRadian)) ) ;
         Vector3 velocityY = new Vector3(0, y, 0);
 
-        Vector3 arcPoint = new Vector3( x, y, 0);
-        arcPoint = RotatePoint(arcPoint, transform.position, transform.rotation);
+        Vector3 arcPoint = new Vector3( startPoint.position.x + x, y, 0);
+        arcPoint = RotatePoint(arcPoint, startPoint.position, model.rotation);
         return arcPoint;
     }
     Vector3 RotatePoint(Vector3 point, Vector3 pivot, Quaternion angle)
