@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static Dictionary<uint, string> PlayerLayers = new Dictionary<uint, string>()
+    public struct PlayerInfo
+    {
+        public string playerLayer;
+        public Color32 outlineColor;
+
+        public PlayerInfo(string layer, Color32 outline)
         {
-            { 1, "Player1" },
-            { 2, "Player2" },
-            { 3, "Player3" },
-            { 4, "Player4" },
+            playerLayer = layer;
+            outlineColor = outline;
+        }
+    }
+
+    public static Dictionary<uint, PlayerInfo> PlayerInfoHolder = new Dictionary<uint, PlayerInfo>()
+        {
+            { 1, new PlayerInfo("Player1", new Color32(248,104,0,255)) },
+            { 2, new PlayerInfo("Player2", new Color32(31,168,0,255)) },
+            { 3, new PlayerInfo("Player3", new Color32(119,26,168,255)) },
+            { 4, new PlayerInfo("Player4", new Color32(0,51,248,255)) }
         };
 
     public InputObject playerInput;
@@ -72,7 +84,7 @@ public class PlayerController : MonoBehaviour
             _controlledPawn.MyCandy.SetPlayerController(this);
         }
 
-        int playerLayer = LayerMask.NameToLayer(PlayerLayers[PlayerNumber]);
+        int playerLayer = LayerMask.NameToLayer(PlayerInfoHolder[PlayerNumber].playerLayer);
         _controlledPawn.MyLayer = playerLayer;
         if(_controlledPawn.MyCamera)
         {
@@ -82,6 +94,9 @@ public class PlayerController : MonoBehaviour
         {
             _controlledPawn.MyCameraManager.SetCameraLayer(playerLayer);
         }
+
+        Debug.Log("Player " + PlayerNumber + PlayerInfoHolder[PlayerNumber].outlineColor);
+        _controlledPawn.color = PlayerInfoHolder[PlayerNumber].outlineColor;
 
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {

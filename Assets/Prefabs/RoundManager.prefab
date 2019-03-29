@@ -151,7 +151,7 @@ MonoBehaviour:
   currentPhase: 0
   roundElapsedTime: 0
   roundStartEndTime: -1
-  roundRunningEndTime: 90
+  roundRunningEndTime: 180
   roundEndingEndTime: -1
   _letRoundTimerRun: 0
   GameSceneBuildIndex: 1

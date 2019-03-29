@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 4299424748807538}
   - component: {fileID: 137683718853935572}
   m_Layer: 13
-  m_Name: group4_pasted__polySurface6 (1)
+  m_Name: Solidgroup4_pasted__polySurface6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 4333256267039000}
   - component: {fileID: 137191222202669676}
   m_Layer: 12
-  m_Name: group4_pasted__polySurface6
+  m_Name: Outlinegroup4_pasted__polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1065,6 +1065,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 1378848078163762}
   boopartical: {fileID: 198805054596540806}
+  outlineMesh: {fileID: 137191222202669676}
+  solidMesh: {fileID: 137683718853935572}
 --- !u!114 &114784296060005016
 MonoBehaviour:
   m_ObjectHideFlags: 1
