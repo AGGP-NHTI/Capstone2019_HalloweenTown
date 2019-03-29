@@ -42,4 +42,8 @@ public class ParticleManager : MonoBehaviour {
         hitParticles.Play();
     }
 
+    public void tornadoPart()
+    {
+        tornadoParticles.Play();
+    }
 }
