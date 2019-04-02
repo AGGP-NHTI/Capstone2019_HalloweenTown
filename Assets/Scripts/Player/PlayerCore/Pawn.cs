@@ -46,6 +46,7 @@ public class Pawn : MonoBehaviour
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
         myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;
+        MyMoveScript.anim = myMask.currentModel.GetComponent<Animator>();
 
         outlineMesh = myMask.currentModel.GetComponent<GetBarrel>().outlineMesh;
         solidMesh = myMask.currentModel.GetComponent<GetBarrel>().solidMesh;

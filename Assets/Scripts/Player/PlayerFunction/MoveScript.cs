@@ -100,7 +100,7 @@ public class MoveScript : MonoBehaviour
         {
             Vector3 curVel = _rb.velocity;
             curVel.y = 0.0f;
-            if (curVel.magnitude > 1f && pawn.myMask.equipedMask == null)
+            if (curVel.magnitude > 1f)
             {
                 anim.SetBool("runBool", true);
             }

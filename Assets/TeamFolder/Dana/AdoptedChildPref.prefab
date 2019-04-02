@@ -1146,7 +1146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792628713573326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6660001, y: 0, z: 0}
+  m_LocalPosition: {x: 0.666, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746539219275856}
@@ -1160,7 +1160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872167124162834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6660001, y: 0, z: -2}
+  m_LocalPosition: {x: 0.666, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224965725725197874}
@@ -1429,7 +1429,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004278199457754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6660001, y: 0, z: -2}
+  m_LocalPosition: {x: 0.666, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4931619105025190}
@@ -1510,7 +1510,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405976558990932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.36, y: -8.513191e-17, z: 3.8340006}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4989225572559478}
@@ -2545,7 +2545,7 @@ MonoBehaviour:
   currentModel: {fileID: 1723638829972258}
   playerPref: {fileID: 1641274433880270, guid: a9a64e510f6b55143a4094e5dca81b40, type: 2}
   ghostPref: {fileID: 1144466450342428, guid: 828d40f042b068941b5a813f12ef5a9b, type: 2}
-  witchPref: {fileID: 1284107184651326, guid: c36ad2f039e7571469c57f9782161666, type: 2}
+  witchPref: {fileID: 1127191291754076, guid: 954e5afd2e502f24cbd2730ef5a557cf, type: 2}
   werewolfPref: {fileID: 1738160862842466, guid: c6dc78bafaca2ac449d833241c1fe8bc,
     type: 2}
   vampirePref: {fileID: 1901844044293570, guid: 571b7a89135d1f04d8fdd5b3975d1f03,
