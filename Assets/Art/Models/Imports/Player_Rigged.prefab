@@ -1037,6 +1037,8 @@ MonoBehaviour:
   TrackX: 1
   TrackY: 0
   TrackZ: 1
+  useOverrideForward: 0
+  overrideForward: {x: 0, y: 0, z: 0}
 --- !u!114 &114985130567869048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1050,6 +1052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 1013206913468914}
   boopartical: {fileID: 198619119972694318}
+  outlineMesh: {fileID: 0}
+  solidMesh: {fileID: 0}
 --- !u!137 &137551174570410666
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
