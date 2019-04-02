@@ -32,12 +32,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 150
     y: 0
-    width: 42
-    height: 65
+    width: 0
+    height: 0
   showEmptySlots: 1
   Label: Selector
   sourceNode: {fileID: 11400000, guid: 2b69fee04ffe8ae4c8379013e48577a2, type: 2}
   PropertyOneToEvaluate: 
-  PropertyTwoToEvaluate: 
-  PropertyTwoType: 0
+  PropertyTwoToEvaluate: (bool)
+  PropertyTwoType: 1
   Mode: 4
