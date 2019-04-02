@@ -109,7 +109,6 @@ public class MoveScript : MonoBehaviour
                 anim.SetBool("runBool", false);
             }
 
-
         }
         UpdateMoveVelocity();
         HandleCrouching();

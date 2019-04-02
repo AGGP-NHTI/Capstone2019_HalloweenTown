@@ -24,6 +24,8 @@ public class ProjectileManager : MonoBehaviour {
 
     public GameObject thrownObject;
     public float eggDamage = 10f;
+
+    public bool showParabola = false;
     void Start() {
 
         pawn = GetComponent<Pawn>();
@@ -50,7 +52,18 @@ public class ProjectileManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-       // if (debugLineOn) updateLine();
+       if(showParabola)
+        {
+            ParabolaTemp p = gameObject.GetComponent<ParabolaTemp>();
+            p.ln.enabled = true;
+            p.DrawLine();
+        }
+       else
+        {
+            ParabolaTemp p = gameObject.GetComponent<ParabolaTemp>();
+            p.ln.enabled = false;
+        }
+
     }
 
     public void throwObject(float value)
@@ -109,8 +122,9 @@ public class ProjectileManager : MonoBehaviour {
             
             if(thrownObject.GetComponent<ToiletPaper>())
             {
+                pawn.myParabola.DrawLine();
                 thrownObject.GetComponent<ToiletPaper>().moveSpeed = rb.velocity;
-
+                thrownObject.GetComponent<ToiletPaper>().throwyPoints = pawn.myParabola.parabolaPoints;
 
             }
             else if(thrownObject.GetComponent<Egg>())

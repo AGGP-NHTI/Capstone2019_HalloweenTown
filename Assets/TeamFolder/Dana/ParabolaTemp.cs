@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ParabolaTemp : MonoBehaviour {
 
-    public Transform someObject; //object that moves along parabola.
+     //object that moves along parabola.
     float objectT = 0; //timer for that object
 
     public Transform ChildVector, Tb; //transforms that mark the start and end
@@ -16,30 +16,43 @@ public class ParabolaTemp : MonoBehaviour {
     GameObject barrel;
     GameObject model;
     public Quaternion test;
-    
+    public Vector3[] parabolaPoints;
+    public GameObject endpoint;
+    Pawn pawn;
+    float aim;
     private void Start()
     {
         //Tb = Distance(gameObject.transform.position);
         barrel = gameObject.GetComponent<Pawn>().barrel;
         model = gameObject.GetComponent<Pawn>().myMask.currentModel;
+        pawn = gameObject.GetComponent<Pawn>();
     }
     void Update()
     {
-        test = model.transform.rotation;
+        //do when endpoint stays at y = 0
+        /*test = model.transform.rotation;
         angle = model.transform.localRotation.y;
-        DrawLine();
+        if(model.transform.rotation.x <1)
+        {
+            endpoint.transform.position = new Vector3(endpoint.transform.position.x, endpoint.transform.position.y, endpoint.transform.position.z + model.transform.rotation.x);
+        }*/
+
+
+        //aim = model.transform.rotation.x;
+       // endpoint.transform.position = new Vector3(endpoint.transform.position.x, endpoint.transform.position.y, aim);
+        //DrawLine();
         //Tb = Distance(gameObject.transform.position);
         ChildVector = barrel.transform;
         
             a = ChildVector.position; //Get vectors from the transforms
             b = Tb.position;
 
-            if (someObject)
+            /*if (someObject)
             {
                 //Shows how to animate something following a parabola
                 objectT = Time.time % 1; //completes the parabola trip in one second
                 someObject.position = SampleParabola(a, b, h, objectT);
-            }
+            }*/
         
     }
 
@@ -54,8 +67,8 @@ public class ParabolaTemp : MonoBehaviour {
     }*/
 
     //void OnDrawGizmos()
-    public Vector3[] parabolaPoints;
-    void DrawLine()
+    
+    public void DrawLine()
     {
 
         //Draw the parabola by sample a few times

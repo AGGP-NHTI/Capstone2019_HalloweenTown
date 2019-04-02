@@ -23,7 +23,7 @@ public class Pawn : MonoBehaviour
     public Color color;
     public SkinnedMeshRenderer outlineMesh;
     public SkinnedMeshRenderer solidMesh;
-
+    public ParabolaTemp myParabola;
     public bool GhostUlt = false;
 
     [HideInInspector]
@@ -40,6 +40,7 @@ public class Pawn : MonoBehaviour
         //Debug.Log(outlineMesh.materials[0].name.ToString());
        outlineMesh.materials[0].SetColor("_OutlineColor", color);
         solidMesh.material.SetColor("_OutlineColor", color);
+        myParabola = gameObject.GetComponent<ParabolaTemp>();
     }
     
     public void ModelChange()
@@ -81,10 +82,12 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassLeftTriggerInput(float value)
     {
+        
         if(MyCameraManager)
         {
             if (value > 0.0f)
             {
+                myProjectileManager.showParabola = true;
                 MyCameraManager.SetVirtualCamera(1);
                 if(MyAlignToMovement)
                 {
@@ -94,6 +97,7 @@ public class Pawn : MonoBehaviour
             }
             else
             {
+                myProjectileManager.showParabola = false;
                 MyCameraManager.SetVirtualCamera(0);
                 if(MyAlignToMovement)
                 {
