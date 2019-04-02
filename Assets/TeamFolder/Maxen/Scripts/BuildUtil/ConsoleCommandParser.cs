@@ -154,6 +154,12 @@ public class ConsoleCommandParser : MonoBehaviour
                         BuildConsole.WriteLine("Round not active");
                     }
 
+                    if (keywords.Length < 2)
+                    {
+                        BuildConsole.WriteLine("Insufficient parameters");
+                        return;
+                    }
+
                     switch (keywords[2])
                     {
                         case "pre_game":
