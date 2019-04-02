@@ -14,6 +14,6 @@ MonoBehaviour:
   nodeOnTrue: {fileID: 11400000, guid: 95e22720991dc334ab9d15a7853a498a, type: 2}
   nodeOnFalse: {fileID: 11400000, guid: 914bf6d5250000e4ca802168f8ff1db1, type: 2}
   Logic:
-    PropertyOneToEvaluate: DoAThing
-    PropertyTwoToEvaluate: (bool)true
+    PropertyOneToEvaluate: 
+    PropertyTwoToEvaluate: (bool)
     Mode: 4

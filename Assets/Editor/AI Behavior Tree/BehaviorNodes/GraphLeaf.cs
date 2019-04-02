@@ -38,7 +38,7 @@ namespace BehaviourTreeUI
             }
 
             //Confirms that the nodeBehavior is saved to AssetDatabase
-            //sourceNode.NodeBehavior = sourceNode.NodeBehavior;
+            sourceNode.NodeBehavior = sourceNode.NodeBehavior;
 
             UnityEditor.EditorUtility.SetDirty(this);
             UnityEditor.EditorUtility.SetDirty(sourceNode);

@@ -16,22 +16,29 @@ namespace AI
             }
             set
             {
-                if (_nodeBehavior == value) { return; }
                 if (UnityEditor.AssetDatabase.Contains(this))
                 {
-                    if (_nodeBehavior)
+                    bool doSave = false;
+                    Debug.Log("tempPre:" + _nodeBehavior);
+                    if (UnityEditor.AssetDatabase.Contains(_nodeBehavior) && _nodeBehavior != value)
                     {
                         //RemoveObjectFromAsset does not exist before 2018.3
                         //UnityEditor.AssetDatabase.RemoveObjectFromAsset(_nodeBehavior);
                         DestroyImmediate(_nodeBehavior, true);
                         Debug.Log("Destroyed old behavior");
+                        doSave = true;
                     }
-                    Debug.Log("value");
+                    Debug.Log("postPre:" + value);
                     _nodeBehavior = value;
-                    if (_nodeBehavior)
+                    if (_nodeBehavior && !UnityEditor.AssetDatabase.Contains(_nodeBehavior))
                     {
                         Debug.Log(name + "(" + GetType() + ") is saving " + _nodeBehavior);
                         UnityEditor.AssetDatabase.AddObjectToAsset(_nodeBehavior, this);
+                        doSave = true;
+                    }
+
+                    if(doSave)
+                    {
                         UnityEditor.AssetDatabase.SaveAssets();
                     }
                 }
