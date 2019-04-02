@@ -155,7 +155,15 @@ public class RoundManager : MonoBehaviour {
         audio.Play();
         audio.loop = true;
 
-        CameraManager.Instance.StartCutscene(LevelInfo.GetMomCutscene(), momInScene.LetMomHunt);
+        GameObject momCutscene = LevelInfo.GetMomCutscene();
+        if(momCutscene)
+        {
+            CameraManager.Instance.StartCutscene(momCutscene, momInScene.LetMomHunt);
+        }
+        else
+        {
+            momInScene.LetMomHunt();
+        }
 
         while (currentPhase == RoundPhase.ROUND_ENDING)
         {
