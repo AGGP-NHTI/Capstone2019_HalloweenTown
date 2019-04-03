@@ -64,50 +64,52 @@ namespace BehaviourTreeUI
                 }
                 dispNode.sourceNode = sel;
                 dispNode.position.position = pos;
+				
+				if(sel.Logic != null)
+				{
+					dispNode.PropertyOneToEvaluate = sel.Logic.PropertyOneToEvaluate;
 
-                dispNode.PropertyOneToEvaluate = sel.Logic.PropertyOneToEvaluate;
+					string propertyTwo = sel.Logic.PropertyTwoToEvaluate;
+					if(propertyTwo[0] == '(')
+					{
+						int typeEndIndex = propertyTwo.IndexOf(')');
+						switch(propertyTwo.Substring(0, typeEndIndex + 1))
+						{
+							case "(bool)":
+								{
+									dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex + 1);
+									dispNode.PropertyTwoType = GraphSelector.PropertyType.BOOL;
+									break;
+								}
+							case "(float)":
+								{
+									dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex + 1);
+									dispNode.PropertyTwoType = GraphSelector.PropertyType.FLOAT;
+									break;
+								}
+							case "(int)":
+								{
+									dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex + 1);
+									dispNode.PropertyTwoType = GraphSelector.PropertyType.INT;
+									break;
+								}
+							default:
+								{
+									Debug.LogWarning("Logic property 2 starts with \'(\' but isn't a type. Try not to use parantheses in property names.");
+									dispNode.PropertyTwoToEvaluate = propertyTwo;
+									dispNode.PropertyTwoType = GraphSelector.PropertyType.BLACKBOARD;
+									break;
+								}
+						}
+					}
+					else
+					{
+						dispNode.PropertyTwoType = GraphSelector.PropertyType.BLACKBOARD;
+						dispNode.PropertyTwoToEvaluate = sel.Logic.PropertyTwoToEvaluate;
+					}
 
-                string propertyTwo = sel.Logic.PropertyTwoToEvaluate;
-                if(propertyTwo[0] == '(')
-                {
-                    int typeEndIndex = propertyTwo.IndexOf(')');
-                    switch(propertyTwo.Substring(0, typeEndIndex + 1))
-                    {
-                        case "(bool)":
-                            {
-                                dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex);
-                                dispNode.PropertyTwoType = GraphSelector.PropertyType.BOOL;
-                                break;
-                            }
-                        case "(float)":
-                            {
-                                dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex);
-                                dispNode.PropertyTwoType = GraphSelector.PropertyType.FLOAT;
-                                break;
-                            }
-                        case "(int)":
-                            {
-                                dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex);
-                                dispNode.PropertyTwoType = GraphSelector.PropertyType.INT;
-                                break;
-                            }
-                        default:
-                            {
-                                Debug.LogWarning("Logic property 2 starts with \'(\' but isn't a type. Try not to use parantheses in property names.");
-                                dispNode.PropertyTwoToEvaluate = propertyTwo;
-                                dispNode.PropertyTwoType = GraphSelector.PropertyType.BLACKBOARD;
-                                break;
-                            }
-                    }
+					dispNode.Mode = sel.Logic.Mode;
                 }
-                else
-                {
-                    dispNode.PropertyTwoType = GraphSelector.PropertyType.BLACKBOARD;
-					dispNode.PropertyTwoToEvaluate = sel.Logic.PropertyTwoToEvaluate;
-                }
-
-                dispNode.Mode = sel.Logic.Mode;
-                
 
                 Slot o = dispNode.AddOutputSlot("true:");
                 if (sel.nodeOnTrue)
