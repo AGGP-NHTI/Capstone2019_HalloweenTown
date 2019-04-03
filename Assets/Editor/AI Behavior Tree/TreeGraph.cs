@@ -76,13 +76,13 @@ namespace BehaviourTreeUI
                         case "(bool)":
                             {
                                 dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex);
-                                dispNode.PropertyTwoType = GraphSelector.PropertyType.INT;
+                                dispNode.PropertyTwoType = GraphSelector.PropertyType.BOOL;
                                 break;
                             }
                         case "(float)":
                             {
                                 dispNode.PropertyTwoToEvaluate = propertyTwo.Substring(typeEndIndex);
-                                dispNode.PropertyTwoType = GraphSelector.PropertyType.INT;
+                                dispNode.PropertyTwoType = GraphSelector.PropertyType.FLOAT;
                                 break;
                             }
                         case "(int)":
@@ -103,8 +103,8 @@ namespace BehaviourTreeUI
                 else
                 {
                     dispNode.PropertyTwoType = GraphSelector.PropertyType.BLACKBOARD;
+					dispNode.PropertyTwoToEvaluate = sel.Logic.PropertyTwoToEvaluate;
                 }
-                dispNode.PropertyTwoToEvaluate = sel.Logic.PropertyTwoToEvaluate;
 
                 dispNode.Mode = sel.Logic.Mode;
                 
