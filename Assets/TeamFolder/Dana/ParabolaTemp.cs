@@ -4,7 +4,6 @@ using UnityEngine;
 public class ParabolaTemp : MonoBehaviour {
 
     public LineRenderer ln;
-    GameObject barrel;
     GameObject model;
     public Quaternion test;
     //public List<Vector3> parabolaPoints = new List<Vector3>();
@@ -19,7 +18,6 @@ public class ParabolaTemp : MonoBehaviour {
     private void Start()
     {
         notHittable = 1 << ~LayerMask.NameToLayer("NotHittable");
-        barrel = gameObject.GetComponent<Pawn>().barrel;
         model = gameObject.GetComponent<Pawn>().myMask.currentModel;
         pawn = gameObject.GetComponent<Pawn>();
     }
@@ -67,8 +65,8 @@ public class ParabolaTemp : MonoBehaviour {
     public List<Vector3> DrawLine()
     {
         List<Vector3> parabolaPoints = new List<Vector3>();
-        Vector3 point = barrel.transform.position;
-        Vector3 pointVelocity = barrel.transform.forward * parabolaMagnitude;
+        Vector3 point = pawn.barrel.transform.position;
+        Vector3 pointVelocity = pawn.barrel.transform.forward * parabolaMagnitude;
 
         parabolaPoints.Add(point);
 
