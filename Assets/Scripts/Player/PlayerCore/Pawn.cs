@@ -112,7 +112,7 @@ public class Pawn : MonoBehaviour
     {
         if (value > 0.0f)
         {
-            Debug.Log(name + " right trigger: " + value);
+            //Debug.Log(name + " right trigger: " + value);
         }
         if (!myProjectileManager)
         {
@@ -127,7 +127,7 @@ public class Pawn : MonoBehaviour
     {
         if (value != Vector2.zero)
         {
-            Debug.Log(name + " dPad: " + value);
+            //Debug.Log(name + " dPad: " + value);
         }
 
         if (!myProjectileManager)

@@ -3,56 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ParabolaTemp : MonoBehaviour {
 
-     //object that moves along parabola.
-    float objectT = 0; //timer for that object
-
-    public Transform ChildVector, Tb; //transforms that mark the start and end
-    public float h; //desired parabola height
-
-    Vector3 a, b; //Vector positions for start and end
     public LineRenderer ln;
-    public float angle = 0;
-    public float length = 10;
     GameObject barrel;
     GameObject model;
     public Quaternion test;
-    public Vector3[] parabolaPoints;
+    //public List<Vector3> parabolaPoints = new List<Vector3>();
     public GameObject endpoint;
     Pawn pawn;
     float aim;
+
+    public float parabolaMagnitude = 10f;
+    public float maxArcLength = 20f;
+    public float parabolaStepSize = 0.1f;
+    LayerMask notHittable;
     private void Start()
     {
-        //Tb = Distance(gameObject.transform.position);
+        notHittable = 1 << ~LayerMask.NameToLayer("NotHittable");
         barrel = gameObject.GetComponent<Pawn>().barrel;
         model = gameObject.GetComponent<Pawn>().myMask.currentModel;
         pawn = gameObject.GetComponent<Pawn>();
     }
     void Update()
     {
-        //do when endpoint stays at y = 0
-        /*test = model.transform.rotation;
-        angle = model.transform.localRotation.y;
-        if(model.transform.rotation.x <1)
-        {
-            endpoint.transform.position = new Vector3(endpoint.transform.position.x, endpoint.transform.position.y, endpoint.transform.position.z + model.transform.rotation.x);
-        }*/
-
-
-        //aim = model.transform.rotation.x;
-       // endpoint.transform.position = new Vector3(endpoint.transform.position.x, endpoint.transform.position.y, aim);
-        //DrawLine();
-        //Tb = Distance(gameObject.transform.position);
-        ChildVector = barrel.transform;
-        
-            a = ChildVector.position; //Get vectors from the transforms
-            b = Tb.position;
-
-            /*if (someObject)
-            {
-                //Shows how to animate something following a parabola
-                objectT = Time.time % 1; //completes the parabola trip in one second
-                someObject.position = SampleParabola(a, b, h, objectT);
-            }*/
         
     }
 
@@ -65,32 +37,67 @@ public class ParabolaTemp : MonoBehaviour {
         Vector3 point = new Vector3(x, y,z);
         return point;
     }*/
-
-    //void OnDrawGizmos()
     
-    public void DrawLine()
-    {
 
-        //Draw the parabola by sample a few times
-        // Gizmos.color = Color.red;
-        ln.SetPosition(0, a);
-        ln.SetPosition(1, b);
-        //Gizmos.DrawLine(a, b);
-        int count = 20;
-        //ln.SetVertexCount(20);
-        /*Vector3[]*/ parabolaPoints = new Vector3[count];
-        ln.SetVertexCount(count);
-        Vector3 lastP = a;
-        for (int i = 0; i < count; i++)
+    /* public void DrawLine()
+     {
+
+         //Draw the parabola by sample a few times
+         // Gizmos.color = Color.red;
+         ln.SetPosition(0, a);
+         ln.SetPosition(1, b);
+         //Gizmos.DrawLine(a, b);
+         int count = 20;
+         //ln.SetVertexCount(20);
+         /*Vector3[] parabolaPoints = new Vector3[count];
+         ln.SetVertexCount(count);
+         Vector3 lastP = a;
+         for (int i = 0; i < count; i++)
+         {
+             Vector3 p = SampleParabola(a, b, h, i / (float)count);
+             //Gizmos.color = i % 2 == 0 ? Color.blue : Color.green;
+             //ln.SetPosition(i, p);
+             parabolaPoints[i] = p;
+             //Gizmos.DrawLine(lastP, p);
+             lastP = p;
+         }
+         ln.SetPositions(parabolaPoints);
+     }*/
+
+    public List<Vector3> DrawLine()
+    {
+        List<Vector3> parabolaPoints = new List<Vector3>();
+        Vector3 point = barrel.transform.position;
+        Vector3 pointVelocity = barrel.transform.forward * parabolaMagnitude;
+
+        parabolaPoints.Add(point);
+
+        RaycastHit hit = new RaycastHit();
+        Ray parabolaArcRay;
+        bool parabolaCollided = false;
+
+        for (float distanceArced = 0.0f; distanceArced < maxArcLength && !parabolaCollided; distanceArced += parabolaStepSize)
         {
-            Vector3 p = SampleParabola(a, b, h, i / (float)count);
-            //Gizmos.color = i % 2 == 0 ? Color.blue : Color.green;
-            //ln.SetPosition(i, p);
-            parabolaPoints[i] = p;
-            //Gizmos.DrawLine(lastP, p);
-            lastP = p;
+            parabolaArcRay = new Ray(point, pointVelocity);
+            //Debug.DrawRay(parabolaArcRay.origin, parabolaArcRay.direction);
+            if (Physics.Raycast(parabolaArcRay, out hit, parabolaStepSize, notHittable))
+            {                
+                parabolaCollided = true;
+                parabolaPoints.Add(hit.point);                
+            }
+            else
+            {
+                point += pointVelocity.normalized * parabolaStepSize;
+                parabolaPoints.Add(point);
+            }
+
+            pointVelocity += Physics.gravity * parabolaStepSize;
         }
-        ln.SetPositions(parabolaPoints);
+
+        ln.positionCount = parabolaPoints.Count;
+        ln.SetPositions(parabolaPoints.ToArray());
+
+        return parabolaPoints;
     }
 
     Vector3 SampleParabola(Vector3 start, Vector3 end, float height, float t)

@@ -12,14 +12,18 @@ public class Egg : Projectile {
     public static Vector3 moveSpeed = Vector3.zero;
     bool startFalling = false;
     Vector3 fallSpeed = new Vector3(0, -1, 0);
-   
-	void Start () {
 
-        rb.useGravity = true;
-        velocityXZ = (transform.forward * throwForce) + moveSpeed;
-        velocityY = transform.up * upMultiplier;
-        
-        addVelocity();
+    public List<Vector3> parabolaPoints = new List<Vector3>();
+    float speed = 500f;
+
+    void Start () {
+        StartCoroutine(ThrowEgg());
+
+        //rb.useGravity = true;
+        //velocityXZ = (transform.forward * throwForce) + moveSpeed;
+        //velocityY = transform.up * upMultiplier;
+
+        //addVelocity();
 
         //StartCoroutine(turnOnGravity());
 
@@ -30,12 +34,12 @@ public class Egg : Projectile {
 
         base.Update();
 
-        StartCoroutine(turnOnGravity());
-        if (startFalling)
+        //StartCoroutine(turnOnGravity());
+        /*if (startFalling)
         {
             rb.AddForce(fallSpeed);
             fallSpeed.y *= Time.deltaTime + 1f;
-        }
+        }*/
         
         //if (elapsedTime >= arcAfterElapsedTime)            
 
@@ -52,7 +56,21 @@ public class Egg : Projectile {
         Destroy(gameObject);
     }
 
-    IEnumerator turnOnGravity()
+    IEnumerator ThrowEgg()
+    {
+        for (int i = 1; i < parabolaPoints.Count; i++)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, parabolaPoints[i], speed * Time.deltaTime);
+            //gameObject.transform.position = throwyPoints[i];
+            if (gameObject.transform.position == parabolaPoints[parabolaPoints.Count - 1])
+            {
+                Destroy(gameObject);
+            }
+            yield return null;// new WaitForSeconds(0.2f);
+        }
+    }
+
+    /*IEnumerator turnOnGravity()
     {
         float timer = arcAfterElapsedTime;
         while (timer > 0)
@@ -64,5 +82,5 @@ public class Egg : Projectile {
         //rb.useGravity = true;
         
         
-    }
+    }*/
 }
