@@ -26,6 +26,10 @@ public class ProjectileManager : MonoBehaviour {
     public float eggDamage = 10f;
 
     public bool showParabola = false;
+    public float eggMagnitude = 100f;
+    public float paperMagnitude = 500f;
+    public float eggStep = 0.2f;
+    public float paperStep = 0.4f;
     void Start() {
 
         pawn = GetComponent<Pawn>();
@@ -52,16 +56,25 @@ public class ProjectileManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-       if(showParabola)
+        if (selectedWeaponIndex == 0)//egg
         {
-            ParabolaTemp p = gameObject.GetComponent<ParabolaTemp>();
-            p.ln.enabled = true;
-            p.DrawLine();
+            pawn.myParabola.parabolaMagnitude = eggMagnitude;
+            pawn.myParabola.parabolaStepSize = eggStep;
         }
+        else if (selectedWeaponIndex == 1)//paper
+        {
+            pawn.myParabola.parabolaMagnitude = paperMagnitude;
+            pawn.myParabola.parabolaStepSize = paperStep;
+        }
+
+        if (showParabola)
+        {    
+            pawn.myParabola.ln.enabled = true;
+            pawn.myParabola.DrawLine();
+       }
        else
         {
-            ParabolaTemp p = gameObject.GetComponent<ParabolaTemp>();
-            p.ln.enabled = false;
+            pawn.myParabola.ln.enabled = false;
         }
 
     }
@@ -115,24 +128,26 @@ public class ProjectileManager : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw projectile but no model component not found!");
                 return;
             }
-            thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position + leftSpawn.transform.forward, model.rotation);
+            thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position, model.rotation);
             Debug.Log(thrownObject.gameObject.name);
             thrownObject.GetComponent<Projectile>().owner = gameObject;
             inventory.subtractFromInventory(weaponList[selectedWeaponIndex]);
             
             if(thrownObject.GetComponent<ToiletPaper>())
             {
-                pawn.myParabola.DrawLine();
+                //pawn.myParabola.DrawLine();
                 thrownObject.GetComponent<ToiletPaper>().moveSpeed = rb.velocity;
-                thrownObject.GetComponent<ToiletPaper>().throwyPoints = pawn.myParabola.parabolaPoints;
+                pawn.myParabola.parabolaMagnitude = paperMagnitude;
+                thrownObject.GetComponent<ToiletPaper>().parabolaPoints.Clear();
+                thrownObject.GetComponent<ToiletPaper>().parabolaPoints = pawn.myParabola.DrawLine();
 
             }
             else if(thrownObject.GetComponent<Egg>())
             {
                 Egg.moveSpeed = rb.velocity;
-                
+                pawn.myParabola.parabolaMagnitude = eggMagnitude;
                 thrownObject.GetComponent<Egg>().damage = eggDamage;
-                
+                thrownObject.GetComponent<Egg>().parabolaPoints = pawn.myParabola.DrawLine();
             }
             
         } 

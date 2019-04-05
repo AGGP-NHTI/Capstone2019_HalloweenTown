@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65944949207305186}
   - component: {fileID: 54169142140205730}
   - component: {fileID: 114343528143324606}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ToiletPaper
   m_TagString: Toilet Paper
   m_Icon: {fileID: 0}
@@ -124,5 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e38941c14f8244dbc787291e0bdf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  velocityY: {x: 0, y: 0, z: 0}
+  velocityXZ: {x: 0, y: 0, z: 0}
   throwForce: 10
   moveSpeed: {x: 0, y: 0, z: 0}
+  parabolaPoints: []

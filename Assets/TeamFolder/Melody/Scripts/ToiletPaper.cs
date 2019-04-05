@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToiletPaper : Projectile {
-
-    
+        
     public float throwForce;
     public Vector3 moveSpeed;
 
     Vector3 throwAngle;
     float stunTime = 5f;
-    public Vector3[] throwyPoints; 
+    public List<Vector3> parabolaPoints = new List<Vector3>();
+    float speed = 50f;
     
     // Use this for initialization
     void Start () {
         base.Start();
-        StartCoroutine(doathrow());
+        StartCoroutine(ThrowToiletPaper());
+        //doathrow();
         //throwAngle = (transform.forward  + transform.up).normalized * throwForce;
         //throwAngle += moveSpeed;
         // rb.velocity = throwAngle;
@@ -52,7 +53,7 @@ public class ToiletPaper : Projectile {
         Destroy(gameObject);
     }
 
-    Vector3 SampleParabola(Vector3 start, Vector3 end, float height, float t)
+    /*Vector3 SampleParabola(Vector3 start, Vector3 end, float height, float t)
     {
         float parabolicT = t * 2 - 1;
         if (Mathf.Abs(start.y - end.y) < 0.1f)
@@ -75,14 +76,15 @@ public class ToiletPaper : Projectile {
             result += ((-parabolicT * parabolicT + 1) * height) * up.normalized;
             return result;
         }
-    }
+    }*/
 
-    IEnumerator doathrow()
-    {
-        for (int i = 0; i < throwyPoints.Length; i++)
+    IEnumerator ThrowToiletPaper()
+    {        
+        for (int i = 1; i < parabolaPoints.Count; i++)
         {
-            gameObject.transform.position = throwyPoints[i];
-            if (gameObject.transform.position == throwyPoints[throwyPoints.Length - 1])
+            transform.position = Vector3.MoveTowards(transform.position, parabolaPoints[i], speed * Time.deltaTime);
+            //gameObject.transform.position = throwyPoints[i];
+            if (gameObject.transform.position == parabolaPoints[parabolaPoints.Count-1])
             {
                 Destroy(gameObject);
             }
