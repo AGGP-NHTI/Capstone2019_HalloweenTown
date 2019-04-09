@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour {
 
-    public AudioClip momMusic;
+    
 
     #region Overall Round Management Variables
     public enum RoundPhase
@@ -40,8 +40,7 @@ public class RoundManager : MonoBehaviour {
     [Header("Round Ending")]
     public GameObject momPrefab;
     [HideInInspector] public GameObject spawnedMom;
-    public AudioSource asource;
-    public float pitch = 0.001f;
+    
 
     [Header("Round Over")]
     public float timeBeforeReturningToMenu = 5.0f;
@@ -52,6 +51,7 @@ public class RoundManager : MonoBehaviour {
     protected virtual void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        
     }
 
     public virtual void StartRound(List<InputObject> ParticipatingPlayers)
@@ -152,11 +152,8 @@ public class RoundManager : MonoBehaviour {
         Mom momInScene = LevelInfo.GetMom();
         momInScene.gameObject.SetActive(true);
         momInScene.FindPlayers(_activePlayers);
-        
-        asource.clip = momMusic;
-        asource.Play();
-        asource.loop = true;
-        StartCoroutine(pitchChange());
+
+        BackgroundMusic.instance.MomMusic();
 
         GameObject momCutscene = LevelInfo.GetMomCutscene();
         if(momCutscene)
@@ -182,7 +179,8 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundOverLogic()
     {
-        StopCoroutine(pitchChange());
+        BackgroundMusic.instance.EndGameMusic();
+
         Text[] playerscores = LevelInfo.GetPlayerScores();
         for(int i = 0; i < _activePlayers.Count; i++)
         {
@@ -209,14 +207,7 @@ public class RoundManager : MonoBehaviour {
 
     #region Extra Utility
 
-    IEnumerator pitchChange()
-    {
-        while (asource.pitch < 2)
-        {
-            asource.pitch += Time.deltaTime * pitch;
-            yield return null;
-        }
-    }
+    
     protected void SpawnPlayers(List<InputObject> inputObjects)
     {
         _activePlayers = new List<PlayerController>();
