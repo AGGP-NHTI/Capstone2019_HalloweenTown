@@ -37,6 +37,7 @@ public class HealthBar : MonoBehaviour {
                 health -= amount;
                 soundManager.Oof();
                 particleManager.hitPart();
+                particleManager.eggPart();
             }
         }
         else
