@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7420f82977882304695b329d73d1f422, type: 3}
+  m_Name: Selector 1
+  m_EditorClassIdentifier: 
+  m_Slots:
+  - type: 0
+    m_Title: In
+    m_Name: in
+    m_DataTypeString: 
+  - type: 1
+    m_Title: 'True:'
+    m_Name: 'true:'
+    m_DataTypeString: 
+  - type: 1
+    m_Title: 'False:'
+    m_Name: 'false:'
+    m_DataTypeString: 
+  m_Properties: []
+  m_GenericTypeString: 
+  color: 0
+  style: node
+  position:
+    serializedVersion: 2
+    x: 132
+    y: -84
+    width: 42
+    height: 65
+  showEmptySlots: 1
+  Label: Has target?
+  sourceNode: {fileID: 11400000, guid: 3e5aa6357f010cd4d8488a25af3ed31d, type: 2}
+  PropertyOneToEvaluate: target
+  PropertyTwoToEvaluate: 
+  PropertyTwoType: 3
+  Mode: 4

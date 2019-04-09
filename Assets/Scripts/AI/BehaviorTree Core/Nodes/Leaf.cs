@@ -24,13 +24,13 @@ namespace AI
                         //RemoveObjectFromAsset does not exist before 2018.3
                         //UnityEditor.AssetDatabase.RemoveObjectFromAsset(_nodeBehavior);
                         DestroyImmediate(_nodeBehavior, true);
-                        Debug.Log("Destroyed old behavior");
+                        //Debug.Log("Destroyed old behavior");
                         doSave = true;
                     }
                     _nodeBehavior = value;
                     if (_nodeBehavior && !UnityEditor.AssetDatabase.Contains(_nodeBehavior))
                     {
-                        Debug.Log(name + "(" + GetType() + ") is saving " + _nodeBehavior);
+                        //Debug.Log(name + "(" + GetType() + ") is saving " + _nodeBehavior);
                         UnityEditor.AssetDatabase.AddObjectToAsset(_nodeBehavior, this);
                         doSave = true;
                     }

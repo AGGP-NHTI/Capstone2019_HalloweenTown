@@ -52,7 +52,7 @@ namespace AI
             }
         }
 
-        public static void DrawPath(Vector3 currentPos, List<Vector3> pathPoints, float stayTime)
+        public static void DrawPath(Vector3 currentPos, Vector3[] pathPoints, float stayTime)
         {
             //Debug line drawing
             Vector3 prevPoint = currentPos;
