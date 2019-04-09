@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aeca5303b90bf249a68d7b90f1e706c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  momMusic: {fileID: 8300000, guid: 1ccd7978718782945b3753e702040d5f, type: 3}
+  momMusic: {fileID: 8300000, guid: 3b459f1d35c3c2642bab76f2557564fd, type: 3}
   currentPhase: 0
   roundElapsedTime: 0
   roundStartEndTime: -1
@@ -161,5 +161,7 @@ MonoBehaviour:
     type: 2}
   momPrefab: {fileID: 1801093922664852, guid: 7ba9d9594a7258340818c5f60062d2eb, type: 2}
   spawnedMom: {fileID: 0}
+  asource: {fileID: 82279428320691270}
+  pitch: 0.001
   timeBeforeReturningToMenu: 5
   MainMenuBuildIndex: 0
