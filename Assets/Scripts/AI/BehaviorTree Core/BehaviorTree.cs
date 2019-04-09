@@ -10,35 +10,12 @@ namespace AI
     {
         public Root root;
 
-        [HideInInspector] public Blackboard currentBlackboard;
-        protected Stack<Node> _nodesToProcess;
-        //On the stack:
-        //1 : ActiveLeaf
-        //2 : Any Sequences
-        //If nothing, return to root
-        public Node ActiveNode
-        {
-            get
-            {
-                if (_nodesToProcess == null)
-                {
-                    return null;
-                }
-                else if(_nodesToProcess.Count > 0)
-                {
-                    return _nodesToProcess.Peek();
-                }
-                else
-                {
-                    return root;
-                }
-            }
-        }
+        [HideInInspector] public AIController currentAI;
 
-        public virtual void ProcessTree(Blackboard b)
+        public virtual void ProcessTree(AIController ai)
         {
-            currentBlackboard = b;
-            Node activeNode = _nodesToProcess.Peek();
+            currentAI = ai;
+            Node activeNode = ai.ActiveNode;
             if(activeNode == null)
             {
                 activeNode = root;
@@ -46,26 +23,29 @@ namespace AI
 
             if(activeNode.Process(this))
             {
-                if(_nodesToProcess.Count > 0)
+                if(currentAI.NodesToProcess.Count > 0)
                 {
-                    _nodesToProcess.Pop();
+                    if(currentAI.ActiveNode is Sequence)
+                    {
+                        currentAI.instanceSequencePositions.Remove(currentAI.ActiveNode as Sequence);
+                    }
+                    //Debug.Log("Popping " + currentAI.ActiveNode + " for " + currentAI);
+                    currentAI.NodesToProcess.Pop();
                 }
             }
-            currentBlackboard = null;
+            currentAI = null;
         }
 
         public virtual void QueueNode(Node n)
         {
-            _nodesToProcess.Push(n);
-        }
-
-        public virtual void InterruptBehavior()
-        {
-            Node activeNode = _nodesToProcess.Peek();
-            if(activeNode is Leaf)
+            if(currentAI == null)
             {
-                (activeNode as Leaf).ForceBehaviorToEnd();
+                //Debug.LogWarning("Could not QueueNode at this time - no AIController");
+                return;
             }
+
+            //Debug.Log("Queueing node " + n + " for " + currentAI);
+            currentAI.NodesToProcess.Push(n);
         }
 
 #if UNITY_EDITOR

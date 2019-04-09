@@ -4,20 +4,19 @@ using UnityEngine;
 
 using AI;
 
-public class MoveToLocation : AI.Behavior
+public class Null : AI.Behavior
 {
-    public override void OnEnter(Blackboard b)
+    public override void OnEnter(AIController ai)
     {
         _currentPhase = StatePhase.ACTIVE;
     }
 
-    public override void ActiveBehavior(Blackboard b)
+    public override void ActiveBehavior(AIController ai)
     {
-        Debug.Log("Yaahhhahaa!");
         _currentPhase = StatePhase.EXITING;
     }
 
-    public override void OnExit(Blackboard b)
+    public override void OnExit(AIController ai)
     {
         _currentPhase = StatePhase.INACTIVE;
     }

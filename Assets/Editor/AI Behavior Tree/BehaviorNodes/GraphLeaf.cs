@@ -19,10 +19,6 @@ namespace BehaviourTreeUI
             //Also will need to check:
             //If a a behavior is chosen (maybe null behaviors are fine? Probably not);
             //If behavior is valid (may not be anything to check here)
-            if(sourceNode.NodeBehavior == null)
-            {
-                return Validation(false);
-            }
             return Validation(AllSlotsUsed());
         }
 
@@ -34,7 +30,6 @@ namespace BehaviourTreeUI
             {
                 AI.Node aiNode = tree.CreateNode(sourceNode);
                 nodeAssetSaver.Invoke(this, aiNode.name);
-                sourceNode = aiNode as AI.Leaf;
             }
 
             //Confirms that the nodeBehavior is saved to AssetDatabase

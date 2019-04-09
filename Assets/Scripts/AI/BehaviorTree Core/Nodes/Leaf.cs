@@ -16,11 +16,10 @@ namespace AI
             }
             set
             {
-                if (UnityEditor.AssetDatabase.Contains(this))
+                if(UnityEditor.AssetDatabase.Contains(this))
                 {
                     bool doSave = false;
-                    Debug.Log("tempPre:" + _nodeBehavior);
-                    if (UnityEditor.AssetDatabase.Contains(_nodeBehavior) && _nodeBehavior != value)
+                    if(UnityEditor.AssetDatabase.Contains(_nodeBehavior) && _nodeBehavior != value)
                     {
                         //RemoveObjectFromAsset does not exist before 2018.3
                         //UnityEditor.AssetDatabase.RemoveObjectFromAsset(_nodeBehavior);
@@ -28,7 +27,6 @@ namespace AI
                         Debug.Log("Destroyed old behavior");
                         doSave = true;
                     }
-                    Debug.Log("postPre:" + value);
                     _nodeBehavior = value;
                     if (_nodeBehavior && !UnityEditor.AssetDatabase.Contains(_nodeBehavior))
                     {
@@ -37,7 +35,7 @@ namespace AI
                         doSave = true;
                     }
 
-                    if(doSave)
+                    if (doSave)
                     {
                         UnityEditor.AssetDatabase.SaveAssets();
                     }
@@ -49,7 +47,7 @@ namespace AI
             }
         }
 
-        protected Behavior.StatePhase _previousPhase;
+        protected Behavior.StatePhase _previousPhase = Behavior.StatePhase.INACTIVE;
 
         public override bool Process(BehaviorTree tree)
         {
@@ -59,53 +57,65 @@ namespace AI
                 return true;
             }
 
-            Behavior.StatePhase phaseOnStateProcessing = _nodeBehavior.CurrentPhase;
+            //This will only be true when the node is first used by the currentAI
+            if(tree.currentAI.behaviorInstance == null)
+            {
+                tree.QueueNode(this);
+                tree.currentAI.behaviorInstance = ScriptableObject.CreateInstance(_nodeBehavior.GetType()) as Behavior;
+                _previousPhase = Behavior.StatePhase.INACTIVE;
+            }
 
-            switch (_nodeBehavior.CurrentPhase)
+            Behavior.StatePhase stateOnProcessing = tree.currentAI.behaviorInstance.CurrentPhase;
+            //Debug.Log(name + " processing " + tree.currentAI.behaviorInstance + " with phase " + tree.currentAI.behaviorInstance.CurrentPhase + "\nPrev:" + _previousPhase + " for " + tree.currentAI.name);
+
+            switch (tree.currentAI.behaviorInstance.CurrentPhase)
             {
                 case Behavior.StatePhase.ENTERING:
                     {
-                        if (_previousPhase != _nodeBehavior.CurrentPhase)
+                        if (_previousPhase != tree.currentAI.behaviorInstance.CurrentPhase)
                         {
-                            _nodeBehavior.OnEnter(tree.currentBlackboard);
+                            tree.currentAI.behaviorInstance.OnEnter(tree.currentAI);
                         }
                         else
                         {
-                            _nodeBehavior.EnterBehavior(tree.currentBlackboard);
+                            tree.currentAI.behaviorInstance.EnterBehavior(tree.currentAI);
                         }
                         break;
                     }
                 case Behavior.StatePhase.ACTIVE:
                     {
-                        _nodeBehavior.ActiveBehavior(tree.currentBlackboard);
+                        tree.currentAI.behaviorInstance.ActiveBehavior(tree.currentAI);
                         break;
                     }
                 case Behavior.StatePhase.EXITING:
                     {
-                        if (_previousPhase != _nodeBehavior.CurrentPhase)
+                        if (_previousPhase != tree.currentAI.behaviorInstance.CurrentPhase)
                         {
-                            _nodeBehavior.OnExit(tree.currentBlackboard);
+                            tree.currentAI.behaviorInstance.OnExit(tree.currentAI);
                         }
                         else
                         {
-                            _nodeBehavior.ExitBehavior(tree.currentBlackboard);
+                            tree.currentAI.behaviorInstance.ExitBehavior(tree.currentAI);
                         }
                         break;
                     }
                 case Behavior.StatePhase.INACTIVE:
                     {
+                        Destroy(tree.currentAI.behaviorInstance);
+                        _previousPhase = Behavior.StatePhase.INACTIVE;
                         return true;
                     }
             }
 
+            _previousPhase = stateOnProcessing;
             return false;
         }
 
-        public virtual void ForceBehaviorToEnd()
+        public virtual void ForceBehaviorToEnd(AIController ai)
         {
-            if(_nodeBehavior != null)
+            if(ai.behaviorInstance != null)
             {
-                _nodeBehavior.ForceEndState();
+                ai.behaviorInstance.ForceEndState();
             }
         }
     }
