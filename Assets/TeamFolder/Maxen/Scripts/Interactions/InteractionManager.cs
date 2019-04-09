@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
-{
+{   
     public Pawn MyPawn;
     public Interactable selectedInteractable;
     public WorldIcon interactIcon;
 
+    ParticleManager particleManager;
+    
     public float interactionRange = 3.0f;
 
     protected float _interactionDuration = 0.0f;
+
     protected bool _waitingForButtonRelease = false;
+
+    public void Start()
+    {
+        particleManager = GetComponent<ParticleManager>();
+    }
 
     public virtual void TryToInteract(bool value)
     {
@@ -19,10 +27,17 @@ public class InteractionManager : MonoBehaviour
         {
             if (selectedInteractable && !_waitingForButtonRelease)
             {
+                if(selectedInteractable.tag == "Vampire Mask" || selectedInteractable.tag == "Witch Mask" || selectedInteractable.tag == "Werewolf Mask" || selectedInteractable.tag == "Ghost Mask")
+                {
+                    particleManager.tornadoPart();
+                }
+
                 if (_interactionDuration >= selectedInteractable.interactTime)
                 {
+                    
                     selectedInteractable.Interact(MyPawn);
                     _waitingForButtonRelease = true;
+                    
                 }
                 _interactionDuration += Time.deltaTime;
             }

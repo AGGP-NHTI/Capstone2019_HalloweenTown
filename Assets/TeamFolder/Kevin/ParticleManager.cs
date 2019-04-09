@@ -20,6 +20,7 @@ public class ParticleManager : MonoBehaviour {
 
     public ParticleSystem hawooParticles;
 
+    public ParticleSystem eggParticles;
 
     public void booPart()
     {
@@ -59,5 +60,10 @@ public class ParticleManager : MonoBehaviour {
     public void wolfPart()
     {
        hawooParticles.Play();
+    }
+
+    public void eggPart()
+    {
+        eggParticles.Play();
     }
 }
