@@ -44,7 +44,7 @@ public class ToiletPaper : Projectile {
             Debug.Log("Collision Toilet Paper");
             if (collision.gameObject != owner)
             {
-                Debug.Log("Code should not be here");
+
                 GameObject player = collision.gameObject;
                 Stun stun = player.GetComponent<Stun>();
 
@@ -53,9 +53,13 @@ public class ToiletPaper : Projectile {
                     stun.StunPlayer(stunTime);
                     //StartCoroutine(stun.suspendMovement(stunTime));
                 }
+                Destroy(gameObject);
             }
         }
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     /*Vector3 SampleParabola(Vector3 start, Vector3 end, float height, float t)
