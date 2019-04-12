@@ -40,15 +40,20 @@ public class ToiletPaper : Projectile {
     protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-        {            
-            GameObject player = collision.gameObject;            
-            Stun stun = player.GetComponent<Stun>();
-
-            if (stun.stunned == false)
+        {
+            Debug.Log("Collision Toilet Paper");
+            if (collision.gameObject != owner)
             {
-                stun.StunPlayer(stunTime);
+                Debug.Log("Code should not be here");
+                GameObject player = collision.gameObject;
+                Stun stun = player.GetComponent<Stun>();
+
+                if (stun.stunned == false)
+                {
+                    stun.StunPlayer(stunTime);
                     //StartCoroutine(stun.suspendMovement(stunTime));
-            }           
+                }
+            }
         }
         Destroy(gameObject);
     }

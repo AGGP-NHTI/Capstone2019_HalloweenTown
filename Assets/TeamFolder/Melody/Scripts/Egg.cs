@@ -47,11 +47,16 @@ public class Egg : Projectile {
     }
     protected void OnCollisionEnter(Collision collision)
     {
+       
         if (collision.gameObject.tag == "Player")
         {
-            GameObject player = collision.gameObject;
-            HealthBar hb = player.GetComponent<HealthBar>();
-            hb.TakeDamage(damage);
+            
+            if (collision.gameObject != owner)
+            { 
+                GameObject player = collision.gameObject;
+                HealthBar hb = player.GetComponent<HealthBar>();
+                hb.TakeDamage(damage);
+            }
         }
         Destroy(gameObject);
     }
