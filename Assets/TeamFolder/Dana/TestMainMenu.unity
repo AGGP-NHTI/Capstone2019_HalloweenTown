@@ -754,35 +754,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 23
       objectReference: {fileID: 0}
-    - target: {fileID: 4224832324508940, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.666
-      objectReference: {fileID: 0}
-    - target: {fileID: 4274074700959536, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.666
-      objectReference: {fileID: 0}
-    - target: {fileID: 4732491066639290, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.666
-      objectReference: {fileID: 0}
-    - target: {fileID: 114748930901580532, guid: ae65d3f0f08f44e49a106c257059d0be,
-        type: 2}
-      propertyPath: numberEggs
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114774761645812920, guid: ae65d3f0f08f44e49a106c257059d0be,
-        type: 2}
-      propertyPath: ghostPref
-      value: 
-      objectReference: {fileID: 1791705977054254, guid: c6144b81c509a854ca7550aeba5b1aab,
-        type: 2}
-    - target: {fileID: 114774761645812920, guid: ae65d3f0f08f44e49a106c257059d0be,
-        type: 2}
-      propertyPath: vampirePref
-      value: 
-      objectReference: {fileID: 1860121824587268, guid: 6a707a03bcee1314aaa9893275093334,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
   m_IsPrefabAsset: 0
