@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtNumberEggs: {fileID: 114126889355792966}
   txtNumberToiletPaper: {fileID: 114877438022335260}
-  numberEggs: 0
+  numberEggs: 100
   numberToiletPaper: 0
   toiletPaperMax: 3
 --- !u!114 &114774761645812920
@@ -2645,11 +2645,11 @@ MonoBehaviour:
   scriptName: 
   currentModel: {fileID: 1723638829972258}
   playerPref: {fileID: 1641274433880270, guid: a9a64e510f6b55143a4094e5dca81b40, type: 2}
-  ghostPref: {fileID: 1144466450342428, guid: 828d40f042b068941b5a813f12ef5a9b, type: 2}
+  ghostPref: {fileID: 1791705977054254, guid: c6144b81c509a854ca7550aeba5b1aab, type: 2}
   witchPref: {fileID: 1127191291754076, guid: 954e5afd2e502f24cbd2730ef5a557cf, type: 2}
   werewolfPref: {fileID: 1738160862842466, guid: c6dc78bafaca2ac449d833241c1fe8bc,
     type: 2}
-  vampirePref: {fileID: 1901844044293570, guid: 571b7a89135d1f04d8fdd5b3975d1f03,
+  vampirePref: {fileID: 1860121824587268, guid: 6a707a03bcee1314aaa9893275093334,
     type: 2}
   ultBar: {fileID: 114851255990710114}
   equipedMask: {fileID: 0}

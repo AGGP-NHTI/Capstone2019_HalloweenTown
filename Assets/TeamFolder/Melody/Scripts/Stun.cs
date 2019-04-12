@@ -10,6 +10,8 @@ public class Stun : MonoBehaviour {
     public bool stunned = false;
 
     Pawn pawn;
+
+   public Coroutine stun;
     
     // Use this for initialization
     void Start () {
@@ -27,7 +29,10 @@ public class Stun : MonoBehaviour {
 
     public void StunPlayer(float stunTime)
     {
-        StartCoroutine(suspendMovement(stunTime));
+        if(stun == null)
+        {
+            stun = StartCoroutine(suspendMovement(stunTime));
+        }        
     }
     
 
@@ -71,5 +76,7 @@ public class Stun : MonoBehaviour {
         myBoo.canBoo = couldBoo;
         stunned = false;
         Debug.Log("done being stunned");
+
+        stun = null;
     }
 }

@@ -117,17 +117,19 @@ public class Boo : MonoBehaviour {
 
                             if (difference <= radiusOfBoo)
                             {
-                                //Debug.Log("Got Booed");
-                                hitColliders[i].GetComponent<ParticleManager>().batPart();//stun particles circling bats
-                                hitColliders[i].GetComponent<ParticleManager>().dropPart();//drop candy particles
+                                if (hitColliders[i].GetComponent<Pawn>().myStun.stun == null)
+                                {//Debug.Log("Got Booed");
+                                    hitColliders[i].GetComponent<ParticleManager>().batPart();//stun particles circling bats
+                                    hitColliders[i].GetComponent<ParticleManager>().dropPart();//drop candy particles
 
-                                HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
-                                //hb.TakeDamage(damage);//for testing
-                                //StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
-                                hitColliders[i].GetComponent<Pawn>().myStun.StunPlayer(5f);
-                                hb.HitOof();
+                                    HealthBar hb = hitColliders[i].GetComponent<HealthBar>();
+                                    //hb.TakeDamage(damage);//for testing
+                                    //StartCoroutine(hitColliders[i].GetComponent<Pawn>().myStun.suspendMovement(5f));
+                                    hitColliders[i].GetComponent<Pawn>().myStun.StunPlayer(5f);
+                                    hb.HitOof();
 
-                                pawn.myMask.SuccesfulBoo();
+                                    pawn.myMask.SuccesfulBoo();
+                                }
                             }
                             soundManager.Boo();
                             particleManager.booPart();//shoots out boo and bat particles
