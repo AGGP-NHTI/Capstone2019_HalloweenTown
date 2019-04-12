@@ -25,7 +25,7 @@ public class MoveScript : MonoBehaviour
     public float sprintMultiplier = 2.0f;
     public float crouchMultiplier = 0.5f;
     public float crouchRate = 0.2f;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 3.0f;
     public float maxGroundAngle = 45;
     public float coyoteTimeDuration = 0.1f;
     public float gravity = 20.0f;
@@ -238,7 +238,11 @@ public class MoveScript : MonoBehaviour
             }
             if (_isJumping)
             {
-                if (anim)
+                //anim.GetBool("jumpBool");
+
+                
+                    //anim.GetCurrentAnimatorClipInfo(0).Length == 0
+                if (anim && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
                 {
                     anim.SetBool("jumpBool", true);
                 }

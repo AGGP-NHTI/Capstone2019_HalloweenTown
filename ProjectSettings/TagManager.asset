@@ -12,6 +12,7 @@ TagManager:
   - Witch Mask
   - Vampire Mask
   - TPPickUp
+  - RoundManager
   layers:
   - Default
   - TransparentFX
