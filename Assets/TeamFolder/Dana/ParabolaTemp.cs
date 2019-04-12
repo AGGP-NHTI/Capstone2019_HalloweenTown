@@ -72,17 +72,17 @@ public class ParabolaTemp : MonoBehaviour {
 
     public List<Vector3> DrawLine()
     {
-        parabarrel = new GameObject("programaticallyCreatedParabollaBarrel");
-        model = gameObject.GetComponent<Pawn>().myMask.currentModel;
-        parabarrel.transform.SetParent(model.transform);
-        parabarrel.transform.position = pawn.barrel.transform.position;
-        parabarrel.transform.localScale = pawn.barrel.transform.localScale;
-        parabarrel.transform.rotation = model.transform.rotation;
+        //parabarrel = new GameObject("programaticallyCreatedParabollaBarrel");
+        //model = gameObject.GetComponent<Pawn>().myMask.currentModel;
+        //parabarrel.transform.SetParent(model.transform);
+        //parabarrel.transform.position = pawn.barrel.transform.position;
+        //parabarrel.transform.localScale = pawn.barrel.transform.localScale;
+        //parabarrel.transform.rotation = model.transform.rotation;
         //set layer here 
         //parabarrel.layer = pawn.myMask;
         List<Vector3> parabolaPoints = new List<Vector3>();
-        Vector3 point = parabarrel.transform.position;
-        Vector3 pointVelocity = parabarrel.transform.forward * parabolaMagnitude;
+        Vector3 point = pawn.barrel.transform.position;
+        Vector3 pointVelocity = pawn.barrel.transform.forward * parabolaMagnitude;
 
         parabolaPoints.Add(point);
 
@@ -110,7 +110,7 @@ public class ParabolaTemp : MonoBehaviour {
 
         ln.positionCount = parabolaPoints.Count;
         ln.SetPositions(parabolaPoints.ToArray());
-        GameObject.Destroy(parabarrel);
+       
         return parabolaPoints;
     }
 
