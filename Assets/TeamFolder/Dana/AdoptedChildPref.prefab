@@ -1934,8 +1934,8 @@ MonoBehaviour:
   showParabola: 0
   eggMagnitude: 100
   paperMagnitude: 500
-  eggStep: 0.2
-  paperStep: 0.4
+  eggStep: 0.3
+  paperStep: 0.5
 --- !u!114 &114038185648003124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2877,6 +2877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ln: {fileID: 120146085495411118}
+  parabarrel: {fileID: 0}
   test: {x: 0, y: 0, z: 0, w: 0}
   endpoint: {fileID: 1334646020321272}
   parabolaMagnitude: 10

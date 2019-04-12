@@ -47,18 +47,25 @@ public class Egg : Projectile {
     }
     protected void OnCollisionEnter(Collision collision)
     {
-       
+        bool destroy = true;
         if (collision.gameObject.tag == "Player")
-        {
-            
+        {            
             if (collision.gameObject != owner)
             { 
                 GameObject player = collision.gameObject;
                 HealthBar hb = player.GetComponent<HealthBar>();
                 hb.TakeDamage(damage);
             }
+            else
+            {
+                Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>(), true);
+                destroy = false;
+            }
         }
-        Destroy(gameObject);
+        if (destroy)
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator ThrowEgg()
