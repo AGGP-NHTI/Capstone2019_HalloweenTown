@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ParabolaTemp : MonoBehaviour {
 
-    public LineRenderer ln;
+    LineRenderer ln;
     GameObject model;
     public GameObject parabarrel;
     public Quaternion test;
@@ -18,8 +18,11 @@ public class ParabolaTemp : MonoBehaviour {
     LayerMask notHittable;
     private void Start()
     {
-       
-        
+
+        if (parabarrel != null)
+        {
+            ln = parabarrel.GetComponent<LineRenderer>();
+        }
         notHittable = 1 << ~LayerMask.NameToLayer("NotHittable");
 
         model = gameObject.GetComponent<Pawn>().myMask.currentModel;
@@ -31,7 +34,20 @@ public class ParabolaTemp : MonoBehaviour {
     }
     void Update()
     {
-        
+        if (pawn != null && ln != null)
+        {
+            Debug.Log("pawn exists");
+            if (pawn.myProjectileManager.showParabola)
+            {
+                ln.enabled = true;
+                DrawLine();
+            }
+            else
+            {
+                ln.enabled = false;
+
+            }
+        }
     }
 
 

@@ -69,12 +69,12 @@ public class ProjectileManager : MonoBehaviour {
 
         if (showParabola)
         {    
-            pawn.myParabola.ln.enabled = true;
-            pawn.myParabola.DrawLine();
+            //pawn.myParabola.ln.enabled = true;
+            //pawn.myParabola.DrawLine();
        }
        else
         {
-            pawn.myParabola.ln.enabled = false;
+            //pawn.myParabola.ln.enabled = false;
         }
 
     }
