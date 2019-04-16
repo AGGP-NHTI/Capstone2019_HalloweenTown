@@ -11,16 +11,22 @@ public class ToiletPaper : Projectile {
     float stunTime = 5f;
     public List<Vector3> parabolaPoints = new List<Vector3>();
     float speed = 50f;
-    
+
+    public ParticleSystem tpTrail;
+
     // Use this for initialization
     void Start () {
+        
+
         base.Start();
+        tpTrail.Play();
         StartCoroutine(ThrowToiletPaper());
+        
         //doathrow();
         //throwAngle = (transform.forward  + transform.up).normalized * throwForce;
         //throwAngle += moveSpeed;
         // rb.velocity = throwAngle;
-       
+
         //for(int i =0; i < throwyPoints.Length; i++)
         //{
         //    gameObject.transform.position =  throwyPoints[i];
@@ -39,8 +45,10 @@ public class ToiletPaper : Projectile {
 
     protected void OnCollisionEnter(Collision collision)
     {
+        
         if (collision.gameObject.tag == "Player")
         {
+            
             Debug.Log("Collision Toilet Paper");
             if (collision.gameObject != owner)
             {
@@ -88,9 +96,11 @@ public class ToiletPaper : Projectile {
     }*/
 
     IEnumerator ThrowToiletPaper()
-    {        
+    {
+        
         for (int i = 1; i < parabolaPoints.Count; i++)
         {
+            
             transform.position = Vector3.MoveTowards(transform.position, parabolaPoints[i], speed * Time.deltaTime);
             //gameObject.transform.position = throwyPoints[i];
             if (gameObject.transform.position == parabolaPoints[parabolaPoints.Count-1])

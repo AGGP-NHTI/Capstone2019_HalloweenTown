@@ -954,6 +954,7 @@ GameObject:
   - component: {fileID: 224041604739833182}
   - component: {fileID: 222454594234500740}
   - component: {fileID: 114383845968681942}
+  - component: {fileID: 114907610787705146}
   m_Layer: 0
   m_Name: CandyIcon
   m_TagString: Untagged
@@ -1182,7 +1183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792628713573326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.666, y: 0, z: 0}
+  m_LocalPosition: {x: 0.66600037, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746539219275856}
@@ -1196,7 +1197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872167124162834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.666, y: 0, z: -2}
+  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224965725725197874}
@@ -1491,7 +1492,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004278199457754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.666, y: 0, z: -2}
+  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4931619105025190}
@@ -1572,7 +1573,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405976558990932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.702372, y: 2.9478652e-16, z: -14.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4989225572559478}
@@ -2451,6 +2452,10 @@ MonoBehaviour:
   witchSprite: {fileID: 21300000, guid: b8df34aaa41797b4f9587ac041a9ff0c, type: 3}
   vampireSprite: {fileID: 21300000, guid: 1c030ed2838a7ae4cbf6d90ef9a179b9, type: 3}
   werewolfSprite: {fileID: 21300000, guid: 4220f69e139e9f74bafc3c6277d11af9, type: 3}
+  firstPlace: {fileID: 0}
+  secondPlace: {fileID: 0}
+  thirdPlace: {fileID: 0}
+  lastPlace: {fileID: 0}
 --- !u!114 &114646055625056166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2543,6 +2548,7 @@ MonoBehaviour:
   healthBar: {fileID: 114579481521415928}
   health: 0
   ghostUlt: 0
+  eggSplat: {fileID: 0}
 --- !u!114 &114720540912901156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2825,6 +2831,23 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4746539219275856}
+--- !u!114 &114907610787705146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935520561964318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fc140b344ef894e88469fadc7464c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114619201880412736}
+  placementImages:
+  - {fileID: 21300002, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
+  - {fileID: 21300012, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
+  - {fileID: 21300010, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
+  - {fileID: 21300014, guid: fea96a0220c344686b40cf9b233701f1, type: 3}
 --- !u!114 &114908046190122620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26078,7 +26101,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
