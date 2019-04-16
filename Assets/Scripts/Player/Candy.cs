@@ -15,13 +15,9 @@ public class Candy : MonoBehaviour
     public bool showXForCandy; 
     public GameObject candyPrefab;
     protected PlayerController _myController;
-
-    PlaceImage placement;
-
+    
     void Start()
     {
-        placement = gameObject.GetComponentInChildren<PlaceImage>();
-
         if (candyText)
         {
             candyText.text = " " + candy.ToString();
