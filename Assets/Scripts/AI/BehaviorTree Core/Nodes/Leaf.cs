@@ -16,7 +16,8 @@ namespace AI
             }
             set
             {
-                /*if(UnityEditor.AssetDatabase.Contains(this))
+#if UNITY_EDITOR
+                if (UnityEditor.AssetDatabase.Contains(this))
                 {
                     bool doSave = false;
                     if(UnityEditor.AssetDatabase.Contains(_nodeBehavior) && _nodeBehavior != value)
@@ -41,9 +42,10 @@ namespace AI
                     }
                 }
                 else
+#endif
                 {
                     _nodeBehavior = value;
-                }*/
+                }
             }
         }
 
