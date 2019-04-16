@@ -11,73 +11,80 @@ public class ControllerRPC : MonoBehaviour {
 	void Start () {
         if (PhotonNetwork.IsMasterClient)
         {
-             Manager.instance.photonManager.MasterPhotonView = gameObject.GetPhotonView();
+            gameObject.GetPhotonView().RPC("SetMaster", RpcTarget.AllBuffered);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    [PunRPC]
+    public void SetMaster()
+    {
+        Manager.managerInstance.photonManager.MasterPhotonView = gameObject.GetPhotonView();
+    }
 
     [PunRPC]
     public void ReadyUp(int i)
     {
-        Manager.instance.readyUp[i] = true;
+        Manager.managerInstance.readyUp[i] = true;
     }
 
     [PunRPC]
     public void JoinedGame(int i)
     {
-        Manager.instance.joinedGame[i] = true;
+        Manager.managerInstance.joinedGame[i] = true;
     }
 
     [PunRPC]
     public void NotReadyUp(int i)
     {
-        Manager.instance.readyUp[i] = false;
+        Manager.managerInstance.readyUp[i] = false;
     }
 
     [PunRPC]
     public void NotJoinedGame(int i)
     {
-        Manager.instance.joinedGame[i] = false;
+        Manager.managerInstance.joinedGame[i] = false;
     }
 
     [PunRPC]
     public void StartGameCountdown()
     {
-        if (Manager.instance.RoundReadyToStart)
+        if (Manager.managerInstance.RoundReadyToStart)
         {
-            if (Manager.instance.startGameTimer == null)
+            if (Manager.managerInstance.startGameTimer == null)
             {
                 Debug.Log("timer");
-                Manager.instance.startGameTimer = StartCoroutine(Manager.instance.BeginGameCountDown());
+                Manager.managerInstance.startGameTimer = StartCoroutine(Manager.managerInstance.BeginGameCountDown());
             }
         }
-        else if (Manager.instance.startGameTimer != null)
+        else if (Manager.managerInstance.startGameTimer != null)
         {
-            StopCoroutine(Manager.instance.startGameTimer);
+            StopCoroutine(Manager.managerInstance.startGameTimer);
 
-            Manager.instance.startGameTimer = null;
+            Manager.managerInstance.startGameTimer = null;
         }
     }
 
     [PunRPC]
-    public void EndGameCountdown()
+    public void EndGameCountdown(int index)
     {
-        if (Manager.instance.startGameTimer != null)
+        if (Manager.managerInstance.startGameTimer != null)
         {
-            StopCoroutine(Manager.instance.startGameTimer);
-
-            Manager.instance.startGameTimer = null;
+            StopCoroutine(Manager.managerInstance.startGameTimer);
+            
+            Manager.managerInstance.startGameTimer = null;            
         }
     }
 
     [PunRPC]
-    public void RoundReadyToStart(bool check1, bool check2)
+    public void ReadyToStart(bool check1, bool check2)
     {
-        Manager.instance.RoundReadyToStart = check1 && check2;
+        Manager.managerInstance.RoundReadyToStart = check1 && check2;
     }
+
+    [PunRPC]
+    public void RemovePhotonObject(int index)
+    {
+       PhotonManager.photonInstance.PhotonObjects.RemoveAt(index);
+    }    
     
 }

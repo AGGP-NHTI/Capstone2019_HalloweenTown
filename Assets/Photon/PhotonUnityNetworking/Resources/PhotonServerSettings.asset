@@ -41,5 +41,8 @@ MonoBehaviour:
   - NotReadyUp
   - RoundReadyToStart
   - StartGameCountdown
+  - ReadyToStart
+  - RemovePhotonObject
+  - SetMaster
   DisableAutoOpenWizard: 1
   ShowSettings: 0

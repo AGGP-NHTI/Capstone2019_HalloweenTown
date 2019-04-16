@@ -8,6 +8,7 @@ using UnityEngine.UI;
 //using UnityEngine.Networking;
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
+    public static PhotonManager photonInstance;
 
     public string verNum = "0.1";
     public string roomName = "Lobby1";
@@ -25,14 +26,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public Text test;
 
     public GameObject playerControllerPref;
-    public List<GameObject> PlayerControllers;
+    public List<GameObject> PhotonObjects;
     public PhotonView MasterPhotonView;
 
     public void Start()
     {
         DontDestroyOnLoad(this);
-        //photonView = MasterPhotonView;
 
+        photonInstance = this;
     }
 
     public void Update()
@@ -64,7 +65,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void SpawnController()
     {
         Debug.Log("SpawnController");
-        PlayerControllers.Add(PhotonNetwork.Instantiate(playerControllerPref.name, Vector3.zero, transform.rotation) as GameObject);
+        PhotonObjects.Add(PhotonNetwork.Instantiate(playerControllerPref.name, Vector3.zero, transform.rotation) as GameObject);
         
     }
 
@@ -121,6 +122,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
            // MasterPhotonView.RPC("OnPhotonPlayerConnected", RpcTarget.Others);
         }   */
+        
 
 
         isConnectedToLobby = true;
