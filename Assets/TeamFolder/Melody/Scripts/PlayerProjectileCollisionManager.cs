@@ -11,8 +11,10 @@ public class PlayerProjectileCollisionManager : MonoBehaviour {
     public float iFrameTimer = 8.0f;
     public bool canBeHit = true;
     Stun myStun;
-	// Use this for initialization
-	void Start () {
+    ParticleManager eggParticles;
+
+    // Use this for initialization
+    void Start () {
         myMoveScript = GetComponent<MoveScript>();
         myHealthBar = GetComponent<HealthBar>();
         myProjecctileManager = GetComponent<ProjectileManager>();

@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour {
 
     SoundManager soundManager;
     ParticleManager particleManager;
+    public ParticleSystem eggSplat;
 
     //public GameObject dropCandy;//The candy
     //public Transform player;//get player transform
@@ -21,7 +22,8 @@ public class HealthBar : MonoBehaviour {
         pawn = GetComponent<Pawn>();
         soundManager = GetComponent<SoundManager>();
         particleManager = GetComponent<ParticleManager>();
-	}
+        
+    }
 
     private void Update()
     {
@@ -30,6 +32,11 @@ public class HealthBar : MonoBehaviour {
 
     public void TakeDamage(float amount) // changed - needs testing
     {
+        
+        eggSplat = Instantiate(eggSplat, transform.position, Quaternion.identity) as ParticleSystem;
+
+        particleManager.eggPart();
+
         if (pawn.myMask.hasMask)
         {
             if (health >= 0)//|| !ghostUlt)//if ghost is not ulting
@@ -37,18 +44,20 @@ public class HealthBar : MonoBehaviour {
                 health -= amount;
                 soundManager.Oof();
                 particleManager.hitPart();
-                particleManager.eggPart();
+
             }
         }
         else
         {
             pawn.MyCandy.DropCandy();
         }
+        
     }
 
     public void HealHealth(float amount)
     {
         health += amount;
+        
     }
 
     public void HitOof()

@@ -34,16 +34,16 @@ public class InteractionManager : MonoBehaviour
 
                 if (_interactionDuration >= selectedInteractable.interactTime)
                 {
-                    
+                    particleManager.tornadoPartStop();
                     selectedInteractable.Interact(MyPawn);
                     _waitingForButtonRelease = true;
-                    
                 }
                 _interactionDuration += Time.deltaTime;
             }
         }
         else
         {
+            
             _interactionDuration = 0.0f;
             _waitingForButtonRelease = false;
         }

@@ -16,8 +16,12 @@ public class Candy : MonoBehaviour
     public GameObject candyPrefab;
     protected PlayerController _myController;
 
+    PlaceImage placement;
+
     void Start()
     {
+        placement = gameObject.GetComponentInChildren<PlaceImage>();
+
         if (candyText)
         {
             candyText.text = " " + candy.ToString();
@@ -33,6 +37,11 @@ public class Candy : MonoBehaviour
         {
             candyText.text = " " + candy.ToString();
         }
+
+        
+
+
+      
     }
 
     public void CandySuck(int candySuck)
@@ -97,10 +106,12 @@ public class Candy : MonoBehaviour
         if(Scoreboard.ContainsKey(pc))
         {
             Scoreboard[pc] = candy;
+            
         }
         else
         {
             Scoreboard.Add(pc, candy);
+            
         }
     }
 }

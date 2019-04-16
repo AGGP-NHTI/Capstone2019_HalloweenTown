@@ -52,6 +52,11 @@ public class ParticleManager : MonoBehaviour {
         tornadoParticles.Play();
     }
 
+    public void tornadoPartStop()
+    {
+        tornadoParticles.Stop();
+    }
+
     public void vampPart()
     {
         vampireParticles.Play();
