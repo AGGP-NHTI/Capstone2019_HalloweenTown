@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Photon.Pun;
 
 public class MenuScript : MonoBehaviour
 {
     protected int activeMenuIndex = -1;
     protected int previousMenuIndex = -1;
+    public PhotonManager photonManager;
     public GameObject[] MenuScreens;
     public int StartingMenu = 0;
     public EventSystem eventSystem;
@@ -45,6 +47,23 @@ public class MenuScript : MonoBehaviour
         if(activeMenuIndex == 0)
         {
             ChangeMenuTo(1);
+        }
+    }
+
+    public void LocalGame(int newMenuIndex)
+    {
+        PhotonNetwork.OfflineMode = true;
+        ChangeMenuTo(newMenuIndex);
+        //photonManager.AddController();
+    }
+
+    public void OnlineGame(int newMenuIndex)
+    {
+        PhotonNetwork.OfflineMode = false;
+        photonManager.OnlineStart();
+        if (photonManager.connectedtomaster)//make loading screen
+        {
+            ChangeMenuTo(newMenuIndex);
         }
     }
 

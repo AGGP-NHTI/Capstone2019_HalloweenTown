@@ -79,7 +79,7 @@ namespace AI
             if(currentNode is Leaf)
             {
                 NodesToProcess.Push(currentNode);
-                (currentNode as Leaf).ForceBehaviorToEnd(this);
+                //(currentNode as Leaf).ForceBehaviorToEnd(this);
             }
         }
     }

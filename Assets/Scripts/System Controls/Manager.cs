@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class Manager : MonoBehaviour
 {
+    public static Manager instance;
+    public PhotonManager photonManager;
     public GameObject RoundModePrefab;
 
     public List<InputObject> inputObject;
     /*[HideInInspector]*/ public List<bool> joinedGame = new List<bool>(new bool[] {false, false, false, false});
     /*[HideInInspector]*/ public List<bool> readyUp = new List<bool>(new bool[] { false, false, false, false });
     public float CountDownDuration { get; private set; }
-    public bool RoundReadyToStart { get; private set; }
+    public bool RoundReadyToStart;// { get; set; }
     
-    Coroutine startGameTimer;
+    public Coroutine startGameTimer;
 
     protected bool lookForJoining = false;
 	void Start ()
     {
+        instance = this;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 	}
@@ -28,66 +32,143 @@ public class Manager : MonoBehaviour
         {
             bool allPlayersReady = true;
             bool onePlayerInGame = false;
-
-            for (int i = 0; i < inputObject.Count; i++)
-            {         
-                //test if trying to Joined Game                
-                if (inputObject[i].GetStartInput())
-                {                    
-                    joinedGame[i] = true;
-                    Debug.Log("Player " + i + " joined the game!");
-                }
-                
-                //test if trying to Ready Up
-                if(inputObject[i].GetJumpInput() && joinedGame[i])
-                {
-                    readyUp[i] = true;
-                    Debug.Log("Player " + i + " is ready!");
-                }
-
-                //test if trying to Unready/Unjoin
-                if(inputObject[i].GetBooInput())
-                {
-                    if(readyUp[i])
-                    {
-                        readyUp[i] = false;
-                    }
-                    else if(joinedGame[i])
-                    {
-                        joinedGame[i] = false;
-                    }
-                }
-                
-                if (joinedGame[i])
-                {
-                    onePlayerInGame = true;
-                    if (!readyUp[i])
-                    {
-                        allPlayersReady = false;
-                    }
-                }                
-            }
-
-            //Debug.Log("oneplayer " + onePlayerInGame.ToString());
-            RoundReadyToStart = allPlayersReady && onePlayerInGame;
-            if (RoundReadyToStart)
-            {                
-                if (startGameTimer == null)
-                {
-                    Debug.Log("timer");
-                    startGameTimer = StartCoroutine(BeginGameCountDown());
-                }
-            }
-            else if(startGameTimer != null)
+            
+            if (!PhotonNetwork.OfflineMode)
             {
-                StopCoroutine(startGameTimer);
+                for (int i = 0; i < photonManager.PlayerControllers.Count; i++)//make loading screen
+                {
+                    if (PhotonNetwork.PhotonViews[i].IsMine)
+                    {
+                        int index = GetPhotonPlayerIndex();
 
-                startGameTimer = null;
+                        //test if trying to Joined Game                
+                        if (PhotonNetwork.PhotonViews[i].GetComponent<PlayerController>().playerInput.GetStartInput())
+                        {
+                            PhotonNetwork.PhotonViews[i].RPC("JoinedGame", RpcTarget.AllBuffered, index);
+                        }
+
+                        //test if trying to Ready Up
+                        if (PhotonNetwork.PhotonViews[i].GetComponent<PlayerController>().playerInput.GetJumpInput() && joinedGame[i])
+                        {
+                            PhotonNetwork.PhotonViews[i].RPC("ReadyUp", RpcTarget.AllBuffered, index);
+                        }
+
+                        //test if trying to Unready/Unjoin
+                        if (PhotonNetwork.PhotonViews[i].GetComponent<PlayerController>().playerInput.GetBooInput())
+                        {
+                            if (readyUp[i])
+                            {
+                                PhotonNetwork.PhotonViews[i].RPC("NotReadyUp", RpcTarget.AllBuffered, index);
+                            }
+                            else if (joinedGame[i])
+                            {
+                                PhotonNetwork.PhotonViews[i].RPC("NotJoinedGame", RpcTarget.AllBuffered, index);
+                            }
+                        }
+                    }
+
+                    if (joinedGame[i])
+                    {
+                        onePlayerInGame = true;
+                        if (!readyUp[i])
+                        {
+                            allPlayersReady = false;
+                        }
+                    }
+                }
+            }
+            else//local game
+            {
+                for (int i = 0; i < inputObject.Count; i++)
+                {
+                    if (inputObject[i].GetStartInput())
+                    {
+                        joinedGame[i] = true;
+                        Debug.Log("Player " + i + " joined the game!");
+                    }
+
+                    //test if trying to Ready Up
+                    if (inputObject[i].GetJumpInput() && joinedGame[i])
+                    {
+                        readyUp[i] = true;
+                        Debug.Log("Player " + i + " is ready!");
+                    }
+
+                    //test if trying to Unready/Unjoin
+                    if (inputObject[i].GetBooInput())
+                    {
+                        if (readyUp[i])
+                        {
+                            readyUp[i] = false;
+                        }
+                        else if (joinedGame[i])
+                        {
+                            joinedGame[i] = false;
+                        }
+                    }
+
+                    if (joinedGame[i])
+                    {
+                        onePlayerInGame = true;
+                        if (!readyUp[i])
+                        {
+                            allPlayersReady = false;
+                        }
+                    }
+                }
+            }
+            //Debug.Log("oneplayer " + onePlayerInGame.ToString());           
+            if (PhotonNetwork.OfflineMode == false)
+            {
+                if (photonManager.isConnectedToLobby)
+                {
+                    photonManager.MasterPhotonView.RPC("RoundReadyToStart", RpcTarget.AllBuffered, allPlayersReady, onePlayerInGame);
+                    photonManager.MasterPhotonView.RPC("StartGameCountdown", RpcTarget.AllBuffered);
+                }
+            }
+            else
+            {
+                RoundReadyToStart = allPlayersReady && onePlayerInGame;
+                if (RoundReadyToStart)
+                {
+                    if (startGameTimer == null)
+                    {
+                        Debug.Log("timer");
+                        startGameTimer = StartCoroutine(BeginGameCountDown());
+                    }
+                }
+                else if (startGameTimer != null)
+                {
+                    StopCoroutine(startGameTimer);
+
+                    startGameTimer = null;
+                }
             }
         }        
 	}
 
-    IEnumerator BeginGameCountDown()
+    int GetPhotonPlayerIndex()
+    {
+        if(PhotonNetwork.NickName == "Player 1")
+        {
+            return 0;
+        }
+        else if (PhotonNetwork.NickName == "Player 2")
+        {
+            return 1;
+        }
+        else if (PhotonNetwork.NickName == "Player 3")
+        {
+            return 2;
+        }
+        else if (PhotonNetwork.NickName == "Player 4")
+        {
+            return 3;
+        }
+        return -1;
+    }
+
+    public IEnumerator BeginGameCountDown()
     {      
         CountDownDuration = 5f; 
         float endTime = 0;
@@ -138,12 +219,30 @@ public class Manager : MonoBehaviour
     public void StopLookingForPlayers()
     {
         lookForJoining = false;
+        photonManager.connectedtomaster = false;
 
-        if (startGameTimer != null)
+        if (!PhotonNetwork.OfflineMode)
         {
-            StopCoroutine(startGameTimer);
+            photonManager.MasterPhotonView.RPC("EndGameCountdown", RpcTarget.AllBuffered);
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
+            photonManager.isConnectedToLobby = false;
+            foreach(GameObject pc in photonManager.PlayerControllers)
+            {
+                if(pc.GetPhotonView().IsMine)
+                {
+                    PhotonNetwork.Destroy(pc);
+                }                
+            }
+        }
+        else
+        {
+            if (startGameTimer != null)
+            {
+                StopCoroutine(startGameTimer);
 
-            startGameTimer = null;
+                startGameTimer = null;
+            }
         }
     }
 }
