@@ -35,9 +35,9 @@ MonoBehaviour:
     width: 42
     height: 65
   showEmptySlots: 1
-  Label: Selector
+  Label: Players to hunt?
   sourceNode: {fileID: 11400000, guid: f8d573774539d87499b839dac3d8ed7e, type: 2}
-  PropertyOneToEvaluate: 
-  PropertyTwoToEvaluate: 
-  PropertyTwoType: 0
-  Mode: 4
+  PropertyOneToEvaluate: TargetCount
+  PropertyTwoToEvaluate: 0
+  PropertyTwoType: 1
+  Mode: 2

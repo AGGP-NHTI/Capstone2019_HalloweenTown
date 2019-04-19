@@ -8,7 +8,6 @@ using UnityEngine.AI;
 public class MoveToTarget : Behavior
 {
     protected Pawn target;
-    protected float reach;
     Vector3 currentDestination;
 
     protected const float recalculatePathDistance = 5.0f;
@@ -35,20 +34,26 @@ public class MoveToTarget : Behavior
         AI.Util.DrawPath(ai.transform.position, ai.aiPawn.agent.path.corners, ai.treeUpdateInterval * Time.fixedDeltaTime);
 
         bool doPathCalculation = false;
-        if ((ai.transform.position - target.transform.position).sqrMagnitude > recalculatePathDistance * recalculatePathDistance)
+        float sqrDistance = (ai.transform.position - target.transform.position).sqrMagnitude;
+        if(sqrDistance > recalculatePathDistance * recalculatePathDistance)
         {
             doPathCalculation = true;
         }
-
-        //Need some kind of "weapon" class is needed
-        /*if ((ai.transform.position - target.transform.position).sqrMagnitude <= weapon.reach * weapon.reach)
+        else if(ai.aiPawn is MomPawn)
         {
-            weapon.DoAttack(target.gameObject, ai.aiPawn);
+            float capRange = (ai.aiPawn as MomPawn).CaptureRange;
+            if(sqrDistance <= capRange)
+            {
+                Destroy(target.gameObject);
+                _currentPhase = StatePhase.INACTIVE;
+                ai.localBlackboard.SetProperty("target");
+                ai.localBlackboard.SetProperty(MomPawn.PROPERTY_TARGETSET, false);
+            }
+            else
+            {
+                doPathCalculation = true;
+            }
         }
-        else if (!movement.DoMovement)
-        {
-            doPathCalculation = true;
-        }*/
 
         if (doPathCalculation && !ai.aiPawn.agent.pathPending)
         {
@@ -59,6 +64,6 @@ public class MoveToTarget : Behavior
 
     public override void OnExit(AIController ai)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

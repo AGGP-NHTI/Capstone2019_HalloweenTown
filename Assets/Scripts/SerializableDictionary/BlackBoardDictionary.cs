@@ -141,7 +141,14 @@ public class BlackBoardDictionary : Dictionary<string, object>, ISerializationCa
         }
         else
         {
-            return new ValueInfo(ValueType.OTHER, "(" + value.GetType() + ")");
+            if (value == null)
+            {
+                return new ValueInfo(ValueType.OTHER, "null");
+            }
+            else
+            {
+                return new ValueInfo(ValueType.OTHER, "(" + value.GetType() + ")");
+            }
         }
     }
 }

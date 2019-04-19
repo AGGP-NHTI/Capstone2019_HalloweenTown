@@ -66,28 +66,35 @@ namespace BehaviourTreeUI
             sourceNode.Logic.PropertyOneToEvaluate = PropertyOneToEvaluate;
             sourceNode.Logic.Mode = Mode;
 
-            switch(PropertyTwoType)
+            if (PropertyTwoToEvaluate == "null")
             {
-                case PropertyType.BLACKBOARD:
-                    {
-                        sourceNode.Logic.PropertyTwoToEvaluate = PropertyTwoToEvaluate;
-                        break;
-                    }
-                case PropertyType.BOOL:
-                    {
-                        sourceNode.Logic.PropertyTwoToEvaluate = "(bool)" + PropertyTwoToEvaluate;
-                        break;
-                    }
-                case PropertyType.FLOAT:
-                    {
-                        sourceNode.Logic.PropertyTwoToEvaluate = "(float)" + PropertyTwoToEvaluate;
-                        break;
-                    }
-                case PropertyType.INT:
-                    {
-                        sourceNode.Logic.PropertyTwoToEvaluate = "(int)" + PropertyTwoToEvaluate;
-                        break;
-                    }
+                sourceNode.Logic.PropertyTwoToEvaluate = "null";
+            }
+            else
+            {
+                switch (PropertyTwoType)
+                {
+                    case PropertyType.BLACKBOARD:
+                        {
+                            sourceNode.Logic.PropertyTwoToEvaluate = PropertyTwoToEvaluate;
+                            break;
+                        }
+                    case PropertyType.BOOL:
+                        {
+                            sourceNode.Logic.PropertyTwoToEvaluate = "(bool)" + PropertyTwoToEvaluate;
+                            break;
+                        }
+                    case PropertyType.FLOAT:
+                        {
+                            sourceNode.Logic.PropertyTwoToEvaluate = "(float)" + PropertyTwoToEvaluate;
+                            break;
+                        }
+                    case PropertyType.INT:
+                        {
+                            sourceNode.Logic.PropertyTwoToEvaluate = "(int)" + PropertyTwoToEvaluate;
+                            break;
+                        }
+                }
             }
 
             UnityEditor.EditorUtility.SetDirty(this);
