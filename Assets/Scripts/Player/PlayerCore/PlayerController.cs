@@ -80,7 +80,10 @@ public class PlayerController : MonoBehaviour
     protected virtual void OnGainControl()
     {
         if (!_controlledPawn) { return; }
-        if(_controlledPawn.MyCandy)
+
+        _controlledPawn.MyController = this;
+
+        if (_controlledPawn.MyCandy)
         {
             _controlledPawn.MyCandy.SetPlayerController(this);
         }
@@ -109,10 +112,11 @@ public class PlayerController : MonoBehaviour
     protected virtual void OnLoseControl()
     {
         if (!_controlledPawn) { return; }
-        /*if (_controlledPawn.MyCandy)
+
+        if(_controlledPawn.MyController == this)
         {
-            _controlledPawn.MyCandy.SetPlayerController(this);
-        }*/
+            _controlledPawn.MyController = null;
+        }
 
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {
