@@ -437,6 +437,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1690055643462196
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4965032380075980}
+  m_Layer: 0
+  m_Name: LhandBagSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1697709744813798
 GameObject:
   m_ObjectHideFlags: 1
@@ -992,7 +1007,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.009233194, y: -7.105427e-17, z: -6.245004e-19}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4965032380075980}
   m_Father: {fileID: 4296378614264550}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1179,6 +1195,19 @@ Transform:
   m_Father: {fileID: 4393745702275710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!4 &4965032380075980
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690055643462196}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0.0032, y: -0, z: 0}
+  m_LocalScale: {x: 0.043753125, y: 0.043753132, z: 0.043753132}
+  m_Children: []
+  m_Father: {fileID: 4599669087457250}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!95 &95953523606679920
 Animator:
   serializedVersion: 3
@@ -1212,6 +1241,7 @@ MonoBehaviour:
   boopartical: {fileID: 198928372918403374}
   outlineMesh: {fileID: 137810167320913460}
   solidMesh: {fileID: 137065727678381190}
+  Lhand: {fileID: 1690055643462196}
 --- !u!114 &114708596954754074
 MonoBehaviour:
   m_ObjectHideFlags: 1
