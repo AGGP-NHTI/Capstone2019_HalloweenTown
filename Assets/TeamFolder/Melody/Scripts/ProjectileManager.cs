@@ -117,7 +117,7 @@ public class ProjectileManager : MonoBehaviour {
         }
         if(currentRightTrigger > deadZone && previousRightTrigger <= deadZone && canThrow)
         {
-            Debug.Log("in egg");
+            //Debug.Log("in egg");
             if (!leftSpawn)
             {
                 Debug.LogWarning(name + "is trying to throw projectile no leftSpawn component assigned!");
@@ -129,7 +129,7 @@ public class ProjectileManager : MonoBehaviour {
                 return;
             }
             thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position, model.rotation);
-            Debug.Log(thrownObject.gameObject.name);
+            //Debug.Log(thrownObject.gameObject.name);
             thrownObject.GetComponent<Projectile>().owner = gameObject;
             inventory.subtractFromInventory(weaponList[selectedWeaponIndex]);
             

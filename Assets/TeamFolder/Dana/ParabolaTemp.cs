@@ -36,7 +36,7 @@ public class ParabolaTemp : MonoBehaviour {
     {
         if (pawn != null && ln != null)
         {
-            Debug.Log("pawn exists");
+            //Debug.Log("pawn exists");
             if (pawn.myProjectileManager.showParabola)
             {
                 ln.enabled = true;

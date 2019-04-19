@@ -11,10 +11,7 @@ public class ImageChange: MonoBehaviour
     public Sprite vampireSprite;
     public Sprite werewolfSprite;// each mask needs to be assigned a sprite
 
-    public Sprite firstPlace;
-    public Sprite secondPlace;
-    public Sprite thirdPlace;
-    public Sprite lastPlace;
+   
 
     void Start()
     {
@@ -53,23 +50,5 @@ public class ImageChange: MonoBehaviour
         m_Image.sprite = werewolfSprite;
     }
 
-    public void first()
-    {
-        m_Image.sprite = firstPlace;
-    }
-
-    public void second()
-    {
-        m_Image.sprite = secondPlace;
-    }
-
-    public void third()
-    {
-        m_Image.sprite = thirdPlace;
-    }
-
-    public void last()
-    {
-        m_Image.sprite = lastPlace;
-    }
+    
 }
