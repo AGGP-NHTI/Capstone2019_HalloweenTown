@@ -12,36 +12,36 @@ MonoBehaviour:
   m_Name: MomGraph
   m_EditorClassIdentifier: 
   nodes:
+  - {fileID: 11400000, guid: fd64dbf847a740b4f9cd2fedb6f45846, type: 2}
+  - {fileID: 11400000, guid: 52e7a2e0efed67d459e93a7bc61577e8, type: 2}
+  - {fileID: 11400000, guid: da15f688107b62c4a90e20e850a8a40b, type: 2}
+  - {fileID: 11400000, guid: fd5004b464055a74f823764023df8b9d, type: 2}
+  - {fileID: 11400000, guid: 7376a8de67d608b4aa99ba348a956ad4, type: 2}
   - {fileID: 11400000, guid: 41875005be4a0a6448b3d3a1d1a7f121, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   edges:
-  - m_FromNode: {fileID: 0}
-    m_ToNode: {fileID: 0}
+  - m_FromNode: {fileID: 11400000, guid: da15f688107b62c4a90e20e850a8a40b, type: 2}
+    m_ToNode: {fileID: 11400000, guid: fd64dbf847a740b4f9cd2fedb6f45846, type: 2}
     m_FromSlotName: 'true:'
+    m_ToSlotName: in
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - m_FromNode: {fileID: 11400000, guid: da15f688107b62c4a90e20e850a8a40b, type: 2}
+    m_ToNode: {fileID: 11400000, guid: 52e7a2e0efed67d459e93a7bc61577e8, type: 2}
+    m_FromSlotName: 'false:'
+    m_ToSlotName: in
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - m_FromNode: {fileID: 11400000, guid: 7376a8de67d608b4aa99ba348a956ad4, type: 2}
+    m_ToNode: {fileID: 11400000, guid: da15f688107b62c4a90e20e850a8a40b, type: 2}
+    m_FromSlotName: 'true:'
+    m_ToSlotName: in
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - m_FromNode: {fileID: 11400000, guid: 7376a8de67d608b4aa99ba348a956ad4, type: 2}
+    m_ToNode: {fileID: 11400000, guid: fd5004b464055a74f823764023df8b9d, type: 2}
+    m_FromSlotName: 'false:'
     m_ToSlotName: in
     color: {r: 1, g: 1, b: 1, a: 1}
   - m_FromNode: {fileID: 11400000, guid: 41875005be4a0a6448b3d3a1d1a7f121, type: 2}
-    m_ToNode: {fileID: 0}
+    m_ToNode: {fileID: 11400000, guid: 7376a8de67d608b4aa99ba348a956ad4, type: 2}
     m_FromSlotName: out
-    m_ToSlotName: in
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - m_FromNode: {fileID: 0}
-    m_ToNode: {fileID: 0}
-    m_FromSlotName: 'true:'
-    m_ToSlotName: in
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - m_FromNode: {fileID: 0}
-    m_ToNode: {fileID: 0}
-    m_FromSlotName: 'false:'
-    m_ToSlotName: in
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - m_FromNode: {fileID: 0}
-    m_ToNode: {fileID: 0}
-    m_FromSlotName: 'false:'
     m_ToSlotName: in
     color: {r: 1, g: 1, b: 1, a: 1}
   m_InvalidEdges: []

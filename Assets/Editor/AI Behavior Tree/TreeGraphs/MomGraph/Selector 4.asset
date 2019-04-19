@@ -30,12 +30,12 @@ MonoBehaviour:
   style: node
   position:
     serializedVersion: 2
-    x: -12
-    y: -12
+    x: 150
+    y: 0
     width: 42
     height: 65
   showEmptySlots: 1
-  Label: Enough targets?
+  Label: Selector
   sourceNode: {fileID: 11400000, guid: f8d573774539d87499b839dac3d8ed7e, type: 2}
   PropertyOneToEvaluate: 
   PropertyTwoToEvaluate: 

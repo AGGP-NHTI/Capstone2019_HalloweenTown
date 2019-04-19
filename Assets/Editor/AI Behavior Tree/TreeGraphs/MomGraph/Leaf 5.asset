@@ -22,10 +22,10 @@ MonoBehaviour:
   style: node
   position:
     serializedVersion: 2
-    x: 192
-    y: 84
+    x: 450
+    y: 0
     width: 22
     height: 41
   showEmptySlots: 1
-  Label: Find target
+  Label: Leaf
   sourceNode: {fileID: 11400000, guid: 752912a14e1cb1049adb8c6c17b8200b, type: 2}

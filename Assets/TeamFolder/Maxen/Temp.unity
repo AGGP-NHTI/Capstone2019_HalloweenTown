@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -5147,6 +5147,21 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 114391363117148792, guid: ae65d3f0f08f44e49a106c257059d0be,
+        type: 2}
+      propertyPath: m_MaximumEffort
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114391363117148792, guid: ae65d3f0f08f44e49a106c257059d0be,
+        type: 2}
+      propertyPath: m_SmoothingTime
+      value: 0.207
+      objectReference: {fileID: 0}
+    - target: {fileID: 114391363117148792, guid: ae65d3f0f08f44e49a106c257059d0be,
+        type: 2}
+      propertyPath: m_DampingWhenOccluded
+      value: 1.11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
   m_IsPrefabAsset: 0
@@ -6388,7 +6403,8 @@ Prefab:
       propertyPath: InstantiationId
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114678320892475024, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &604367452 stripped
@@ -9094,7 +9110,8 @@ Prefab:
       propertyPath: InstantiationId
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114678320892475024, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &832513364 stripped
@@ -9858,7 +9875,8 @@ Prefab:
       propertyPath: InstantiationId
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114678320892475024, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &907782904 stripped
@@ -13160,7 +13178,8 @@ Prefab:
       propertyPath: InstantiationId
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114678320892475024, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1159755421
