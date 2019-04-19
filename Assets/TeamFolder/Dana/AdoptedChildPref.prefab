@@ -28,6 +28,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1041209223327758
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4850664636249902}
+  m_Layer: 0
+  m_Name: LhandBagSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1045619041069586
 GameObject:
   m_ObjectHideFlags: 1
@@ -506,6 +521,7 @@ GameObject:
   - component: {fileID: 114660337887026628}
   - component: {fileID: 114071482234282638}
   - component: {fileID: 114916027840396852}
+  - component: {fileID: 114356165396908318}
   - component: {fileID: 114622372625539906}
   - component: {fileID: 114619201880412736}
   - component: {fileID: 114005433940115248}
@@ -1215,7 +1231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792628713573326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66600037, y: 0, z: 0}
+  m_LocalPosition: {x: 0.666, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746539219275856}
@@ -1229,7 +1245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872167124162834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
+  m_LocalPosition: {x: 0.666, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224965725725197874}
@@ -1550,7 +1566,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004278199457754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
+  m_LocalPosition: {x: 0.666, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4931619105025190}
@@ -1631,7 +1647,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405976558990932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.702372, y: 2.9478652e-16, z: -14.28}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4989225572559478}
@@ -1644,6 +1660,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4850664636249902
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041209223327758}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.49999988, w: 0.50000006}
+  m_LocalPosition: {x: 0.0025, y: -0, z: -0}
+  m_LocalScale: {x: 0.04375324, y: 0.043753218, z: 0.04375326}
+  m_Children: []
+  m_Father: {fileID: 4932827472463302}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!4 &4850959746340192
 Transform:
   m_ObjectHideFlags: 1
@@ -1722,7 +1751,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.009233194, y: -7.105427e-17, z: -6.245004e-19}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4850664636249902}
   m_Father: {fileID: 4583580743879982}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2209,6 +2239,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114356165396908318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405976558990932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4852ab468fd3744b1c09c0306d0b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bags:
+  - {fileID: 1233231771439200, guid: d51beb7960cb75946b7c1395e73680e4, type: 2}
+  - {fileID: 1801131065686600, guid: 0a9885856f76a66429740e069d527f86, type: 2}
+  - {fileID: 1934807746682362, guid: e333eb301ca6d904cadddeb02c472e63, type: 2}
+  - {fileID: 1031519151852532, guid: fc10d59126a4f83479be7425353f6b81, type: 2}
 --- !u!114 &114366418880097230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2266,7 +2312,7 @@ MonoBehaviour:
   boopartical: {fileID: 198152361198826256}
   outlineMesh: {fileID: 137910564131434984}
   solidMesh: {fileID: 137136712195310552}
-  Lhand: {fileID: 0}
+  Lhand: {fileID: 1041209223327758}
 --- !u!114 &114383845968681942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2500,6 +2546,7 @@ MonoBehaviour:
   solidMesh: {fileID: 137136712195310552}
   myParabola: {fileID: 0}
   GhostUlt: 0
+  _anim: {fileID: 0}
   LhandBagSpawn: {fileID: 0}
   MyController: {fileID: 0}
 --- !u!114 &114622372625539906
