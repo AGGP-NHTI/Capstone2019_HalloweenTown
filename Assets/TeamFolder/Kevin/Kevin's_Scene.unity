@@ -1466,6 +1466,14 @@ Prefab:
       propertyPath: vampireParticles
       value: 
       objectReference: {fileID: 2054145516}
+    - target: {fileID: 4274074700959536, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.66600037
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274074700959536, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae65d3f0f08f44e49a106c257059d0be, type: 2}
   m_IsPrefabAsset: 0
