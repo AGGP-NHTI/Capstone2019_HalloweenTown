@@ -15,7 +15,7 @@ public class Grandma : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("I'm here");
+        //Debug.Log("I'm here");
     }
 
     public virtual void RecieveInteract(Pawn source, Interactable myInteractable)
