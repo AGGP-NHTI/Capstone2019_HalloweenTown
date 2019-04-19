@@ -37,7 +37,7 @@ MonoBehaviour:
   showEmptySlots: 1
   Label: Selector
   sourceNode: {fileID: 11400000, guid: 4f6eeefad5811864a8d76ee904065876, type: 2}
-  PropertyOneToEvaluate: 
-  PropertyTwoToEvaluate: 
+  PropertyOneToEvaluate: TargetSet
+  PropertyTwoToEvaluate: true
   PropertyTwoType: 0
   Mode: 4

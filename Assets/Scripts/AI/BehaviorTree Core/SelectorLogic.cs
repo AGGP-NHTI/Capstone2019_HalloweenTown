@@ -33,7 +33,8 @@ namespace AI
 
         protected bool EvaluateByType(object obj1, object obj2)
         {
-            if(obj1 == null || obj2 == null)
+            Debug.Log("comparing " + obj1 + " with " + obj2);
+            if(obj1 == null)
             {
                 return false;
             }
@@ -95,6 +96,10 @@ namespace AI
 
         protected object GetPropertyTwoValue(Blackboard bb)
         {
+            if(PropertyTwoToEvaluate == "null")
+            {
+                return null;
+            }
             if(PropertyTwoToEvaluate.StartsWith("(bool)"))
             {
                 bool value;

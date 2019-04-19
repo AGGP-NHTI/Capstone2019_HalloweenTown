@@ -35,6 +35,7 @@ public class FindRichestChild : Behavior
 
         Pawn target = GetRichestChild(aiPosition);
         ai.localBlackboard.SetProperty("target", target);
+        ai.localBlackboard.SetProperty(MomPawn.PROPERTY_TARGETSET, target != null);
 
         _currentPhase = StatePhase.INACTIVE;
     }
@@ -43,29 +44,29 @@ public class FindRichestChild : Behavior
     {
         PlayerController richestChild = null;
 
-        foreach(PlayerController pc in Candy.Scoreboard.Keys)
+        foreach(KeyValuePair<PlayerController, int> kvp in Candy.Scoreboard)
         {
-            if (pc.ControlledPawn)
+            if (kvp.Key.ControlledPawn)
             {
                 if (richestChild == null)
                 {
-                    richestChild = pc;
+                    richestChild = kvp.Key;
                 }
                 else
                 {
-                    if (Candy.Scoreboard[pc] > Candy.Scoreboard[richestChild])
+                    if (kvp.Value > Candy.Scoreboard[richestChild])
                     {
-                        richestChild = pc;
+                        richestChild = kvp.Key;
                     }
-                    else if (Candy.Scoreboard[pc] == Candy.Scoreboard[richestChild])
+                    else if (kvp.Value == Candy.Scoreboard[richestChild])
                     {
                         //If there are multiple richest children, pick the one who's closest
                         float richestSqrDistance = (aiPosition - richestChild.ControlledPawn.transform.position).sqrMagnitude;
-                        float pcSqrDistance = (aiPosition - pc.ControlledPawn.transform.position).sqrMagnitude;
+                        float pcSqrDistance = (aiPosition - kvp.Key.ControlledPawn.transform.position).sqrMagnitude;
 
                         if(pcSqrDistance < richestSqrDistance)
                         {
-                            richestChild = pc;
+                            richestChild = kvp.Key;
                         }
                     }
                 }

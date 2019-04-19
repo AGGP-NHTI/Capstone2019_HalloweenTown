@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 224041604739833182}
   - component: {fileID: 222454594234500740}
   - component: {fileID: 114383845968681942}
+  - component: {fileID: 114026707910312348}
   m_Layer: 0
   m_Name: CandyIcon
   m_TagString: Untagged
@@ -1214,7 +1215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792628713573326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.666, y: 0, z: 0}
+  m_LocalPosition: {x: 0.66600037, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746539219275856}
@@ -1228,7 +1229,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872167124162834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.666, y: 0, z: -2}
+  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224965725725197874}
@@ -1549,7 +1550,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004278199457754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.666, y: 0, z: -2}
+  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4931619105025190}
@@ -1630,7 +1631,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405976558990932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4233503, y: 3.130478e-18, z: -1.4098419}
+  m_LocalPosition: {x: 9.702372, y: 2.9478652e-16, z: -14.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4989225572559478}
@@ -1967,6 +1968,24 @@ MonoBehaviour:
   paperMagnitude: 500
   eggStep: 0.2
   paperStep: 0.4
+--- !u!114 &114026707910312348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935520561964318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fc140b344ef894e88469fadc7464c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114619201880412736}
+  baseSprite: {fileID: 21300000, guid: 1baf88e0c18566548a6b3492f36561d9, type: 3}
+  placementImages:
+  - {fileID: 21300000, guid: a076ecbe7cdcd85458605af13237dd7c, type: 3}
+  - {fileID: 21300000, guid: 5b77f5fe60bd6b947807779a3ccc7846, type: 3}
+  - {fileID: 21300000, guid: 3590b3fce3182434fb91dedb229edb2d, type: 3}
+  - {fileID: 21300000, guid: 1baf88e0c18566548a6b3492f36561d9, type: 3}
 --- !u!114 &114038185648003124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2099,7 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9660845, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.34744215, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2247,6 +2266,7 @@ MonoBehaviour:
   boopartical: {fileID: 198152361198826256}
   outlineMesh: {fileID: 137910564131434984}
   solidMesh: {fileID: 137136712195310552}
+  Lhand: {fileID: 0}
 --- !u!114 &114383845968681942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2480,6 +2500,7 @@ MonoBehaviour:
   solidMesh: {fileID: 137136712195310552}
   myParabola: {fileID: 0}
   GhostUlt: 0
+  LhandBagSpawn: {fileID: 0}
   MyController: {fileID: 0}
 --- !u!114 &114622372625539906
 MonoBehaviour:
@@ -2511,10 +2532,6 @@ MonoBehaviour:
   witchSprite: {fileID: 21300000, guid: b8df34aaa41797b4f9587ac041a9ff0c, type: 3}
   vampireSprite: {fileID: 21300000, guid: 1c030ed2838a7ae4cbf6d90ef9a179b9, type: 3}
   werewolfSprite: {fileID: 21300000, guid: 4220f69e139e9f74bafc3c6277d11af9, type: 3}
-  firstPlace: {fileID: 0}
-  secondPlace: {fileID: 0}
-  thirdPlace: {fileID: 0}
-  lastPlace: {fileID: 0}
 --- !u!114 &114646055625056166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2681,11 +2698,11 @@ MonoBehaviour:
   scriptName: 
   currentModel: {fileID: 1723638829972258}
   playerPref: {fileID: 1641274433880270, guid: a9a64e510f6b55143a4094e5dca81b40, type: 2}
-  ghostPref: {fileID: 1144466450342428, guid: 828d40f042b068941b5a813f12ef5a9b, type: 2}
+  ghostPref: {fileID: 1791705977054254, guid: c6144b81c509a854ca7550aeba5b1aab, type: 2}
   witchPref: {fileID: 1127191291754076, guid: 954e5afd2e502f24cbd2730ef5a557cf, type: 2}
   werewolfPref: {fileID: 1738160862842466, guid: c6dc78bafaca2ac449d833241c1fe8bc,
     type: 2}
-  vampirePref: {fileID: 1901844044293570, guid: 571b7a89135d1f04d8fdd5b3975d1f03,
+  vampirePref: {fileID: 1860121824587268, guid: 6a707a03bcee1314aaa9893275093334,
     type: 2}
   ultBar: {fileID: 114851255990710114}
   equipedMask: {fileID: 0}

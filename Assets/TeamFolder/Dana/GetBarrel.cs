@@ -8,4 +8,5 @@ public class GetBarrel : MonoBehaviour {
     public ParticleSystem boopartical;
     public SkinnedMeshRenderer outlineMesh;
     public SkinnedMeshRenderer solidMesh;
+    public GameObject Lhand;
 }
