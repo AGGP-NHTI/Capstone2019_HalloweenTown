@@ -25,6 +25,7 @@ public class Pawn : MonoBehaviour
     public SkinnedMeshRenderer solidMesh;
     public ParabolaTemp myParabola;
     public bool GhostUlt = false;
+    public Animator _anim;
 
     [HideInInspector]
     public PlayerController MyController;
@@ -32,6 +33,7 @@ public class Pawn : MonoBehaviour
     private void Awake()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        _anim = myMask.currentModel.GetComponent<Animator>();
     }
     protected virtual void Start ()
     {
@@ -89,6 +91,7 @@ public class Pawn : MonoBehaviour
             {
                 myProjectileManager.showParabola = true;
                 MyCameraManager.SetVirtualCamera(1);
+                _anim.SetBool("aimBool", true);
                 if(MyAlignToMovement)
                 {
                     MyAlignToMovement.useOverrideForward = true;
@@ -97,6 +100,7 @@ public class Pawn : MonoBehaviour
             }
             else
             {
+                _anim.SetBool("aimBool", false);
                 myProjectileManager.showParabola = false;
                 MyCameraManager.SetVirtualCamera(0);
                 if(MyAlignToMovement)
