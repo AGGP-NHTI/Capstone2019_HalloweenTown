@@ -1232,6 +1232,16 @@ Prefab:
       propertyPath: _controlledPawn
       value: 
       objectReference: {fileID: 1898036510}
+    - target: {fileID: 114569883781888590, guid: 7fd3bcb03dcd685449b27c32865a00e7,
+        type: 2}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569883781888590, guid: 7fd3bcb03dcd685449b27c32865a00e7,
+        type: 2}
+      propertyPath: InstantiationId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0
@@ -1549,6 +1559,16 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 8a06baef94a9a5a419947188c4582f16,
         type: 2}
+    - target: {fileID: 114569883781888590, guid: 7fd3bcb03dcd685449b27c32865a00e7,
+        type: 2}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569883781888590, guid: 7fd3bcb03dcd685449b27c32865a00e7,
+        type: 2}
+      propertyPath: InstantiationId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fd3bcb03dcd685449b27c32865a00e7, type: 2}
   m_IsPrefabAsset: 0
