@@ -26,13 +26,14 @@ public class Pawn : MonoBehaviour
     public ParabolaTemp myParabola;
     public bool GhostUlt = false;
     public Animator _anim;
-
+    public GameObject LhandBagSpawn;
     [HideInInspector]
     public PlayerController MyController;
 
     private void Awake()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
         _anim = myMask.currentModel.GetComponent<Animator>();
     }
     protected virtual void Start ()
@@ -48,6 +49,9 @@ public class Pawn : MonoBehaviour
     public void ModelChange()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
+        _anim = myMask.currentModel.GetComponent<Animator>();
+
         myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;
         MyMoveScript.anim = myMask.currentModel.GetComponent<Animator>();
 
