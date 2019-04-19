@@ -37,8 +37,10 @@ public class GrandmaSpawn : MonoBehaviour {
     void Start ()
     {
         selectSpawn();
-        //if(isSpawn)
-        //SpawnGrandma(grandma);
+        if (isSpawn)
+        {
+            SpawnGrandma(grandma);
+        }
         //Debug.Log(grandma.name);
 	}
 	

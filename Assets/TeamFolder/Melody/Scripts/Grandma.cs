@@ -9,13 +9,13 @@ public class Grandma : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("I'm here");
     }
 
     public virtual void RecieveInteract(Pawn source, Interactable myInteractable)
