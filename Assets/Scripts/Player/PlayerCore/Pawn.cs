@@ -25,6 +25,7 @@ public class Pawn : MonoBehaviour
     public SkinnedMeshRenderer solidMesh;
     public ParabolaTemp myParabola;
     public bool GhostUlt = false;
+    public GameObject LhandBagSpawn;
 
     [HideInInspector]
     public PlayerController MyController;
@@ -32,6 +33,7 @@ public class Pawn : MonoBehaviour
     private void Awake()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
     }
     protected virtual void Start ()
     {
@@ -41,11 +43,15 @@ public class Pawn : MonoBehaviour
        outlineMesh.materials[0].SetColor("_OutlineColor", color);
         solidMesh.material.SetColor("_OutlineColor", color);
         myParabola = gameObject.GetComponent<ParabolaTemp>();
+
+        
     }
     
     public void ModelChange()
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
+
         myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;
         MyMoveScript.anim = myMask.currentModel.GetComponent<Animator>();
 
