@@ -55,7 +55,7 @@ public class WeaponInventory : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(string.Format("other name: {0}", other.gameObject.name));
+        //Debug.Log(string.Format("other name: {0}", other.gameObject.name));
         if (other.gameObject.name.Contains("EggCarton"))
         {
             numberEggs += 12;

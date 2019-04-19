@@ -62,7 +62,7 @@ MonoBehaviour:
     type: 2}
   playerPrefab: {fileID: 1405976558990932, guid: ae65d3f0f08f44e49a106c257059d0be,
     type: 2}
-  momPrefab: {fileID: 1801093922664852, guid: 7ba9d9594a7258340818c5f60062d2eb, type: 2}
+  momPrefab: {fileID: 1702878560870948, guid: 9db3674a0117de24ebc120e7b163f3f2, type: 2}
   spawnedMom: {fileID: 0}
   timeBeforeReturningToMenu: 15
   MainMenuBuildIndex: 0

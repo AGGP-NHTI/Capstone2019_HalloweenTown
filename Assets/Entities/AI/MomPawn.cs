@@ -9,15 +9,36 @@ public class MomPawn : AIPawn
     public const string PROPERTY_TARGETSET = "TargetSet";
     public float CaptureRange = 2.0f;
 
+    private bool _huntStarted = false;
+
     public override void Init(AIController controller)
     {
         base.Init(controller);
+        _controller.localBlackboard.SetProperty(PROPERTY_TARGETCOUNT, 0);
+        _controller.localBlackboard.SetProperty(PROPERTY_TARGETSET, false);
+    }
+
+    public void LetMomHunt()
+    {
+        UpdateTargetCount();
+        _huntStarted = true;
+    }
+
+    public void UpdateTargetCount()
+    {
         int targetCount = 0;
-        if(Candy.Scoreboard != null)
+        foreach (PlayerController pc in Candy.Scoreboard.Keys)
         {
-            targetCount = Candy.Scoreboard.Count;
+            if(pc.ControlledPawn)
+            {
+                targetCount++;
+            }
         }
         _controller.localBlackboard.SetProperty(PROPERTY_TARGETCOUNT, targetCount);
-        _controller.localBlackboard.SetProperty(PROPERTY_TARGETSET, false);
+    }
+
+    public bool DoneHunting()
+    {
+        return _huntStarted && (_controller.localBlackboard.GetProperty<int>(PROPERTY_TARGETCOUNT) <= 0);
     }
 }

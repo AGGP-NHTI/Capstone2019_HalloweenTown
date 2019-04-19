@@ -41,11 +41,18 @@ public class MoveToTarget : Behavior
         }
         else if(ai.aiPawn is MomPawn)
         {
-            float capRange = (ai.aiPawn as MomPawn).CaptureRange;
+            MomPawn mom = ai.aiPawn as MomPawn;
+            float capRange = mom.CaptureRange;
             if(sqrDistance <= capRange)
             {
+                Pawn p = target.GetComponent<Pawn>();
+                if(p)
+                {
+                    p.MyController.ControlledPawn = null;
+                }
                 Destroy(target.gameObject);
                 _currentPhase = StatePhase.INACTIVE;
+                mom.UpdateTargetCount();
                 ai.localBlackboard.SetProperty("target");
                 ai.localBlackboard.SetProperty(MomPawn.PROPERTY_TARGETSET, false);
             }

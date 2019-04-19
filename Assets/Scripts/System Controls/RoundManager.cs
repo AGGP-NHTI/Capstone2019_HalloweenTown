@@ -149,9 +149,8 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundEndingLogic()
     {
-        Mom momInScene = LevelInfo.GetMom();
+        MomPawn momInScene = LevelInfo.GetMom();
         momInScene.gameObject.SetActive(true);
-        momInScene.FindPlayers(_activePlayers);
 
         BackgroundMusic.instance.MomMusic();
 
@@ -167,7 +166,7 @@ public class RoundManager : MonoBehaviour {
 
         while (currentPhase == RoundPhase.ROUND_ENDING)
         {
-            if(momInScene.RemainingPlayersToFind.Count <= 0)
+            if(momInScene.DoneHunting())
             {
                 currentPhase = RoundPhase.ROUND_OVER;
             }

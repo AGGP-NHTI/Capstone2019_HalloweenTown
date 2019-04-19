@@ -8,7 +8,7 @@ public class LevelInfo : MonoBehaviour
     #region Static Stuff
     protected static LevelInfo _instance;
 
-    public static Mom GetMom()
+    public static MomPawn GetMom()
     {
         if (!_instance)
         {
@@ -60,7 +60,7 @@ public class LevelInfo : MonoBehaviour
     #endregion
 
     #region Instance Stuff
-    public Mom Mom;
+    public MomPawn Mom;
     public GameObject IntroCutscene;
     public GameObject MomCutscene;
     public Canvas scoreBoard;

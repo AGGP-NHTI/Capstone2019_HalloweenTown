@@ -33,7 +33,6 @@ namespace AI
 
         protected bool EvaluateByType(object obj1, object obj2)
         {
-            Debug.Log("comparing " + obj1 + " with " + obj2);
             if(obj1 == null)
             {
                 return false;
