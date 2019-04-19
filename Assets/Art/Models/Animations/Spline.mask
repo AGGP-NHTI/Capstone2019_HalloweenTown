@@ -6,5 +6,67 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Spline
-  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000001000000010000000100000001000000
-  m_Elements: []
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: group4_pasted__polySurface6
+    m_Weight: 1
+  - m_Path: Hip_J
+    m_Weight: 1
+  - m_Path: Hip_J/L_Leg_Top_J
+    m_Weight: 0
+  - m_Path: Hip_J/L_Leg_Top_J/L_Knee_J
+    m_Weight: 0
+  - m_Path: Hip_J/L_Leg_Top_J/L_Knee_J/L_Ankle_J
+    m_Weight: 0
+  - m_Path: Hip_J/L_Leg_Top_J/L_Knee_J/L_Ankle_J/L_Foot_J
+    m_Weight: 0
+  - m_Path: Hip_J/R_Leg_Top_J
+    m_Weight: 0
+  - m_Path: Hip_J/R_Leg_Top_J/R_Knee_J
+    m_Weight: 0
+  - m_Path: Hip_J/R_Leg_Top_J/R_Knee_J/R_Ankle_J
+    m_Weight: 0
+  - m_Path: Hip_J/R_Leg_Top_J/R_Knee_J/R_Ankle_J/R_Foot_J
+    m_Weight: 0
+  - m_Path: Hip_J/Spine_1_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J/L_Shoulder_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J/L_Shoulder_J/L_Elbow_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J/L_Shoulder_J/L_Elbow_J/L_Wrist_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J/L_Shoulder_J/L_Elbow_J/L_Wrist_J/L_Hand_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J/L_Shoulder_J/L_Elbow_J/L_Wrist_J/L_Thumb_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/L_Clavical_J/L_Shoulder_J/L_Elbow_J/L_Wrist_J/L_Thumb_J/L_Thumb_End_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/Neck_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/Neck_J/Head_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/Neck_J/Head_J/Head_Top_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J/R_Shoulder_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J/R_Shoulder_J/R_Elbow_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J/R_Shoulder_J/R_Elbow_J/R_Wrist_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J/R_Shoulder_J/R_Elbow_J/R_Wrist_J/R_Hand_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J/R_Shoulder_J/R_Elbow_J/R_Wrist_J/R_Thumb_J
+    m_Weight: 1
+  - m_Path: Hip_J/Spine_1_J/Spine_2_J/R_Clavical_J/R_Shoulder_J/R_Elbow_J/R_Wrist_J/R_Thumb_J/R_Thumb_End_J
+    m_Weight: 1
+  - m_Path: QuickRigCharacter_Ctrl_Reference1
+    m_Weight: 1
