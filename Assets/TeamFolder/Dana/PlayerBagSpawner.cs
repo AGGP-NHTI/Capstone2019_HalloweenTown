@@ -6,11 +6,10 @@ public class PlayerBagSpawner : MonoBehaviour {
 
     public List<GameObject> bags;
     Pawn pawn;
-    GameObject myBag;
+    public GameObject myBag;
     bool setbag = true;
 	void Start () {
         pawn = GetComponent<Pawn>();
-        Debug.Log("player number " + pawn.MyController.PlayerNumber);
         
     }
     

@@ -618,6 +618,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1823697714586568
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4934452223487922}
+  m_Layer: 0
+  m_Name: LhandBagSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1834380327793912
 GameObject:
   m_ObjectHideFlags: 1
@@ -1050,7 +1065,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127191291754076}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 22.855507, y: 22.855507, z: 22.855507}
   m_Children:
@@ -1060,7 +1075,7 @@ Transform:
   - {fileID: 4693855722047708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4656938070150026
 Transform:
   m_ObjectHideFlags: 1
@@ -1083,7 +1098,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.009233194, y: -7.105427e-17, z: -6.245004e-19}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4934452223487922}
   m_Father: {fileID: 4703677944054846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1369,6 +1385,19 @@ Transform:
   m_Father: {fileID: 4652260430184494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4934452223487922
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1823697714586568}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.50000006, w: 0.50000006}
+  m_LocalPosition: {x: -0.0077, y: 0, z: 0}
+  m_LocalScale: {x: 0.04375324, y: 0.043753225, z: 0.043753255}
+  m_Children: []
+  m_Father: {fileID: 4675223678249334}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!4 &4983936944243396
 Transform:
   m_ObjectHideFlags: 1
@@ -1432,6 +1461,7 @@ MonoBehaviour:
   boopartical: {fileID: 198174872815818180}
   outlineMesh: {fileID: 137527375765673240}
   solidMesh: {fileID: 137562732905619548}
+  Lhand: {fileID: 1823697714586568}
 --- !u!137 &137527375765673240
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

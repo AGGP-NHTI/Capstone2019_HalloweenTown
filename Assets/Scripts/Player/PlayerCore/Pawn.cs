@@ -27,6 +27,7 @@ public class Pawn : MonoBehaviour
     public bool GhostUlt = false;
     public Animator _anim;
     public GameObject LhandBagSpawn;
+    public PlayerBagSpawner bagSpawner;
     [HideInInspector]
     public PlayerController MyController;
 
@@ -50,6 +51,7 @@ public class Pawn : MonoBehaviour
     {
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
         LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
+        bagSpawner.myBag.transform.SetParent(LhandBagSpawn.transform, false);
         _anim = myMask.currentModel.GetComponent<Animator>();
 
         myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;
