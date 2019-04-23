@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponList:
   - {fileID: 1778895021635794, guid: 0c0126f391d9ab446b0a1d8fe2eb64ae, type: 2}
-  - {fileID: 1641032654935010, guid: c6e89c45a92b1d84a982d3e0cfd75399, type: 2}
+  - {fileID: 1278493221849164, guid: b8e7a802055d32947881f502c8ce5bcf, type: 2}
   selectedWeaponIndex: 0
   offset: {x: 0, y: 0, z: 0}
   canThrow: 1
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114868741024327242}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
