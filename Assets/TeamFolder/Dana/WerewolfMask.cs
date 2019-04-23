@@ -14,6 +14,8 @@ public class WerewolfMask : BaseMask {
     {
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
+            pawn._anim.SetBool("wolfUltBool", true);
+
             pawn.soundMan.WerewolfUltScream();
             ulted = true;
             pawn.myProjectileManager.eggDamage *= 2;
@@ -29,6 +31,8 @@ public class WerewolfMask : BaseMask {
         if (ulted)
         {
             pawn.MyBoo.WerewolfUltDone();
+            pawn._anim.SetBool("wolfUltBool", false);
+
             pawn.myProjectileManager.eggDamage /= 2;
             // pawn.MyBoo.damage /= 2;
             pawn.myProjectileManager.werewolfUlt = false;
