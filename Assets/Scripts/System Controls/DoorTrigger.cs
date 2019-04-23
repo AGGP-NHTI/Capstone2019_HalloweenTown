@@ -25,9 +25,12 @@ public class DoorTrigger : MonoBehaviour
         //Give candy
         if(source.MyCandy)
         {
+            source._anim.SetTrigger("trickOrTreatTrigger");
+
             system.Play();
             trickOtreat.Play();
-            if(source.myMask.hasMask)
+
+            if (source.myMask.hasMask)
             {
                 candyCount = Random.Range(6,8);
                 source.MyCandy.AddCandy(candyCount);
@@ -36,7 +39,7 @@ public class DoorTrigger : MonoBehaviour
             {
                 candyCount = Random.Range(2,4);
                 source.MyCandy.AddCandy(candyCount);
-            }            
+            }       
         }
     }
 

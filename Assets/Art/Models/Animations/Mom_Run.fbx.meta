@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: 0658c1e43c68070418d297fc40bfd2d3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: back
+    100002: bottom
+    100004: Chest_CTRL
+    100006: Head_CTRL
+    100008: Head_J
+    100010: HeadTop_J
+    100012: Hip_CTRL
+    100014: ik_L_Arm
+    100016: ik_L_Leg
+    100018: ik_R_Arm
+    100020: ik_R_Leg
+    100022: ik_Spine
+    100024: L_Ankle_J
+    100026: L_Arm_CTRL
+    100028: L_Clavical_J
+    100030: L_Elbow_J
+    100032: L_FingerTip_J
+    100034: L_Foot_CTRL
+    100036: L_Hip_J
+    100038: L_Knee_J
+    100040: L_Shoulder_J
+    100042: L_Thumb_J
+    100044: L_ToeTip_J
+    100046: L_Wrist_J
+    100048: left
+    100050: Master_CTRL
+    100052: //RootNode
+    100054: Neck_J
+    100056: pasted__pCube9
+    100058: persp1
+    100060: R_Ankle_J
+    100062: R_Arm_CTRL
+    100064: R_Clavical_J
+    100066: R_Elbow_J
+    100068: R_FingerTip_J
+    100070: R_Foot_CTRL
+    100072: R_Hip_J
+    100074: R_Knee_J
+    100076: R_Shoulder_J
+    100078: R_Thumb_J
+    100080: R_ToeTip_J
+    100082: R_Wrist_J
+    100084: Spine01_J
+    100086: Spine02_J
+    100088: SPine03_J
+    100090: Spine_Curve
+    400000: back
+    400002: bottom
+    400004: Chest_CTRL
+    400006: Head_CTRL
+    400008: Head_J
+    400010: HeadTop_J
+    400012: Hip_CTRL
+    400014: ik_L_Arm
+    400016: ik_L_Leg
+    400018: ik_R_Arm
+    400020: ik_R_Leg
+    400022: ik_Spine
+    400024: L_Ankle_J
+    400026: L_Arm_CTRL
+    400028: L_Clavical_J
+    400030: L_Elbow_J
+    400032: L_FingerTip_J
+    400034: L_Foot_CTRL
+    400036: L_Hip_J
+    400038: L_Knee_J
+    400040: L_Shoulder_J
+    400042: L_Thumb_J
+    400044: L_ToeTip_J
+    400046: L_Wrist_J
+    400048: left
+    400050: Master_CTRL
+    400052: //RootNode
+    400054: Neck_J
+    400056: pasted__pCube9
+    400058: persp1
+    400060: R_Ankle_J
+    400062: R_Arm_CTRL
+    400064: R_Clavical_J
+    400066: R_Elbow_J
+    400068: R_FingerTip_J
+    400070: R_Foot_CTRL
+    400072: R_Hip_J
+    400074: R_Knee_J
+    400076: R_Shoulder_J
+    400078: R_Thumb_J
+    400080: R_ToeTip_J
+    400082: R_Wrist_J
+    400084: Spine01_J
+    400086: Spine02_J
+    400088: SPine03_J
+    400090: Spine_Curve
+    2000000: back
+    2000002: bottom
+    2000004: left
+    2000006: persp1
+    2100000: MomTexture
+    4300000: pasted__pCube9
+    7400000: Mom_Run
+    9500000: //RootNode
+    13700000: pasted__pCube9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Mom_Run
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

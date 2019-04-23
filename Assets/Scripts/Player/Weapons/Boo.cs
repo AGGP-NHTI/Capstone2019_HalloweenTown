@@ -14,6 +14,7 @@ public class Boo : MonoBehaviour {
     bool vampireUlt = false;
     float booRange = 1.0f;
 
+
     private void Start()
     {
         soundManager = GetComponent<SoundManager>();
@@ -119,6 +120,11 @@ public class Boo : MonoBehaviour {
                             {
                                 if (hitColliders[i].GetComponent<Pawn>().myStun.stun == null)
                                 {//Debug.Log("Got Booed");
+
+                                    pawn._anim.SetTrigger("booTrigger");
+                                    soundManager.Boo();
+                                    particleManager.booPart();//shoots out boo and bat particles
+
                                     hitColliders[i].GetComponent<ParticleManager>().batPart();//stun particles circling bats
                                     hitColliders[i].GetComponent<ParticleManager>().dropPart();//drop candy particles
 
@@ -131,10 +137,12 @@ public class Boo : MonoBehaviour {
                                     pawn.myMask.SuccesfulBoo();
                                 }
                             }
-                            soundManager.Boo();
-                            particleManager.booPart();//shoots out boo and bat particles
+
+
+
                             canBoo = false;
                             StartCoroutine(WaitingToBoo());
+
                         }
                     }
                 }
@@ -153,6 +161,7 @@ public class Boo : MonoBehaviour {
 
     IEnumerator WaitingToBoo()
     {
+
         yield return new WaitForSeconds(3);
         canBoo = true;
     }
