@@ -13,7 +13,7 @@ public class Parabarel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Debug.Log("Player layer: " + LayerMask.LayerToName(player.GetComponent<Pawn>().MyLayer.value));
-        gameObject.layer = player.GetComponent<Pawn>().MyLayer.value;
+        //gameObject.layer = player.GetComponent<Pawn>().MyLayer.value;
 
     }
 }
