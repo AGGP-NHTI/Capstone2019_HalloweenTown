@@ -21,7 +21,11 @@ public class AlignToMovement : MonoBehaviour
     {
         if(useOverrideForward)
         {
-            transform.forward = overrideForward;
+            Vector3 newDirection = overrideForward;
+            if (!TrackX) { newDirection.x = 0.0f; }
+            if (!TrackY) { newDirection.y = 0.0f; }
+            if (!TrackZ) { newDirection.z = 0.0f; }
+            transform.forward = newDirection;
         }
         else
         {

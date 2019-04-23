@@ -28,6 +28,7 @@ public class Pawn : MonoBehaviour
     public Animator _anim;
     public GameObject LhandBagSpawn;
     public PlayerBagSpawner bagSpawner;
+    public BarrelController myBarrelController;
     [HideInInspector]
     public PlayerController MyController;
 
@@ -49,7 +50,7 @@ public class Pawn : MonoBehaviour
     
     public void ModelChange()
     {
-        barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
+        myBarrelController.DefaultAnchor = myMask.currentModel.GetComponent<GetBarrel>().barrel.transform;
         LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
         bagSpawner.myBag.transform.SetParent(LhandBagSpawn.transform, false);
         _anim = myMask.currentModel.GetComponent<Animator>();
@@ -103,6 +104,10 @@ public class Pawn : MonoBehaviour
                     MyAlignToMovement.useOverrideForward = true;
                     MyAlignToMovement.overrideForward = MyCamera.transform.forward;
                 }
+                if(myBarrelController)
+                {
+                    myBarrelController.IsAiming = true;
+                }
             }
             else
             {
@@ -112,6 +117,10 @@ public class Pawn : MonoBehaviour
                 if(MyAlignToMovement)
                 {
                     MyAlignToMovement.useOverrideForward = false;
+                }
+                if (myBarrelController)
+                {
+                    myBarrelController.IsAiming = false;
                 }
             }
         }
