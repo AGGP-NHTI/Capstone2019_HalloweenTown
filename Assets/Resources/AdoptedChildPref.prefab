@@ -544,10 +544,10 @@ GameObject:
   - component: {fileID: 114005433940115248}
   - component: {fileID: 114131523905762804}
   - component: {fileID: 114151291919258258}
-  - component: {fileID: 114748930901580532}
   - component: {fileID: 114262116833944678}
   - component: {fileID: 114868741024327242}
   - component: {fileID: 114853754015313546}
+  - component: {fileID: 114748930901580532}
   m_Layer: 0
   m_Name: AdoptedChildPref
   m_TagString: Player
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponList:
   - {fileID: 1778895021635794, guid: 0c0126f391d9ab446b0a1d8fe2eb64ae, type: 2}
-  - {fileID: 1453956450199670, guid: c3f13b971722d6a46aedfe8241ba1a32, type: 2}
+  - {fileID: 1641032654935010, guid: c6e89c45a92b1d84a982d3e0cfd75399, type: 2}
   selectedWeaponIndex: 0
   offset: {x: 0, y: 0, z: 0}
   canThrow: 1
@@ -2282,8 +2282,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114868741024327242}
-  viewIdField: 2
-  InstantiationId: 2
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
 MonoBehaviour:
@@ -2856,8 +2856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtNumberEggs: {fileID: 114126889355792966}
   txtNumberToiletPaper: {fileID: 114877438022335260}
-  numberEggs: 500
-  numberToiletPaper: 500
+  numberEggs: 0
+  numberToiletPaper: 0
   toiletPaperMax: 3
 --- !u!114 &114774761645812920
 MonoBehaviour:
