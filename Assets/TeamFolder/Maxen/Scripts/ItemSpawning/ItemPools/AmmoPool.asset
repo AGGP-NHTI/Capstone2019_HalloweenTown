@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: AmmoPool
   m_EditorClassIdentifier: 
   Items:
-  - prefab: {fileID: 1392128978854376, guid: 5abf50769825d5647b7ffb6f0f378612, type: 2}
+  - prefab: {fileID: 1472391785004790, guid: 26d706d35859c804290eaefc4792d6b4, type: 2}
     weight: 13
   - prefab: {fileID: 1031883972887560, guid: f1c7f805aad518f46810c313f8e6b998, type: 2}
     weight: 7

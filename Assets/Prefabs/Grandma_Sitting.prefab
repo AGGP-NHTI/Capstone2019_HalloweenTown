@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114540566511347400}
   - component: {fileID: 114254277180229700}
   m_Layer: 0
-  m_Name: Grandma_SittingPrefab
+  m_Name: Grandma_Sitting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
