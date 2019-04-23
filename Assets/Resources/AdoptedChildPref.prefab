@@ -2282,8 +2282,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114868741024327242}
-  viewIdField: 0
-  InstantiationId: 2
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
 MonoBehaviour:
@@ -3221,7 +3221,8 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 4486c6fc2c7dc044e8902152ef550607, type: 2}
+  - {fileID: 2100000, guid: b576c5489b4b07245bb1f3f04613953b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3264,7 +3265,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.09641352, g: 0.4245283, b: 0, a: 1}
+      key0: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
