@@ -76,11 +76,11 @@ public class Manager : MonoBehaviour
                         }
                         }
 
-                        if (joinedGame[GetPhotonPlayerIndex()])
+                        if (joinedGame[i])
                         {
                             onePlayerInGame = true;
                             if (!readyUp[i])
-                            {
+                            {                            
                                 allPlayersReady = false;
                             }
                         }
@@ -122,6 +122,7 @@ public class Manager : MonoBehaviour
                         onePlayerInGame = true;
                         if (!readyUp[i])
                         {
+                            Debug.Log(i + " not ready");
                             allPlayersReady = false;
                         }
                     }
