@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SpawnPoint : MonoBehaviour {
 
@@ -85,9 +86,9 @@ public class SpawnPoint : MonoBehaviour {
         return isValid;
     }
 
-    public virtual void SpawnPlayer(PlayerController pc, GameObject pawnPrefab)
+    public GameObject  SpawnPlayer(PlayerController pc, GameObject pawnPrefab)
     {
-        GameObject spawnedGameObject = Instantiate(pawnPrefab, transform.position, transform.rotation);
+        GameObject spawnedGameObject = PhotonNetwork.Instantiate(pawnPrefab.name, transform.position, transform.rotation);
         isValid = false;
 
         Pawn spawnedPawn = spawnedGameObject.GetComponent<Pawn>();
@@ -99,6 +100,7 @@ public class SpawnPoint : MonoBehaviour {
         {
             Debug.LogWarning(name + " attempted to spawn prefab " + pawnPrefab.name + " that has no Pawn component!");
         }
+        return spawnedGameObject;
     }
     #endregion
 }

@@ -9,6 +9,7 @@ public class ControllerRPC : MonoBehaviour {
    // public PhotonManager photonManager;
 
 	void Start () {
+        DontDestroyOnLoad(this);
         if (PhotonNetwork.IsMasterClient)
         {
             gameObject.GetPhotonView().RPC("SetMaster", RpcTarget.AllBuffered);

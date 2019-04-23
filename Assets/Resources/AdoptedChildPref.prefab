@@ -545,6 +545,8 @@ GameObject:
   - component: {fileID: 114131523905762804}
   - component: {fileID: 114151291919258258}
   - component: {fileID: 114748930901580532}
+  - component: {fileID: 114262116833944678}
+  - component: {fileID: 114868741024327242}
   m_Layer: 0
   m_Name: AdoptedChildPref
   m_TagString: Player
@@ -2261,6 +2263,27 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 435
+--- !u!114 &114262116833944678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405976558990932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114868741024327242}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2968,6 +2991,20 @@ MonoBehaviour:
   TrackZ: 1
   useOverrideForward: 0
   overrideForward: {x: 0, y: 0, z: 0}
+--- !u!114 &114868741024327242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405976558990932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!114 &114873140094053194
 MonoBehaviour:
   m_ObjectHideFlags: 1

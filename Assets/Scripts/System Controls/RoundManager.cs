@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class RoundManager : MonoBehaviour {
 
@@ -211,18 +212,40 @@ public class RoundManager : MonoBehaviour {
     {
         _activePlayers = new List<PlayerController>();
 
-        for (int i = 0; i < inputObjects.Count; i++)
+        if (PhotonNetwork.OfflineMode)
         {
-            GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
-            PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
-            pc.playerInput = inputObjects[i];
+            for (int i = 0; i < inputObjects.Count; i++)
+            {
+                GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
+                PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
+                pc.playerInput = inputObjects[i];
 
-            SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);
+                SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);               
 
-            _activePlayers.Add(pc);
+                _activePlayers.Add(pc);
+            }
+
+            SplitScreenManager.Instance.ConfigureScreenSpace();
         }
+        else
+        {            
+            for (int j = 0; j < Manager.managerInstance.photonManager.PhotonObjects.Count; j++)
+            {
+                if (Manager.managerInstance.photonManager.PhotonObjects[j].GetPhotonView().IsMine)
+                {
+                    GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
+                    PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
+                    pc.playerInput = inputObjects[0];
+                    GameObject actualChild = SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);
 
-        SplitScreenManager.Instance.ConfigureScreenSpace();
+                    Manager.managerInstance.photonManager.PhotonObjects[j].transform.position = actualChild.transform.position;
+                    actualChild.transform.SetParent(Manager.managerInstance.photonManager.PhotonObjects[j].transform);
+                   // Manager.managerInstance.photonManager.PhotonObjects[j].GetPhotonView().RPC("AddActivePlayer", RpcTarget.All);
+                }
+            }
+            // _activePlayers = Manager.managerInstance.photonManager.PhotonObjects;
+            //SplitScreenManager.Instance.ConfigureScreenSpace();
+        }
     }
 
     protected void SetRoundToRunning()
