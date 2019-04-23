@@ -9,6 +9,8 @@ public class WitchMask : BaseMask
     {        
         if (ulttimerCoroutine == null && waitforultCoroutine == null)
         {
+            pawn._anim.SetBool("witchUltBool", true);
+            pawn.myMask.currentModel.GetComponent<GetBarrel>().witchBroom.SetActive(true);
             pawn.soundMan.WitchUltScream();
             ulted = true;
             pawn.MyMoveScript.moveSpeed *= 2;
@@ -19,6 +21,9 @@ public class WitchMask : BaseMask
     {
         if(ulted)
         {
+            pawn.myMask.currentModel.GetComponent<GetBarrel>().witchBroom.SetActive(false);
+
+            pawn._anim.SetBool("witchUltBool", false);
             pawn.MyMoveScript.moveSpeed /= 2;
         }
         ulted = false;

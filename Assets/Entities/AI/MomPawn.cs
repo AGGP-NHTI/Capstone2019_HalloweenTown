@@ -10,6 +10,24 @@ public class MomPawn : AIPawn
     public float CaptureRange = 2.0f;
 
     private bool _huntStarted = false;
+    public Animator _anim;
+
+    private void Awake()
+    {
+        _anim = gameObject.GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        if(agent.velocity.magnitude > 0.001)
+        {
+            _anim.SetBool("runBool", true);
+        }
+        else
+        {
+            _anim.SetBool("runBool", false);
+
+        }
+    }
 
     public override void Init(AIController controller)
     {

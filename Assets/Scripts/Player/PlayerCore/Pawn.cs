@@ -34,6 +34,7 @@ public class Pawn : MonoBehaviour
 
     private void Awake()
     {
+        //myMask.currentModel.GetComponent<GetBarrel>().witchBroom.SetActive(false);
         barrel = myMask.currentModel.GetComponent<GetBarrel>().barrel;
         LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
         _anim = myMask.currentModel.GetComponent<Animator>();

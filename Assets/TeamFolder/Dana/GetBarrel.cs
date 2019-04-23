@@ -9,4 +9,5 @@ public class GetBarrel : MonoBehaviour {
     public SkinnedMeshRenderer outlineMesh;
     public SkinnedMeshRenderer solidMesh;
     public GameObject Lhand;
+    public GameObject witchBroom;
 }

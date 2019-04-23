@@ -2282,7 +2282,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114868741024327242}
-  viewIdField: 2
+  viewIdField: 0
   InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
@@ -2430,6 +2430,7 @@ MonoBehaviour:
   outlineMesh: {fileID: 137910564131434984}
   solidMesh: {fileID: 137136712195310552}
   Lhand: {fileID: 1041209223327758}
+  witchBroom: {fileID: 0}
 --- !u!114 &114383845968681942
 MonoBehaviour:
   m_ObjectHideFlags: 1
