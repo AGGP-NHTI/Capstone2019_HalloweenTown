@@ -47,7 +47,8 @@ public class BackgroundMusic : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "MenuScene")
+        StopMomMusic();
+        if (scene.name == "MenuScene")
         {
             MenuMusic();
             rm = null;
