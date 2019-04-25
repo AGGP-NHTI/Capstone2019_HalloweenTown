@@ -14,6 +14,8 @@ public class BackgroundMusic : MonoBehaviour {
     public AudioClip gameMusic;
     public float pitch = 0.01f;
 
+    Coroutine activePitchShift;
+
     RoundManager rm;
 
     void Start () {
@@ -82,12 +84,16 @@ public class BackgroundMusic : MonoBehaviour {
         asource.clip = momMusic;
         asource.Play();
         asource.loop = true;
-        StartCoroutine(pitchChange());
+        if(activePitchShift != null)
+        {
+            StopCoroutine(activePitchShift);
+        }
+        activePitchShift = StartCoroutine(pitchChange());
     }
     public void EndGameMusic()
     {
         //StopMomMusic();
-        StopCoroutine(pitchChange());
+        StopCoroutine(activePitchShift);
         asource.pitch = 1;
         asource.clip = endgameMusic;
         asource.Play();
@@ -107,5 +113,7 @@ public class BackgroundMusic : MonoBehaviour {
             asource.pitch += Time.deltaTime * pitch;
             yield return null;
         }
+
+        activePitchShift = null;
     }
 }

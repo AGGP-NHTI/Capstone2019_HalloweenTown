@@ -32,8 +32,10 @@ public class HealthBar : MonoBehaviour {
 
     public void TakeDamage(float amount) // changed - needs testing
     {
-        
-        eggSplat = Instantiate(eggSplat, transform.position, Quaternion.identity) as ParticleSystem;
+        if (eggSplat)
+        {
+            eggSplat = Instantiate(eggSplat, transform.position, Quaternion.identity) as ParticleSystem;
+        }
 
         particleManager.eggPart();
 
