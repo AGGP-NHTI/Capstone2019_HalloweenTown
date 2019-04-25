@@ -47,7 +47,7 @@ public class BackgroundMusic : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        StopMomMusic();
+        //StopMomMusic();
         if (scene.name == "MenuScene")
         {
             MenuMusic();
@@ -62,7 +62,7 @@ public class BackgroundMusic : MonoBehaviour {
 
     public void MenuMusic()
     {
-        StopMomMusic();
+        //StopMomMusic();
         asource.clip = menuMusic;
         asource.Play();
         asource.loop = true;
@@ -70,7 +70,8 @@ public class BackgroundMusic : MonoBehaviour {
 
     public void GameMusic()
     {
-        StopMomMusic();
+
+        //StopMomMusic();
         asource.clip = gameMusic;
         asource.Play();
         asource.loop = true;
@@ -85,17 +86,19 @@ public class BackgroundMusic : MonoBehaviour {
     }
     public void EndGameMusic()
     {
-        StopMomMusic();
+        //StopMomMusic();
+        StopCoroutine(pitchChange());
+        asource.pitch = 1;
         asource.clip = endgameMusic;
         asource.Play();
         asource.loop = true;
     }
 
-    public void StopMomMusic()
+    /*public void StopMomMusic()
     {
         StopCoroutine(pitchChange());
         asource.pitch = 1;
-    }
+    }*/
 
     IEnumerator pitchChange()
     {
