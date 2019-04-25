@@ -54,4 +54,4 @@ MonoBehaviour:
   spawnValidityCheckRadius: 2
   spawnValidityCheckLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 32768
