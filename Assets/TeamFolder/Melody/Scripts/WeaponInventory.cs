@@ -10,6 +10,7 @@ public class WeaponInventory : MonoBehaviour
     public int numberEggs = 0;
     public int numberToiletPaper = 0;
     public int toiletPaperMax = 3;
+    public int eggMax = 12;
     Pawn pawn;
     int selectedWeapon;
     List<GameObject> weaponList;
@@ -58,14 +59,16 @@ public class WeaponInventory : MonoBehaviour
         //Debug.Log(string.Format("other name: {0}", other.gameObject.name));
         if (other.gameObject.name.Contains("EggCarton"))
         {
-            numberEggs += 12;
-            UpdateDisplay();
-            Destroy(other.gameObject);
+            if (numberEggs < eggMax)
+            {
+                numberEggs += 6;
+                UpdateDisplay();
+                Destroy(other.gameObject);
+            }
         }
-        if (other.gameObject.CompareTag("TPPickUp"))
+        else if (other.gameObject.tag == "TPPickUp")
         {
-            Debug.Log("tp pick up");
-            Debug.Log(string.Format("numberToiletPaper: {0}; toiletPaperMax:  {1}", numberToiletPaper, toiletPaperMax));
+            //Debug.Log(string.Format("numberToiletPaper: {0}; toiletPaperMax:  {1}", numberToiletPaper, toiletPaperMax));
             if (numberToiletPaper < toiletPaperMax)
             {
                 numberToiletPaper++;
