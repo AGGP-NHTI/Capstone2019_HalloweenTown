@@ -92,8 +92,10 @@ public class BackgroundMusic : MonoBehaviour {
     }
     public void EndGameMusic()
     {
-        //StopMomMusic();
-        StopCoroutine(activePitchShift);
+        if (activePitchShift != null)
+        {
+            StopCoroutine(activePitchShift);
+        }
         asource.pitch = 1;
         asource.clip = endgameMusic;
         asource.Play();

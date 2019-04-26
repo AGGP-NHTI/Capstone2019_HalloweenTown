@@ -49,7 +49,7 @@ public class InputObject : ScriptableObject
         {
             return 0.0f;
         }
-        return Mathf.Abs(Input.GetAxis(LeftTriggerAxis));
+        return Input.GetAxis(LeftTriggerAxis);
     }
 
     public float GetRightTrigger()
@@ -58,7 +58,7 @@ public class InputObject : ScriptableObject
         {
             return 0.0f;
         }
-        return Mathf.Abs(Input.GetAxis(RightTriggerAxis));
+        return Input.GetAxis(RightTriggerAxis);
     }
 
     public Vector2 GetDPadInput()

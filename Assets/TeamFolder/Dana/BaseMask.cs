@@ -6,14 +6,15 @@ public class BaseMask : MonoBehaviour
 {
     public float waitingDuration = 100f;
     public float ultingDuration = 100f;
-    protected Coroutine ulttimerCoroutine;
-    protected Coroutine waitforultCoroutine;
+    public Coroutine ulttimerCoroutine;
+    public Coroutine waitforultCoroutine;
     public Pawn pawn;
     public GameObject barrel;
 
     public float ultTimeFloat = 0;
     public bool isUlting = false;
     public float ultMultiplier = 20;
+    
 
     protected void Start()
     {
