@@ -31,7 +31,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     
 
-    public void Start()
+    public void Awake()
     {
         if (photonInstance != null)
         {
@@ -40,10 +40,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         else
         {
             DontDestroyOnLoad(this);
+            photonInstance = this;
         }
-
-
-        photonInstance = this;
     }
 
     public void Update()
