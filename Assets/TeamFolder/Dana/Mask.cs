@@ -57,7 +57,11 @@ public class Mask : MonoBehaviour
 
             if(hasMask)
             {                
-                StopCoroutine(equipedMask.UltTimer());
+                if(equipedMask.ulttimerCoroutine!=null)
+                {
+                    StopCoroutine(equipedMask.ulttimerCoroutine);
+                }
+                
                 equipedMask.UltFinished();
                 RemoveMask();
             }

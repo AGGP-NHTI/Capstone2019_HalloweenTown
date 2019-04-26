@@ -29,9 +29,19 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public List<GameObject> PhotonObjects;
     public PhotonView MasterPhotonView;
 
+    
+
     public void Start()
     {
-        DontDestroyOnLoad(this);
+        if (photonInstance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+
 
         photonInstance = this;
     }
