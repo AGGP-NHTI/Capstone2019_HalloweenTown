@@ -237,7 +237,12 @@ public class RoundManager : MonoBehaviour {
                     GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
                     PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
                     pc.playerInput = inputObjects[0];
-                    GameObject actualChild = SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);
+                    SpawnPoint spawnpoint = SpawnPoint.GetRandomValidSpawn();
+                    if(spawnpoint != null)
+                    {
+                        Debug.Log("WORKED");
+                    }
+                    GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
 
                     Manager.managerInstance.photonManager.PhotonObjects[j].transform.position = actualChild.transform.position;
                     actualChild.transform.SetParent(Manager.managerInstance.photonManager.PhotonObjects[j].transform);
