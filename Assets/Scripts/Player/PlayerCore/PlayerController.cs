@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+       
         if (_controlledPawn)
         {
             OnGainControl();
