@@ -37,6 +37,14 @@ public class MenuScript : MonoBehaviour
         ChangeMenuTo(StartingMenu);
     }
 
+    private void Update()
+    {
+        if(eventSystem.currentSelectedGameObject == null)
+        {
+            FocusMenuButton();
+        }
+    }
+
     //MAIN MENU FUNCTIONALITY
     //
     //
@@ -47,6 +55,15 @@ public class MenuScript : MonoBehaviour
         if(activeMenuIndex == 0)
         {
             ChangeMenuTo(1);
+        }
+    }
+
+    public void FocusMenuButton()
+    {
+        MenuInfoHolder mih = MenuScreens[activeMenuIndex].GetComponent<MenuInfoHolder>();
+        if (mih && eventSystem)
+        {
+            eventSystem.SetSelectedGameObject(mih.FirstSelected);
         }
     }
 
@@ -85,16 +102,12 @@ public class MenuScript : MonoBehaviour
                 if (MenuScreens[newMenuIndex])
                 {
                     MenuScreens[newMenuIndex].SetActive(true);
-                    MenuInfoHolder mih = MenuScreens[newMenuIndex].GetComponent<MenuInfoHolder>();
-                    if(mih && eventSystem)
-                    {
-                        eventSystem.SetSelectedGameObject(mih.FirstSelected);
-                    }
                 }
             }
 
             previousMenuIndex = activeMenuIndex;
             activeMenuIndex = newMenuIndex;
+            FocusMenuButton();
         }
     }
 
