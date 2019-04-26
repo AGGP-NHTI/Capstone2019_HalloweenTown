@@ -5,17 +5,13 @@ using UnityEngine.UI;
 
 public class PressOnPlayerInput : MonoBehaviour
 {
-    public Manager playerManager;
-    public Button button;
+    [SerializeField]protected Button button;
 
-    protected virtual void Update()
+    public virtual void ClickButton()
     {
-        for(int i = 0; i < playerManager.inputObject.Count; i++)
+        if (button)
         {
-            if(playerManager.inputObject[i].GetBooInput() && !playerManager.joinedGame[i])
-            {
-                button.onClick.Invoke();
-            }
+            button.onClick.Invoke();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.Events;
 
 public class Manager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Manager : MonoBehaviour
     public bool RoundReadyToStart;// { get; set; }
     
     public Coroutine startGameTimer;
+    public UnityEvent OnUncapturedBooPress;
 
     protected bool lookForJoining = false;
 	void Start ()
@@ -94,14 +96,14 @@ public class Manager : MonoBehaviour
                     if (inputObject[i].GetStartInput())
                     {
                         joinedGame[i] = true;
-                        Debug.Log("Player " + i + " joined the game!");
+                        //Debug.Log("Player " + i + " joined the game!");
                     }
 
                     //test if trying to Ready Up
                     if (inputObject[i].GetJumpInput() && joinedGame[i])
                     {
                         readyUp[i] = true;
-                        Debug.Log("Player " + i + " is ready!");
+                        //Debug.Log("Player " + i + " is ready!");
                     }
 
                     //test if trying to Unready/Unjoin
@@ -115,6 +117,10 @@ public class Manager : MonoBehaviour
                         {
                             joinedGame[i] = false;
                         }
+                        else
+                        {
+                            OnUncapturedBooPress.Invoke();
+                        }
                     }
 
                     if (joinedGame[i])
@@ -122,7 +128,7 @@ public class Manager : MonoBehaviour
                         onePlayerInGame = true;
                         if (!readyUp[i])
                         {
-                            Debug.Log(i + " not ready");
+                            //Debug.Log(i + " not ready");
                             allPlayersReady = false;
                         }
                     }
@@ -144,7 +150,6 @@ public class Manager : MonoBehaviour
                 {
                     if (startGameTimer == null)
                     {
-                        Debug.Log("timer");
                         startGameTimer = StartCoroutine(BeginGameCountDown());
                     }
                 }
