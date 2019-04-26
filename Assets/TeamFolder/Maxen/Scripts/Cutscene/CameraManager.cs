@@ -55,12 +55,12 @@ public class CameraManager : MonoBehaviour
         {
             if(PlayerCameras.Contains(c))
             {
-                Debug.Log(c.name + " is playerCam");
+                //Debug.Log(c.name + " is playerCam");
                 c.depth = playerCameraDepth;
             }
             else if(c.depth >= playerCameraDepth - 1)
             {
-                Debug.Log(c.name + " is NOT playerCam");
+                //Debug.Log(c.name + " is NOT playerCam");
                 c.depth = playerCameraDepth - 2;
             }
         }
