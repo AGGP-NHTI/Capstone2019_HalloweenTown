@@ -3005,6 +3005,12 @@ Prefab:
       propertyPath: OnUncapturedBooPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114385693536549220, guid: 1bacdc7e4fd332e4887e6f120a5805e1,
+        type: 2}
+      propertyPath: NetworkedRoundModePrefab
+      value: 
+      objectReference: {fileID: 1933142380146496, guid: 9b2e4d828d3244f46a7a973b2a3f8146,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bacdc7e4fd332e4887e6f120a5805e1, type: 2}
   m_IsPrefabAsset: 0

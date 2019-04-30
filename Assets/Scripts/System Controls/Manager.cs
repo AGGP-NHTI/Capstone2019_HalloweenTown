@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour
     public static Manager managerInstance;
     public PhotonManager photonManager;
     public GameObject RoundModePrefab;
+    public GameObject NetworkedRoundModePrefab;
 
     public List<InputObject> inputObject;
     /*[HideInInspector]*/ public List<bool> joinedGame = new List<bool>(new bool[] {false, false, false, false});
@@ -194,12 +195,19 @@ public class Manager : MonoBehaviour
             CountDownDuration -= Time.deltaTime;
             yield return null;
         }
+
+        GameObject roundPrefab = RoundModePrefab;
+        if(PhotonNetwork.OfflineMode == false)
+        {
+            roundPrefab = NetworkedRoundModePrefab;
+        }
+
         //countDown.text = Mathf.Round(Time.time).ToString();
         lookForJoining = false;
         //This is when the game actually begins.
-        if(RoundModePrefab)
+        if(roundPrefab)
         {
-            GameObject spawnedObj = Instantiate(RoundModePrefab);
+            GameObject spawnedObj = Instantiate(roundPrefab);
             RoundManager roundMode = spawnedObj.GetComponent<RoundManager>();
 
             if(roundMode)

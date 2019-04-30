@@ -147,8 +147,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
            // MasterPhotonView.RPC("OnPhotonPlayerConnected", RpcTarget.Others);
         }   */
-        
 
+        _roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
 
         isConnectedToLobby = true;
         Debug.Log("Joined Room");

@@ -80,6 +80,12 @@ public class ConsoleCommandParser : MonoBehaviour
                         Cursor(splitCmd);
                         break;
                     }
+
+                case "display":
+                    {
+                        Display(splitCmd);
+                        break;
+                    }
                 default:
                     {
                         BuildConsole.WriteLine("Invalid command");
@@ -95,6 +101,7 @@ public class ConsoleCommandParser : MonoBehaviour
     #region Command specific methods
     [Header("For command \"round\"")]
     public GameObject RoundManagerPrefab;
+    public GameObject NetworkedRoundManagerPrefab;
     protected void Round(string[] keywords)
     {
         RoundManager activeRM = FindObjectOfType<RoundManager>();
@@ -130,13 +137,25 @@ public class ConsoleCommandParser : MonoBehaviour
                                 activeRM.roundRunningEndTime = value;
                                 BuildConsole.WriteLine("Round time set to " + value);
                             }
-                            else if(RoundManagerPrefab)
+                            else
                             {
-                                RoundManager rm = RoundManagerPrefab.GetComponent<RoundManager>();
-                                if(rm)
+                                if (RoundManagerPrefab)
                                 {
-                                    rm.roundRunningEndTime = value;
-                                    BuildConsole.WriteLine("Round time set to " + value);
+                                    RoundManager rm = RoundManagerPrefab.GetComponent<RoundManager>();
+                                    if (rm)
+                                    {
+                                        rm.roundRunningEndTime = value;
+                                        BuildConsole.WriteLine("Round time set to " + value);
+                                    }
+                                }
+                                if(NetworkedRoundManagerPrefab)
+                                {
+                                    RoundManager rm = NetworkedRoundManagerPrefab.GetComponent<RoundManager>();
+                                    if (rm)
+                                    {
+                                        rm.roundRunningEndTime = value;
+                                        BuildConsole.WriteLine("Round time set to " + value);
+                                    }
                                 }
                             }
                         }
@@ -562,6 +581,53 @@ public class ConsoleCommandParser : MonoBehaviour
                     BuildConsole.WriteLine("Invalid parameter. Expecting \'lock\' or \'visible\'");
                     break;
                 }
+        }
+    }
+
+    protected void Display(string[] keywords)
+    {
+        if(keywords.Length > 1)
+        {
+            switch(keywords[1])
+            {
+                case "roundmanager":
+                    {
+                        RoundManager activeRM = FindObjectOfType<RoundManager>();
+                        if (!activeRM)
+                        {
+                            BuildConsole.WriteLine("Round not active");
+                            return;
+                        }
+
+                        string msg = "{\n";
+                        if(Photon.Pun.PhotonNetwork.IsMasterClient)
+                        {
+                            msg += "\tIs Master\n";
+                        }
+                        else
+                        {
+                            msg += "\tNot Master\n";
+                        }
+                        msg += activeRM.currentPhase + "\n\t" + activeRM.roundElapsedTime + "\n}";
+                        BuildConsole.WriteLine(msg);
+                        break;
+                    }
+                case "roomproperties":
+                    {
+                        if(PhotonManager.photonInstance)
+                        {
+                            string msg = "{";
+                            foreach(DictionaryEntry kvp in PhotonManager.photonInstance.RoomProperties)
+                            {
+                                msg += "\n\t{ " + kvp.Key + " | " + kvp.Value + " }";
+                            }
+                            msg += "\n}";
+
+                            BuildConsole.WriteLine(msg);
+                        }
+                        break;
+                    }
+            }
         }
     }
     #endregion

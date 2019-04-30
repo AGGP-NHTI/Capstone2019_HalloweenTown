@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Photon.Pun;
 
 public class RoundManager : MonoBehaviour {
-
-    
-
     #region Overall Round Management Variables
     public enum RoundPhase
     {
@@ -37,11 +33,6 @@ public class RoundManager : MonoBehaviour {
     public int GameSceneBuildIndex = 1;
     public GameObject playercontrollerPrefab;
     public GameObject playerPrefab;
-
-    [Header("Round Ending")]
-    public GameObject momPrefab;
-    [HideInInspector] public GameObject spawnedMom;
-    
 
     [Header("Round Over")]
     public float timeBeforeReturningToMenu = 5.0f;
@@ -108,7 +99,7 @@ public class RoundManager : MonoBehaviour {
 
         while (!loadingOperation.isDone)
         {
-            Debug.Log("Loading progress: " + loadingOperation.progress);
+            //Debug.Log("Loading progress: " + loadingOperation.progress);
             yield return null;
         }
 
@@ -209,58 +200,30 @@ public class RoundManager : MonoBehaviour {
     #region Extra Utility
 
     
-    protected void SpawnPlayers(List<InputObject> inputObjects)
+    protected virtual void SpawnPlayers(List<InputObject> inputObjects)
     {
         _activePlayers = new List<PlayerController>();
-
-        if (PhotonNetwork.OfflineMode)
+        for (int i = 0; i < inputObjects.Count; i++)
         {
-            for (int i = 0; i < inputObjects.Count; i++)
-            {
-                GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
-                PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
-                pc.playerInput = inputObjects[i];
+            GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
+            PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
+            pc.playerInput = inputObjects[i];
 
-                SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);               
+            SpawnPoint.GetRandomValidSpawn().SpawnPlayer(pc, playerPrefab);               
 
-                _activePlayers.Add(pc);
-            }
-
-            SplitScreenManager.Instance.ConfigureScreenSpace();
+            _activePlayers.Add(pc);
         }
-        else
-        {            
-            for (int j = 0; j < Manager.managerInstance.photonManager.PhotonObjects.Count; j++)
-            {
-                if (Manager.managerInstance.photonManager.PhotonObjects[j].GetPhotonView().IsMine)
-                {
-                    GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
-                    PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
-                    pc.playerInput = inputObjects[0];
-                    SpawnPoint spawnpoint = SpawnPoint.GetRandomValidSpawn();
-                    if(spawnpoint != null)
-                    {
-                        Debug.Log("WORKED");
-                    }
-                    GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
 
-                    Manager.managerInstance.photonManager.PhotonObjects[j].transform.position = actualChild.transform.position;
-                    actualChild.transform.SetParent(Manager.managerInstance.photonManager.PhotonObjects[j].transform);
-                   // Manager.managerInstance.photonManager.PhotonObjects[j].GetPhotonView().RPC("AddActivePlayer", RpcTarget.All);
-                }
-            }
-            // _activePlayers = Manager.managerInstance.photonManager.PhotonObjects;
-            //SplitScreenManager.Instance.ConfigureScreenSpace();
-        }
+        SplitScreenManager.Instance.ConfigureScreenSpace();
     }
 
-    protected void SetRoundToRunning()
+    protected virtual void SetRoundToRunning()
     {
         SpawnPlayers(_activeInputs);
         currentPhase = RoundPhase.ROUND_RUNNING;
     }
 
-    public PlayerController[] GetPlayers()
+    public virtual PlayerController[] GetPlayers()
     {
         return _activePlayers.ToArray();
     }
