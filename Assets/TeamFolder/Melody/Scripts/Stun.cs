@@ -8,7 +8,7 @@ public class Stun : MonoBehaviour {
     PlayerProjectileCollisionManager myCollisionManager;
     Boo myBoo;
     public bool stunned = false;
-
+    ParticleManager particleManager;
     Pawn pawn;
 
    public Coroutine stun;
@@ -20,6 +20,7 @@ public class Stun : MonoBehaviour {
         myCollisionManager = GetComponent<PlayerProjectileCollisionManager>();
         pawn = GetComponent<Pawn>();
         myBoo = GetComponent<Boo>();
+        particleManager = GetComponent<ParticleManager>();
     }
 	
 	// Update is called once per frame
@@ -38,6 +39,7 @@ public class Stun : MonoBehaviour {
 
     public IEnumerator suspendMovement(float duration)
     {
+        particleManager.batPart();
         pawn.MyCandy.DropCandy();
         float timer = 0f;
         float rate = 1 / duration;
