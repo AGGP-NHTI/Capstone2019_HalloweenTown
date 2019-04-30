@@ -60,7 +60,7 @@ public class MoveToTarget : Behavior
             else
             {
                 doPathCalculation = true;
-                if(sqrDistance <= 25)
+                if(sqrDistance <= 100)
                 {
                     Debug.Log("mom speaks");
                     mom.GetRandomMomSaying();

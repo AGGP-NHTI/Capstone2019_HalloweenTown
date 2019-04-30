@@ -76,7 +76,7 @@ public class MomPawn : AIPawn
 
     public void GetRandomMomSaying()
     {
-        if (waitingformom == null)
+        if (waitingformom == null && !audioSource.isPlaying)
         {          
             if (randomVoiceLine == 1)
             {
@@ -119,7 +119,8 @@ public class MomPawn : AIPawn
         if (!audioSource.isPlaying)
         {
             yield return new WaitForSeconds(10);
+            waitingformom = null;
         }
-        waitingformom = null;
+        
     }
 }
