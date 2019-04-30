@@ -12,8 +12,9 @@ public class HealthBar : MonoBehaviour {
 
     SoundManager soundManager;
     ParticleManager particleManager;
-    public ParticleSystem eggSplat;
-
+    
+    public ParticleSystem[] eggSplaters = new ParticleSystem[8];
+    int eggArea = 0;
     //public GameObject dropCandy;//The candy
     //public Transform player;//get player transform
     //public ParticleSystem system;//particles
@@ -32,13 +33,17 @@ public class HealthBar : MonoBehaviour {
 
     public void TakeDamage(float amount) // changed - needs testing
     {
-        if (eggSplat)
+        if(eggArea >= 0)
         {
-            eggSplat = Instantiate(eggSplat, transform.position, Quaternion.identity) as ParticleSystem;
+            eggSplaters[eggArea].Play();
+            eggArea++;
         }
 
-        particleManager.eggPart();
-
+        if(eggArea >= 8)
+        {
+            eggArea = 0;
+        }
+        
         if (pawn.myMask.hasMask)
         {
             if (health >= 0)//|| !ghostUlt)//if ghost is not ulting
