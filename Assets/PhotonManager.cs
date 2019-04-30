@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using ExitGames.Client.Photon;
 
 //using UnityEngine.Networking;
 public class PhotonManager : MonoBehaviourPunCallbacks
@@ -29,7 +30,23 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public List<GameObject> PhotonObjects;
     public PhotonView MasterPhotonView;
 
-    
+    //This is here to make setting/getting room properties a little less confusing
+    //
+    protected ExitGames.Client.Photon.Hashtable _roomProperties;
+    public ExitGames.Client.Photon.Hashtable RoomProperties
+    {
+        get
+        {
+            //returns local instance of room properties.
+            return _roomProperties;
+        }
+        set
+        {
+            //Sends the room properties to the network. Local instance gets updated lower down by OnRoomPropertiesUpdate(), which is something Photon calls.
+            PhotonNetwork.CurrentRoom.SetCustomProperties(value);
+        }
+    }
+    //
 
     public void Awake()
     {
@@ -139,5 +156,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         SpawnController();
     }
 
+    //Updates local instance of roomproperties to reflect networked room properties.
+    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
+    {
+        _roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+    }
 }
 
