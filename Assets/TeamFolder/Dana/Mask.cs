@@ -70,6 +70,7 @@ public class Mask : MonoBehaviour
         
         if (pawn.myHealth.health <= 0 && hasMask)
         {
+            StopCoroutine(equipedMask.ulttimerCoroutine);
             hasMask = false;            
             Vector3 pos;
             //pos = currentModel.transform.position;
