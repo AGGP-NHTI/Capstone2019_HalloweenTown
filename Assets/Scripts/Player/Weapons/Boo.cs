@@ -79,7 +79,7 @@ public class Boo : MonoBehaviour {
                             int candySuck = 20;
                             float healthSuck = 20f;
                             soundManager.VampireSlurp();
-
+                            particleManager.vampPart();
                             if (hitPlayerPawn.myMask.hasMask)
                             {                                
                                 if (hitPlayerPawn.myHealth.health < healthSuck)
