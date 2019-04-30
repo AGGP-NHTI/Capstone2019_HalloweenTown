@@ -114,7 +114,7 @@ public class MomPawn : AIPawn
         audioSource.Play();
     }
 
-    IEnumerable waitForMomToTalk()
+    IEnumerator waitForMomToTalk()
     {
         if (!audioSource.isPlaying)
         {
