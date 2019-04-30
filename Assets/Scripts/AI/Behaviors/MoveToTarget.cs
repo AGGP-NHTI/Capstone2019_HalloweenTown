@@ -45,6 +45,7 @@ public class MoveToTarget : Behavior
             float capRange = mom.CaptureRange;
             if(sqrDistance <= capRange)
             {
+                mom.ChildScream();//new
                 Pawn p = target.GetComponent<Pawn>();
                 if(p)
                 {
@@ -55,10 +56,15 @@ public class MoveToTarget : Behavior
                 mom.UpdateTargetCount();
                 ai.localBlackboard.SetProperty("target");
                 ai.localBlackboard.SetProperty(MomPawn.PROPERTY_TARGETSET, false);
-            }
+            }            
             else
             {
                 doPathCalculation = true;
+                if(sqrDistance <= 100)
+                {
+                    Debug.Log("mom speaks");
+                    mom.GetRandomMomSaying();
+                }
             }
         }
 

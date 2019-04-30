@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void IsItPlaying()
+    public void StopPlaying()
     {
        if(audioSource.isPlaying)
         {
@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour {
 
     public void Boo()
     {
-        IsItPlaying();
+        StopPlaying();
         audioSource.clip = boo;
         audioSource.Play();
     }

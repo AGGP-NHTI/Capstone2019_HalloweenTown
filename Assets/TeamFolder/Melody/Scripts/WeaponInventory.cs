@@ -61,7 +61,14 @@ public class WeaponInventory : MonoBehaviour
         {
             if (numberEggs < eggMax)
             {
-                numberEggs += 6;
+                if(numberEggs + 6 > eggMax)
+                {
+                    numberEggs = eggMax;
+                }
+                else
+                {
+                    numberEggs += 6;                    
+                }
                 UpdateDisplay();
                 Destroy(other.gameObject);
             }
