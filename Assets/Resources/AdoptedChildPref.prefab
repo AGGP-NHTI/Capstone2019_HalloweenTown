@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9263606, b: 0, a: 1}
+  m_Color: {r: 0.6794996, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114868741024327242}
-  viewIdField: 0
+  viewIdField: 2
   InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
