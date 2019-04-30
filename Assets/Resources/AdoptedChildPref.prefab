@@ -1408,7 +1408,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792628713573326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66600037, y: 0, z: 0}
+  m_LocalPosition: {x: 0.666, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746539219275856}
@@ -1448,7 +1448,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872167124162834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
+  m_LocalPosition: {x: 0.666, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224965725725197874}
@@ -1808,7 +1808,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004278199457754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66600037, y: 0, z: -1.999999}
+  m_LocalPosition: {x: 0.666, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4931619105025190}
@@ -1889,7 +1889,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405976558990932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.702372, y: 2.9478652e-16, z: -14.28}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4083498365688550}
@@ -2437,8 +2437,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114868741024327242}
-  viewIdField: 2
-  InstantiationId: 2
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114265354042218434
 MonoBehaviour:
@@ -2944,7 +2944,8 @@ MonoBehaviour:
   waitforcandy: 0
   actionButton: 0
   showXForCandy: 0
-  candyPrefab: {fileID: 0}
+  candyPrefab: {fileID: 1490400597383388, guid: 5816dfc3ebca0db4694bce8e36c12c0b,
+    type: 2}
 --- !u!114 &114709604137245798
 MonoBehaviour:
   m_ObjectHideFlags: 1
