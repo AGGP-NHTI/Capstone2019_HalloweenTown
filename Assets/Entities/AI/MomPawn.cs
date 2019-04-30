@@ -118,7 +118,7 @@ public class MomPawn : AIPawn
     {
         if (!audioSource.isPlaying)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(25);
             waitingformom = null;
         }
         
