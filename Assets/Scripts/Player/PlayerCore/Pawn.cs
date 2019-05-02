@@ -32,6 +32,9 @@ public class Pawn : MonoBehaviour
     [HideInInspector]
     public PlayerController MyController;
 
+    public MonoBehaviour[] MonobehavioursToToggleOnControlChange;
+    public GameObject[] GameObjectsToToggleOnControlChange;
+
     private void Awake()
     {
         //myMask.currentModel.GetComponent<GetBarrel>().witchBroom.SetActive(false);
@@ -64,6 +67,24 @@ public class Pawn : MonoBehaviour
 
         outlineMesh.materials[0].SetColor("_OutlineColor", color);
         solidMesh.material.SetColor("_OutlineColor", color);
+    }
+
+    public virtual void ToggleComponents()
+    {
+        Debug.Log("Toggling");
+        foreach(GameObject obj in GameObjectsToToggleOnControlChange)
+        {
+            Debug.Log("toggling " + obj.name + " from " + obj.activeSelf);
+            obj.SetActive(!obj.activeSelf);
+            Debug.Log("toggling " + obj.name + " to " + obj.activeSelf);
+        }
+        foreach (MonoBehaviour obj in MonobehavioursToToggleOnControlChange)
+        {
+            Debug.Log("toggling " + obj.name + " from " + obj.enabled);
+            obj.enabled = !obj.enabled;
+            Debug.Log("toggling " + obj.name + " to " + obj.enabled);
+        }
+
     }
 
     #region Input

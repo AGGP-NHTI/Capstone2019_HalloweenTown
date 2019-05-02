@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsControllingPawn { get { return _controlledPawn; } }
 
-    private void Start()
+    private void Awake()
     {
        
         if (_controlledPawn)
@@ -79,9 +79,12 @@ public class PlayerController : MonoBehaviour
     #region Control Change Events
     protected virtual void OnGainControl()
     {
+        Debug.Log("CALLING ON GAIN CONTROL");
         if (!_controlledPawn) { return; }
 
         _controlledPawn.MyController = this;
+
+        _controlledPawn.ToggleComponents();
 
         if (_controlledPawn.MyCandy)
         {
@@ -115,12 +118,15 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void OnLoseControl()
     {
+        Debug.Log("CALLING ON LOSE CONTROL");
         if (!_controlledPawn) { return; }
 
         if(_controlledPawn.MyController == this)
         {
             _controlledPawn.MyController = null;
         }
+
+        _controlledPawn.ToggleComponents();
 
         if (SplitScreenManager.Instance && _controlledPawn.MyCamera)
         {

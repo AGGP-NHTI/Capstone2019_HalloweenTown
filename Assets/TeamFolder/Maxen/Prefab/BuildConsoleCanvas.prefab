@@ -454,6 +454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoundManagerPrefab: {fileID: 1933142380146496, guid: e59002e5c535c5d4ab721c2373533d56,
     type: 2}
+  NetworkedRoundManagerPrefab: {fileID: 1933142380146496, guid: 9b2e4d828d3244f46a7a973b2a3f8146,
+    type: 2}
 --- !u!114 &114851708719161060
 MonoBehaviour:
   m_ObjectHideFlags: 1

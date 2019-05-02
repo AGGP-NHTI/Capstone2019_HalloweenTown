@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1189416695110868
 GameObject:
   m_ObjectHideFlags: 1
@@ -2868,6 +2868,10 @@ MonoBehaviour:
   bagSpawner: {fileID: 114356165396908318}
   myBarrelController: {fileID: 114853754015313546}
   MyController: {fileID: 0}
+  MonobehavioursToToggleOnControlChange:
+  - {fileID: 114660337887026628}
+  GameObjectsToToggleOnControlChange:
+  - {fileID: 1168356507476190}
 --- !u!114 &114622372625539906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2931,7 +2935,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405976558990932}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 584485fe4c80ffa4eb40f8e914b2553a, type: 3}
   m_Name: 
