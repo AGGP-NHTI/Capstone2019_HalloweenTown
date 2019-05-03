@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Photon.Pun;
 public class Candy : MonoBehaviour
 {
     public static Dictionary<PlayerController, int> Scoreboard;
@@ -77,7 +77,7 @@ public class Candy : MonoBehaviour
 
                 GameObject candy;
 
-                candy = Instantiate(candyPrefab, transform.position + pos, transform.rotation);
+                candy = PhotonNetwork.Instantiate(candyPrefab.name, transform.position + pos, transform.rotation);
                 candy.GetComponent<Rigidbody>().velocity = vel;
             }
         }
