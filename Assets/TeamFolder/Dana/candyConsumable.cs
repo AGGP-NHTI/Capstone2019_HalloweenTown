@@ -8,7 +8,7 @@ public class candyConsumable : MonoBehaviour {
     public bool canCollect = false;
     private void Start()
     {
-        Destroy(gameObject, 10f);
+        //Destroy(gameObject, 10f);
         StartCoroutine(wait());
         gameObject.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * 10;
     }
@@ -26,8 +26,14 @@ public class candyConsumable : MonoBehaviour {
 
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         canCollect = true;
+    }
+
+    IEnumerator Remove()
+    {
+        yield return new WaitForSeconds(20);
+        PhotonNetwork.Destroy(gameObject);
     }
     
 }
