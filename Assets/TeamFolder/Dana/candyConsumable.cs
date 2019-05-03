@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class candyConsumable : MonoBehaviour {
 
@@ -19,7 +20,7 @@ public class candyConsumable : MonoBehaviour {
         {
             GameObject player = collision.gameObject;
             player.GetComponent<Candy>().candy += 1;
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
