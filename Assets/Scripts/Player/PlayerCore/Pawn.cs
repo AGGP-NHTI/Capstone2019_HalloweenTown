@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class Pawn : MonoBehaviour
 {
     public MoveScript MyMoveScript;
@@ -56,7 +56,8 @@ public class Pawn : MonoBehaviour
     {
         myBarrelController.DefaultAnchor = myMask.currentModel.GetComponent<GetBarrel>().barrel.transform;
         LhandBagSpawn = myMask.currentModel.GetComponent<GetBarrel>().Lhand;
-        bagSpawner.myBag.transform.SetParent(LhandBagSpawn.transform, false);
+        //bagSpawner.myBag.transform.SetParent(LhandBagSpawn.transform, false);
+        gameObject.GetPhotonView().RPC("NetworkSetParent", RpcTarget.AllBuffered);
         _anim = myMask.currentModel.GetComponent<Animator>();
 
         myParticle.booParticles = myMask.currentModel.GetComponent<GetBarrel>().boopartical;

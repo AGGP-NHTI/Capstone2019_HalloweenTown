@@ -42,10 +42,8 @@ public class PlayerBagSpawner : MonoBehaviour {
 
     [PunRPC]
     void NetworkSetParent()
-    {
-        
+    {        
         myBag.transform.parent = pawn.LhandBagSpawn.transform;
-        Debug.Log("photon view");
         //myBag.transform.SetParent(pawn.LhandBagSpawn.transform);
     }
 
