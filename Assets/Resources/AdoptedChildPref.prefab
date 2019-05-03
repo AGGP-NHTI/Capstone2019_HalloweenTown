@@ -2501,7 +2501,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114014868021516824}
-  viewIdField: 0
+  viewIdField: 2
   InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114151291919258258
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiusOfBoo: 60
-  damage: 0
+  damage: 20
   canBoo: 1
 --- !u!114 &114619201880412736
 MonoBehaviour:
@@ -3441,8 +3441,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114426832844424804}
-  viewIdField: 0
-  InstantiationId: 1
+  viewIdField: 10
+  InstantiationId: 10
   isRuntimeInstantiated: 0
 --- !u!114 &114952993703506408
 MonoBehaviour:
