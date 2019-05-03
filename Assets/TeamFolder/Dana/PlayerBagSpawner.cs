@@ -36,7 +36,7 @@ public class PlayerBagSpawner : MonoBehaviour {
     }
 
     [PunRPC]
-    void NetworkSetParent(string name)
+    void NetworkSetParent()
     {
         myBag.transform.parent = pawn.LhandBagSpawn.transform;
     }
