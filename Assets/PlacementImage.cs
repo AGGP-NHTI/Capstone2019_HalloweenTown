@@ -36,13 +36,13 @@ public class PlacementImage : MonoBehaviour {
             return;
         }
 
-        myPlayerScore = Candy.Scoreboard[player.MyController];
+        myPlayerScore = Candy.Scoreboard[player.MyController.PlayerNumber];
         int positionNumber = 0;
 
-        foreach (KeyValuePair<PlayerController, int> kvp in Candy.Scoreboard)
+        foreach (KeyValuePair<uint, int> kvp in Candy.Scoreboard)
         {
             
-            if (kvp.Key != player.MyController)
+            if (kvp.Key != player.MyController.PlayerNumber)
             {
                 if(kvp.Value > myPlayerScore)
                 {

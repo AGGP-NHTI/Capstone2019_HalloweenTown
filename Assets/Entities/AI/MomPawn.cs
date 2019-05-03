@@ -20,6 +20,8 @@ public class MomPawn : AIPawn
     public AudioClip mom2;
     public AudioClip mom3;
 
+    public List<Pawn> Targets;
+
     private void Awake()
     {
         _anim = gameObject.GetComponent<Animator>();
@@ -44,23 +46,17 @@ public class MomPawn : AIPawn
         _controller.localBlackboard.SetProperty(PROPERTY_TARGETSET, false);
     }
 
-    public void LetMomHunt()
+    public void LetMomHunt(Pawn[] targets)
     {
+        Targets = new List<Pawn>(targets);
+
         UpdateTargetCount();
         _huntStarted = true;
     }
 
     public void UpdateTargetCount()
-    {
-        int targetCount = 0;
-        foreach (PlayerController pc in Candy.Scoreboard.Keys)
-        {
-            if(pc.ControlledPawn)
-            {
-                targetCount++;
-            }
-        }
-        _controller.localBlackboard.SetProperty(PROPERTY_TARGETCOUNT, targetCount);
+    {   
+        _controller.localBlackboard.SetProperty(PROPERTY_TARGETCOUNT, Targets.Count);
     }
 
     public bool DoneHunting()

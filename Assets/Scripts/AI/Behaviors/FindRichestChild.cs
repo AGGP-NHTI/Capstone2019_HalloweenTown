@@ -6,6 +6,8 @@ using AI;
 
 public class FindRichestChild : Behavior
 {
+    protected MomPawn mom;
+
     public override void OnEnter(AIController ai)
     {
         SharedBehavior(ai);
@@ -27,6 +29,7 @@ public class FindRichestChild : Behavior
         if (ai.aiPawn)
         {
             aiPosition = ai.aiPawn.transform.position;
+            mom = (ai.aiPawn as MomPawn);
         }
         else
         {
@@ -42,32 +45,29 @@ public class FindRichestChild : Behavior
 
     protected virtual Pawn GetRichestChild(Vector3 aiPosition)
     {
-        PlayerController richestChild = null;
+        Pawn richestChild = null;
 
-        foreach(KeyValuePair<PlayerController, int> kvp in Candy.Scoreboard)
+        foreach(Pawn childPawn in mom.Targets)
         {
-            if (kvp.Key.ControlledPawn)
+            if (richestChild == null && childPawn.MyCandy)
             {
-                if (richestChild == null)
+                richestChild = childPawn;
+            }
+            else if(childPawn.MyCandy)
+            {
+                if (childPawn.MyCandy.candy > richestChild.MyCandy.candy)
                 {
-                    richestChild = kvp.Key;
+                    richestChild = childPawn;
                 }
-                else
+                else if (childPawn.MyCandy.candy == richestChild.MyCandy.candy)
                 {
-                    if (kvp.Value > Candy.Scoreboard[richestChild])
-                    {
-                        richestChild = kvp.Key;
-                    }
-                    else if (kvp.Value == Candy.Scoreboard[richestChild])
-                    {
-                        //If there are multiple richest children, pick the one who's closest
-                        float richestSqrDistance = (aiPosition - richestChild.ControlledPawn.transform.position).sqrMagnitude;
-                        float pcSqrDistance = (aiPosition - kvp.Key.ControlledPawn.transform.position).sqrMagnitude;
+                    //If there are multiple richest children, pick the one who's closest
+                    float richestSqrDistance = (aiPosition - richestChild.transform.position).sqrMagnitude;
+                    float pcSqrDistance = (aiPosition - childPawn.transform.position).sqrMagnitude;
 
-                        if(pcSqrDistance < richestSqrDistance)
-                        {
-                            richestChild = kvp.Key;
-                        }
+                    if(pcSqrDistance < richestSqrDistance)
+                    {
+                        richestChild = childPawn;
                     }
                 }
             }
@@ -75,7 +75,7 @@ public class FindRichestChild : Behavior
 
         if(richestChild)
         {
-            return richestChild.ControlledPawn;
+            return richestChild;
         }
         else
         {

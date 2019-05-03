@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour {
+
+    public static RoundManager Instance;
+
     #region Overall Round Management Variables
     public enum RoundPhase
     {
@@ -26,6 +29,7 @@ public class RoundManager : MonoBehaviour {
 
     protected List<InputObject> _activeInputs;
     protected List<PlayerController> _activePlayers;
+
     #endregion
 
     #region Specific Phase Variables
@@ -34,16 +38,25 @@ public class RoundManager : MonoBehaviour {
     public GameObject playercontrollerPrefab;
     public GameObject playerPrefab;
 
+    //[Header("Round Ending")]
+    protected MomPawn _momInScene;
+
     [Header("Round Over")]
     public float timeBeforeReturningToMenu = 5.0f;
     public int MainMenuBuildIndex = 0;
-    
     #endregion
 
     protected virtual void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        
+        if(Instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
     }
 
     public virtual void StartRound(List<InputObject> ParticipatingPlayers)
@@ -141,25 +154,24 @@ public class RoundManager : MonoBehaviour {
 
     protected virtual IEnumerator RoundEndingLogic()
     {
-        MomPawn momInScene = LevelInfo.GetMom();
-        momInScene.gameObject.SetActive(true);
+        _momInScene = LevelInfo.GetMom();
+        _momInScene.gameObject.SetActive(true);
 
         BackgroundMusic.instance.MomMusic();
 
         GameObject momCutscene = LevelInfo.GetMomCutscene();
         if(momCutscene)
         {
-            CameraManager.Instance.StartCutscene(momCutscene, momInScene.LetMomHunt);
+            CameraManager.Instance.StartCutscene(momCutscene, ActivateMom);
         }
         else
         {
-
-            momInScene.LetMomHunt();
+            ActivateMom();
         }
 
         while (currentPhase == RoundPhase.ROUND_ENDING)
         {
-            if(momInScene.DoneHunting())
+            if(_momInScene.DoneHunting())
             {
                 currentPhase = RoundPhase.ROUND_OVER;
             }
@@ -174,10 +186,11 @@ public class RoundManager : MonoBehaviour {
         BackgroundMusic.instance.EndGameMusic();
 
         Text[] playerscores = LevelInfo.GetPlayerScores();
-        for(int i = 0; i < _activePlayers.Count; i++)
+        foreach(KeyValuePair<uint, int> kvp in Candy.Scoreboard)
         {
-            playerscores[i].enabled = true;
-            playerscores[i].text = "Player " + _activePlayers[i].PlayerNumber + ": " + Candy.Scoreboard[_activePlayers[i]].ToString();
+            
+            playerscores[kvp.Key - 1].enabled = true;
+            playerscores[kvp.Key - 1].text = "Player " + kvp.Key + ": " + kvp.Value.ToString();
         }
 
         Canvas scoreboard = LevelInfo.GetScoreBoard();
@@ -221,6 +234,13 @@ public class RoundManager : MonoBehaviour {
     {
         SpawnPlayers(_activeInputs);
         currentPhase = RoundPhase.ROUND_RUNNING;
+    }
+
+    protected virtual void ActivateMom()
+    {
+        Pawn[] foundPawns = FindObjectsOfType<Pawn>();
+
+        _momInScene.LetMomHunt(foundPawns);
     }
 
     public virtual PlayerController[] GetPlayers()

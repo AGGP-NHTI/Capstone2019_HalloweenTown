@@ -202,22 +202,26 @@ public class NetworkedRoundManager : RoundManager
 
     protected override IEnumerator RoundEndingLogic()
     {
-        MomPawn momInScene = LevelInfo.GetMom();
-        momInScene.gameObject.SetActive(true);
+        _momInScene = LevelInfo.GetMom();
+        _momInScene.gameObject.SetActive(true);
 
         BackgroundMusic.instance.MomMusic();
 
         GameObject momCutscene = LevelInfo.GetMomCutscene();
         if(momCutscene)
         {
-            CameraManager.Instance.StartCutscene(momCutscene);
+            CameraManager.Instance.StartCutscene(momCutscene, ActivateMom);
+        }
+        else
+        {
+            ActivateMom();
         }
 
         while(currentPhase == RoundPhase.ROUND_ENDING)
         {
             if(PhotonNetwork.IsMasterClient)
             {
-                if(momInScene.DoneHunting())
+                if(_momInScene.DoneHunting())
                 {
                     currentPhase = RoundPhase.ROUND_OVER;
                 }

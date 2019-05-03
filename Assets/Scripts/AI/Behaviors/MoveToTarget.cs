@@ -49,7 +49,11 @@ public class MoveToTarget : Behavior
                 Pawn p = target.GetComponent<Pawn>();
                 if(p)
                 {
-                    p.MyController.ControlledPawn = null;
+                    if(p.MyController)
+                    {
+                        p.MyController.ControlledPawn = null;
+                    }
+                    mom.Targets.Remove(p);
                 }
                 Destroy(target.gameObject);
                 _currentPhase = StatePhase.INACTIVE;

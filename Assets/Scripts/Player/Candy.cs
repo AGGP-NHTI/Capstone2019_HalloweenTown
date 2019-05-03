@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 public class Candy : MonoBehaviour
 {
-    public static Dictionary<PlayerController, int> Scoreboard;
+    public static Dictionary<uint, int> Scoreboard;
 
     public int candy = 0;
     public Text candyText;
@@ -88,25 +88,26 @@ public class Candy : MonoBehaviour
     public void AddCandy(int amount)
     {
         candy += amount;
-        Scoreboard[_myController] = candy;
+        Scoreboard[_myController.PlayerNumber] = candy;
     }
 
     public void SetPlayerController(PlayerController pc)
     {
         if(Scoreboard == null)
         {
-            Scoreboard = new Dictionary<PlayerController, int>();
+            Scoreboard = new Dictionary<uint, int>();
         }
 
         _myController = pc;
-        if(Scoreboard.ContainsKey(pc))
+
+        if (Scoreboard.ContainsKey(pc.PlayerNumber))
         {
-            Scoreboard[pc] = candy;
+            Scoreboard[pc.PlayerNumber] = candy;
             
         }
         else
         {
-            Scoreboard.Add(pc, candy);
+            Scoreboard.Add(pc.PlayerNumber, candy);
             
         }
     }
