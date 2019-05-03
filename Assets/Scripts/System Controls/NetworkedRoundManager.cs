@@ -233,7 +233,16 @@ public class NetworkedRoundManager : RoundManager
     #region Extra Utility
     protected override void SpawnPlayers(List<InputObject> inputObjects)
     {
-        for (int j = 0; j < Manager.managerInstance.photonManager.PhotonObjects.Count; j++)
+        GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
+        PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
+        pc.playerInput = inputObjects[0];
+        SpawnPoint spawnpoint = SpawnPoint.GetRandomValidSpawn();
+
+        GameObject actualChild = PhotonNetwork.Instantiate(playerPrefab.name, spawnpoint.transform.position, spawnpoint.transform.rotation);
+
+        //GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
+
+        /*for (int j = 0; j < Manager.managerInstance.photonManager.PhotonObjects.Count; j++)
         {
             if (Manager.managerInstance.photonManager.PhotonObjects[j].GetPhotonView().IsMine)
             {
@@ -254,7 +263,7 @@ public class NetworkedRoundManager : RoundManager
                 // _activePlayers = Manager.managerInstance.photonManager.PhotonObjects;
                 //SplitScreenManager.Instance.ConfigureScreenSpace();
             }
-        }
+        }*/
     }
 
     protected virtual void ConfirmCutsceneEnd()
