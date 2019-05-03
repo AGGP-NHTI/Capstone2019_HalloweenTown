@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 114383810491985096}
   - component: {fileID: 114950140970840348}
   - component: {fileID: 114337735005354166}
+  - component: {fileID: 114892196137935216}
   m_Layer: 0
   m_Name: NEWVampire_Costume
   m_TagString: Untagged
@@ -2035,6 +2036,52 @@ MonoBehaviour:
   TrackZ: 1
   useOverrideForward: 0
   overrideForward: {x: 0, y: 0, z: 0}
+--- !u!114 &114892196137935216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860121824587268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 2
+    Name: runTrigger
+  - Type: 4
+    SynchronizeType: 2
+    Name: runBool
+  - Type: 4
+    SynchronizeType: 2
+    Name: jumpBool
+  - Type: 4
+    SynchronizeType: 1
+    Name: aimBool
+  - Type: 1
+    SynchronizeType: 1
+    Name: Blend
+  - Type: 9
+    SynchronizeType: 1
+    Name: trickOrTreatTrigger
+  - Type: 9
+    SynchronizeType: 1
+    Name: booTrigger
+  - Type: 4
+    SynchronizeType: 1
+    Name: witchUltBool
+  - Type: 4
+    SynchronizeType: 1
+    Name: wolfUltBool
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!114 &114950140970840348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2053,8 +2100,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114337735005354166}
-  viewIdField: 0
-  InstantiationId: 3
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!137 &137677487240532214
 SkinnedMeshRenderer:

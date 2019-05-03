@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 114620752061672732}
   - component: {fileID: 114863332694500482}
   - component: {fileID: 114933530675843572}
+  - component: {fileID: 114886385464522282}
   m_Layer: 0
   m_Name: Witch_Costume_Rig
   m_TagString: Untagged
@@ -1559,9 +1560,55 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114933530675843572}
-  viewIdField: 0
-  InstantiationId: 4
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
+--- !u!114 &114886385464522282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127191291754076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 9
+    SynchronizeType: 2
+    Name: runTrigger
+  - Type: 4
+    SynchronizeType: 2
+    Name: runBool
+  - Type: 4
+    SynchronizeType: 2
+    Name: jumpBool
+  - Type: 4
+    SynchronizeType: 1
+    Name: aimBool
+  - Type: 1
+    SynchronizeType: 1
+    Name: Blend
+  - Type: 9
+    SynchronizeType: 1
+    Name: trickOrTreatTrigger
+  - Type: 9
+    SynchronizeType: 1
+    Name: booTrigger
+  - Type: 4
+    SynchronizeType: 1
+    Name: witchUltBool
+  - Type: 4
+    SynchronizeType: 1
+    Name: wolfUltBool
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!114 &114933530675843572
 MonoBehaviour:
   m_ObjectHideFlags: 1
