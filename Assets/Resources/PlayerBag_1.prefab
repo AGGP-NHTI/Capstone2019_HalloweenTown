@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4635352780042706}
   - component: {fileID: 33910266706989808}
   - component: {fileID: 23268350450644644}
-  - component: {fileID: 114207677747342058}
-  - component: {fileID: 114447679739784032}
+  - component: {fileID: 114000222123992910}
   m_Layer: 0
   m_Name: PlayerBag_1
   m_TagString: Untagged
@@ -85,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233231771439200}
   m_Mesh: {fileID: 4300000, guid: e914b86bc1c6d034d91e8bcd6e862968, type: 3}
---- !u!114 &114207677747342058
+--- !u!114 &114000222123992910
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,24 +98,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114447679739784032}
+  - {fileID: 0}
   viewIdField: 1
   InstantiationId: 1
   isRuntimeInstantiated: 0
---- !u!114 &114447679739784032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1233231771439200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
