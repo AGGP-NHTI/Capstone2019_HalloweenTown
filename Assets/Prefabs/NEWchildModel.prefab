@@ -489,6 +489,8 @@ GameObject:
   - component: {fileID: 95564416497756736}
   - component: {fileID: 114784880188801682}
   - component: {fileID: 114058729895611744}
+  - component: {fileID: 114734863379020204}
+  - component: {fileID: 114123265846520244}
   m_Layer: 0
   m_Name: NEWchildModel
   m_TagString: Untagged
@@ -1061,10 +1063,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 1798019938225684}
   boopartical: {fileID: 0}
+  vampBoo: {fileID: 0}
+  wolfBoo: {fileID: 0}
   outlineMesh: {fileID: 137301516106657712}
   solidMesh: {fileID: 137580859042771108}
   Lhand: {fileID: 1824279434986534}
   witchBroom: {fileID: 0}
+--- !u!114 &114123265846520244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920030633734520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+--- !u!114 &114734863379020204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920030633734520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114123265846520244}
+  viewIdField: 2
+  InstantiationId: 2
+  isRuntimeInstantiated: 0
 --- !u!114 &114784880188801682
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -113,6 +113,8 @@ GameObject:
   - component: {fileID: 95765881875187408}
   - component: {fileID: 114032182155487228}
   - component: {fileID: 114620752061672732}
+  - component: {fileID: 114863332694500482}
+  - component: {fileID: 114933530675843572}
   m_Layer: 0
   m_Name: Witch_Costume_Rig
   m_TagString: Untagged
@@ -1533,10 +1535,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 1800808243785214}
   boopartical: {fileID: 198174872815818180}
+  vampBoo: {fileID: 0}
+  wolfBoo: {fileID: 0}
   outlineMesh: {fileID: 137527375765673240}
   solidMesh: {fileID: 137562732905619548}
   Lhand: {fileID: 1823697714586568}
   witchBroom: {fileID: 1845239651840686}
+--- !u!114 &114863332694500482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127191291754076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114933530675843572}
+  viewIdField: 1
+  InstantiationId: 1
+  isRuntimeInstantiated: 0
+--- !u!114 &114933530675843572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127191291754076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!137 &137527375765673240
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
