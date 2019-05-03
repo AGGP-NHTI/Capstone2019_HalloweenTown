@@ -44,5 +44,6 @@ MonoBehaviour:
   - ReadyToStart
   - RemovePhotonObject
   - SetMaster
+  - AllReady
   DisableAutoOpenWizard: 1
   ShowSettings: 0

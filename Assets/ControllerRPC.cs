@@ -86,6 +86,19 @@ public class ControllerRPC : MonoBehaviour {
     public void RemovePhotonObject(int index)
     {
        PhotonManager.photonInstance.PhotonObjects.RemoveAt(index);
-    }    
+    }
+
+    [PunRPC]
+    public void AllReady(int index)
+    {
+        if (Manager.managerInstance.joinedGame[index])
+        {
+            Manager.managerInstance.onePlayerInGame = true;
+            if (!Manager.managerInstance.readyUp[index])
+            {
+                Manager.managerInstance.allPlayersReady = false;
+            }
+        }
+    }
     
 }

@@ -22,7 +22,10 @@ public class Manager : MonoBehaviour
     public UnityEvent OnUncapturedBooPress;
 
     protected bool lookForJoining = false;
-	void Start ()
+    public bool allPlayersReady = true;
+    public bool onePlayerInGame = false;
+
+    void Start ()
     {
         managerInstance = this;
         Cursor.lockState = CursorLockMode.None;
@@ -33,8 +36,8 @@ public class Manager : MonoBehaviour
     {
         if (lookForJoining)
         {
-            bool allPlayersReady = true;
-            bool onePlayerInGame = false;
+            allPlayersReady = true;
+            onePlayerInGame = false;
             
             if (!PhotonNetwork.OfflineMode)
             {
@@ -79,15 +82,17 @@ public class Manager : MonoBehaviour
                         }
                         }
 
-                        if (joinedGame[i])
+                    if (joinedGame[i])
+                    {
+                        onePlayerInGame = true;
+                        if (!readyUp[i])
                         {
-                            onePlayerInGame = true;
-                            if (!readyUp[i])
-                            {                            
-                                allPlayersReady = false;
-                            }
+                            //Debug.Log(i + " not ready");
+                            allPlayersReady = false;
                         }
                     }
+                    //PhotonNetwork.PhotonViews[i].RPC("AllReady", RpcTarget.AllBuffered, i);
+                }
                 //}
             }
             else//local game
