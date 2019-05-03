@@ -238,7 +238,7 @@ public class NetworkedRoundManager : RoundManager
         pc.playerInput = inputObjects[0];
         SpawnPoint spawnpoint = SpawnPoint.GetRandomValidSpawn();
 
-        GameObject actualChild = PhotonNetwork.Instantiate(playerPrefab.name, spawnpoint.transform.position, spawnpoint.transform.rotation);
+        GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
 
         //GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
 

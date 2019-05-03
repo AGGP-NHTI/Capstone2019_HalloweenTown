@@ -523,6 +523,8 @@ GameObject:
   - component: {fileID: 95953523606679920}
   - component: {fileID: 114708596954754074}
   - component: {fileID: 114557128641881052}
+  - component: {fileID: 114888031052025846}
+  - component: {fileID: 114458453857196450}
   m_Layer: 0
   m_Name: NEWGhost_Costume_RIg
   m_TagString: Untagged
@@ -1226,6 +1228,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114458453857196450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791705977054254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!114 &114557128641881052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1239,9 +1255,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 1620207110612474}
   boopartical: {fileID: 198928372918403374}
+  vampBoo: {fileID: 0}
+  wolfBoo: {fileID: 0}
   outlineMesh: {fileID: 137810167320913460}
   solidMesh: {fileID: 137065727678381190}
   Lhand: {fileID: 1690055643462196}
+  witchBroom: {fileID: 0}
 --- !u!114 &114708596954754074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1259,6 +1278,27 @@ MonoBehaviour:
   TrackZ: 1
   useOverrideForward: 0
   overrideForward: {x: 0, y: 0, z: 0}
+--- !u!114 &114888031052025846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791705977054254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114458453857196450}
+  viewIdField: 1
+  InstantiationId: 1
+  isRuntimeInstantiated: 0
 --- !u!137 &137065727678381190
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
