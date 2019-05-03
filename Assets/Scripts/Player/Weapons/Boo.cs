@@ -66,6 +66,7 @@ public class Boo : MonoBehaviour {
 
                         if (werewolfUlt)
                         {
+                            particleManager.wolfPart();
                             soundManager.WerewolfAttack();
                             hitPlayerPawn.myHealth.HitOof();
                             hitPlayerPawn.myHealth.TakeDamage(40f);

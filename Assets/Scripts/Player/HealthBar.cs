@@ -33,17 +33,19 @@ public class HealthBar : MonoBehaviour {
 
     public void TakeDamage(float amount) // changed - needs testing
     {
-        if(eggArea >= 0)
+        if (amount < 40)
         {
-            eggSplaters[eggArea].Play();
-            eggArea++;
-        }
+            if (eggArea >= 0)
+            {
+                eggSplaters[eggArea].Play();
+                eggArea++;
+            }
 
-        if(eggArea >= 8)
-        {
-            eggArea = 0;
+            if (eggArea >= 8)
+            {
+                eggArea = 0;
+            }
         }
-        
         if (pawn.myMask.hasMask)
         {
             if (health >= 0)//|| !ghostUlt)//if ghost is not ulting
