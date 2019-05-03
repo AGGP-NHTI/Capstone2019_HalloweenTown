@@ -89,7 +89,7 @@ public class Mask : MonoBehaviour
 
             Quaternion rot = currentModel.transform.rotation;
             Destroy(equipedMask);
-            Destroy(currentModel);
+            PhotonNetwork.Destroy(currentModel);
             GameObject mask = PhotonNetwork.Instantiate(playerPref.name, gameObject.transform.position, gameObject.transform.rotation);
             mask.transform.SetParent(gameObject.transform);
             //mask.transform.position = pos;
@@ -145,17 +145,17 @@ public class Mask : MonoBehaviour
             switch (scriptName)
             {
                 case "Ghost Mask":
-                    Destroy(currentModel);
+                    equipedMask = gameObject.AddComponent<GhostMask>();
+                    PhotonNetwork.Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(ghostPref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.ghost();
-                    currentModel = mask;
-                    equipedMask = gameObject.AddComponent<GhostMask>();
+                    currentModel = mask;                    
                     
                     break;
                 case "Witch Mask":
                     equipedMask = gameObject.AddComponent<WitchMask>();
-                    Destroy(currentModel);
+                    PhotonNetwork.Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(witchPref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.witch();
@@ -163,7 +163,7 @@ public class Mask : MonoBehaviour
                     break;
                 case "Werewolf Mask":
                     equipedMask = gameObject.AddComponent<WerewolfMask>();
-                    Destroy(currentModel);
+                    PhotonNetwork.Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(werewolfPref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.werewolf();
@@ -171,7 +171,7 @@ public class Mask : MonoBehaviour
                     break;
                 case "Vampire Mask":
                     equipedMask = gameObject.AddComponent<VampireMask>();
-                    Destroy(currentModel);
+                    PhotonNetwork.Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(vampirePref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.vampire();
