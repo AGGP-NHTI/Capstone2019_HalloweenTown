@@ -140,18 +140,21 @@ public class Manager : MonoBehaviour
                     }
                 }
             }
-            //Debug.Log("oneplayer " + onePlayerInGame.ToString());           
+            //Debug.Log("oneplayer " + onePlayerInGame.ToString());     
+            RoundReadyToStart = allPlayersReady && onePlayerInGame;
             if (PhotonNetwork.OfflineMode == false)
             {     
-                if (photonManager.isConnectedToLobby && photonManager.MasterPhotonView.IsMine)
+                if (RoundReadyToStart && photonManager.MasterPhotonView.IsMine)
                 {
                     photonManager.MasterPhotonView.RPC("ReadyToStart", RpcTarget.AllBuffered, allPlayersReady, onePlayerInGame);
                     photonManager.MasterPhotonView.RPC("StartGameCountdown", RpcTarget.AllBuffered);
+                    PhotonNetwork.CurrentRoom.IsOpen = false;
+                    PhotonNetwork.CurrentRoom.IsVisible = false;
                 }
             }
             else
             {
-                RoundReadyToStart = allPlayersReady && onePlayerInGame;
+                
                 if (RoundReadyToStart)
                 {
                     if (startGameTimer == null)
