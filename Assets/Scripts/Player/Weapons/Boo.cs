@@ -44,7 +44,7 @@ public class Boo : MonoBehaviour {
 
     public void VampireUltDone()
     {
-        booRange = 10f;
+        booRange = 1.0f;
         vampireUlt = false;
     }
 
