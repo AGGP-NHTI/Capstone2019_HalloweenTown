@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 114609331519549218}
   - component: {fileID: 114418269473091020}
   - component: {fileID: 65999401871947858}
+  - component: {fileID: 114153876895923258}
   m_Layer: 0
   m_Name: NEW_Vampire_Fangs_Pickup
   m_TagString: Vampire Mask
@@ -305,6 +306,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 20, z: 40}
   m_Center: {x: 0, y: 6, z: -2}
+--- !u!114 &114153876895923258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603664438054874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &114418269473091020
 MonoBehaviour:
   m_ObjectHideFlags: 1

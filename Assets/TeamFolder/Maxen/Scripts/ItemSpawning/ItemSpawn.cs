@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Pun;
+
 public class ItemSpawn : MonoBehaviour
 {
     #region Variables
@@ -23,7 +25,8 @@ public class ItemSpawn : MonoBehaviour
         GameObject itemToSpawn = ItemSpawnPool.SelectFromPool(spawnPool);
         if(itemToSpawn)
         {
-            currentItem = Instantiate(itemToSpawn, transform);
+            currentItem = PhotonNetwork.Instantiate(itemToSpawn.name, transform.position, transform.rotation);
+            //currentItem = Instantiate(itemToSpawn, transform);
         }
         else
         {
@@ -35,9 +38,12 @@ public class ItemSpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(currentItem == null && !coolDownActive)
+        if (PhotonNetwork.IsMasterClient || PhotonNetwork.OfflineMode)
         {
-            StartCoroutine(itemRespawnCoolDown());
+            if (currentItem == null && !coolDownActive)
+            {
+                StartCoroutine(itemRespawnCoolDown());
+            }
         }
     }
 }
