@@ -2817,31 +2817,31 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: runTrigger
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: runBool
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: jumpBool
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: aimBool
   - Type: 1
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Blend
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: trickOrTreatTrigger
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: booTrigger
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: witchUltBool
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: wolfUltBool
   m_SynchronizeLayers:
   - SynchronizeType: 0
