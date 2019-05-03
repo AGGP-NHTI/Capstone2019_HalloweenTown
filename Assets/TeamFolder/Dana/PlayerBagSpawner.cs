@@ -27,9 +27,12 @@ public class PlayerBagSpawner : MonoBehaviour {
             else
             {
                 setbag = false;
-                
+
                 //myBag.transform.SetParent(pawn.LhandBagSpawn.transform);
-                gameObject.GetPhotonView().RPC("NetworkSetParent", RpcTarget.AllBuffered);                
+                if (gameObject.GetPhotonView().IsMine)
+                {
+                    gameObject.GetPhotonView().RPC("NetworkSetParent", RpcTarget.AllBuffered);
+                }
             }
             
         }
@@ -40,7 +43,7 @@ public class PlayerBagSpawner : MonoBehaviour {
     {
         //myBag.transform.parent = pawn.LhandBagSpawn.transform;
         myBag = PhotonNetwork.Instantiate(bags[GetPhotonPlayerIndex()].name, pawn.LhandBagSpawn.transform.position, pawn.LhandBagSpawn.transform.rotation);
-        //myBag.transform.SetParent(pawn.LhandBagSpawn.transform);
+        myBag.transform.SetParent(pawn.LhandBagSpawn.transform);
     }
 
     int GetPhotonPlayerIndex()
