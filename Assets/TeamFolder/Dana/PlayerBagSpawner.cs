@@ -26,8 +26,8 @@ public class PlayerBagSpawner : MonoBehaviour {
             }
             else
             {
-                myBag = PhotonNetwork.Instantiate(bags[(int)pawn.MyController.PlayerNumber - 1].name, transform.position, transform.rotation);
-                myBag.transform.SetParent(pawn.LhandBagSpawn.transform, false);
+                myBag = PhotonNetwork.Instantiate(bags[(int)pawn.MyController.PlayerNumber - 1].name, pawn.LhandBagSpawn.transform.position, pawn.LhandBagSpawn.transform.rotation);
+                myBag.transform.SetParent(pawn.LhandBagSpawn.transform);
                 setbag = false;
             }
             
