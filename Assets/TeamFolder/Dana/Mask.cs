@@ -91,6 +91,7 @@ public class Mask : MonoBehaviour
             Destroy(equipedMask);
             Destroy(currentModel);
             GameObject mask = PhotonNetwork.Instantiate(playerPref.name, gameObject.transform.position, gameObject.transform.rotation);
+            mask.transform.SetParent(gameObject.transform);
             //mask.transform.position = pos;
             mask.transform.rotation = rot;
             AlignToMovement al = mask.GetComponent<AlignToMovement>();
@@ -146,7 +147,8 @@ public class Mask : MonoBehaviour
                 case "Ghost Mask":
                     Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(ghostPref.name, gameObject.transform.position, gameObject.transform.rotation);
-                maskSprite.ghost();
+                    mask.transform.SetParent(gameObject.transform);
+                    maskSprite.ghost();
                     currentModel = mask;
                     equipedMask = gameObject.AddComponent<GhostMask>();
                     
@@ -155,20 +157,24 @@ public class Mask : MonoBehaviour
                     equipedMask = gameObject.AddComponent<WitchMask>();
                     Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(witchPref.name, gameObject.transform.position, gameObject.transform.rotation);
-                maskSprite.witch();
+                    mask.transform.SetParent(gameObject.transform);
+                    maskSprite.witch();
 
                     break;
                 case "Werewolf Mask":
                     equipedMask = gameObject.AddComponent<WerewolfMask>();
                     Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(werewolfPref.name, gameObject.transform.position, gameObject.transform.rotation);
-                maskSprite.werewolf();
+                    mask.transform.SetParent(gameObject.transform);
+                    maskSprite.werewolf();
+
                     break;
                 case "Vampire Mask":
                     equipedMask = gameObject.AddComponent<VampireMask>();
                     Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(vampirePref.name, gameObject.transform.position, gameObject.transform.rotation);
-                maskSprite.vampire();
+                    mask.transform.SetParent(gameObject.transform);
+                    maskSprite.vampire();
                     break;
 
                 default:

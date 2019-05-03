@@ -25,7 +25,7 @@ public class candyConsumable : MonoBehaviour {
 
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         canCollect = true;
     }
     

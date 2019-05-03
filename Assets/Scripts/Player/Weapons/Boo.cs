@@ -72,13 +72,13 @@ public class Boo : MonoBehaviour {
                             hitPlayerPawn.myHealth.TakeDamage(40f);
                             if(hitPlayerPawn.myMask.hasMask)
                             {
-                                hitPlayerPawn.MyCandy.DropCandy(20);//if player doesn't have a mask, this already happends
+                                hitPlayerPawn.MyCandy.DropCandy(10);//if player doesn't have a mask, this already happends
                             }                            
                         }
                         else if(vampireUlt)
                         {                            
-                            int candySuck = 20;
-                            float healthSuck = 20f;
+                            int candySuck = 10;
+                            float healthSuck = 5f;
                             soundManager.VampireSlurp();
                             particleManager.vampPart();
                             if (hitPlayerPawn.myMask.hasMask)
