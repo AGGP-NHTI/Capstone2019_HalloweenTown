@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ProjectileManager : MonoBehaviour {
 
@@ -128,7 +129,7 @@ public class ProjectileManager : MonoBehaviour {
                 Debug.LogWarning(name + "is trying to throw projectile but no model component not found!");
                 return;
             }
-            thrownObject = Instantiate(weaponList[selectedWeaponIndex], leftSpawn.position, model.rotation);
+            thrownObject = PhotonNetwork.Instantiate(weaponList[selectedWeaponIndex].name, leftSpawn.position, model.rotation);
             //Debug.Log(thrownObject.gameObject.name);
             thrownObject.GetComponent<Projectile>().owner = gameObject;
             inventory.subtractFromInventory(weaponList[selectedWeaponIndex]);

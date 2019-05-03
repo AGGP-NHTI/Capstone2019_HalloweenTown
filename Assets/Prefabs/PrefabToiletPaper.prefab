@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 23230490311303322}
   - component: {fileID: 114795468633121898}
   - component: {fileID: 65199866955195876}
+  - component: {fileID: 114507556796419936}
+  - component: {fileID: 114317450978590994}
   m_Layer: 14
   m_Name: PrefabToiletPaper
   m_TagString: Untagged
@@ -97,6 +99,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14.894783, y: 12.964222, z: 24.970934}
   m_Center: {x: 0.00000166893, y: 0, z: -5.0380774}
+--- !u!114 &114317450978590994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278493221849164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+--- !u!114 &114507556796419936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278493221849164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114317450978590994}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &114795468633121898
 MonoBehaviour:
   m_ObjectHideFlags: 1
