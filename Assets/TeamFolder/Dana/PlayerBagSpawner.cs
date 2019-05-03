@@ -64,6 +64,7 @@ public class PlayerBagSpawner : MonoBehaviour {
         {
             return 3;
         }
-        return -1;
+        Debug.Log("ERROR WITH BAG");
+        return 5;
     }
 }

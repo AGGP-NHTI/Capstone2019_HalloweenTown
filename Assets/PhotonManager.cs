@@ -76,12 +76,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                     test.text += p.NickName + " - ";
                     i++;
                 }*/
-                if (PhotonNetwork.CurrentRoom.PlayerCount > 2)
-                {
+                //if (PhotonNetwork.CurrentRoom.PlayerCount > 2)
+                //{
                     //PhotonNetwork.LoadLevel(2);
-                    isConnectedToGame = true;
+                //    isConnectedToGame = true;
                     //SpawnPlayer();
-                }
+                //}
             }
         }
 
