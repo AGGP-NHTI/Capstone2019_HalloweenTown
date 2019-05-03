@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerBagSpawner : MonoBehaviour {
 
@@ -17,9 +18,19 @@ public class PlayerBagSpawner : MonoBehaviour {
 
         if(pawn.MyController != null && setbag)
         {
-            myBag = Instantiate(bags[(int)pawn.MyController.PlayerNumber-1]);
-            myBag.transform.SetParent(pawn.LhandBagSpawn.transform, false);
-            setbag = false;
+            if(PhotonNetwork.OfflineMode)
+            {
+                myBag = Instantiate(bags[(int)pawn.MyController.PlayerNumber - 1]);
+                myBag.transform.SetParent(pawn.LhandBagSpawn.transform, false);
+                setbag = false;
+            }
+            else
+            {
+                myBag = PhotonNetwork.Instantiate(bags[(int)pawn.MyController.PlayerNumber - 1].name, transform.position, transform.rotation);
+                myBag.transform.SetParent(pawn.LhandBagSpawn.transform, false);
+                setbag = false;
+            }
+            
         }
     }
 }
