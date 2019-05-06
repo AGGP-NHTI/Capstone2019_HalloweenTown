@@ -45,5 +45,6 @@ MonoBehaviour:
   - RemovePhotonObject
   - SetMaster
   - AllReady
+  - NetworkSetParent
   DisableAutoOpenWizard: 1
   ShowSettings: 0
