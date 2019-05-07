@@ -63,7 +63,8 @@ public class Mask : MonoBehaviour
                 }
                 
                 equipedMask.UltFinished();
-                RemoveMask();
+                //RemoveMask();
+                gameObject.GetPhotonView().RPC("RemoveMask", RpcTarget.All);
             }
             gameObject.GetPhotonView().RPC("GetMask", RpcTarget.All);            
         }
@@ -128,9 +129,10 @@ public class Mask : MonoBehaviour
         pawn.myHealth.health = 100;
     }
 
+    [PunRPC]
     void RemoveMask()
     {
-        Destroy(equipedMask);
+        PhotonNetwork.Destroy(equipedMask.gameObject);
         maskSprite.whiteCircle();
         equipedMask = null;
     }
