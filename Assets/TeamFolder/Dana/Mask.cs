@@ -65,7 +65,7 @@ public class Mask : MonoBehaviour
                 equipedMask.UltFinished();
                 RemoveMask();
             }
-            GetMask();            
+            gameObject.GetPhotonView().RPC("GetMask", RpcTarget.All);            
         }
         
         if (pawn.myHealth.health <= 0 && hasMask)
@@ -134,7 +134,8 @@ public class Mask : MonoBehaviour
         maskSprite.whiteCircle();
         equipedMask = null;
     }
-    
+
+    [PunRPC]
     void GetMask()
     {
             hasMask = true;
@@ -146,8 +147,9 @@ public class Mask : MonoBehaviour
             {
                 case "Ghost Mask":
                     equipedMask = gameObject.AddComponent<GhostMask>();
-                    PhotonNetwork.Destroy(currentModel);
-                    mask = PhotonNetwork.Instantiate(ghostPref.name, gameObject.transform.position, gameObject.transform.rotation);
+                //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
+                PhotonNetwork.Destroy(currentModel);
+                mask = PhotonNetwork.Instantiate(ghostPref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.ghost();
                     currentModel = mask;                    
@@ -155,22 +157,25 @@ public class Mask : MonoBehaviour
                     break;
                 case "Witch Mask":
                     equipedMask = gameObject.AddComponent<WitchMask>();
-                    PhotonNetwork.Destroy(currentModel);
-                    mask = PhotonNetwork.Instantiate(witchPref.name, gameObject.transform.position, gameObject.transform.rotation);
+                //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
+                PhotonNetwork.Destroy(currentModel);
+                mask = PhotonNetwork.Instantiate(witchPref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.witch();
 
                     break;
                 case "Werewolf Mask":
                     equipedMask = gameObject.AddComponent<WerewolfMask>();
-                    PhotonNetwork.Destroy(currentModel);
-                    mask = PhotonNetwork.Instantiate(werewolfPref.name, gameObject.transform.position, gameObject.transform.rotation);
+                //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
+                PhotonNetwork.Destroy(currentModel);
+                mask = PhotonNetwork.Instantiate(werewolfPref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
                     maskSprite.werewolf();
 
                     break;
                 case "Vampire Mask":
                     equipedMask = gameObject.AddComponent<VampireMask>();
+                //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
                     PhotonNetwork.Destroy(currentModel);
                     mask = PhotonNetwork.Instantiate(vampirePref.name, gameObject.transform.position, gameObject.transform.rotation);
                     mask.transform.SetParent(gameObject.transform);
@@ -192,5 +197,11 @@ public class Mask : MonoBehaviour
 
             pawn.ModelChange();       
     }
+
     
+    /*public void DestroyPhoton()
+    {
+        PhotonNetwork.Destroy(currentModel);
+    }*/
+
 }
