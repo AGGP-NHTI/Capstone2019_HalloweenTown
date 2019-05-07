@@ -163,6 +163,7 @@ public class Pawn : MonoBehaviour
         }
 
         myProjectileManager.throwObject(value);
+        _anim.SetTrigger("throwTrigger");
     }
 
     public virtual void PassDPadInput(Vector2 value)
