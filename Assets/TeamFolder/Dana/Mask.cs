@@ -64,7 +64,14 @@ public class Mask : MonoBehaviour
                 RemoveMask();
                 //gameObject.GetPhotonView().RPC("RemoveMask", RpcTarget.All);
             }
-            gameObject.GetPhotonView().RPC("GetMask", RpcTarget.All);            
+            if (PhotonNetwork.OfflineMode)
+            {
+                GetMask();
+            }
+            else
+            {
+                gameObject.GetPhotonView().RPC("GetMask", RpcTarget.All);
+            }
         }
         
         if (pawn.myHealth.health <= 0 && hasMask)
