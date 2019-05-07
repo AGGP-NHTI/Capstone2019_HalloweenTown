@@ -185,16 +185,7 @@ public class RoundManager : MonoBehaviour {
     {
         BackgroundMusic.instance.EndGameMusic();
 
-        Text[] playerscores = LevelInfo.GetPlayerScores();
-        foreach(KeyValuePair<uint, int> kvp in Candy.Scoreboard)
-        {
-            
-            playerscores[kvp.Key - 1].enabled = true;
-            playerscores[kvp.Key - 1].text = "Player " + kvp.Key + ": " + kvp.Value.ToString();
-        }
-
-        Canvas scoreboard = LevelInfo.GetScoreBoard();
-        scoreboard.gameObject.SetActive(true);
+        DisplayScores();
 
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -246,6 +237,19 @@ public class RoundManager : MonoBehaviour {
     public virtual PlayerController[] GetPlayers()
     {
         return _activePlayers.ToArray();
+    }
+
+    public virtual void DisplayScores()
+    {
+        Text[] playerscores = LevelInfo.GetPlayerScores();
+        foreach (KeyValuePair<uint, int> kvp in Candy.Scoreboard)
+        {
+            playerscores[kvp.Key - 1].enabled = true;
+            playerscores[kvp.Key - 1].text = "Player " + kvp.Key + ": " + kvp.Value.ToString();
+        }
+
+        Canvas scoreboard = LevelInfo.GetScoreBoard();
+        scoreboard.gameObject.SetActive(true);
     }
     #endregion
 }

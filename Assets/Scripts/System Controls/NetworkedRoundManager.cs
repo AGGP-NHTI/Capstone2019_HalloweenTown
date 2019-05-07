@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 using Photon.Pun;
 using Photon.Realtime;
@@ -15,7 +16,10 @@ public class NetworkedRoundManager : RoundManager
     #region Player Property Names
     public const string PLAYERPROPERTY_LEVELLOADED = "bool_LevelLoaded";
     public const string PLAYERPROPERTY_INTROCUTSCENEDONE = "bool_IntroCutsceneComplete";
+    public const string PLAYERPROPERTY_CANDYSCORE = "int_CandyScore";
     #endregion
+
+    protected Pawn LocalPlayerPawn;
 
     protected override void FixedUpdate()
     {
@@ -83,6 +87,16 @@ public class NetworkedRoundManager : RoundManager
         {
             roundElapsedTime = (float)(PhotonNetwork.Time - (double)startTimeObj);
         }
+
+        if(LocalPlayerPawn)
+        {
+            ExitGames.Client.Photon.Hashtable newProperties = new ExitGames.Client.Photon.Hashtable
+            {
+                { PLAYERPROPERTY_CANDYSCORE, LocalPlayerPawn.MyCandy.candy }
+            };
+
+            PhotonNetwork.SetPlayerCustomProperties(newProperties);
+        }
     }
 
     #region Round Logic
@@ -105,7 +119,7 @@ public class NetworkedRoundManager : RoundManager
         {
             if(PhotonNetwork.IsMasterClient)
             {
-                List<Player> allPlayers = new List<Player>(PhotonNetwork.CurrentRoom.Players.Values);
+                Player[] allPlayers = PhotonNetwork.PlayerList;
                 bool allPlayersLoaded = true;
                 foreach(Player p in allPlayers)
                 {
@@ -151,7 +165,7 @@ public class NetworkedRoundManager : RoundManager
         {
             if(PhotonNetwork.IsMasterClient)
             {
-                List<Player> allPlayers = new List<Player>(PhotonNetwork.CurrentRoom.Players.Values);
+                Player[] allPlayers = PhotonNetwork.PlayerList;
                 bool allIntroCutscenesDone = true;
                 foreach (Player p in allPlayers)
                 {
@@ -243,6 +257,7 @@ public class NetworkedRoundManager : RoundManager
         SpawnPoint spawnpoint = SpawnPoint.GetRandomValidSpawn();
 
         GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
+        LocalPlayerPawn = actualChild.GetComponent<Pawn>();
 
         //GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
 
@@ -278,6 +293,28 @@ public class NetworkedRoundManager : RoundManager
             { PLAYERPROPERTY_INTROCUTSCENEDONE, true }
         };
         PhotonNetwork.SetPlayerCustomProperties(newProperties);
+    }
+
+    public override void DisplayScores()
+    {
+        Text[] playerscores = LevelInfo.GetPlayerScores();
+        Player[] allPlayers = PhotonNetwork.PlayerList;
+
+        for(int i = 0; i < playerscores.Length && i < allPlayers.Length; i++)
+        {
+            object candyObj;
+            if(allPlayers[i].CustomProperties.TryGetValue(PLAYERPROPERTY_CANDYSCORE, out candyObj))
+            {
+                if(candyObj is int)
+                {
+                    playerscores[i].enabled = true;
+                    playerscores[i].text = allPlayers[i].NickName + ": " + (int)candyObj;
+                }
+            }
+        }
+
+        Canvas scoreboard = LevelInfo.GetScoreBoard();
+        scoreboard.gameObject.SetActive(true);
     }
     #endregion
 }
