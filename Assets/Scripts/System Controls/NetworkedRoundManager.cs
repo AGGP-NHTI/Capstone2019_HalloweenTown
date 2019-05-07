@@ -97,6 +97,24 @@ public class NetworkedRoundManager : RoundManager
 
             PhotonNetwork.SetPlayerCustomProperties(newProperties);
         }
+
+        Player[] allPlayers = PhotonNetwork.PlayerList;
+        if (Candy.Scoreboard == null)
+        {
+            Candy.Scoreboard = new Dictionary<uint, int>();
+        }
+        else
+        {
+            Candy.Scoreboard.Clear();
+        }
+        for(int i = 0; i < allPlayers.Length; i++)
+        {
+            object candyObj;
+            if(allPlayers[i].CustomProperties.TryGetValue(PLAYERPROPERTY_CANDYSCORE, out candyObj))
+            {
+                Candy.Scoreboard.Add((uint)(i + 1), (int)candyObj);
+            }
+        }
     }
 
     #region Round Logic
@@ -295,7 +313,7 @@ public class NetworkedRoundManager : RoundManager
         PhotonNetwork.SetPlayerCustomProperties(newProperties);
     }
 
-    public override void DisplayScores()
+    /*public override void DisplayScores()
     {
         Text[] playerscores = LevelInfo.GetPlayerScores();
         Player[] allPlayers = PhotonNetwork.PlayerList;
@@ -315,6 +333,6 @@ public class NetworkedRoundManager : RoundManager
 
         Canvas scoreboard = LevelInfo.GetScoreBoard();
         scoreboard.gameObject.SetActive(true);
-    }
+    }*/
     #endregion
 }
