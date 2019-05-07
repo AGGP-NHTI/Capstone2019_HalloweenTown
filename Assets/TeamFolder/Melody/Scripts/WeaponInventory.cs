@@ -70,7 +70,7 @@ public class WeaponInventory : MonoBehaviour
                     numberEggs += 6;                    
                 }
                 UpdateDisplay();
-                Destroy(other.gameObject);
+                DestroyerOfObjects.DestroyObject(other.gameObject);
             }
         }
         else if (other.gameObject.tag == "TPPickUp")
@@ -80,7 +80,7 @@ public class WeaponInventory : MonoBehaviour
             {
                 numberToiletPaper++;
                 UpdateDisplay();
-                Destroy(other.gameObject);
+                DestroyerOfObjects.DestroyObject(other.gameObject);
             }
 
         }

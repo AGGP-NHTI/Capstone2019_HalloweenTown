@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Pun;
+
 public class GrandmaSpawn : MonoBehaviour {
 
 
@@ -48,7 +50,10 @@ public class GrandmaSpawn : MonoBehaviour {
 	public static void SpawnGrandma(GameObject gran)
     {
         Debug.Log("spawning grandma");
-        Instantiate(gran, spawns[(int)spawnIndex].transform.position, spawns[(int)spawnIndex].transform.rotation);
+        if (PhotonNetwork.OfflineMode || PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate(gran.name, spawns[(int)spawnIndex].transform.position, spawns[(int)spawnIndex].transform.rotation);
+        }
     }
 
 

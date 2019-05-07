@@ -10,6 +10,7 @@ public class MaskObject : MonoBehaviour {
     {
         source.myMask.interactButton = true;
         source.myMask.scriptName = gameObject.tag;
-        Destroy(gameObject);
+
+        DestroyerOfObjects.DestroyObject(gameObject);
     }
 }
