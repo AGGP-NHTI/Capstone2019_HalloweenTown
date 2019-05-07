@@ -157,7 +157,7 @@ public class Mask : MonoBehaviour
                 //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
                 PhotonNetwork.Destroy(currentModel.GetPhotonView());
                 mask = PhotonNetwork.Instantiate(ghostPref.name, gameObject.transform.position, gameObject.transform.rotation);
-                    //mask.transform.SetParent(gameObject.transform);
+                    mask.transform.SetParent(gameObject.transform);
                     maskSprite.ghost();                    
                     
                     break;
@@ -166,7 +166,7 @@ public class Mask : MonoBehaviour
                 //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
                 PhotonNetwork.Destroy(currentModel.GetPhotonView());
                 mask = PhotonNetwork.Instantiate(witchPref.name, gameObject.transform.position, gameObject.transform.rotation);
-                    //mask.transform.SetParent(gameObject.transform);
+                    mask.transform.SetParent(gameObject.transform);
                     maskSprite.witch();
 
                     break;
@@ -175,7 +175,7 @@ public class Mask : MonoBehaviour
                 //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
                 PhotonNetwork.Destroy(currentModel.GetPhotonView());
                 mask = PhotonNetwork.Instantiate(werewolfPref.name, gameObject.transform.position, gameObject.transform.rotation);
-                    //mask.transform.SetParent(gameObject.transform);
+                    mask.transform.SetParent(gameObject.transform);
                     maskSprite.werewolf();
 
                     break;
@@ -184,7 +184,7 @@ public class Mask : MonoBehaviour
                 //gameObject.GetPhotonView().RPC("DestroyPhoton", RpcTarget.AllBuffered);
                 PhotonNetwork.Destroy(currentModel.GetPhotonView());
                 mask = PhotonNetwork.Instantiate(vampirePref.name, gameObject.transform.position, gameObject.transform.rotation);
-                    //mask.transform.SetParent(gameObject.transform);
+                    mask.transform.SetParent(gameObject.transform);
                     maskSprite.vampire();
                     break;
 
