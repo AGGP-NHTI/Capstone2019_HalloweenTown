@@ -272,6 +272,16 @@ public class NetworkedRoundManager : RoundManager
         GameObject spawnedBoy = Instantiate(playercontrollerPrefab, Vector3.zero, Quaternion.identity);
         PlayerController pc = spawnedBoy.GetComponent<PlayerController>();
         pc.playerInput = inputObjects[0];
+
+        Player[] allPlayers = PhotonNetwork.PlayerList;
+        for(int i = 0; i < allPlayers.Length; i++)
+        {
+            if(allPlayers[i] == PhotonNetwork.LocalPlayer)
+            {
+                pc.playerInput.PlayerNumber = (uint)(i + 1);
+            }
+        }
+
         SpawnPoint spawnpoint = SpawnPoint.GetRandomValidSpawn();
 
         GameObject actualChild = spawnpoint.SpawnPlayer(pc, playerPrefab);
@@ -312,27 +322,5 @@ public class NetworkedRoundManager : RoundManager
         };
         PhotonNetwork.SetPlayerCustomProperties(newProperties);
     }
-
-    /*public override void DisplayScores()
-    {
-        Text[] playerscores = LevelInfo.GetPlayerScores();
-        Player[] allPlayers = PhotonNetwork.PlayerList;
-
-        for(int i = 0; i < playerscores.Length && i < allPlayers.Length; i++)
-        {
-            object candyObj;
-            if(allPlayers[i].CustomProperties.TryGetValue(PLAYERPROPERTY_CANDYSCORE, out candyObj))
-            {
-                if(candyObj is int)
-                {
-                    playerscores[i].enabled = true;
-                    playerscores[i].text = allPlayers[i].NickName + ": " + (int)candyObj;
-                }
-            }
-        }
-
-        Canvas scoreboard = LevelInfo.GetScoreBoard();
-        scoreboard.gameObject.SetActive(true);
-    }*/
     #endregion
 }
