@@ -117,7 +117,7 @@ public class Pawn : MonoBehaviour
         
         if(MyCameraManager)
         {
-            if (value > 0.0f)
+            if (value > 0.0f  && myProjectileManager.canThrow)  //melody's hack
             {
                 myProjectileManager.showParabola = true;
                 MyCameraManager.SetVirtualCamera(1);

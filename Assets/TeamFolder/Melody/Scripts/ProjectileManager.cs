@@ -82,7 +82,9 @@ public class ProjectileManager : MonoBehaviour {
 
     public void throwObject(float value)
     {
-        if(!pawn)
+        
+
+        if (!pawn)
         {
             Debug.Log("No assigned pawn for " + name +"'s projectile manager");
             return;
