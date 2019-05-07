@@ -39,6 +39,7 @@ public class Stun : MonoBehaviour {
 
     public IEnumerator suspendMovement(float duration)
     {
+        Debug.Log("Inside suspend movement");
         particleManager.batPart();
         pawn.MyCandy.DropCandy();
         float timer = 0f;
