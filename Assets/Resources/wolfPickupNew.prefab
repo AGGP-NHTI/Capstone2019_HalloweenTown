@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114456684436664708}
   - component: {fileID: 114126881951533722}
   - component: {fileID: 114045768248454112}
+  - component: {fileID: 114022381654771756}
   m_Layer: 0
   m_Name: wolfPickupNew
   m_TagString: Werewolf Mask
@@ -164,6 +165,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04193289, y: 0.0801321, z: 0.052723315}
   m_Center: {x: 0.0076160696, y: 0.00051813014, z: -0.010423398}
+--- !u!114 &114022381654771756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452463218854354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf697265ab43348b9831ebee7e9f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114045768248454112
 MonoBehaviour:
   m_ObjectHideFlags: 1

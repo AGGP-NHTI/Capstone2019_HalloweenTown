@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23179268650212818}
   - component: {fileID: 65111871757086136}
   - component: {fileID: 114314589969239726}
+  - component: {fileID: 114143931418376844}
   m_Layer: 0
   m_Name: PickupToiletPaper
   m_TagString: TPPickUp
@@ -128,6 +129,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.130167, y: 18.074884, z: 32.329197}
   m_Center: {x: -0.26390314, y: -0.85926056, z: -5.0826597}
+--- !u!114 &114143931418376844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031883972887560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf697265ab43348b9831ebee7e9f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114314589969239726
 MonoBehaviour:
   m_ObjectHideFlags: 1

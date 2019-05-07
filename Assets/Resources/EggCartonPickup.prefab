@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 23983714606523838}
   - component: {fileID: 65114030312700200}
   - component: {fileID: 114126559321640870}
+  - component: {fileID: 114529614118337524}
   m_Layer: 0
   m_Name: EggCartonPickup
   m_TagString: Untagged
@@ -149,6 +150,17 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &114529614118337524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472391785004790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf697265ab43348b9831ebee7e9f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198199512411973800
 ParticleSystem:
   m_ObjectHideFlags: 1

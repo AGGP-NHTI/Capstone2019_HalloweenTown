@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 114418269473091020}
   - component: {fileID: 65999401871947858}
   - component: {fileID: 114153876895923258}
+  - component: {fileID: 114539320599317644}
   m_Layer: 0
   m_Name: NEW_Vampire_Fangs_Pickup
   m_TagString: Vampire Mask
@@ -356,6 +357,17 @@ MonoBehaviour:
       PublicKeyToken=null
   PawnsThatCantInteract: []
   interactTime: 1
+--- !u!114 &114539320599317644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603664438054874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf697265ab43348b9831ebee7e9f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114609331519549218
 MonoBehaviour:
   m_ObjectHideFlags: 1
