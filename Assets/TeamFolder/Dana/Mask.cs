@@ -64,7 +64,7 @@ public class Mask : MonoBehaviour
                 RemoveMask();
                 //gameObject.GetPhotonView().RPC("RemoveMask", RpcTarget.All);
             }
-
+            //GetMask();
             if (PhotonNetwork.OfflineMode)
             {
                 GetMask();
@@ -101,7 +101,7 @@ public class Mask : MonoBehaviour
             mask.transform.SetParent(gameObject.transform);
             //mask.transform.position = pos;
             mask.transform.rotation = rot;
-            AlignToMovement al = mask.GetComponent<AlignToMovement>();
+            AlignToMovement al = mask.GetComponent<AlignToMovement>(); 
             al.TrackedRigidBody = gameObject.GetComponent<Rigidbody>();
             pawn.MyAlignToMovement = al;
 
@@ -137,7 +137,7 @@ public class Mask : MonoBehaviour
     
     void RemoveMask()
     {
-        Destroy(equipedMask.gameObject);
+        Destroy(equipedMask);
         maskSprite.whiteCircle();
         equipedMask = null;
     }
