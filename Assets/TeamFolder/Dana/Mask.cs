@@ -50,6 +50,7 @@ public class Mask : MonoBehaviour
 
         if (interactButton)
         {
+            pawn.soundMan.CostumeOn();
             interactButton = false;
             UpdateHealth();
 
@@ -145,6 +146,7 @@ public class Mask : MonoBehaviour
     [PunRPC]
     void GetMask()
     {
+       
             hasMask = true;
             GameObject mask = currentModel;
             //Vector3 pos = currentModel.transform.position;
