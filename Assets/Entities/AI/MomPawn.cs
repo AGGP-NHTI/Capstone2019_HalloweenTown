@@ -14,7 +14,8 @@ public class MomPawn : AIPawn
 
     Coroutine waitingformom = null;
     int randomVoiceLine = 1;
-    public AudioSource audioSource;
+    public AudioSource talkingSource;
+    public AudioSource screamSource;
     public AudioClip childscream;
     public AudioClip mom1;
     public AudioClip mom2;
@@ -66,13 +67,13 @@ public class MomPawn : AIPawn
 
     public void ChildScream()
     {
-        audioSource.clip = childscream;
-        audioSource.Play();
+        screamSource.clip = childscream;
+        screamSource.Play();
     }
 
     public void GetRandomMomSaying()
     {
-        if (waitingformom == null && !audioSource.isPlaying)
+        if (waitingformom == null && !talkingSource.isPlaying)
         {          
             if (randomVoiceLine == 1)
             {
@@ -96,23 +97,23 @@ public class MomPawn : AIPawn
     }
     public void MomSaying1()
     {
-        audioSource.clip = mom1;
-        audioSource.Play();
+        talkingSource.clip = mom1;
+        talkingSource.Play();
     }
     public void MomSaying2()
     {
-        audioSource.clip = mom2;
-        audioSource.Play();
+        talkingSource.clip = mom2;
+        talkingSource.Play();
     }
     public void MomSaying3()
     {
-        audioSource.clip = mom3;
-        audioSource.Play();
+        talkingSource.clip = mom3;
+        talkingSource.Play();
     }
 
     IEnumerator waitForMomToTalk()
     {
-        if (!audioSource.isPlaying)
+        if (!talkingSource.isPlaying)
         {
             yield return new WaitForSeconds(25);
             waitingformom = null;

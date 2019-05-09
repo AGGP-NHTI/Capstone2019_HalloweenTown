@@ -2484,6 +2484,7 @@ MonoBehaviour:
   ghostScream: {fileID: 8300000, guid: c4d19874cd035134e823765af7ed3716, type: 3}
   werewolfScream: {fileID: 8300000, guid: 7af06119f324c9945bf47f3fdbe85c2a, type: 3}
   vampireScream: {fileID: 8300000, guid: 42cb8d47c20901442ba9493dfa55411b, type: 3}
+  zipup: {fileID: 8300000, guid: ec67e9092ff89ed4a9f0b1b77dff77c1, type: 3}
 --- !u!114 &114144225176058522
 MonoBehaviour:
   m_ObjectHideFlags: 1
