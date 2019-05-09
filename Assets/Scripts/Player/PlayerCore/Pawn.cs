@@ -114,10 +114,9 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassLeftTriggerInput(float value)
     {
-        
-        if(MyCameraManager)
+        if (MyCameraManager)
         {
-            if (value > 0.0f  && myProjectileManager.canThrow)  //melody's hack
+            if (value == 1  && myProjectileManager.canThrow)  //melody's hack
             {
                 myProjectileManager.showParabola = true;
                 MyCameraManager.SetVirtualCamera(1);
@@ -152,6 +151,7 @@ public class Pawn : MonoBehaviour
 
     public virtual void PassRightTriggerInput(float value)
     {
+        
         if (value > 0.0f)
         {
             //Debug.Log(name + " right trigger: " + value);

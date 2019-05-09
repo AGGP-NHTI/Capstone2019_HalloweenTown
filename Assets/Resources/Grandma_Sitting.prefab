@@ -1473,8 +1473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9635e756a4258499fcb317c20ae245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 5
-  amountHealthGiven: 50
+  cost: 15
+  amountHealthGiven: 100
   audioSource: {fileID: 82113794966502742}
   gma1: {fileID: 8300000, guid: 16915efb2c5f8c64b8e31fc8201076c5, type: 3}
 --- !u!114 &114540566511347400
