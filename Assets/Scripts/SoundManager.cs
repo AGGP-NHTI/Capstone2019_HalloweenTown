@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip ghostScream;
     public AudioClip werewolfScream;
     public AudioClip vampireScream;
+    public AudioClip zipup;
 
 	void Start () {
 	}
@@ -25,6 +26,12 @@ public class SoundManager : MonoBehaviour {
         {
             audioSource.Stop();
         }
+    }
+    
+    public void CostumeOn()
+    {
+        audioSource.clip = zipup;
+        audioSource.Play();
     }
 
     public void WerewolfAttack()

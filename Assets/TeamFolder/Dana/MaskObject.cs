@@ -6,8 +6,9 @@ using Photon.Pun;
 
 public class MaskObject : MonoBehaviour {
 
+    
     public virtual void RecieveInteract(Pawn source, Interactable myInteractable)
-    {
+    {       
         source.myMask.interactButton = true;
         source.myMask.scriptName = gameObject.tag;
 
