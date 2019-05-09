@@ -48,5 +48,6 @@ MonoBehaviour:
   - NetworkSetParent
   - RemoveObject
   - NetworkedDestroy
+  - GetMask
   DisableAutoOpenWizard: 1
   ShowSettings: 0
