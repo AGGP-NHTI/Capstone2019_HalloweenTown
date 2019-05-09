@@ -1477,6 +1477,7 @@ MonoBehaviour:
   amountHealthGiven: 100
   audioSource: {fileID: 82113794966502742}
   gma1: {fileID: 8300000, guid: 16915efb2c5f8c64b8e31fc8201076c5, type: 3}
+  ducttape: {fileID: 8300000, guid: af7e0b37ae029b744a85f8aae20f8200, type: 3}
 --- !u!114 &114540566511347400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1525,7 +1526,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 0
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!137 &137318163406435162
 SkinnedMeshRenderer:

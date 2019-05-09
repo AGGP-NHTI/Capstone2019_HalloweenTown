@@ -31,6 +31,7 @@ public class Pawn : MonoBehaviour
     public BarrelController myBarrelController;
     [HideInInspector]
     public PlayerController MyController;
+    public GameObject wastedImage;
 
     public MonoBehaviour[] MonobehavioursToToggleOnControlChange;
     public GameObject[] GameObjectsToToggleOnControlChange;
@@ -86,6 +87,13 @@ public class Pawn : MonoBehaviour
             Debug.Log("toggling " + obj.name + " to " + obj.enabled);
         }
 
+    }
+
+    public virtual void Capture()
+    {
+        MyCamera.transform.parent = null;
+        wastedImage.SetActive(true);
+        DestroyerOfObjects.DestroyObject(gameObject);
     }
 
     #region Input

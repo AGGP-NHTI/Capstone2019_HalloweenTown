@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Grandma : MonoBehaviour
 {
-    public int cost = 5;
-    public int amountHealthGiven = 50;
+    public int cost = 15;
+    public int amountHealthGiven = 100;
     public AudioSource audioSource;
     public AudioClip gma1;
+    public AudioClip ducttape;
     Coroutine waittospeak = null;
     // Use this for initialization
     void Start()
@@ -51,27 +52,32 @@ public class Grandma : MonoBehaviour
     }
 
     public virtual void RecieveInteract(Pawn source, Interactable myInteractable)
-    {
-        if(source.MyCandy.candy < cost)
+    {        
+        if (source.myMask.hasMask)
         {
-            Debug.Log("Not enough scarabs");
-            return;
-        }
-        
-        float maxHealth = 100.0f;
-        float health = source.myHealth.health;
-        if (source.myHealth.health != 0 && health < maxHealth)
-        {
-            if (health > maxHealth - amountHealthGiven)
+            audioSource.clip = ducttape;
+            audioSource.Play();
+
+            if (source.MyCandy.candy < cost)
             {
-                source.myHealth.HealHealth(maxHealth - health);
+                return;
             }
-            else
+
+            float maxHealth = 100.0f;
+            float health = source.myHealth.health;
+            if (source.myHealth.health != 0 && health < maxHealth)
             {
-                source.myHealth.HealHealth(amountHealthGiven);
+                if (health > maxHealth - amountHealthGiven)
+                {
+                    source.myHealth.HealHealth(maxHealth - health);
+                }
+                else
+                {
+                    source.myHealth.HealHealth(amountHealthGiven);
+                }
+                source.MyCandy.candy -= cost;
+
             }
-            source.MyCandy.candy -= cost;
-           
         }
     }
 }
