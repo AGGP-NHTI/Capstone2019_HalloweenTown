@@ -55,7 +55,8 @@ public class MoveToTarget : Behavior
                     }
                     mom.Targets.Remove(p);
                 }
-                DestroyerOfObjects.DestroyObject(target.gameObject);
+                target.Capture();
+                //DestroyerOfObjects.DestroyObject(target.gameObject);
                 _currentPhase = StatePhase.INACTIVE;
                 mom.UpdateTargetCount();
                 ai.localBlackboard.SetProperty("target");
