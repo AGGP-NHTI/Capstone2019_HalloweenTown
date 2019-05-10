@@ -2484,7 +2484,7 @@ MonoBehaviour:
   ghostScream: {fileID: 8300000, guid: c4d19874cd035134e823765af7ed3716, type: 3}
   werewolfScream: {fileID: 8300000, guid: 7af06119f324c9945bf47f3fdbe85c2a, type: 3}
   vampireScream: {fileID: 8300000, guid: 42cb8d47c20901442ba9493dfa55411b, type: 3}
-  zipup: {fileID: 0}
+  zipup: {fileID: 8300000, guid: ec67e9092ff89ed4a9f0b1b77dff77c1, type: 3}
 --- !u!114 &114144225176058522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2504,8 +2504,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114014868021516824}
   - {fileID: 114516980338673600}
-  viewIdField: 0
-  InstantiationId: 2
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114151291919258258
 MonoBehaviour:
@@ -3010,6 +3010,7 @@ MonoBehaviour:
   bagSpawner: {fileID: 114356165396908318}
   myBarrelController: {fileID: 114853754015313546}
   MyController: {fileID: 0}
+  wastedImage: {fileID: 0}
   MonobehavioursToToggleOnControlChange:
   - {fileID: 114660337887026628}
   GameObjectsToToggleOnControlChange:
@@ -3490,8 +3491,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114426832844424804}
-  viewIdField: 0
-  InstantiationId: 1
+  viewIdField: 2
+  InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114952993703506408
 MonoBehaviour:
